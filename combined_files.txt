@@ -1,0 +1,5805 @@
+================================================================================
+File: ./ali.jpeg
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./index.html
+================================================================================
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Ali Abbasifard — Software Engineer">
+
+    <title>Ali Abbasifard | Software Engineer</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+
+    <!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="navbar-logo">
+            AA
+        </a>
+
+        <nav class="navbar-links">
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#skills">
+                Skills
+            </a>
+
+            <a href="#projects">
+                Projects
+            </a>
+
+            <a href="learning.html">
+                Learning
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+     MAIN
+     ===================================================== -->
+
+    <main>
+
+        <!-- =================================================
+         HERO
+         ================================================= -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-terminal">
+
+                    <span class="terminal-prompt">$</span>
+
+                    <span id="hero-typing" class="typing-text"></span>
+
+                    <span class="typing-cursor">_</span>
+
+                </div>
+
+
+                <h1 class="hero-name">
+                    Ali Abbasifard
+                </h1>
+
+
+                <div class="hero-description">
+
+                    <span class="terminal-prompt">$</span>
+
+                    <span id="hero-description-typing" class="typing-text"></span>
+
+                    <span class="typing-cursor">_</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Profile Image -->
+
+            <a href="#about" class="hero-profile" aria-label="Go to About Me">
+
+                <img src="ali.jpeg" alt="Ali Abbasifard">
+
+            </a>
+
+        </section>
+
+
+        <!-- =================================================
+         ABOUT
+         ================================================= -->
+
+        <section class="section about-section" id="about">
+
+            <div class="section-header">
+
+                <span class="section-number">
+                    01
+                </span>
+
+                <div>
+
+                    <p class="section-label">
+                        ABOUT ME
+                    </p>
+
+                    <h2>
+                        Building things that matter.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- Skill explanation terminal -->
+
+            <div id="skill-explanation" class="skill-explanation">
+
+                <div class="skill-terminal-header">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                    <label>
+                        skill-info
+                    </label>
+
+                </div>
+
+
+                <div class="skill-terminal-body">
+
+                    <span class="terminal-prompt">
+                        $
+                    </span>
+
+                    <span id="skill-explanation-text"></span>
+
+                    <span class="typing-cursor">
+                        _
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="about-content">
+
+                <p>
+                    I am a software engineer with over six years
+                    of development experience. I am a lifelong
+                    learner and enjoy collaborating with others.
+                    I use my strong communication skills to help
+                    teams collaborate, share knowledge, and
+                    succeed. I enjoy teaching and mentoring new
+                    team members, and I view challenging tasks as
+                    great opportunities for growth. When I'm not
+                    coding, I enjoy reading and traveling.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+         SKILLS
+         ================================================= -->
+
+        <section class="section skills-section" id="skills">
+
+            <div class="section-header">
+
+                <span class="section-number">
+                    02
+                </span>
+
+                <div>
+
+                    <p class="section-label">
+                        SKILLS
+                    </p>
+
+                    <h2>
+                        Tools I work with.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="skills-list">
+
+                <!-- Languages -->
+
+                <div class="skill-category">
+
+                    <h3>
+                        Languages &amp; Frameworks
+                    </h3>
+
+                    <div class="skill-items">
+
+                        <button class="skill-item" data-skill="csharp">
+                            C#
+                        </button>
+
+                        <button class="skill-item" data-skill="dotnet">
+                            .NET
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Architecture -->
+
+                <div class="skill-category">
+
+                    <h3>
+                        Architecture &amp; Backend
+                    </h3>
+
+                    <div class="skill-items">
+
+                        <button class="skill-item" data-skill="microservices">
+                            Microservices
+                        </button>
+
+                        <button class="skill-item" data-skill="clean-architecture">
+                            Clean Architecture
+                        </button>
+
+                        <button class="skill-item" data-skill="n-layer">
+                            N-Layer Architecture
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Databases -->
+
+                <div class="skill-category">
+
+                    <h3>
+                        Databases
+                    </h3>
+
+                    <div class="skill-items">
+
+                        <button class="skill-item" data-skill="sql-server">
+                            SQL Server
+                        </button>
+
+                        <button class="skill-item" data-skill="postgresql">
+                            PostgreSQL
+                        </button>
+
+                        <button class="skill-item" data-skill="mysql">
+                            MySQL
+                        </button>
+
+                        <button class="skill-item" data-skill="redis">
+                            Redis
+                        </button>
+
+                        <button class="skill-item" data-skill="mongodb">
+                            MongoDB
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Messaging -->
+
+                <div class="skill-category">
+
+                    <h3>
+                        Messaging &amp; Distributed Systems
+                    </h3>
+
+                    <div class="skill-items">
+
+                        <button class="skill-item" data-skill="rabbitmq">
+                            RabbitMQ
+                        </button>
+
+                        <button class="skill-item" data-skill="kafka">
+                            Kafka
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Observability -->
+
+                <div class="skill-category">
+
+                    <h3>
+                        Observability &amp; Search
+                    </h3>
+
+                    <div class="skill-items">
+
+                        <button class="skill-item" data-skill="grafana">
+                            Grafana
+                        </button>
+
+                        <button class="skill-item" data-skill="elastic">
+                            Elastic Stack
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DevOps -->
+
+                <div class="skill-category">
+
+                    <h3>
+                        DevOps &amp; Tools
+                    </h3>
+
+                    <div class="skill-items">
+
+                        <button class="skill-item" data-skill="git">
+                            Git
+                        </button>
+
+                        <button class="skill-item" data-skill="docker">
+                            Docker
+                        </button>
+
+                        <button class="skill-item" data-skill="kubernetes">
+                            Kubernetes
+                        </button>
+
+                        <button class="skill-item" data-skill="github-actions">
+                            GitHub Actions
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+         PROJECTS
+         ================================================= -->
+
+        <section class="section projects-section" id="projects">
+
+            <div class="section-header">
+
+                <span class="section-number">
+                    03
+                </span>
+
+                <div>
+
+                    <p class="section-label">
+                        PROJECTS
+                    </p>
+
+                    <h2>
+                        Things I've built.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="projects-grid">
+
+                <article class="project-card">
+
+                    <span class="project-number">
+                        01
+                    </span>
+
+                    <p class="project-label">
+                        PROJECT
+                    </p>
+
+                    <h3>
+                        Project One
+                    </h3>
+
+                    <p>
+                        Bla bla bla. This is a placeholder
+                        for one of my software engineering
+                        projects.
+                    </p>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <span class="project-number">
+                        02
+                    </span>
+
+                    <p class="project-label">
+                        PROJECT
+                    </p>
+
+                    <h3>
+                        Project Two
+                    </h3>
+
+                    <p>
+                        Bla bla bla. More information about
+                        another project will be added here.
+                    </p>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <span class="project-number">
+                        03
+                    </span>
+
+                    <p class="project-label">
+                        PROJECT
+                    </p>
+
+                    <h3>
+                        Project Three
+                    </h3>
+
+                    <p>
+                        Bla bla bla. A future project
+                        description will be displayed here.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+         LEARNING
+         ================================================= -->
+
+        <section class="section learning-preview-section">
+
+            <div class="section-header">
+
+                <span class="section-number">
+                    04
+                </span>
+
+                <div>
+
+                    <p class="section-label">
+                        LEARNING
+                    </p>
+
+                    <h2>
+                        What I'm learning.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="learning-preview">
+
+                <div>
+
+                    <p>
+                        Articles I've written and notes
+                        I've taken from the books I'm reading.
+                    </p>
+
+                </div>
+
+
+                <a href="learning.html" class="learning-button">
+                    EXPLORE LEARNINGS
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+         CONTACT
+         ================================================= -->
+
+        <section class="section contact-section" id="contact">
+
+            <div class="section-header">
+
+                <span class="section-number">
+                    05
+                </span>
+
+                <div>
+
+                    <p class="section-label">
+                        CONTACT
+                    </p>
+
+                    <h2>
+                        Let's connect.
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-list">
+
+                <!-- Phone -->
+
+                <div class="contact-item">
+
+                    <p class="contact-label">
+                        PHONE
+                    </p>
+
+
+                    <a href="tel:+989939170652">
+
+                        <span class="contact-icon phone-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+
+                        <span>
+                            +98 993 917 06 52
+                        </span>
+
+                    </a>
+
+
+                    <a href="tel:+989057038731">
+
+                        <span class="contact-icon phone-icon">
+                            <i class="fa-solid fa-phone"></i>
+                        </span>
+
+                        <span>
+                            +98 905 703 87 31
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="contact-item">
+
+                    <p class="contact-label">
+                        EMAIL
+                    </p>
+
+
+                    <a href="mailto:aliabbasifard.net@gmail.com">
+
+                        <span class="contact-icon email-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+
+                        <span>
+                            aliabbasifard.net@gmail.com
+                        </span>
+
+                    </a>
+
+
+                    <a href="mailto:aliabbasifard.bus@gmail.com">
+
+                        <span class="contact-icon email-icon">
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+
+                        <span>
+                            aliabbasifard.bus@gmail.com
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Social Media -->
+
+                <div class="contact-item">
+
+                    <p class="contact-label">
+                        SOCIAL
+                    </p>
+
+
+                    <div class="social-links">
+
+                        <a href="https://www.linkedin.com/in/iamfard13/" target="_blank" rel="noopener noreferrer"
+                            class="social-link linkedin" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                        </a>
+
+
+                        <a href="https://github.com/iamfard13" target="_blank" rel="noopener noreferrer"
+                            class="social-link github" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+
+
+                        <a href="https://leetcode.com/u/AliAbbasifard/" target="_blank" rel="noopener noreferrer"
+                            class="social-link leetcode" aria-label="LeetCode">
+                            <span class="leetcode-icon">
+                                LC
+                            </span>
+                        </a>
+
+
+                        <a href="https://youtube.com/@aweekbeforeextinction" target="_blank" rel="noopener noreferrer"
+                            class="social-link youtube" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+
+
+                        <a href="https://t.me/iamfard" target="_blank" rel="noopener noreferrer"
+                            class="social-link telegram" aria-label="Telegram">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Ali Abbasifard
+        </p>
+
+        <p>
+            Built with curiosity &amp; code.
+        </p>
+
+    </footer>
+
+
+    <!-- Main JavaScript -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
+
+================================================================================
+File: ./learning.html
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./README.md
+================================================================================
+
+# iamfard13.github.io
+
+================================================================================
+File: ./learning-viewer.js
+================================================================================
+
+javascript
+/* =========================================================
+   LEARNING VIEWER
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadLearningFile();
+
+    }
+);
+
+
+/* =========================================================
+   LOAD LEARNING FILE
+   ========================================================= */
+
+async function loadLearningFile() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const file =
+        params.get("file");
+
+    const title =
+        params.get("title");
+
+    const chapter =
+        params.get("chapter");
+
+    const author =
+        params.get("author");
+
+    const date =
+        params.get("date");
+
+
+    const viewerTitle =
+        document.getElementById(
+            "viewer-title"
+        );
+
+    const viewerChapter =
+        document.getElementById(
+            "viewer-chapter"
+        );
+
+    const viewerAuthor =
+        document.getElementById(
+            "viewer-author"
+        );
+
+    const viewerDate =
+        document.getElementById(
+            "viewer-date"
+        );
+
+    const viewerContent =
+        document.getElementById(
+            "viewer-content"
+        );
+
+
+    /* =====================================================
+       VALIDATE
+       ===================================================== */
+
+    if (!file) {
+
+        showError(
+            viewerContent,
+            "No learning file was specified."
+        );
+
+        return;
+
+    }
+
+
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    if (viewerTitle) {
+
+        viewerTitle.textContent =
+            title || "Learning";
+
+    }
+
+
+    if (viewerChapter) {
+
+        if (chapter) {
+
+            viewerChapter.textContent =
+                chapter;
+
+            viewerChapter.style.display =
+                "block";
+
+        }
+        else {
+
+            viewerChapter.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    if (viewerAuthor) {
+
+        if (author) {
+
+            viewerAuthor.textContent =
+                author;
+
+            viewerAuthor.style.display =
+                "block";
+
+        }
+        else {
+
+            viewerAuthor.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    if (viewerDate) {
+
+        if (date) {
+
+            viewerDate.textContent =
+                date;
+
+            viewerDate.style.display =
+                "block";
+
+        }
+        else {
+
+            viewerDate.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       LOADING
+       ===================================================== */
+
+    viewerContent.innerHTML = `
+    < div class="learning-loading" >
+        Loading learning file...
+        </div >
+    `;
+
+
+    /* =====================================================
+       FETCH MARKDOWN
+       ===================================================== */
+
+    try {
+
+        const response =
+            await fetch(file);
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `HTTP ${response.status} `
+            );
+
+        }
+
+
+        const markdown =
+            await response.text();
+
+
+        if (!markdown.trim()) {
+
+            throw new Error(
+                "The learning file is empty."
+            );
+
+        }
+
+
+        /* =================================================
+           MARKDOWN
+           ================================================= */
+
+        if (
+            typeof marked ===
+            "undefined"
+        ) {
+
+            throw new Error(
+                "Markdown parser was not loaded."
+            );
+
+        }
+
+
+        viewerContent.innerHTML =
+            marked.parse(
+                removeFrontMatter(markdown)
+            );
+
+
+        /* =================================================
+           CODE BLOCKS
+           ================================================= */
+
+        document
+            .querySelectorAll(
+                ".viewer-content pre code"
+            )
+            .forEach(code => {
+
+                code.parentElement.classList.add(
+                    "code-block"
+                );
+
+            });
+
+
+        /* =================================================
+           SCROLL TOP
+           ================================================= */
+
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
+
+    }
+    catch (error) {
+
+        console.error(
+            "Unable to load learning file:",
+            error
+        );
+
+
+        showError(
+            viewerContent,
+            `Unable to load this learning file.`
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   REMOVE FRONT MATTER
+   ========================================================= */
+
+function removeFrontMatter(markdown) {
+
+    if (!markdown.startsWith("---")) {
+
+        return markdown;
+
+    }
+
+
+    const end =
+        markdown.indexOf(
+            "---",
+            3
+        );
+
+
+    if (end === -1) {
+
+        return markdown;
+
+    }
+
+
+    return markdown.substring(
+        end + 3
+    );
+
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+function showError(
+    container,
+    message
+) {
+
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML = `
+
+    < div class="viewer-error" >
+
+            <h1>
+                Something went wrong
+            </h1>
+
+            <p>
+                ${message}
+            </p>
+
+            <p>
+                <a href="learning.html">
+                    ← Back to Learning
+                </a>
+            </p>
+
+        </div >
+
+    `;
+
+}
+
+
+
+================================================================================
+File: ./script.js
+================================================================================
+
+/* ==================================================
+MOBILE MENU
+================================================== */
+
+const menuButton =
+    document.querySelector(".menu-button");
+
+const nav =
+    document.querySelector("nav");
+
+if (menuButton && nav) {
+
+
+    menuButton.addEventListener(
+        "click",
+        () => {
+
+            nav.classList.toggle(
+                "mobile-open"
+            );
+
+        }
+    );
+
+
+    const navLinks =
+        nav.querySelectorAll("a");
+
+
+    navLinks.forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                nav.classList.remove(
+                    "mobile-open"
+                );
+
+            }
+        );
+
+    });
+
+
+}
+
+/* ==================================================
+HERO TYPING
+================================================== */
+
+const nameElement =
+    document.getElementById(
+        "typing-name"
+    );
+
+const descriptionElement =
+    document.getElementById(
+        "typing-description"
+    );
+
+const nameText =
+    "Ali Abbasifard.";
+
+const descriptionText =
+    "Software Engineer • Building scalable software & solving challenging problems.";
+
+function typeText(
+    element,
+    text,
+    speed
+) {
+
+
+    return new Promise(
+        (resolve) => {
+
+            if (!element) {
+
+                resolve();
+
+                return;
+
+            }
+
+
+            let index = 0;
+
+            element.textContent = "";
+
+
+            function typeCharacter() {
+
+                if (
+                    index <
+                    text.length
+                ) {
+
+                    element.textContent +=
+                        text.charAt(index);
+
+                    index++;
+
+
+                    setTimeout(
+                        typeCharacter,
+                        speed
+                    );
+
+                }
+
+                else {
+
+                    resolve();
+
+                }
+
+            }
+
+
+            typeCharacter();
+
+        }
+    );
+
+
+}
+
+/* ==================================================
+START HERO TYPING
+================================================== */
+
+async function startTypingAnimation() {
+
+
+    if (nameElement) {
+
+        await typeText(
+            nameElement,
+            nameText,
+            100
+        );
+
+    }
+
+
+    await new Promise(
+        resolve =>
+            setTimeout(
+                resolve,
+                400
+            )
+    );
+
+
+    if (descriptionElement) {
+
+        await typeText(
+            descriptionElement,
+            descriptionText,
+            35
+        );
+
+    }
+
+
+}
+
+startTypingAnimation();
+
+/* ==================================================
+SKILL DESCRIPTIONS
+================================================== */
+
+const skillDescriptions = {
+
+
+    csharp:
+        "C# is my primary programming language. I use it extensively for backend development, application architecture, asynchronous programming, APIs, and building maintainable production systems.",
+
+
+    dotnet:
+        ".NET is my main backend ecosystem. I have experience building REST APIs, background services, business logic, authentication systems, integrations, and scalable backend applications.",
+
+
+    microservices:
+        "I have experience designing and developing microservice-based systems. I work with service boundaries, inter-service communication, fault handling, observability, and distributed system challenges.",
+
+
+    "clean-architecture":
+        "I use Clean Architecture to keep business logic independent from infrastructure and external concerns. I focus on separation of responsibilities, testability, maintainability, and long-term scalability.",
+
+
+    "n-layer":
+        "I have experience with N-Layer Architecture, separating applications into layers such as presentation, business logic, data access, and infrastructure. I use it when it provides a practical structure for the project.",
+
+
+    "sql-server":
+        "SQL Server is one of the databases I have worked with extensively. My experience includes relational data modeling, complex queries, indexes, transactions, stored procedures, and performance considerations.",
+
+
+    postgresql:
+        "I use PostgreSQL for relational data storage and backend applications. I am familiar with database design, queries, indexing, transactions, and working with PostgreSQL from .NET applications.",
+
+
+    mysql:
+        "I have experience working with MySQL in backend applications, including relational database design, queries, indexes, transactions, and application-level integration.",
+
+
+    redis:
+        "I use Redis for high-performance data access, caching, temporary data, distributed scenarios, and reducing unnecessary database load in backend systems.",
+
+
+    mongodb:
+        "MongoDB is a NoSQL database I have experience using when document-oriented storage is a good fit for the application's data model and requirements.",
+
+
+    rabbitmq:
+        "I have experience using RabbitMQ for asynchronous communication and message-driven architectures. I work with queues, exchanges, consumers, producers, acknowledgements, and reliable message processing.",
+
+
+    kafka:
+        "I have experience with Kafka in distributed systems and event-driven architectures. I use it for high-throughput event streaming, asynchronous communication, and decoupling services.",
+
+
+    grafana:
+        "I use Grafana for monitoring and visualizing application and infrastructure metrics. It helps me understand system health, performance, failures, and operational behavior.",
+
+
+    elastic:
+        "I have experience with the Elastic Stack for centralized logging, searching, analyzing application logs, and troubleshooting distributed systems.",
+
+
+    git:
+        "Git is part of my daily development workflow. I use branches, commits, rebasing, merging, pull requests, and collaborative Git workflows to manage source code effectively.",
+
+
+    docker:
+        "I use Docker to containerize applications and create consistent development and deployment environments. I am familiar with images, containers, networking, volumes, and Docker-based workflows.",
+
+
+    kubernetes:
+        "I am familiar with Kubernetes and its role in deploying and managing containerized applications. My experience includes understanding deployments, services, pods, configuration, and scaling concepts.",
+
+
+    "github-actions":
+        "I use GitHub Actions for automation and CI/CD workflows, including building applications, running tests, creating artifacts, and automating deployment-related processes."
+
+
+};
+
+/* ==================================================
+SKILL TERMINAL
+================================================== */
+
+const skills =
+    document.querySelectorAll(
+        ".skill"
+    );
+
+const skillOutput =
+    document.getElementById(
+        "skill-terminal-output"
+    );
+
+let skillTypingTimer = null;
+
+let currentSkillRequest = 0;
+
+/* ==================================================
+TYPE SKILL DESCRIPTION
+================================================== */
+
+function typeSkillDescription(
+    skillKey
+) {
+
+
+    if (!skillOutput) {
+        return;
+    }
+
+
+    currentSkillRequest++;
+
+
+    const requestId =
+        currentSkillRequest;
+
+
+    if (skillTypingTimer) {
+
+        clearTimeout(
+            skillTypingTimer
+        );
+
+    }
+
+
+    skillOutput.textContent = "";
+
+
+    const text =
+        skillDescriptions[skillKey] ||
+        "Information about this skill will be added soon.";
+
+
+    let index = 0;
+
+
+
+    function typeCharacter() {
+
+        if (
+            requestId !==
+            currentSkillRequest
+        ) {
+
+            return;
+
+        }
+
+
+        if (
+            index <
+            text.length
+        ) {
+
+            skillOutput.textContent +=
+                text.charAt(index);
+
+
+            index++;
+
+
+            skillTypingTimer =
+                setTimeout(
+                    typeCharacter,
+                    18
+                );
+
+        }
+
+    }
+
+
+    typeCharacter();
+
+
+}
+
+/* ==================================================
+SELECT SKILL
+================================================== */
+
+function selectSkill(skill) {
+
+
+    const skillKey =
+        skill.dataset.skill;
+
+
+    skills.forEach(
+        item => {
+
+            item.classList.remove(
+                "active"
+            );
+
+        }
+    );
+
+
+    skill.classList.add(
+        "active"
+    );
+
+
+    typeSkillDescription(
+        skillKey
+    );
+
+
+}
+
+/* ==================================================
+SKILL EVENTS
+================================================== */
+
+skills.forEach(
+    (skill) => {
+
+
+        /*
+            Desktop:
+            hover changes terminal.
+        */
+
+        skill.addEventListener(
+            "mouseenter",
+            () => {
+
+                selectSkill(skill);
+
+            }
+        );
+
+
+        /*
+            Mobile:
+            click changes terminal.
+        */
+
+        skill.addEventListener(
+            "click",
+            () => {
+
+                selectSkill(skill);
+
+            }
+        );
+
+    }
+
+
+);
+
+/* ==================================================
+DEFAULT SKILL
+================================================== */
+
+const firstSkill =
+    document.querySelector(
+        ".skill"
+    );
+
+if (firstSkill) {
+
+
+    selectSkill(
+        firstSkill
+    );
+
+
+}
+
+/* ==================================================
+SCROLL REVEAL
+================================================== */
+
+const revealElements =
+    document.querySelectorAll(
+        ".project, .about, .contact, .profile-card"
+    );
+
+revealElements.forEach(
+    (element) => {
+
+
+        element.classList.add(
+            "reveal"
+        );
+
+    }
+
+
+);
+
+const observer =
+    new IntersectionObserver(
+        (entries) => {
+
+
+            entries.forEach(
+                (entry) => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(
+    (element) => {
+
+
+        observer.observe(
+            element
+        );
+
+    }
+
+
+);
+
+/* ==================================================
+PROJECT CLICK
+================================================== */
+
+const projects =
+    document.querySelectorAll(
+        ".project"
+    );
+
+projects.forEach(
+    (project) => {
+
+
+        project.addEventListener(
+            "click",
+            () => {
+
+                console.log(
+                    "Project clicked"
+                );
+
+            }
+        );
+
+    }
+
+
+);
+
+/* ==================================================
+CURRENT YEAR
+================================================== */
+
+const yearElement =
+    document.getElementById(
+        "year"
+    );
+
+if (yearElement) {
+
+
+    yearElement.textContent =
+        new Date().getFullYear();
+
+
+}
+
+
+================================================================================
+File: ./learning.js
+================================================================================
+
+javascript
+/* =========================================================
+   LEARNING CONFIGURATION
+   ========================================================= */
+
+const GITHUB_OWNER = "iamfard13";
+const GITHUB_REPOSITORY = "iamfard13.github.io";
+const GITHUB_BRANCH = "main";
+
+
+/* =========================================================
+   GITHUB API
+   ========================================================= */
+
+async function getMarkdownFiles(folder) {
+
+    const apiUrl =
+        `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/contents/learnings/${folder}?ref=${GITHUB_BRANCH}`;
+
+    const response = await fetch(apiUrl);
+
+    if (!response.ok) {
+
+        throw new Error(
+            `Unable to load ${folder}: HTTP ${response.status}`
+        );
+
+    }
+
+    const files = await response.json();
+
+    return files.filter(file =>
+        file.type === "file" &&
+        file.name.toLowerCase().endsWith(".md")
+    );
+
+}
+
+
+/* =========================================================
+   MARKDOWN METADATA
+   ========================================================= */
+
+function parseFrontMatter(markdown) {
+
+    const metadata = {};
+
+    if (!markdown.startsWith("---")) {
+        return metadata;
+    }
+
+    const parts = markdown.split("---");
+
+    if (parts.length < 3) {
+        return metadata;
+    }
+
+    const frontMatter = parts[1];
+
+    const lines = frontMatter.split("\n");
+
+    lines.forEach(line => {
+
+        const separator = line.indexOf(":");
+
+        if (separator === -1) {
+            return;
+        }
+
+        const key =
+            line.substring(0, separator).trim();
+
+        let value =
+            line.substring(separator + 1).trim();
+
+        value = value.replace(/^["']|["']$/g, "");
+
+        metadata[key] = value;
+
+    });
+
+    return metadata;
+
+}
+
+
+/* =========================================================
+   LOAD FILE METADATA
+   ========================================================= */
+
+async function getFileMetadata(file, folder) {
+
+    const rawUrl =
+        `https://raw.githubusercontent.com/` +
+        `${GITHUB_OWNER}/` +
+        `${GITHUB_REPOSITORY}/` +
+        `${GITHUB_BRANCH}/` +
+        `learnings/${folder}/${encodeURIComponent(file.name)}`;
+
+
+    try {
+
+        const response = await fetch(rawUrl);
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const markdown = await response.text();
+
+        const metadata =
+            parseFrontMatter(markdown);
+
+
+        return {
+
+            fileName: file.name,
+
+            title:
+                metadata.title ||
+                file.name
+                    .replace(".md", "")
+                    .replace(/-/g, " "),
+
+            chapter:
+                metadata.chapter || "",
+
+            author:
+                metadata.author || "",
+
+            date:
+                metadata.date || "",
+
+            rawUrl: rawUrl
+
+        };
+
+    }
+    catch (error) {
+
+        console.error(
+            `Unable to read ${file.name}`,
+            error
+        );
+
+        return {
+
+            fileName: file.name,
+
+            title:
+                file.name
+                    .replace(".md", "")
+                    .replace(/-/g, " "),
+
+            chapter: "",
+
+            author: "",
+
+            date: "",
+
+            rawUrl: rawUrl
+
+        };
+
+    }
+
+}
+
+
+/* =========================================================
+   CREATE CARD
+   ========================================================= */
+
+function createLearningCard(item, index, type) {
+
+    const card =
+        document.createElement("article");
+
+    card.className = "learning-card";
+
+
+    const content =
+        document.createElement("div");
+
+    content.className =
+        "learning-card-content";
+
+
+    const number =
+        document.createElement("span");
+
+    number.className =
+        "learning-card-number";
+
+    number.textContent =
+        String(index + 1).padStart(2, "0");
+
+
+    const label =
+        document.createElement("p");
+
+    label.className =
+        "learning-card-label";
+
+    label.textContent =
+        type === "books"
+            ? "BOOK"
+            : "ARTICLE";
+
+
+    const title =
+        document.createElement("h3");
+
+    title.textContent =
+        item.title;
+
+
+    content.appendChild(label);
+
+    content.appendChild(title);
+
+
+    if (item.chapter) {
+
+        const chapter =
+            document.createElement("p");
+
+        chapter.className =
+            "learning-card-chapter";
+
+        chapter.textContent =
+            item.chapter;
+
+        content.appendChild(chapter);
+
+    }
+
+
+    if (item.author) {
+
+        const author =
+            document.createElement("p");
+
+        author.className =
+            "learning-card-author";
+
+        author.textContent =
+            item.author;
+
+        content.appendChild(author);
+
+    }
+
+
+    if (item.date) {
+
+        const date =
+            document.createElement("p");
+
+        date.className =
+            "learning-card-date";
+
+        date.textContent =
+            item.date;
+
+        content.appendChild(date);
+
+    }
+
+
+    const button =
+        document.createElement("button");
+
+    button.className =
+        "learning-card-button";
+
+    button.type = "button";
+
+    button.innerHTML =
+        `READ NOTES <span>→</span>`;
+
+
+    button.addEventListener("click", () => {
+
+        const params =
+            new URLSearchParams({
+
+                file: item.rawUrl,
+
+                title: item.title,
+
+                chapter: item.chapter,
+
+                author: item.author,
+
+                date: item.date
+
+            });
+
+
+        window.location.href =
+            `learning-viewer.html?${params.toString()}`;
+
+    });
+
+
+    content.appendChild(button);
+
+
+    card.appendChild(number);
+
+    card.appendChild(content);
+
+
+    return card;
+
+}
+
+
+/* =========================================================
+   LOAD CATEGORY
+   ========================================================= */
+
+async function loadCategory(folder, gridId, countId) {
+
+    const grid =
+        document.getElementById(gridId);
+
+    const count =
+        document.getElementById(countId);
+
+
+    try {
+
+        const files =
+            await getMarkdownFiles(folder);
+
+
+        if (count) {
+
+            count.textContent =
+                `${files.length} ${files.length === 1
+                    ? "ITEM"
+                    : "ITEMS"
+                }`;
+
+        }
+
+
+        if (files.length === 0) {
+
+            grid.innerHTML = `
+                <div class="learning-empty">
+                    No learning files found.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        grid.innerHTML = "";
+
+
+        const items =
+            await Promise.all(
+
+                files.map(file =>
+                    getFileMetadata(file, folder)
+                )
+
+            );
+
+
+        items.forEach((item, index) => {
+
+            const card =
+                createLearningCard(
+                    item,
+                    index,
+                    folder
+                );
+
+            grid.appendChild(card);
+
+        });
+
+    }
+    catch (error) {
+
+        console.error(error);
+
+
+        grid.innerHTML = `
+            <div class="learning-error">
+                Unable to load learning files.
+                <br><br>
+                ${error.message}
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadCategory(
+            "books",
+            "books-grid",
+            "books-count"
+        );
+
+
+        loadCategory(
+            "articles",
+            "articles-grid",
+            "articles-count"
+        );
+
+    }
+);
+
+
+================================================================================
+File: ./learnings/books/parallel-programming-chapter1.md
+================================================================================
+
+---
+title: "Is Parallel Programming Hard, And, If So, What Can You Do About It?"
+chapter: "Chapter 1 — Parallel Programming"
+author: "Paul E. McKenney"
+date: "2026-08-29"
+---
+
+# Chapter 1 — Parallel Programming
+
+Parallel programming is not simply about running multiple tasks at the same time. The real challenge is designing the program so that multiple threads can work efficiently without constantly interfering with each other.
+
+## 1. Parallelism ≠ Automatically Better Performance
+
+Adding more threads does not necessarily make a program faster.
+
+Threads may spend time:
+
+- Waiting for resources
+- Communicating with other threads
+- Synchronizing their work
+
+Therefore, simply increasing the number of threads does not guarantee better performance.
+
+## 2. Communication Is Expensive
+
+When threads need to frequently exchange data or coordinate with each other, the communication overhead can reduce the benefits of parallelism.
+
+The more threads need to communicate, the more overhead the system may introduce.
+
+## 3. Resource Partitioning
+
+One useful approach is to divide resources or data between threads:
+
+```text
+Thread A → Partition A
+Thread B → Partition B
+Thread C → Partition C
+```
+
+This reduces the amount of sharing between threads.
+
+## 4. Less Sharing → Less Synchronization
+
+When threads mostly work on their own data, fewer locks and synchronization mechanisms are needed.
+
+Less shared state generally means fewer opportunities for threads to interfere with each other.
+
+## 5. Smaller State Space → Easier Reasoning
+
+When many threads interact with shared resources, there can be a large number of possible execution orders and interactions.
+
+Partitioning the work can reduce the number of situations developers need to consider.
+
+This makes the program easier to reason about and can make concurrency-related bugs easier to identify.
+
+## 6. Hardware Matters Too
+
+Performance does not depend only on how the software is designed. The underlying hardware architecture also matters.
+
+Factors such as:
+
+- Where a thread runs
+- Where its data is located
+- CPU caches
+- Memory access
+- Communication between CPU components
+
+can all affect the performance of a parallel program.
+
+## Key Takeaways
+
+- More threads do not automatically mean better performance.
+- Communication between threads can introduce significant overhead.
+- Partitioning resources can reduce sharing.
+- Less sharing can reduce the need for synchronization.
+- Reducing shared state makes concurrent programs easier to reason about.
+- Hardware architecture plays an important role in parallel-programming performance.
+
+## My Notes
+
+The main idea I took from this chapter is that **parallel programming is not about simply adding more threads**.
+
+Good parallel software requires careful consideration of how work, data, and resources are divided between threads.
+
+Reducing unnecessary sharing and communication can make a parallel program both more efficient and easier to understand.
+
+================================================================================
+File: ./.github/workflows/generate-learning.yml
+================================================================================
+
+name: Generate Learning Index
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - "learnings/**/*.md"
+            - ".github/workflows/generate-learning.yml"
+
+    workflow_dispatch:
+
+permissions:
+    contents: write
+
+jobs:
+    generate-learning:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Generate learning indexes
+              shell: python
+              run: |
+
+                  import json
+                  from pathlib import Path
+
+
+                  def parse_frontmatter(content):
+
+                      metadata = {}
+
+                      if not content.startswith("---"):
+                          return metadata
+
+                      parts = content.split("---", 2)
+
+                      if len(parts) < 3:
+                          return metadata
+
+                      frontmatter = parts[1]
+
+                      for line in frontmatter.splitlines():
+
+                          line = line.strip()
+
+                          if not line or ":" not in line:
+                              continue
+
+                          key, value = line.split(":", 1)
+
+                          key = key.strip()
+                          value = value.strip()
+
+                          if (
+                              len(value) >= 2
+                              and value[0] == value[-1]
+                              and value[0] in ("'", '"')
+                          ):
+                              value = value[1:-1]
+
+                          metadata[key] = value
+
+                      return metadata
+
+
+                  def get_title(content, path):
+
+                      metadata = parse_frontmatter(content)
+
+                      if metadata.get("title"):
+                          return metadata["title"]
+
+                      for line in content.splitlines():
+
+                          if line.startswith("# "):
+                              return line[2:].strip()
+
+                      return path.stem.replace("-", " ").title()
+
+
+                  def create_entry(path, content_type):
+
+                      content = path.read_text(
+                          encoding="utf-8"
+                      )
+
+                      metadata = parse_frontmatter(content)
+
+                      entry = {
+                          "title": get_title(content, path),
+                          "date": metadata.get("date", ""),
+                          "file": str(path).replace("\\", "/")
+                      }
+
+                      if content_type == "book":
+
+                          entry["chapter"] = metadata.get(
+                              "chapter",
+                              ""
+                          )
+
+                          entry["author"] = metadata.get(
+                              "author",
+                              ""
+                          )
+
+                      return entry
+
+
+                  def generate(directory, content_type):
+
+                      directory = Path(directory)
+
+                      if not directory.exists():
+                          return []
+
+                      result = []
+
+                      for path in sorted(
+                          directory.rglob("*.md")
+                      ):
+
+                          result.append(
+                              create_entry(
+                                  path,
+                                  content_type
+                              )
+                          )
+
+                      result.sort(
+                          key=lambda item: item.get(
+                              "date",
+                              ""
+                          ),
+                          reverse=True
+                      )
+
+                      return result
+
+
+                  books = generate(
+                      "learnings/books",
+                      "book"
+                  )
+
+                  articles = generate(
+                      "learnings/articles",
+                      "article"
+                  )
+
+
+                  data_directory = Path("data")
+
+                  data_directory.mkdir(
+                      parents=True,
+                      exist_ok=True
+                  )
+
+
+                  Path(
+                      "data/books.json"
+                  ).write_text(
+                      json.dumps(
+                          books,
+                          indent=4,
+                          ensure_ascii=False
+                      ) + "\n",
+                      encoding="utf-8"
+                  )
+
+
+                  Path(
+                      "data/articles.json"
+                  ).write_text(
+                      json.dumps(
+                          articles,
+                          indent=4,
+                          ensure_ascii=False
+                      ) + "\n",
+                      encoding="utf-8"
+                  )
+
+
+                  print(
+                      f"Generated {len(books)} books."
+                  )
+
+                  print(
+                      f"Generated {len(articles)} articles."
+                  )
+
+            - name: Commit generated indexes
+              run: |
+
+                  git config user.name "github-actions[bot]"
+
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+                  git add data/books.json data/articles.json
+
+                  if git diff --cached --quiet; then
+                    echo "No changes to commit."
+                    exit 0
+                  fi
+
+                  git commit \
+                    -m "chore: update learning indexes"
+
+                  git push
+
+
+================================================================================
+File: ./style.css
+================================================================================
+
+/* =========================================================
+RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #080808;
+    color: #f2f2f2;
+
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    line-height: 1.5;
+
+    overflow-x: hidden;
+
+
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+/* =========================================================
+NAVIGATION
+========================================================= */
+
+.navbar {
+    position: fixed;
+
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 75px;
+
+    padding:
+        0 6vw;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    background:
+        rgba(8, 8, 8, 0.78);
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.06);
+
+    backdrop-filter:
+        blur(14px);
+
+
+}
+
+.navbar-logo {
+    width: 38px;
+    height: 38px;
+
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 0.05em;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+
+
+}
+
+.navbar-logo:hover {
+    background: #fff;
+    color: #000;
+}
+
+.navbar-links {
+    display: flex;
+
+
+    align-items: center;
+
+    gap: 32px;
+
+
+}
+
+.navbar-links a {
+    position: relative;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+
+    opacity: 0.55;
+
+    transition:
+        opacity 0.2s ease;
+
+
+}
+
+.navbar-links a:hover {
+    opacity: 1;
+}
+
+/* =========================================================
+HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+
+    width: min(88vw, 1400px);
+
+    margin: 0 auto;
+
+    padding:
+        160px 0 100px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr) 300px;
+
+    align-items: center;
+
+    gap: 100px;
+
+
+}
+
+.hero-content {
+    min-width: 0;
+}
+
+.hero-terminal,
+.hero-description {
+    display: flex;
+
+
+    align-items: center;
+
+    min-height: 28px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 14px;
+
+    letter-spacing: 0.02em;
+
+
+}
+
+.hero-terminal {
+    margin-bottom: 18px;
+}
+
+.hero-description {
+    margin-top: 25px;
+
+
+    opacity: 0.55;
+
+
+}
+
+.terminal-prompt {
+    margin-right: 10px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    opacity: 0.7;
+
+
+}
+
+.typing-text {
+    white-space: nowrap;
+}
+
+.typing-cursor {
+    display: inline-block;
+
+
+    margin-left: 3px;
+
+    animation:
+        cursorBlink 1s infinite;
+
+
+}
+
+@keyframes cursorBlink {
+
+
+    0%,
+    45% {
+        opacity: 1;
+    }
+
+    46%,
+    100% {
+        opacity: 0;
+    }
+
+
+}
+
+.hero-name {
+    margin: 0;
+
+
+    font-size:
+        clamp(54px, 8vw, 105px);
+
+    font-weight: 500;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.055em;
+
+
+}
+
+.hero-profile {
+    display: block;
+
+
+    width: 300px;
+    height: 300px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.16);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease;
+
+
+}
+
+.hero-profile:hover {
+    transform:
+        translateY(-8px);
+
+
+    border-color:
+        rgba(255, 255, 255, 0.45);
+
+
+}
+
+.hero-profile img {
+    width: 100%;
+    height: 100%;
+
+
+    display: block;
+
+    object-fit: cover;
+
+    filter:
+        grayscale(100%);
+
+    transition:
+        filter 0.4s ease,
+        transform 0.5s ease;
+
+
+}
+
+.hero-profile:hover img {
+    filter:
+        grayscale(0%);
+
+
+    transform:
+        scale(1.04);
+
+
+}
+
+/* =========================================================
+GENERAL SECTIONS
+========================================================= */
+
+.section {
+    width: min(88vw, 1300px);
+
+
+    margin: 0 auto;
+
+    padding:
+        130px 0;
+
+
+}
+
+.section-header {
+    display: flex;
+
+
+    align-items: flex-start;
+
+    gap: 30px;
+
+    margin-bottom: 70px;
+
+
+}
+
+.section-number {
+    padding-top: 8px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    opacity: 0.3;
+
+
+}
+
+.section-label {
+    margin-bottom: 12px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.2em;
+
+    opacity: 0.4;
+
+
+}
+
+.section-header h2 {
+    font-size:
+        clamp(34px, 5vw, 65px);
+
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: -0.045em;
+
+
+}
+
+/* =========================================================
+ABOUT
+========================================================= */
+
+.about-content {
+    max-width: 900px;
+}
+
+.about-content p {
+    font-size:
+        clamp(20px, 2.4vw, 29px);
+
+
+    line-height: 1.7;
+
+    text-align: justify;
+
+    text-justify: inter-word;
+
+    opacity: 0.7;
+
+
+}
+
+/* =========================================================
+SKILL EXPLANATION
+========================================================= */
+
+.skill-explanation {
+    width: min(100%, 900px);
+
+
+    margin:
+        -20px 0 60px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    transform:
+        translateY(8px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+
+
+}
+
+.skill-explanation.active {
+    opacity: 1;
+
+
+    transform:
+        translateY(0);
+
+
+}
+
+.skill-terminal-header {
+    height: 42px;
+
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        0 15px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+
+
+}
+
+.skill-terminal-header span {
+    width: 8px;
+    height: 8px;
+
+
+    border-radius: 50%;
+
+    background: currentColor;
+
+    opacity: 0.25;
+
+
+}
+
+.skill-terminal-header label {
+    margin-left: 10px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    opacity: 0.4;
+
+
+}
+
+.skill-terminal-body {
+    min-height: 80px;
+
+
+    padding:
+        25px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    opacity: 0.7;
+
+
+}
+
+/* =========================================================
+SKILLS
+========================================================= */
+
+.skills-list {
+    display: grid;
+
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap:
+        65px 80px;
+
+
+}
+
+.skill-category h3 {
+    margin-bottom: 22px;
+
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    opacity: 0.45;
+
+
+}
+
+.skill-items {
+    display: flex;
+
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+
+}
+
+.skill-item {
+    padding:
+        11px 16px;
+
+
+    border:
+        1px solid rgba(255, 255, 255, 0.14);
+
+    background:
+        transparent;
+
+    color: inherit;
+
+    cursor: pointer;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 12px;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+
+
+}
+
+.skill-item:hover,
+.skill-item:focus-visible {
+    background: #fff;
+
+
+    color: #000;
+
+    border-color: #fff;
+
+    transform:
+        translateY(-2px);
+
+    outline: none;
+
+
+}
+
+/* =========================================================
+PROJECTS
+========================================================= */
+
+.projects-grid {
+    display: grid;
+
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+
+}
+
+.project-card {
+    position: relative;
+
+
+    min-height: 350px;
+
+    padding: 35px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
+
+
+}
+
+.project-card:hover {
+    transform:
+        translateY(-6px);
+
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    border-color:
+        rgba(255, 255, 255, 0.3);
+
+
+}
+
+.project-number {
+    position: absolute;
+
+
+    top: 25px;
+    right: 25px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    opacity: 0.3;
+
+
+}
+
+.project-label {
+    margin-bottom: 30px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.18em;
+
+    opacity: 0.4;
+
+
+}
+
+.project-card h3 {
+    margin-bottom: 20px;
+
+
+    font-size: 28px;
+
+    font-weight: 500;
+
+    letter-spacing: -0.03em;
+
+
+}
+
+.project-card p:last-child {
+    max-width: 400px;
+
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    opacity: 0.5;
+
+
+}
+
+/* =========================================================
+LEARNING PREVIEW
+========================================================= */
+
+.learning-preview-section {
+    padding-top: 100px;
+}
+
+.learning-preview {
+    display: flex;
+
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+    padding:
+        45px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    background:
+        rgba(255, 255, 255, 0.02);
+
+
+}
+
+.learning-preview p {
+    max-width: 650px;
+
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.55;
+
+
+}
+
+.learning-button {
+    flex-shrink: 0;
+
+
+    padding:
+        14px 20px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.2);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 0.1em;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+
+
+}
+
+.learning-button:hover {
+    background: #fff;
+
+
+    color: #000;
+
+
+}
+
+.learning-button span {
+    margin-left: 10px;
+}
+
+/* =========================================================
+CONTACT
+========================================================= */
+
+.contact-list {
+    display: grid;
+
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 60px;
+
+
+}
+
+.contact-label {
+    margin-bottom: 22px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.18em;
+
+    opacity: 0.35;
+
+
+}
+
+.contact-item>a {
+    display: flex;
+
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 14px;
+
+    font-size: 14px;
+
+    opacity: 0.65;
+
+    transition:
+        opacity 0.2s ease;
+
+
+}
+
+.contact-item>a:hover {
+    opacity: 1;
+}
+
+.contact-icon {
+    width: 34px;
+    height: 34px;
+
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.14);
+
+    font-size: 13px;
+
+
+}
+
+/* =========================================================
+SOCIAL ICONS
+========================================================= */
+
+.social-links {
+    display: flex;
+
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+
+}
+
+.social-link {
+    width: 42px;
+    height: 42px;
+
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.16);
+
+    font-size: 17px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+
+
+}
+
+.social-link:hover {
+    transform:
+        translateY(-4px);
+
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    border-color:
+        rgba(255, 255, 255, 0.35);
+
+
+}
+
+.social-link.linkedin {
+    color: #0a66c2;
+}
+
+.social-link.github {
+    color: #ffffff;
+}
+
+.social-link.youtube {
+    color: #ff0000;
+}
+
+.social-link.telegram {
+    color: #229ed9;
+}
+
+.social-link.leetcode {
+    color: #f89f1b;
+}
+
+.leetcode-icon {
+    width: 20px;
+    height: 20px;
+
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid currentColor;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+
+}
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+.footer {
+    width: min(88vw, 1300px);
+
+
+    margin: 0 auto;
+
+    padding:
+        35px 0 45px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    opacity: 0.35;
+
+
+}
+
+/* =========================================================
+LEARNING PAGE
+========================================================= */
+
+.learning-page {
+    width: min(88vw, 1300px);
+
+
+    margin: 0 auto;
+
+    padding:
+        140px 0 140px;
+
+
+}
+
+.learning-hero {
+    max-width: 950px;
+
+
+    margin-bottom: 120px;
+
+
+}
+
+.learning-hero h1 {
+    margin: 0;
+
+
+    font-size:
+        clamp(50px, 8vw, 100px);
+
+    font-weight: 500;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.05em;
+
+
+}
+
+.learning-hero>p:last-child {
+    max-width: 650px;
+
+
+    margin-top: 35px;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    opacity: 0.55;
+
+
+}
+
+.learning-category {
+    margin-bottom: 120px;
+}
+
+.learning-category-header {
+    display: flex;
+
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 45px;
+
+    padding-bottom: 20px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.1);
+
+
+}
+
+.learning-category-header h2 {
+    margin: 0;
+
+
+    font-size:
+        clamp(30px, 4vw, 52px);
+
+    font-weight: 500;
+
+    line-height: 1;
+
+
+}
+
+.learning-count {
+    font-family:
+        "Courier New",
+        monospace;
+
+
+    font-size: 12px;
+
+    opacity: 0.35;
+
+
+}
+
+.learning-grid {
+    display: grid;
+
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+
+}
+
+.learning-card {
+    position: relative;
+
+
+    min-height: 330px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+
+
+}
+
+.learning-card:hover {
+    transform:
+        translateY(-6px);
+
+
+    border-color:
+        rgba(255, 255, 255, 0.3);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+
+}
+
+.learning-card-number {
+    position: absolute;
+
+
+    top: 25px;
+    right: 28px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 12px;
+
+    opacity: 0.3;
+
+
+}
+
+.learning-card-content {
+    padding: 40px;
+}
+
+.learning-card-label {
+    margin:
+        0 0 28px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.18em;
+
+    opacity: 0.45;
+
+
+}
+
+.learning-card h3 {
+    max-width: 700px;
+
+
+    margin:
+        0 0 20px;
+
+    font-size:
+        clamp(25px, 3vw, 38px);
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.025em;
+
+
+}
+
+.learning-card-chapter {
+    margin:
+        0 0 8px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 13px;
+
+    opacity: 0.65;
+
+
+}
+
+.learning-card-author {
+    margin: 0;
+
+
+    font-size: 14px;
+
+    opacity: 0.55;
+
+
+}
+
+.learning-card-date {
+    margin-top: 20px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+
+    opacity: 0.4;
+
+
+}
+
+.learning-card-button {
+    margin-top: 35px;
+
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: inherit;
+
+    cursor: pointer;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 0.12em;
+
+    opacity: 0.7;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+
+
+}
+
+.learning-card-button:hover {
+    opacity: 1;
+
+
+    transform:
+        translateX(5px);
+
+
+}
+
+.learning-card-button span {
+    margin-left: 8px;
+}
+
+/* =========================================================
+LEARNING STATES
+========================================================= */
+
+.learning-loading,
+.learning-empty,
+.learning-error {
+    grid-column: 1 / -1;
+
+
+    padding: 40px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 13px;
+
+    opacity: 0.5;
+
+
+}
+
+/* =========================================================
+LEARNING VIEWER
+========================================================= */
+
+.viewer-page {
+    width: min(88vw, 1100px);
+
+
+    margin: 0 auto;
+
+    padding:
+        110px 0 120px;
+
+
+}
+
+.viewer-back {
+    display: inline-block;
+
+
+    margin-bottom: 90px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 0.1em;
+
+    opacity: 0.5;
+
+
+}
+
+.viewer-back:hover {
+    opacity: 1;
+}
+
+.viewer-header {
+    margin-bottom: 65px;
+}
+
+.viewer-header h1 {
+    max-width: 1000px;
+
+
+    margin: 0;
+
+    font-size:
+        clamp(42px, 7vw, 78px);
+
+    font-weight: 500;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.045em;
+
+
+}
+
+.viewer-chapter {
+    margin:
+        0 0 20px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 13px;
+
+    opacity: 0.55;
+
+
+}
+
+.viewer-author {
+    margin:
+        25px 0 0;
+
+
+    font-size: 16px;
+
+    opacity: 0.6;
+
+
+}
+
+.viewer-date {
+    margin:
+        8px 0 0;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    opacity: 0.4;
+
+
+}
+
+/* =========================================================
+VIEWER TERMINAL
+========================================================= */
+
+.viewer-terminal {
+    border:
+        1px solid rgba(255, 255, 255, 0.12);
+
+
+    background:
+        rgba(255, 255, 255, 0.02);
+
+
+}
+
+.viewer-terminal-header {
+    display: flex;
+
+
+    align-items: center;
+
+    gap: 7px;
+
+    height: 44px;
+
+    padding:
+        0 16px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.1);
+
+
+}
+
+.viewer-terminal-header span {
+    width: 9px;
+    height: 9px;
+
+
+    border-radius: 50%;
+
+    background: currentColor;
+
+    opacity: 0.3;
+
+
+}
+
+.viewer-terminal-header label {
+    margin-left: 12px;
+
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    opacity: 0.4;
+
+
+}
+
+/* =========================================================
+VIEWER CONTENT
+========================================================= */
+
+.viewer-content {
+    padding: 55px;
+
+
+    font-size: 17px;
+
+    line-height: 1.85;
+
+
+}
+
+.viewer-content h1,
+.viewer-content h2,
+.viewer-content h3 {
+    margin:
+        60px 0 22px;
+
+
+    line-height: 1.2;
+
+
+}
+
+.viewer-content h1 {
+    font-size: 36px;
+}
+
+.viewer-content h2 {
+    font-size: 29px;
+}
+
+.viewer-content h3 {
+    font-size: 23px;
+}
+
+.viewer-content p {
+    margin:
+        0 0 25px;
+
+
+    opacity: 0.8;
+
+
+}
+
+.viewer-content ul,
+.viewer-content ol {
+    margin:
+        0 0 30px;
+
+
+    padding-left: 28px;
+
+
+}
+
+.viewer-content li {
+    margin-bottom: 9px;
+
+
+    opacity: 0.8;
+
+
+}
+
+.viewer-content strong {
+    font-weight: 700;
+
+
+    color: #fff;
+
+
+}
+
+.viewer-content em {
+    font-style: italic;
+}
+
+.viewer-content code {
+    padding:
+        3px 7px;
+
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 0.88em;
+
+
+}
+
+.viewer-content .code-block {
+    margin:
+        35px 0;
+
+
+    padding: 25px;
+
+    overflow-x: auto;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.1);
+
+    background:
+        rgba(0, 0, 0, 0.35);
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+
+}
+
+.viewer-content .code-block code {
+    padding: 0;
+
+
+    background: transparent;
+
+
+}
+
+.viewer-content a {
+    text-decoration: underline;
+
+
+    text-underline-offset: 4px;
+
+    opacity: 0.8;
+
+
+}
+
+.viewer-content a:hover {
+    opacity: 1;
+}
+
+/* =========================================================
+VIEWER ERROR
+========================================================= */
+
+.viewer-error {
+    padding:
+        50px 0;
+}
+
+.viewer-error h1 {
+    margin:
+        0 0 15px;
+}
+
+.viewer-error p {
+    opacity: 0.5;
+}
+
+/* =========================================================
+RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        gap: 60px;
+    }
+
+    .hero-profile {
+        width: 240px;
+        height: 240px;
+    }
+
+    .projects-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .contact-list {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+}
+
+@media (max-width: 800px) {
+
+
+    .navbar {
+        padding:
+            0 5vw;
+    }
+
+    .navbar-links {
+        gap: 16px;
+    }
+
+    .navbar-links a {
+        font-size: 9px;
+    }
+
+    .section {
+        width: 90vw;
+
+        padding:
+            100px 0;
+    }
+
+    .skills-list {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .learning-preview {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+}
+
+@media (max-width: 650px) {
+
+
+    .navbar {
+        height: 65px;
+    }
+
+    .navbar-logo {
+        width: 34px;
+        height: 34px;
+    }
+
+    .navbar-links {
+        gap: 10px;
+    }
+
+    .navbar-links a {
+        font-size: 8px;
+    }
+
+    .hero {
+        width: 90vw;
+
+        padding:
+            120px 0 80px;
+    }
+
+    .hero-name {
+        font-size:
+            clamp(45px, 14vw, 70px);
+    }
+
+    .hero-profile {
+        width: 190px;
+        height: 190px;
+    }
+
+    .section-header {
+        gap: 18px;
+
+        margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+        font-size: 35px;
+    }
+
+    .about-content p {
+        font-size: 18px;
+
+        line-height: 1.8;
+
+        text-align: left;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        min-height: 300px;
+    }
+
+    .contact-list {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .learning-page {
+        width: 90vw;
+
+        padding:
+            100px 0;
+    }
+
+    .learning-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-card-content {
+        padding: 30px;
+    }
+
+    .viewer-page {
+        width: 90vw;
+
+        padding:
+            90px 0 100px;
+    }
+
+    .viewer-content {
+        padding:
+            30px 22px;
+
+        font-size: 16px;
+    }
+
+    .viewer-header h1 {
+        font-size: 42px;
+    }
+
+    .viewer-terminal-header label {
+        overflow: hidden;
+
+        white-space: nowrap;
+
+        text-overflow: ellipsis;
+    }
+
+    .footer {
+        width: 90vw;
+
+        flex-direction: column;
+
+        gap: 8px;
+    }
+
+
+}
+
+================================================================================
+File: ./.git/ORIG_HEAD
+================================================================================
+
+fe013184047d3275e800925c4fbb54ebf617d372
+
+
+================================================================================
+File: ./.git/config
+================================================================================
+
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@github.com:iamfard13/iamfard13.github.io.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+	vscode-merge-base = origin/main
+
+
+================================================================================
+File: ./.git/objects/61/d93ae1ffee60eb59130db1b1ce12525aa3591b
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/0c/03789412795f3eff9fdd5e77af21fb7498e39e
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/50/2aecc912197dd3a734c91d5715ec60a54e0ef8
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/57/fb0ae7532cfbc2febb39b73ae36d8f8005d1a1
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/9b/696a4c129be93969d1eab99229e818a9cc89d9
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/69/c294bf87b507ae80d18d74d5360bb0f21b732f
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/0e/86f07ab21cb61ddc87e0c692fce32b7b4591e5
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/ad/64a9bca70596df5441912cd5dad0f8e9c3fd6f
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/b4/b722237e99be2e5acd93f65cbb23806e961943
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/ab/ab91b21f6b467b82fc3340685d12b796125b8c
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/e2/deda6edd037faa9b496a9c2987243d27fefff7
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/f4/f18e03ac6c098acb5adf07f03d83826c60661a
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/eb/31415555fb2d6721b88ca688a49719efce7ab6
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/f5/ea63fc96907544862795854b2fc3f6bfcf5e2e
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/fe/013184047d3275e800925c4fbb54ebf617d372
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/fe/51488c7066f6687ef680d6bfaa4f7768ef205c
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/pack/pack-81db6782b71ed544676acfd907e8ef41caa9ab8f.idx
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/pack/pack-81db6782b71ed544676acfd907e8ef41caa9ab8f.pack
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/7e/5ea61c55a2088133fc526456fb252a4a1266cb
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/4d/3922c61592112adce63cfeee6e84d328aa0951
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/65/4a3ecde5391d41042a04e796fd0934b32380e1
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/5e/f23e1d3d512a2df9b781966150d801a04f1a91
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/01/a2f6c9da37c718ffe2936133b18115fdc6d537
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/06/4a2cc638e3a5e23371089f619d926d2255a5ac
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/97/73c9606ef55608c746cf7a5c830a8d9bd0ab9b
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/de/e98a47e387b4e606e3a9e4fb065d32e72cee2f
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/a1/7b2bb8afe4a9c418b8d9b131f47c14266a4eab
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/e6/a53fdcb51bb813b73ae72259c721395fed19bf
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/c5/8430890e3779c4a0d4fbd1b3093daf8e997164
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/f1/3b464f404f2271fd694f34bb3e06b27e6f340e
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/cb/1629cbf7d83196298d5d0ef6d8ea41b91e0f3e
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/41/debc5dcdd7e01185742214d3fab35f31fdf942
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/84/a711ce6dc59bcf9483a7764871f2057ed240c3
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/4f/156b9557e5bba974367cb5478564aaa52e5d4d
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/1c/c9b21d6f576f24f03278c98fad8a0f1ec3956a
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/objects/22/dcdfe060b939742aefe2d69b5c13c74fad2bb2
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/HEAD
+================================================================================
+
+ref: refs/heads/main
+
+
+================================================================================
+File: ./.git/info/exclude
+================================================================================
+
+# git ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
+# For a project mostly in C, the following would be a good set of
+# exclude patterns (uncomment them if you want to use them):
+# *.[oa]
+# *~
+
+
+================================================================================
+File: ./.git/logs/HEAD
+================================================================================
+
+0000000000000000000000000000000000000000 08a3e09db56867313f6e386158e48dba5a801f8a iamfard13 <aliabbasifard@gmail.com> 1788008316 +0330	clone: from https://github.com/iamfard13/iamfard13.github.io.git
+08a3e09db56867313f6e386158e48dba5a801f8a 84a711ce6dc59bcf9483a7764871f2057ed240c3 iamfard13 <aliabbasifard@gmail.com> 1788008395 +0330	commit: fix
+84a711ce6dc59bcf9483a7764871f2057ed240c3 4f156b9557e5bba974367cb5478564aaa52e5d4d iamfard13 <aliabbasifard@gmail.com> 1788009495 +0330	commit: second
+4f156b9557e5bba974367cb5478564aaa52e5d4d fe013184047d3275e800925c4fbb54ebf617d372 iamfard13 <aliabbasifard@gmail.com> 1788010808 +0330	commit: second
+fe013184047d3275e800925c4fbb54ebf617d372 502aecc912197dd3a734c91d5715ec60a54e0ef8 iamfard13 <aliabbasifard@gmail.com> 1788010835 +0330	pull origin main --rebase (start): checkout 502aecc912197dd3a734c91d5715ec60a54e0ef8
+502aecc912197dd3a734c91d5715ec60a54e0ef8 69c294bf87b507ae80d18d74d5360bb0f21b732f iamfard13 <aliabbasifard@gmail.com> 1788010835 +0330	pull origin main --rebase (pick): second
+69c294bf87b507ae80d18d74d5360bb0f21b732f 69c294bf87b507ae80d18d74d5360bb0f21b732f iamfard13 <aliabbasifard@gmail.com> 1788010835 +0330	pull origin main --rebase (finish): returning to refs/heads/main
+69c294bf87b507ae80d18d74d5360bb0f21b732f f13b464f404f2271fd694f34bb3e06b27e6f340e iamfard13 <aliabbasifard@gmail.com> 1788011313 +0330	commit: second
+f13b464f404f2271fd694f34bb3e06b27e6f340e e2deda6edd037faa9b496a9c2987243d27fefff7 iamfard13 <aliabbasifard@gmail.com> 1788012218 +0330	commit: second
+
+
+================================================================================
+File: ./.git/logs/refs/heads/main
+================================================================================
+
+0000000000000000000000000000000000000000 08a3e09db56867313f6e386158e48dba5a801f8a iamfard13 <aliabbasifard@gmail.com> 1788008316 +0330	clone: from https://github.com/iamfard13/iamfard13.github.io.git
+08a3e09db56867313f6e386158e48dba5a801f8a 84a711ce6dc59bcf9483a7764871f2057ed240c3 iamfard13 <aliabbasifard@gmail.com> 1788008395 +0330	commit: fix
+84a711ce6dc59bcf9483a7764871f2057ed240c3 4f156b9557e5bba974367cb5478564aaa52e5d4d iamfard13 <aliabbasifard@gmail.com> 1788009495 +0330	commit: second
+4f156b9557e5bba974367cb5478564aaa52e5d4d fe013184047d3275e800925c4fbb54ebf617d372 iamfard13 <aliabbasifard@gmail.com> 1788010808 +0330	commit: second
+fe013184047d3275e800925c4fbb54ebf617d372 69c294bf87b507ae80d18d74d5360bb0f21b732f iamfard13 <aliabbasifard@gmail.com> 1788010835 +0330	pull origin main --rebase (finish): refs/heads/main onto 502aecc912197dd3a734c91d5715ec60a54e0ef8
+69c294bf87b507ae80d18d74d5360bb0f21b732f f13b464f404f2271fd694f34bb3e06b27e6f340e iamfard13 <aliabbasifard@gmail.com> 1788011313 +0330	commit: second
+f13b464f404f2271fd694f34bb3e06b27e6f340e e2deda6edd037faa9b496a9c2987243d27fefff7 iamfard13 <aliabbasifard@gmail.com> 1788012218 +0330	commit: second
+
+
+================================================================================
+File: ./.git/logs/refs/remotes/origin/HEAD
+================================================================================
+
+0000000000000000000000000000000000000000 08a3e09db56867313f6e386158e48dba5a801f8a iamfard13 <aliabbasifard@gmail.com> 1788008316 +0330	clone: from https://github.com/iamfard13/iamfard13.github.io.git
+
+
+================================================================================
+File: ./.git/logs/refs/remotes/origin/main
+================================================================================
+
+08a3e09db56867313f6e386158e48dba5a801f8a 84a711ce6dc59bcf9483a7764871f2057ed240c3 iamfard13 <aliabbasifard@gmail.com> 1788008895 +0330	update by push
+84a711ce6dc59bcf9483a7764871f2057ed240c3 4f156b9557e5bba974367cb5478564aaa52e5d4d iamfard13 <aliabbasifard@gmail.com> 1788009502 +0330	update by push
+4f156b9557e5bba974367cb5478564aaa52e5d4d 502aecc912197dd3a734c91d5715ec60a54e0ef8 iamfard13 <aliabbasifard@gmail.com> 1788010835 +0330	pull origin main --rebase: fast-forward
+502aecc912197dd3a734c91d5715ec60a54e0ef8 69c294bf87b507ae80d18d74d5360bb0f21b732f iamfard13 <aliabbasifard@gmail.com> 1788010843 +0330	update by push
+69c294bf87b507ae80d18d74d5360bb0f21b732f f13b464f404f2271fd694f34bb3e06b27e6f340e iamfard13 <aliabbasifard@gmail.com> 1788011319 +0330	update by push
+f13b464f404f2271fd694f34bb3e06b27e6f340e e2deda6edd037faa9b496a9c2987243d27fefff7 iamfard13 <aliabbasifard@gmail.com> 1788012223 +0330	update by push
+
+
+================================================================================
+File: ./.git/description
+================================================================================
+
+Unnamed repository; edit this file 'description' to name the repository.
+
+
+================================================================================
+File: ./.git/hooks/commit-msg.sample
+================================================================================
+
+#!/bin/sh
+#
+# An example hook script to check the commit log message.
+# Called by "git commit" with one argument, the name of the file
+# that has the commit message.  The hook should exit with non-zero
+# status after issuing an appropriate message if it wants to stop the
+# commit.  The hook is allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "commit-msg".
+
+# Uncomment the below to add a Signed-off-by line to the message.
+# Doing this in a hook is a bad idea in general, but the prepare-commit-msg
+# hook is more suited to it.
+#
+# SOB=$(git var GIT_AUTHOR_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# grep -qs "^$SOB" "$1" || echo "$SOB" >> "$1"
+
+# This example catches duplicate Signed-off-by lines.
+
+test "" = "$(grep '^Signed-off-by: ' "$1" |
+	 sort | uniq -c | sed -e '/^[ 	]*1[ 	]/d')" || {
+	echo >&2 Duplicate Signed-off-by lines.
+	exit 1
+}
+
+
+================================================================================
+File: ./.git/hooks/pre-rebase.sample
+================================================================================
+
+#!/bin/sh
+#
+# Copyright (c) 2006, 2008 Junio C Hamano
+#
+# The "pre-rebase" hook is run just before "git rebase" starts doing
+# its job, and can prevent the command from running by exiting with
+# non-zero status.
+#
+# The hook is called with the following parameters:
+#
+# $1 -- the upstream the series was forked from.
+# $2 -- the branch being rebased (or empty when rebasing the current branch).
+#
+# This sample shows how to prevent topic branches that are already
+# merged to 'next' branch from getting rebased, because allowing it
+# would result in rebasing already published history.
+
+publish=next
+basebranch="$1"
+if test "$#" = 2
+then
+	topic="refs/heads/$2"
+else
+	topic=`git symbolic-ref HEAD` ||
+	exit 0 ;# we do not interrupt rebasing detached HEAD
+fi
+
+case "$topic" in
+refs/heads/??/*)
+	;;
+*)
+	exit 0 ;# we do not interrupt others.
+	;;
+esac
+
+# Now we are dealing with a topic branch being rebased
+# on top of master.  Is it OK to rebase it?
+
+# Does the topic really exist?
+git show-ref -q "$topic" || {
+	echo >&2 "No such branch $topic"
+	exit 1
+}
+
+# Is topic fully merged to master?
+not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+if test -z "$not_in_master"
+then
+	echo >&2 "$topic is fully merged to master; better remove it."
+	exit 1 ;# we could allow it, but there is no point.
+fi
+
+# Is topic ever merged to next?  If so you should not be rebasing it.
+only_next_1=`git rev-list ^master "^$topic" ${publish} | sort`
+only_next_2=`git rev-list ^master           ${publish} | sort`
+if test "$only_next_1" = "$only_next_2"
+then
+	not_in_topic=`git rev-list "^$topic" master`
+	if test -z "$not_in_topic"
+	then
+		echo >&2 "$topic is already up to date with master"
+		exit 1 ;# we could allow it, but there is no point.
+	else
+		exit 0
+	fi
+else
+	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
+	/usr/bin/perl -e '
+		my $topic = $ARGV[0];
+		my $msg = "* $topic has commits already merged to public branch:\n";
+		my (%not_in_next) = map {
+			/^([0-9a-f]+) /;
+			($1 => 1);
+		} split(/\n/, $ARGV[1]);
+		for my $elem (map {
+				/^([0-9a-f]+) (.*)$/;
+				[$1 => $2];
+			} split(/\n/, $ARGV[2])) {
+			if (!exists $not_in_next{$elem->[0]}) {
+				if ($msg) {
+					print STDERR $msg;
+					undef $msg;
+				}
+				print STDERR " $elem->[1]\n";
+			}
+		}
+	' "$topic" "$not_in_next" "$not_in_master"
+	exit 1
+fi
+
+<<\DOC_END
+
+This sample hook safeguards topic branches that have been
+published from being rewound.
+
+The workflow assumed here is:
+
+ * Once a topic branch forks from "master", "master" is never
+   merged into it again (either directly or indirectly).
+
+ * Once a topic branch is fully cooked and merged into "master",
+   it is deleted.  If you need to build on top of it to correct
+   earlier mistakes, a new topic branch is created by forking at
+   the tip of the "master".  This is not strictly necessary, but
+   it makes it easier to keep your history simple.
+
+ * Whenever you need to test or publish your changes to topic
+   branches, merge them into "next" branch.
+
+The script, being an example, hardcodes the publish branch name
+to be "next", but it is trivial to make it configurable via
+$GIT_DIR/config mechanism.
+
+With this workflow, you would want to know:
+
+(1) ... if a topic branch has ever been merged to "next".  Young
+    topic branches can have stupid mistakes you would rather
+    clean up before publishing, and things that have not been
+    merged into other branches can be easily rebased without
+    affecting other people.  But once it is published, you would
+    not want to rewind it.
+
+(2) ... if a topic branch has been fully merged to "master".
+    Then you can delete it.  More importantly, you should not
+    build on top of it -- other people may already want to
+    change things related to the topic as patches against your
+    "master", so if you need further changes, it is better to
+    fork the topic (perhaps with the same name) afresh from the
+    tip of "master".
+
+Let's look at this example:
+
+		   o---o---o---o---o---o---o---o---o---o "next"
+		  /       /           /           /
+		 /   a---a---b A     /           /
+		/   /               /           /
+	       /   /   c---c---c---c B         /
+	      /   /   /             \         /
+	     /   /   /   b---b C     \       /
+	    /   /   /   /             \     /
+    ---o---o---o---o---o---o---o---o---o---o---o "master"
+
+
+A, B and C are topic branches.
+
+ * A has one fix since it was merged up to "next".
+
+ * B has finished.  It has been fully merged up to "master" and "next",
+   and is ready to be deleted.
+
+ * C has not merged to "next" at all.
+
+We would want to allow C to be rebased, refuse A, and encourage
+B to be deleted.
+
+To compute (1):
+
+	git rev-list ^master ^topic next
+	git rev-list ^master        next
+
+	if these match, topic has not merged in next at all.
+
+To compute (2):
+
+	git rev-list master..topic
+
+	if this is empty, it is fully merged to "master".
+
+DOC_END
+
+
+================================================================================
+File: ./.git/hooks/pre-commit.sample
+================================================================================
+
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git commit" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-commit".
+
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+	against=HEAD
+else
+	# Initial commit: diff against an empty tree object
+	against=$(git hash-object -t tree /dev/null)
+fi
+
+# If you want to allow non-ASCII filenames set this variable to true.
+allownonascii=$(git config --type=bool hooks.allownonascii)
+
+# Redirect output to stderr.
+exec 1>&2
+
+# Cross platform projects tend to avoid non-ASCII filenames; prevent
+# them from being added to the repository. We exploit the fact that the
+# printable range starts at the space character and ends with tilde.
+if [ "$allownonascii" != "true" ] &&
+	# Note that the use of brackets around a tr range is ok here, (it's
+	# even required, for portability to Solaris 10's /usr/bin/tr), since
+	# the square bracket bytes happen to fall in the designated range.
+	test $(git diff --cached --name-only --diff-filter=A -z $against |
+	  LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0
+then
+	cat <<\EOF
+Error: Attempt to add a non-ASCII file name.
+
+This can cause problems if you want to work with people on other platforms.
+
+To be portable it is advisable to rename the file.
+
+If you know what you are doing you can disable this check using:
+
+  git config hooks.allownonascii true
+EOF
+	exit 1
+fi
+
+# If there are whitespace errors, print the offending file names and fail.
+exec git diff-index --check --cached $against --
+
+
+================================================================================
+File: ./.git/hooks/applypatch-msg.sample
+================================================================================
+
+#!/bin/sh
+#
+# An example hook script to check the commit log message taken by
+# applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.  The hook is
+# allowed to edit the commit message file.
+#
+# To enable this hook, rename this file to "applypatch-msg".
+
+. git-sh-setup
+commitmsg="$(git rev-parse --git-path hooks/commit-msg)"
+test -x "$commitmsg" && exec "$commitmsg" ${1+"$@"}
+:
+
+
+================================================================================
+File: ./.git/hooks/fsmonitor-watchman.sample
+================================================================================
+
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use IPC::Open2;
+
+# An example hook script to integrate Watchman
+# (https://facebook.github.io/watchman/) with git to speed up detecting
+# new and modified files.
+#
+# The hook is passed a version (currently 2) and last update token
+# formatted as a string and outputs to stdout a new update token and
+# all files that have been modified since the update token. Paths must
+# be relative to the root of the working tree and separated by a single NUL.
+#
+# To enable this hook, rename this file to "query-watchman" and set
+# 'git config core.fsmonitor .git/hooks/query-watchman'
+#
+my ($version, $last_update_token) = @ARGV;
+
+# Uncomment for debugging
+# print STDERR "$0 $version $last_update_token\n";
+
+# Check the hook interface version
+if ($version ne 2) {
+	die "Unsupported query-fsmonitor hook version '$version'.\n" .
+	    "Falling back to scanning...\n";
+}
+
+my $git_work_tree = get_working_dir();
+
+my $retry = 1;
+
+my $json_pkg;
+eval {
+	require JSON::XS;
+	$json_pkg = "JSON::XS";
+	1;
+} or do {
+	require JSON::PP;
+	$json_pkg = "JSON::PP";
+};
+
+launch_watchman();
+
+sub launch_watchman {
+	my $o = watchman_query();
+	if (is_work_tree_watched($o)) {
+		output_result($o->{clock}, @{$o->{files}});
+	}
+}
+
+sub output_result {
+	my ($clockid, @files) = @_;
+
+	# Uncomment for debugging watchman output
+	# open (my $fh, ">", ".git/watchman-output.out");
+	# binmode $fh, ":utf8";
+	# print $fh "$clockid\n@files\n";
+	# close $fh;
+
+	binmode STDOUT, ":utf8";
+	print $clockid;
+	print "\0";
+	local $, = "\0";
+	print @files;
+}
+
+sub watchman_clock {
+	my $response = qx/watchman clock "$git_work_tree"/;
+	die "Failed to get clock id on '$git_work_tree'.\n" .
+		"Falling back to scanning...\n" if $? != 0;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub watchman_query {
+	my $pid = open2(\*CHLD_OUT, \*CHLD_IN, 'watchman -j --no-pretty')
+	or die "open2() failed: $!\n" .
+	"Falling back to scanning...\n";
+
+	# In the query expression below we're asking for names of files that
+	# changed since $last_update_token but not from the .git folder.
+	#
+	# To accomplish this, we're using the "since" generator to use the
+	# recency index to select candidate nodes and "fields" to limit the
+	# output to file names only. Then we're using the "expression" term to
+	# further constrain the results.
+	my $last_update_line = "";
+	if (substr($last_update_token, 0, 1) eq "c") {
+		$last_update_token = "\"$last_update_token\"";
+		$last_update_line = qq[\n"since": $last_update_token,];
+	}
+	my $query = <<"	END";
+		["query", "$git_work_tree", {$last_update_line
+			"fields": ["name"],
+			"expression": ["not", ["dirname", ".git"]]
+		}]
+	END
+
+	# Uncomment for debugging the watchman query
+	# open (my $fh, ">", ".git/watchman-query.json");
+	# print $fh $query;
+	# close $fh;
+
+	print CHLD_IN $query;
+	close CHLD_IN;
+	my $response = do {local $/; <CHLD_OUT>};
+
+	# Uncomment for debugging the watch response
+	# open ($fh, ">", ".git/watchman-response.json");
+	# print $fh $response;
+	# close $fh;
+
+	die "Watchman: command returned no output.\n" .
+	"Falling back to scanning...\n" if $response eq "";
+	die "Watchman: command returned invalid output: $response\n" .
+	"Falling back to scanning...\n" unless $response =~ /^\{/;
+
+	return $json_pkg->new->utf8->decode($response);
+}
+
+sub is_work_tree_watched {
+	my ($output) = @_;
+	my $error = $output->{error};
+	if ($retry > 0 and $error and $error =~ m/unable to resolve root .* directory (.*) is not watched/) {
+		$retry--;
+		my $response = qx/watchman watch "$git_work_tree"/;
+		die "Failed to make watchman watch '$git_work_tree'.\n" .
+		    "Falling back to scanning...\n" if $? != 0;
+		$output = $json_pkg->new->utf8->decode($response);
+		$error = $output->{error};
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		# Uncomment for debugging watchman output
+		# open (my $fh, ">", ".git/watchman-output.out");
+		# close $fh;
+
+		# Watchman will always return all files on the first query so
+		# return the fast "everything is dirty" flag to git and do the
+		# Watchman query just to get it over with now so we won't pay
+		# the cost in git to look up each individual file.
+		my $o = watchman_clock();
+		$error = $output->{error};
+
+		die "Watchman: $error.\n" .
+		"Falling back to scanning...\n" if $error;
+
+		output_result($o->{clock}, ("/"));
+		$last_update_token = $o->{clock};
+
+		eval { launch_watchman() };
+		return 0;
+	}
+
+	die "Watchman: $error.\n" .
+	"Falling back to scanning...\n" if $error;
+
+	return 1;
+}
+
+sub get_working_dir {
+	my $working_dir;
+	if ($^O =~ 'msys' || $^O =~ 'cygwin') {
+		$working_dir = Win32::GetCwd();
+		$working_dir =~ tr/\\/\//;
+	} else {
+		require Cwd;
+		$working_dir = Cwd::cwd();
+	}
+
+	return $working_dir;
+}
+
+
+================================================================================
+File: ./.git/hooks/pre-receive.sample
+================================================================================
+
+#!/bin/sh
+#
+# An example hook script to make use of push options.
+# The example simply echoes all push options that start with 'echoback='
+# and rejects all pushes when the "reject" push option is used.
+#
+# To enable this hook, rename this file to "pre-receive".
+
+if test -n "$GIT_PUSH_OPTION_COUNT"
+then
+	i=0
+	while test "$i" -lt "$GIT_PUSH_OPTION_COUNT"
+	do
+		eval "value=\$GIT_PUSH_OPTION_$i"
+		case "$value" in
+		echoback=*)
+			echo "echo from the pre-receive-hook: ${value#*=}" >&2
+			;;
+		reject)
+			exit 1
+		esac
+		i=$((i + 1))
+	done
+fi
+
+
+================================================================================
+File: ./.git/hooks/prepare-commit-msg.sample
+================================================================================
+
+#!/bin/sh
+#
+# An example hook script to prepare the commit log message.
+# Called by "git commit" with the name of the file that has the
+# commit message, followed by the description of the commit
+# message's source.  The hook's purpose is to edit the commit
+# message file.  If the hook fails with a non-zero status,
+# the commit is aborted.
+#
+# To enable this hook, rename this file to "prepare-commit-msg".
+
+# This hook includes three examples. The first one removes the
+# "# Please enter the commit message..." help message.
+#
+# The second includes the output of "git diff --name-status -r"
+# into the message, just before the "git status" output.  It is
+# commented because it doesn't cope with --amend or with squashed
+# commits.
+#
+# The third example adds a Signed-off-by line to the message, that can
+# still be edited.  This is rarely a good idea.
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+/usr/bin/perl -i.bak -ne 'print unless(m/^. Please enter the commit message/..m/^#$/)' "$COMMIT_MSG_FILE"
+
+# case "$COMMIT_SOURCE,$SHA1" in
+#  ,|template,)
+#    /usr/bin/perl -i.bak -pe '
+#       print "\n" . `git diff --cached --name-status -r`
+# 	 if /^#/ && $first++ == 0' "$COMMIT_MSG_FILE" ;;
+#  *) ;;
+# esac
+
+# SOB=$(git var GIT_COMMITTER_IDENT | sed -n 's/^\(.*>\).*$/Signed-off-by: \1/p')
+# git interpret-trailers --in-place --trailer "$SOB" "$COMMIT_MSG_FILE"
+# if test -z "$COMMIT_SOURCE"
+# then
+#   /usr/bin/perl -i.bak -pe 'print "\n" if !$first_line++' "$COMMIT_MSG_FILE"
+# fi
+
+
+================================================================================
+File: ./.git/hooks/post-update.sample
+================================================================================
+
+#!/bin/sh
+#
+# An example hook script to prepare a packed repository for use over
+# dumb transports.
+#
+# To enable this hook, rename this file to "post-update".
+
+exec git update-server-info
+
+
+================================================================================
+File: ./.git/hooks/pre-merge-commit.sample
+================================================================================
+
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed.
+# Called by "git merge" with no arguments.  The hook should
+# exit with non-zero status after issuing an appropriate message to
+# stderr if it wants to stop the merge commit.
+#
+# To enable this hook, rename this file to "pre-merge-commit".
+
+. git-sh-setup
+test -x "$GIT_DIR/hooks/pre-commit" &&
+        exec "$GIT_DIR/hooks/pre-commit"
+:
+
+
+================================================================================
+File: ./.git/hooks/pre-applypatch.sample
+================================================================================
+
+#!/bin/sh
+#
+# An example hook script to verify what is about to be committed
+# by applypatch from an e-mail message.
+#
+# The hook should exit with non-zero status after issuing an
+# appropriate message if it wants to stop the commit.
+#
+# To enable this hook, rename this file to "pre-applypatch".
+
+. git-sh-setup
+precommit="$(git rev-parse --git-path hooks/pre-commit)"
+test -x "$precommit" && exec "$precommit" ${1+"$@"}
+:
+
+
+================================================================================
+File: ./.git/hooks/pre-push.sample
+================================================================================
+
+#!/bin/sh
+
+# An example hook script to verify what is about to be pushed.  Called by "git
+# push" after it has checked the remote status, but before anything has been
+# pushed.  If this script exits with a non-zero status nothing will be pushed.
+#
+# This hook is called with the following parameters:
+#
+# $1 -- Name of the remote to which the push is being done
+# $2 -- URL to which the push is being done
+#
+# If pushing without using a named remote those arguments will be equal.
+#
+# Information about the commits which are being pushed is supplied as lines to
+# the standard input in the form:
+#
+#   <local ref> <local oid> <remote ref> <remote oid>
+#
+# This sample shows how to prevent push of commits where the log message starts
+# with "WIP" (work in progress).
+
+remote="$1"
+url="$2"
+
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+
+while read local_ref local_oid remote_ref remote_oid
+do
+	if test "$local_oid" = "$zero"
+	then
+		# Handle delete
+		:
+	else
+		if test "$remote_oid" = "$zero"
+		then
+			# New branch, examine all commits
+			range="$local_oid"
+		else
+			# Update to existing branch, examine new commits
+			range="$remote_oid..$local_oid"
+		fi
+
+		# Check for WIP commit
+		commit=$(git rev-list -n 1 --grep '^WIP' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "Found WIP commit in $local_ref, not pushing"
+			exit 1
+		fi
+	fi
+done
+
+exit 0
+
+
+================================================================================
+File: ./.git/hooks/update.sample
+================================================================================
+
+#!/bin/sh
+#
+# An example hook script to block unannotated tags from entering.
+# Called by "git receive-pack" with arguments: refname sha1-old sha1-new
+#
+# To enable this hook, rename this file to "update".
+#
+# Config
+# ------
+# hooks.allowunannotated
+#   This boolean sets whether unannotated tags will be allowed into the
+#   repository.  By default they won't be.
+# hooks.allowdeletetag
+#   This boolean sets whether deleting tags will be allowed in the
+#   repository.  By default they won't be.
+# hooks.allowmodifytag
+#   This boolean sets whether a tag may be modified after creation. By default
+#   it won't be.
+# hooks.allowdeletebranch
+#   This boolean sets whether deleting branches will be allowed in the
+#   repository.  By default they won't be.
+# hooks.denycreatebranch
+#   This boolean sets whether remotely creating branches will be denied
+#   in the repository.  By default this is allowed.
+#
+
+# --- Command line
+refname="$1"
+oldrev="$2"
+newrev="$3"
+
+# --- Safety check
+if [ -z "$GIT_DIR" ]; then
+	echo "Don't run this script from the command line." >&2
+	echo " (if you want, you could supply GIT_DIR then run" >&2
+	echo "  $0 <ref> <oldrev> <newrev>)" >&2
+	exit 1
+fi
+
+if [ -z "$refname" -o -z "$oldrev" -o -z "$newrev" ]; then
+	echo "usage: $0 <ref> <oldrev> <newrev>" >&2
+	exit 1
+fi
+
+# --- Config
+allowunannotated=$(git config --type=bool hooks.allowunannotated)
+allowdeletebranch=$(git config --type=bool hooks.allowdeletebranch)
+denycreatebranch=$(git config --type=bool hooks.denycreatebranch)
+allowdeletetag=$(git config --type=bool hooks.allowdeletetag)
+allowmodifytag=$(git config --type=bool hooks.allowmodifytag)
+
+# check for no description
+projectdesc=$(sed -e '1q' "$GIT_DIR/description")
+case "$projectdesc" in
+"Unnamed repository"* | "")
+	echo "*** Project description file hasn't been set" >&2
+	exit 1
+	;;
+esac
+
+# --- Check types
+# if $newrev is 0000...0000, it's a commit to delete a ref.
+zero=$(git hash-object --stdin </dev/null | tr '[0-9a-f]' '0')
+if [ "$newrev" = "$zero" ]; then
+	newrev_type=delete
+else
+	newrev_type=$(git cat-file -t $newrev)
+fi
+
+case "$refname","$newrev_type" in
+	refs/tags/*,commit)
+		# un-annotated tag
+		short_refname=${refname##refs/tags/}
+		if [ "$allowunannotated" != "true" ]; then
+			echo "*** The un-annotated tag, $short_refname, is not allowed in this repository" >&2
+			echo "*** Use 'git tag [ -a | -s ]' for tags you want to propagate." >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,delete)
+		# delete tag
+		if [ "$allowdeletetag" != "true" ]; then
+			echo "*** Deleting a tag is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/tags/*,tag)
+		# annotated tag
+		if [ "$allowmodifytag" != "true" ] && git rev-parse $refname > /dev/null 2>&1
+		then
+			echo "*** Tag '$refname' already exists." >&2
+			echo "*** Modifying a tag is not allowed in this repository." >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,commit)
+		# branch
+		if [ "$oldrev" = "$zero" -a "$denycreatebranch" = "true" ]; then
+			echo "*** Creating a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/heads/*,delete)
+		# delete branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	refs/remotes/*,commit)
+		# tracking branch
+		;;
+	refs/remotes/*,delete)
+		# delete tracking branch
+		if [ "$allowdeletebranch" != "true" ]; then
+			echo "*** Deleting a tracking branch is not allowed in this repository" >&2
+			exit 1
+		fi
+		;;
+	*)
+		# Anything else (is there anything else?)
+		echo "*** Update hook: unknown type of update to ref $refname of type $newrev_type" >&2
+		exit 1
+		;;
+esac
+
+# --- Finished
+exit 0
+
+
+================================================================================
+File: ./.git/hooks/push-to-checkout.sample
+================================================================================
+
+#!/bin/sh
+
+# An example hook script to update a checked-out tree on a git push.
+#
+# This hook is invoked by git-receive-pack(1) when it reacts to git
+# push and updates reference(s) in its repository, and when the push
+# tries to update the branch that is currently checked out and the
+# receive.denyCurrentBranch configuration variable is set to
+# updateInstead.
+#
+# By default, such a push is refused if the working tree and the index
+# of the remote repository has any difference from the currently
+# checked out commit; when both the working tree and the index match
+# the current commit, they are updated to match the newly pushed tip
+# of the branch. This hook is to be used to override the default
+# behaviour; however the code below reimplements the default behaviour
+# as a starting point for convenient modification.
+#
+# The hook receives the commit with which the tip of the current
+# branch is going to be updated:
+commit=$1
+
+# It can exit with a non-zero status to refuse the push (when it does
+# so, it must not modify the index or the working tree).
+die () {
+	echo >&2 "$*"
+	exit 1
+}
+
+# Or it can make any necessary changes to the working tree and to the
+# index to bring them to the desired state when the tip of the current
+# branch is updated to the new commit, and exit with a zero status.
+#
+# For example, the hook can simply run git read-tree -u -m HEAD "$1"
+# in order to emulate git fetch that is run in the reverse direction
+# with git push, as the two-tree form of git read-tree -u -m is
+# essentially the same as git switch or git checkout that switches
+# branches while keeping the local changes in the working tree that do
+# not interfere with the difference between the branches.
+
+# The below is a more-or-less exact translation to shell of the C code
+# for the default behaviour for git's push-to-checkout hook defined in
+# the push_to_deploy() function in builtin/receive-pack.c.
+#
+# Note that the hook will be executed from the repository directory,
+# not from the working tree, so if you want to perform operations on
+# the working tree, you will have to adapt your code accordingly, e.g.
+# by adding "cd .." or using relative paths.
+
+if ! git update-index -q --ignore-submodules --refresh
+then
+	die "Up-to-date check failed"
+fi
+
+if ! git diff-files --quiet --ignore-submodules --
+then
+	die "Working directory has unstaged changes"
+fi
+
+# This is a rough translation of:
+#
+#   head_has_history() ? "HEAD" : EMPTY_TREE_SHA1_HEX
+if git cat-file -e HEAD 2>/dev/null
+then
+	head=HEAD
+else
+	head=$(git hash-object -t tree --stdin </dev/null)
+fi
+
+if ! git diff-index --quiet --cached --ignore-submodules $head --
+then
+	die "Working directory has staged changes"
+fi
+
+if ! git read-tree -u -m "$commit"
+then
+	die "Could not update working tree to new HEAD"
+fi
+
+
+================================================================================
+File: ./.git/refs/heads/main
+================================================================================
+
+e2deda6edd037faa9b496a9c2987243d27fefff7
+
+
+================================================================================
+File: ./.git/refs/remotes/origin/HEAD
+================================================================================
+
+ref: refs/remotes/origin/main
+
+
+================================================================================
+File: ./.git/refs/remotes/origin/main
+================================================================================
+
+e2deda6edd037faa9b496a9c2987243d27fefff7
+
+
+================================================================================
+File: ./.git/index
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./.git/packed-refs
+================================================================================
+
+# pack-refs with: peeled fully-peeled sorted 
+08a3e09db56867313f6e386158e48dba5a801f8a refs/remotes/origin/main
+
+
+================================================================================
+File: ./.git/COMMIT_EDITMSG
+================================================================================
+
+second
+
+
+================================================================================
+File: ./.git/FETCH_HEAD
+================================================================================
+
+502aecc912197dd3a734c91d5715ec60a54e0ef8		branch 'main' of github.com:iamfard13/iamfard13.github.io
+
+
+================================================================================
+File: ./data/books.json
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./data/articles.json
+================================================================================
+
+[BINARY FILE - SKIPPED]
+
+
+================================================================================
+File: ./x.sh
+================================================================================
+
+#!/bin/bash
+
+# Basic script to combine all files into one txt file
+# Usage: ./combine_files.sh [directory] [output_file]
+
+# Set default values
+SEARCH_DIR="${1:-.}"  # Default to current directory if not specified
+OUTPUT_FILE="${2:-combined_files.txt}"  # Default output filename
+
+echo "Reading all files from: $SEARCH_DIR"
+echo "Output file: $OUTPUT_FILE"
+
+# Clear or create the output file
+> "$OUTPUT_FILE"
+
+# Find all files and process them
+find "$SEARCH_DIR" -type f | while read -r file; do
+    # Skip the output file itself
+    if [[ "$(realpath "$file")" == "$(realpath "$OUTPUT_FILE")" ]]; then
+        continue
+    fi
+    
+    echo "Processing: $file"
+    
+    # Add file header
+    echo "================================================================================" >> "$OUTPUT_FILE"
+    echo "File: $file" >> "$OUTPUT_FILE"
+    echo "================================================================================" >> "$OUTPUT_FILE"
+    echo "" >> "$OUTPUT_FILE"
+    
+    # Try to read the file as text
+    if file "$file" | grep -q text; then
+        cat "$file" >> "$OUTPUT_FILE" 2>/dev/null || echo "ERROR: Could not read file" >> "$OUTPUT_FILE"
+    else
+        echo "[BINARY FILE - SKIPPED]" >> "$OUTPUT_FILE"
+    fi
+    
+    echo "" >> "$OUTPUT_FILE"
+    echo "" >> "$OUTPUT_FILE"
+done
+
+echo "✅ All files have been combined into: $OUTPUT_FILE"
+
+================================================================================
+File: ./learning-viewer.html
+================================================================================
+
+html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Learning notes — Ali Abbasifard">
+
+    <title>Learning | Ali Abbasifard</title>
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Main CSS -->
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="navbar-logo">
+            AA
+        </a>
+
+
+        <nav class="navbar-links">
+
+            <a href="index.html#about">
+                About
+            </a>
+
+            <a href="index.html#skills">
+                Skills
+            </a>
+
+            <a href="index.html#projects">
+                Projects
+            </a>
+
+            <a href="learning.html" class="active">
+                Learning
+            </a>
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         VIEWER
+         ===================================================== -->
+
+    <main class="viewer-page">
+
+
+        <a href="learning.html" class="viewer-back">
+            ← BACK TO LEARNING
+        </a>
+
+
+        <!-- HEADER -->
+
+        <header class="viewer-header">
+
+
+            <p id="viewer-chapter" class="viewer-chapter"></p>
+
+
+            <h1 id="viewer-title">
+                Loading...
+            </h1>
+
+
+            <p id="viewer-author" class="viewer-author"></p>
+
+
+            <p id="viewer-date" class="viewer-date"></p>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             TERMINAL
+             ================================================= -->
+
+        <section class="viewer-terminal">
+
+
+            <div class="viewer-terminal-header">
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+                <label>
+                    learning-notes
+                </label>
+
+            </div>
+
+
+            <article id="viewer-content" class="viewer-content">
+
+                <div class="learning-loading">
+                    Loading learning file...
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="footer">
+
+        <p>
+            © 2026 Ali Abbasifard
+        </p>
+
+        <p>
+            Built with curiosity &amp; code.
+        </p>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         MARKED
+         ===================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+    <!-- Viewer JS -->
+
+    <script src="learning-viewer.js"></script>
+
+
+</body>
+
+</html>
+
