@@ -133,36 +133,33 @@
         </section>
 
         <!-- =================================================
-             PROJECTS – with car animation (SVG animateMotion)
+             PROJECTS
              ================================================= -->
         <section class="section projects-section" id="projects">
             <div class="section-header">
                 <h2>Things I've built.</h2>
             </div>
             <div class="projects-grid">
-                <!-- Project 1 – IoT Vehicle with Car Animation -->
+                <!-- Project 1 – IoT Vehicle with Car Animation (no labels) -->
                 <article class="project-card" data-project="1">
                     <span class="project-number">01</span>
                     <p class="project-label">PROJECT</p>
                     <h3>IoT Vehicle &amp; Home Security</h3>
                     <p>Real-time geo-location tracking, geofencing, and anti-theft immobilization system.</p>
 
-                    <!-- Map Animation Overlay – now using SVG -->
                     <div class="project-animation">
                         <div class="map-scene">
-                            <!-- SVG with viewBox for perfect scaling -->
                             <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
-                                <!-- Background -->
-                                <rect width="400" height="300" fill="url(#bgGrad)" rx="10" />
+                                <rect width="400" height="300" fill="url(#bgGrad1)" rx="10" />
                                 <defs>
-                                    <radialGradient id="bgGrad" cx="30%" cy="40%" r="70%">
+                                    <radialGradient id="bgGrad1" cx="30%" cy="40%" r="70%">
                                         <stop offset="0%" stop-color="#1a2a3a" />
                                         <stop offset="100%" stop-color="#0d1520" />
                                     </radialGradient>
-                                    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="#4a5568" stop-opacity="0.3" />
-                                        <stop offset="100%" stop-color="#4a5568" stop-opacity="0.6" />
-                                    </linearGradient>
+                                    <filter id="glow1">
+                                        <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#fbbf24"
+                                            flood-opacity="0.6" />
+                                    </filter>
                                 </defs>
 
                                 <!-- Grid lines -->
@@ -177,18 +174,14 @@
                                         stroke-width="1" />
                                 </g>
 
-                                <!-- Road path -->
+                                <!-- Road -->
                                 <g>
-                                    <!-- Shadow -->
                                     <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="rgba(0,0,0,0.4)"
                                         stroke-width="28" stroke-linecap="round" />
-                                    <!-- Road -->
                                     <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#2d3748" stroke-width="24"
                                         stroke-linecap="round" />
-                                    <!-- Dashed center line -->
                                     <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#fbbf24" stroke-width="2"
                                         stroke-dasharray="6 10" stroke-linecap="round" />
-                                    <!-- GPS glow route -->
                                     <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#3b82f6" stroke-width="3"
                                         stroke-dasharray="4 12" stroke-linecap="round" opacity="0.6">
                                         <animate attributeName="stroke-dashoffset" from="0" to="100" dur="2s"
@@ -196,26 +189,17 @@
                                     </path>
                                 </g>
 
-                                <!-- Car with animateMotion -->
+                                <!-- Car (Font Awesome car icon) -->
                                 <g>
                                     <animateMotion dur="4s" repeatCount="indefinite" path="M 30 230 Q 200 40 370 230"
                                         rotate="auto" />
-                                    <!-- Car icon using Font Awesome via <text> -->
                                     <text x="0" y="0"
-                                        font-family="'Font Awesome 6 Free', 'Font Awesome 6 Pro', sans-serif"
+                                        font-family="'Font Awesome 6 Free', 'Font Awesome 6 Pro', 'Font Awesome 6 Brands', sans-serif"
                                         font-weight="900" font-size="32" fill="#fbbf24" text-anchor="middle"
-                                        dominant-baseline="central" filter="url(#glow)">
+                                        dominant-baseline="central" filter="url(#glow1)">
                                         
                                     </text>
                                 </g>
-
-                                <!-- Glow filter for car -->
-                                <defs>
-                                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                                        <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#fbbf24"
-                                            flood-opacity="0.6" />
-                                    </filter>
-                                </defs>
 
                                 <!-- Marker A -->
                                 <g>
@@ -231,7 +215,6 @@
                                     <circle cx="370" cy="230" r="6" fill="#fff" />
                                     <text x="370" y="260" font-family="'JetBrains Mono', monospace" font-size="11"
                                         font-weight="700" fill="#ef4444" text-anchor="middle">B</text>
-                                    <!-- Pulse ring on B -->
                                     <circle cx="370" cy="230" r="20" fill="none" stroke="rgba(239,68,68,0.4)"
                                         stroke-width="2">
                                         <animate attributeName="r" from="14" to="28" dur="1.5s"
@@ -241,21 +224,12 @@
                                     </circle>
                                 </g>
 
-                                <!-- Location labels -->
-                                <text x="30" y="200" font-family="'JetBrains Mono', monospace" font-size="9"
-                                    fill="rgba(255,255,255,0.4)" text-anchor="middle">📍 Start</text>
-                                <text x="370" y="200" font-family="'JetBrains Mono', monospace" font-size="9"
-                                    fill="rgba(255,255,255,0.4)" text-anchor="middle">📍 Destination</text>
-
-                                <!-- Decorative: trees -->
+                                <!-- Decorative elements (no Start/Destination labels) -->
                                 <text x="50" y="130" font-size="22" opacity="0.3">🌳</text>
                                 <text x="320" y="100" font-size="20" opacity="0.3">🌲</text>
-
-                                <!-- Decorative: buildings -->
                                 <text x="100" y="50" font-size="18" opacity="0.2">🏢</text>
                                 <text x="280" y="60" font-size="18" opacity="0.2">🏢</text>
 
-                                <!-- Decorative: clouds (floating) -->
                                 <text x="-40" y="40" font-size="30" opacity="0.1">
                                     ☁️
                                     <animate attributeName="x" from="-40" to="440" dur="15s" repeatCount="indefinite" />
@@ -269,12 +243,233 @@
                     </div>
                 </article>
 
-                <!-- Project 2 -->
+                <!-- Project 2 – Hotel Management with Taxi (person inside, gets out at hotel) -->
                 <article class="project-card" data-project="2">
                     <span class="project-number">02</span>
                     <p class="project-label">PROJECT</p>
-                    <h3>Project Two</h3>
-                    <p>Bla bla bla. More information about another project will be added here.</p>
+                    <h3>Hotel Management Service</h3>
+                    <p>Multi-provider hotel booking integration, notification service, and scalable infrastructure.</p>
+
+                    <div class="project-animation">
+                        <div class="hotel-scene">
+                            <svg class="hotel-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <radialGradient id="hotelBg" cx="50%" cy="60%" r="80%">
+                                        <stop offset="0%" stop-color="#1a2a3a" />
+                                        <stop offset="100%" stop-color="#0d1520" />
+                                    </radialGradient>
+                                    <linearGradient id="buildingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" stop-color="#4a5568" />
+                                        <stop offset="100%" stop-color="#2d3748" />
+                                    </linearGradient>
+                                    <filter id="hotelGlow">
+                                        <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#fbbf24"
+                                            flood-opacity="0.4" />
+                                    </filter>
+                                </defs>
+
+                                <!-- Background -->
+                                <rect width="400" height="300" fill="url(#hotelBg)" rx="10" />
+
+                                <!-- Stars / Sky -->
+                                <g opacity="0.3">
+                                    <circle cx="50" cy="30" r="1.5" fill="#fff">
+                                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s"
+                                            repeatCount="indefinite" />
+                                    </circle>
+                                    <circle cx="120" cy="20" r="1" fill="#fff">
+                                        <animate attributeName="opacity" values="0.5;1;0.5" dur="3s"
+                                            repeatCount="indefinite" />
+                                    </circle>
+                                    <circle cx="200" cy="15" r="1.5" fill="#fff">
+                                        <animate attributeName="opacity" values="0.2;1;0.2" dur="2.5s"
+                                            repeatCount="indefinite" />
+                                    </circle>
+                                    <circle cx="300" cy="25" r="1" fill="#fff">
+                                        <animate attributeName="opacity" values="0.4;1;0.4" dur="3.5s"
+                                            repeatCount="indefinite" />
+                                    </circle>
+                                    <circle cx="350" cy="10" r="1.5" fill="#fff">
+                                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s"
+                                            repeatCount="indefinite" />
+                                    </circle>
+                                    <circle cx="80" cy="60" r="1" fill="#fff">
+                                        <animate attributeName="opacity" values="0.5;1;0.5" dur="4s"
+                                            repeatCount="indefinite" />
+                                    </circle>
+                                    <circle cx="320" cy="50" r="1" fill="#fff">
+                                        <animate attributeName="opacity" values="0.3;1;0.3" dur="3s"
+                                            repeatCount="indefinite" />
+                                    </circle>
+                                </g>
+
+                                <!-- Ground -->
+                                <rect x="0" y="220" width="400" height="80" fill="#1a202c" opacity="0.5" />
+                                <line x1="0" y1="220" x2="400" y2="220" stroke="rgba(255,255,255,0.05)"
+                                    stroke-width="1" />
+
+                                <!-- Hotel Building -->
+                                <g>
+                                    <!-- Main building -->
+                                    <rect x="140" y="100" width="120" height="140" fill="url(#buildingGrad)" rx="3"
+                                        stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+
+                                    <!-- Hotel sign / roof -->
+                                    <rect x="155" y="85" width="90" height="18" fill="#fbbf24" rx="2" opacity="0.9" />
+                                    <text x="200" y="98" font-family="'JetBrains Mono', monospace" font-size="9"
+                                        font-weight="700" fill="#0d1520" text-anchor="middle">HOTEL</text>
+
+                                    <!-- Hotel entrance (door) -->
+                                    <rect x="185" y="200" width="30" height="40" fill="#1a202c" rx="2"
+                                        stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+                                    <rect x="192" y="210" width="16" height="25" fill="#0d1520" rx="1" opacity="0.8" />
+                                    <circle cx="210" cy="218" r="2" fill="#fbbf24" opacity="0.6" />
+
+                                    <!-- Windows -->
+                                    <g opacity="0.6">
+                                        <rect x="148" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.4" />
+                                        <rect x="170" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.7" />
+                                        <rect x="192" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.3" />
+                                        <rect x="214" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.6" />
+                                        <rect x="236" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.5" />
+                                        <rect x="148" y="145" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.6" />
+                                        <rect x="170" y="145" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.3" />
+                                        <rect x="192" y="145" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.7" />
+                                        <rect x="214" y="145" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.4" />
+                                        <rect x="236" y="145" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.6" />
+                                        <rect x="148" y="175" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.5" />
+                                        <rect x="170" y="175" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.7" />
+                                        <rect x="192" y="175" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.3" />
+                                        <rect x="214" y="175" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.6" />
+                                        <rect x="236" y="175" width="14" height="18" fill="#fbbf24" rx="1"
+                                            opacity="0.4" />
+                                    </g>
+
+                                    <!-- Glow around hotel -->
+                                    <rect x="140" y="100" width="120" height="140" rx="3" fill="none"
+                                        stroke="rgba(251,191,36,0.1)" stroke-width="2">
+                                        <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="3s"
+                                            repeatCount="indefinite" />
+                                    </rect>
+                                </g>
+
+                                <!-- TAXI WITH PERSON INSIDE – arrives at hotel -->
+                                <g>
+                                    <!-- Taxi group moves along the road -->
+                                    <animateMotion dur="6s" repeatCount="indefinite" path="M -80 210 Q 60 210 150 210"
+                                        rotate="auto" />
+
+                                    <!-- Taxi body -->
+                                    <rect x="-25" y="-16" width="50" height="18" fill="#fbbf24" rx="4" />
+                                    <!-- Cabin / roof -->
+                                    <rect x="-16" y="-24" width="28" height="10" fill="#eab308" rx="3" />
+                                    <!-- Windows -->
+                                    <rect x="-13" y="-21" width="10" height="6" fill="#0d1520" rx="1" opacity="0.5" />
+                                    <rect x="1" y="-21" width="10" height="6" fill="#0d1520" rx="1" opacity="0.5" />
+                                    <!-- Wheels -->
+                                    <circle cx="-16" cy="4" r="5" fill="#1a202c" />
+                                    <circle cx="16" cy="4" r="5" fill="#1a202c" />
+                                    <!-- Headlights -->
+                                    <rect x="25" y="-12" width="4" height="6" fill="#fef08a" rx="1" />
+                                    <rect x="25" y="1" width="4" height="6" fill="#fef08a" rx="1" />
+                                    <!-- Taillights -->
+                                    <rect x="-29" y="-12" width="4" height="6" fill="#ef4444" rx="1" />
+                                    <rect x="-29" y="1" width="4" height="6" fill="#ef4444" rx="1" />
+                                    <!-- TAXI sign on top -->
+                                    <rect x="-10" y="-28" width="20" height="5" fill="#ef4444" rx="1" />
+                                    <text x="0" y="-24.5" font-family="'JetBrains Mono', monospace" font-size="5"
+                                        font-weight="700" fill="#fff" text-anchor="middle">TAXI</text>
+
+                                    <!-- PERSON INSIDE THE TAXI (visible through window) -->
+                                    <g>
+                                        <!-- Person inside the taxi (small, visible through front window) -->
+                                        <circle cx="0" cy="-20" r="3" fill="#f2f2f2" opacity="0.8" />
+                                        <rect x="-1.5" y="-17" width="3" height="6" fill="#f2f2f2" rx="1"
+                                            opacity="0.8" />
+                                    </g>
+                                </g>
+
+                                <!-- PERSON GETTING OUT OF TAXI AND WALKING TO HOTEL -->
+                                <g>
+                                    <!-- This person appears when taxi stops at hotel -->
+                                    <!-- The animation starts after the taxi arrives -->
+                                    <animateMotion dur="6s" repeatCount="indefinite" path="M 140 210 Q 160 210 180 210"
+                                        begin="2.5s" fill="freeze" />
+
+                                    <!-- Person body -->
+                                    <circle cx="0" cy="-14" r="5" fill="#f2f2f2" opacity="0.9" />
+                                    <rect x="-2" y="-9" width="4" height="10" fill="#f2f2f2" rx="1" opacity="0.9" />
+
+                                    <!-- Legs (walking animation) -->
+                                    <line x1="0" y1="1" x2="-4" y2="8" stroke="#f2f2f2" stroke-width="2"
+                                        stroke-linecap="round" opacity="0.9">
+                                        <animate attributeName="x2" values="-4;4;-4" dur="0.4s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="y2" values="8;6;8" dur="0.4s"
+                                            repeatCount="indefinite" />
+                                    </line>
+                                    <line x1="0" y1="1" x2="4" y2="8" stroke="#f2f2f2" stroke-width="2"
+                                        stroke-linecap="round" opacity="0.9">
+                                        <animate attributeName="x2" values="4;-4;4" dur="0.4s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="y2" values="6;8;6" dur="0.4s"
+                                            repeatCount="indefinite" />
+                                    </line>
+
+                                    <!-- Arms -->
+                                    <line x1="-2" y1="-7" x2="-6" y2="-3" stroke="#f2f2f2" stroke-width="2"
+                                        stroke-linecap="round" opacity="0.7">
+                                        <animate attributeName="x2" values="-6;-2;-6" dur="0.4s"
+                                            repeatCount="indefinite" />
+                                    </line>
+                                    <line x1="2" y1="-7" x2="6" y2="-3" stroke="#f2f2f2" stroke-width="2"
+                                        stroke-linecap="round" opacity="0.7">
+                                        <animate attributeName="x2" values="6;2;6" dur="0.4s"
+                                            repeatCount="indefinite" />
+                                    </line>
+
+                                    <!-- Suitcase -->
+                                    <rect x="-8" y="-6" width="6" height="8" fill="#eab308" rx="1" opacity="0.7" />
+                                    <rect x="-7" y="-8" width="4" height="2" fill="#eab308" rx="1" opacity="0.7" />
+                                </g>
+
+                                <!-- Street lamp -->
+                                <g opacity="0.4">
+                                    <rect x="80" y="190" width="3" height="30" fill="#4a5568" />
+                                    <circle cx="81.5" cy="190" r="4" fill="#fbbf24" opacity="0.3">
+                                        <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s"
+                                            repeatCount="indefinite" />
+                                    </circle>
+                                    <line x1="75" y1="190" x2="88" y2="190" stroke="#4a5568" stroke-width="2" />
+                                </g>
+
+                                <!-- Trees -->
+                                <text x="40" y="220" font-size="18" opacity="0.3">🌳</text>
+                                <text x="330" y="220" font-size="18" opacity="0.3">🌳</text>
+
+                                <!-- Welcome mat -->
+                                <rect x="185" y="240" width="30" height="3" fill="#eab308" rx="1" opacity="0.3" />
+
+                                <!-- Hotel name label -->
+                                <text x="200" y="270" font-family="'JetBrains Mono', monospace" font-size="8"
+                                    fill="rgba(255,255,255,0.3)" text-anchor="middle">🏨 SINDIBAD HOTEL</text>
+                            </svg>
+                        </div>
+                    </div>
                 </article>
 
                 <!-- Project 3 -->

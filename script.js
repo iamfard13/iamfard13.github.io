@@ -159,10 +159,11 @@ const projectData = {
         `
     },
     2: {
-        title: "Project Two",
+        title: "Hotel Management Service",
         content: `
-            <p>This project is currently in development. More details will be added soon.</p>
-            <p>Stay tuned for updates on this exciting new venture.</p>
+            <p><strong>1:</strong> Developed the Adotel Provider integration for the Sindibad Hotel Application, enabling users to purchase rooms from multiple hotel providers with the best available pricing.</p>
+            <p><strong>2:</strong> Revamp Sindibad Hotel Application infrastructure, expanding it to support multiple providers, where initially only Alibaba was available. We developed and integrated additional providers like Adotel and SAMA, enhancing the application's scalability and flexibility to allow for seamless addition of new providers in the future.</p>
+            <p><strong>3:</strong> Develop and maintain a notification service using Messagebird and Resala, which sends SMS and WhatsApp notifications to users during the order process.</p>
         `
     },
     3: {
