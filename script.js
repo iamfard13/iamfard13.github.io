@@ -169,10 +169,14 @@ const projectData = {
     4: {
         title: "Chat Application",
         content: `
-            <p><strong>1:</strong> Developed a chat system similar to modern messaging applications using .NET, Redis, and RabbitMQ.</p>
-            <p><strong>2:</strong> Implemented real-time messaging with WebSocket support, enabling instant message delivery and read receipts.</p>
-            <p><strong>3:</strong> Designed and built the message queuing architecture using RabbitMQ for reliable message delivery and Redis for caching and presence management.</p>
-            <p><strong>4:</strong> Created a responsive chat interface with support for group chats, file sharing, and user presence indicators.</p>
+            <p><strong>1:</strong> Developed a chat system similar to modern messaging applications using .NET, Redis, RabbitMQ, MongoDb and PostgreSQL.</p>
+        `
+    },
+    5: {
+        title: "Jira Chrome Extension",
+        content: `
+            <p><strong>1:</strong> I developed a Chrome Extension that integrates with Jira APIs to make task management easier and faster directly from the browser.</p>
+            <p><strong>2:</strong> The extension allows users to manage and monitor Jira tasks, search and filter tasks, track time, receive notifications, and generate reports for better task and productivity tracking.</p>
         `
     }
 };

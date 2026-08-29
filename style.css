@@ -482,12 +482,10 @@ button {
     -webkit-overflow-scrolling: touch;
     flex: 1;
     padding: 10px 0;
-    /* Hide scrollbar for Firefox, IE/Edge */
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
 
-/* Hide scrollbar for Chrome, Safari, Opera */
 .projects-scroll-container::-webkit-scrollbar {
     display: none;
 }
@@ -687,7 +685,7 @@ button {
 }
 
 /* =========================================================
-   PROJECT 3 – GROCERY RAIN / FALLING ITEMS
+   PROJECT 3 – GROCERY RAIN
 ========================================================= */
 .project-card[data-project="3"] .project-animation {
     position: absolute;
@@ -770,6 +768,51 @@ button {
 }
 
 .chat-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+/* =========================================================
+   PROJECT 5 – JIRA EXTENSION / KANBAN
+========================================================= */
+.project-card[data-project="5"] .project-animation {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 2;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(8, 8, 8, 0.92);
+}
+
+.project-card[data-project="5"]:hover .project-animation {
+    opacity: 1;
+    visibility: visible;
+}
+
+.project-card[data-project="5"]:hover .project-number,
+.project-card[data-project="5"]:hover .project-label,
+.project-card[data-project="5"]:hover h3,
+.project-card[data-project="5"]:hover>p {
+    opacity: 0.15;
+    transition: opacity 0.4s ease;
+}
+
+.jira-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jira-svg {
     width: 100%;
     height: 100%;
     display: block;
@@ -1554,7 +1597,8 @@ button {
     .map-scene,
     .hotel-scene,
     .delivery-scene,
-    .chat-scene {
+    .chat-scene,
+    .jira-scene {
         min-height: 300px;
     }
 

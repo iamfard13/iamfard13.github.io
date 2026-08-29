@@ -837,14 +837,11 @@
                                             </linearGradient>
                                         </defs>
 
-                                        <!-- Background -->
                                         <rect width="400" height="300" fill="url(#chatBg)" rx="10" />
 
-                                        <!-- Chat container -->
                                         <rect x="30" y="20" width="340" height="260" rx="12" fill="#0d1520"
                                             stroke="rgba(255,255,255,0.05)" stroke-width="1" />
 
-                                        <!-- Chat header -->
                                         <rect x="30" y="20" width="340" height="35" rx="12" fill="#1a2a3a"
                                             stroke="rgba(255,255,255,0.05)" stroke-width="1" />
                                         <text x="55" y="42" font-family="'JetBrains Mono', monospace" font-size="8"
@@ -855,11 +852,9 @@
                                         <circle cx="342" cy="35" r="3" fill="#fbbf24" />
                                         <circle cx="354" cy="35" r="3" fill="#ef4444" />
 
-                                        <!-- Divider -->
                                         <line x1="30" y1="55" x2="370" y2="55" stroke="rgba(255,255,255,0.05)"
                                             stroke-width="1" />
 
-                                        <!-- Chat message 1 (from other person) -->
                                         <g filter="url(#chatGlow)" opacity="0">
                                             <rect x="45" y="65" width="140" height="28" rx="12"
                                                 fill="url(#bubbleFrom)" />
@@ -867,8 +862,6 @@
                                                 fill="#fff" opacity="0.9">Hey! How's the chat app?</text>
                                             <animate attributeName="opacity" values="0;0;1;1;0;0" dur="6s"
                                                 repeatCount="indefinite" keyTimes="0;0.05;0.15;0.65;0.85;1" />
-                                            <animate attributeName="x" values="45;45;45;45;45;45" dur="6s"
-                                                repeatCount="indefinite" />
                                         </g>
                                         <text x="50" y="60" font-family="'JetBrains Mono', monospace" font-size="5"
                                             fill="rgba(255,255,255,0.15)" opacity="0">
@@ -877,7 +870,6 @@
                                                 repeatCount="indefinite" keyTimes="0;0.05;0.15;0.65;0.85;1" />
                                         </text>
 
-                                        <!-- Chat message 2 (from me) -->
                                         <g filter="url(#chatGlow)" opacity="0">
                                             <rect x="180" y="100" width="160" height="28" rx="12" fill="url(#bubbleTo)"
                                                 stroke="rgba(255,255,255,0.05)" stroke-width="1" />
@@ -887,7 +879,6 @@
                                                 repeatCount="indefinite" keyTimes="0;0.25;0.35;0.65;0.85;1" />
                                         </g>
 
-                                        <!-- Chat message 3 (from other person) -->
                                         <g filter="url(#chatGlow)" opacity="0">
                                             <rect x="45" y="140" width="170" height="28" rx="12"
                                                 fill="url(#bubbleFrom)" />
@@ -897,7 +888,6 @@
                                                 repeatCount="indefinite" keyTimes="0;0.45;0.55;0.65;0.85;1" />
                                         </g>
 
-                                        <!-- Chat message 4 (from me) -->
                                         <g filter="url(#chatGlow)" opacity="0">
                                             <rect x="180" y="175" width="150" height="28" rx="12" fill="url(#bubbleTo)"
                                                 stroke="rgba(255,255,255,0.05)" stroke-width="1" />
@@ -907,7 +897,6 @@
                                                 repeatCount="indefinite" keyTimes="0;0.65;0.75;0.85;0.95;1" />
                                         </g>
 
-                                        <!-- Typing indicator (3 dots) -->
                                         <g opacity="0">
                                             <rect x="45" y="215" width="50" height="22" rx="11" fill="#1a2a3a"
                                                 stroke="rgba(255,255,255,0.05)" stroke-width="1" />
@@ -927,7 +916,6 @@
                                                 repeatCount="indefinite" keyTimes="0;0.7;0.75;0.85;0.95;1" />
                                         </g>
 
-                                        <!-- Input bar at bottom -->
                                         <rect x="35" y="248" width="330" height="28" rx="14" fill="#1a2a3a"
                                             stroke="rgba(255,255,255,0.05)" stroke-width="1" />
                                         <text x="50" y="266" font-family="'Courier New', monospace" font-size="7"
@@ -938,10 +926,135 @@
                                         </circle>
                                         <text x="347" y="264" font-family="'Font Awesome 6 Free', sans-serif"
                                             font-weight="900" font-size="7" fill="#fff" opacity="0.8">➤</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </article>
 
-                                        <!-- Status indicator -->
-                                        <text x="200" y="285" font-family="'JetBrains Mono', monospace" font-size="6"
-                                            fill="rgba(255,255,255,0.08)" text-anchor="middle">● LIVE CHAT</text>
+                        <!-- =============================================
+                             PROJECT 5 – Jira Chrome Extension
+                             ============================================= -->
+                        <article class="project-card" data-project="5">
+                            <span class="project-number">05</span>
+                            <p class="project-label">PROJECT</p>
+                            <h3>Jira Chrome Extension</h3>
+                            <p>Task management, time tracking, and reporting directly from your browser.</p>
+
+                            <div class="project-animation">
+                                <div class="jira-scene">
+                                    <svg class="jira-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <radialGradient id="jiraBg" cx="50%" cy="40%" r="70%">
+                                                <stop offset="0%" stop-color="#0f1a2e" />
+                                                <stop offset="100%" stop-color="#050a14" />
+                                            </radialGradient>
+                                            <linearGradient id="jiraBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#0052cc" />
+                                                <stop offset="100%" stop-color="#2684ff" />
+                                            </linearGradient>
+                                            <linearGradient id="jiraGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#00875a" />
+                                                <stop offset="100%" stop-color="#36b37e" />
+                                            </linearGradient>
+                                            <linearGradient id="jiraYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#ff8b00" />
+                                                <stop offset="100%" stop-color="#ffab00" />
+                                            </linearGradient>
+                                            <linearGradient id="jiraRed" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#de350b" />
+                                                <stop offset="100%" stop-color="#ff5630" />
+                                            </linearGradient>
+                                            <filter id="jiraGlow">
+                                                <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#2684ff"
+                                                    flood-opacity="0.15" />
+                                            </filter>
+                                        </defs>
+
+                                        <rect width="400" height="300" fill="url(#jiraBg)" rx="10" />
+
+                                        <text x="50" y="30" font-family="'JetBrains Mono', monospace" font-size="10"
+                                            fill="#2684ff" opacity="0.6">JIRA</text>
+                                        <text x="100" y="30" font-family="'JetBrains Mono', monospace" font-size="7"
+                                            fill="rgba(255,255,255,0.15)">● EXTENSION</text>
+
+                                        <rect x="20" y="45" width="360" height="235" rx="8" fill="#1a1a2e"
+                                            stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+
+                                        <rect x="30" y="55" width="100" height="215" rx="6" fill="#111827"
+                                            stroke="rgba(255,255,255,0.05)" stroke-width="0.5" />
+                                        <text x="80" y="73" font-family="'Courier New', monospace" font-size="7"
+                                            fill="rgba(255,255,255,0.4)" text-anchor="middle">TO DO</text>
+                                        <line x1="35" y1="80" x2="125" y2="80" stroke="rgba(255,255,255,0.05)"
+                                            stroke-width="1" />
+
+                                        <rect x="150" y="55" width="100" height="215" rx="6" fill="#111827"
+                                            stroke="rgba(255,255,255,0.05)" stroke-width="0.5" />
+                                        <text x="200" y="73" font-family="'Courier New', monospace" font-size="7"
+                                            fill="rgba(255,255,255,0.4)" text-anchor="middle">IN PROGRESS</text>
+                                        <line x1="155" y1="80" x2="245" y2="80" stroke="rgba(255,255,255,0.05)"
+                                            stroke-width="1" />
+
+                                        <rect x="270" y="55" width="100" height="215" rx="6" fill="#111827"
+                                            stroke="rgba(255,255,255,0.05)" stroke-width="0.5" />
+                                        <text x="320" y="73" font-family="'Courier New', monospace" font-size="7"
+                                            fill="rgba(255,255,255,0.4)" text-anchor="middle">DONE</text>
+                                        <line x1="275" y1="80" x2="365" y2="80" stroke="rgba(255,255,255,0.05)"
+                                            stroke-width="1" />
+
+                                        <g>
+                                            <animateMotion dur="4s" repeatCount="indefinite"
+                                                path="M 80 160 L 200 160 L 320 160" rotate="auto" />
+                                            <rect x="-40" y="-12" width="80" height="24" rx="4" fill="url(#jiraBlue)"
+                                                opacity="0.9" />
+                                            <text x="0" y="-2" font-family="'Courier New', monospace" font-size="6"
+                                                fill="#fff" text-anchor="middle">JIRA-123</text>
+                                            <text x="0" y="5" font-family="'Courier New', monospace" font-size="4"
+                                                fill="rgba(255,255,255,0.5)" text-anchor="middle">Build extension</text>
+                                        </g>
+
+                                        <g opacity="0.6">
+                                            <rect x="50" y="100" width="70" height="20" rx="4" fill="url(#jiraYellow)"
+                                                opacity="0.7" />
+                                            <text x="85" y="113" font-family="'Courier New', monospace" font-size="5"
+                                                fill="#fff" text-anchor="middle">JIRA-456</text>
+                                            <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2s"
+                                                repeatCount="indefinite" />
+                                        </g>
+
+                                        <g opacity="0.6">
+                                            <rect x="165" y="130" width="70" height="20" rx="4" fill="url(#jiraGreen)"
+                                                opacity="0.7" />
+                                            <text x="200" y="143" font-family="'Courier New', monospace" font-size="5"
+                                                fill="#fff" text-anchor="middle">JIRA-789</text>
+                                            <animate attributeName="opacity" values="0.6;0.9;0.6" dur="3s"
+                                                repeatCount="indefinite" />
+                                        </g>
+
+                                        <g opacity="0.5">
+                                            <rect x="280" y="170" width="70" height="20" rx="4" fill="url(#jiraRed)"
+                                                opacity="0.7" />
+                                            <text x="315" y="183" font-family="'Courier New', monospace" font-size="5"
+                                                fill="#fff" text-anchor="middle">JIRA-101</text>
+                                        </g>
+
+                                        <circle cx="0" cy="0" r="4" fill="none" stroke="#2684ff" opacity="0">
+                                            <animateMotion dur="4s" repeatCount="indefinite"
+                                                path="M 80 160 L 200 160 L 320 160" rotate="auto" />
+                                            <animate attributeName="r" values="0;15;0" dur="0.5s"
+                                                repeatCount="indefinite" />
+                                            <animate attributeName="opacity" values="0.6;0;0.6" dur="0.5s"
+                                                repeatCount="indefinite" />
+                                        </circle>
+
+                                        <text x="200" y="270" font-family="'JetBrains Mono', monospace" font-size="5"
+                                            fill="rgba(255,255,255,0.08)" text-anchor="middle">● KANBAN BOARD</text>
+
+                                        <circle cx="40" cy="250" r="6" fill="#2684ff" opacity="0.2" />
+                                        <text x="37" y="252" font-family="'Courier New', monospace" font-size="4"
+                                            fill="#2684ff" opacity="0.4">👤</text>
+                                        <circle cx="70" cy="250" r="6" fill="#36b37e" opacity="0.2" />
+                                        <text x="67" y="252" font-family="'Courier New', monospace" font-size="4"
+                                            fill="#36b37e" opacity="0.4">👤</text>
                                     </svg>
                                 </div>
                             </div>
