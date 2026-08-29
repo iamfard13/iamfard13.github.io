@@ -1,7 +1,4 @@
-document.addEventListener(
-    "DOMContentLoaded",
-    loadLearning
-);
+document.addEventListener("DOMContentLoaded", loadLearning);
 
 
 /* =========================================================
@@ -10,68 +7,63 @@ document.addEventListener(
 
 async function loadLearning() {
 
-    const viewer =
-        document.getElementById(
-            "learning-viewer"
-        );
+    const viewer = document.getElementById("learning-viewer");
 
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    const file =
-        params.get("file");
-
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
 
     if (!file) {
-
-        showError(
-            viewer,
-            "No learning file was specified."
-        );
-
+        showError(viewer, "No learning file was specified.");
         return;
+    }
 
+
+    // Only allow Markdown files inside the learnings folder.
+    if (
+        !file.endsWith(".md") ||
+        !file.startsWith("learnings/")
+    ) {
+        showError(viewer, "Invalid learning file.");
+        return;
     }
 
 
     /*
-     * Security:
-     * Only allow Markdown files.
+     * GitHub Pages can be hosted under a repository path.
+     * Using the current origin + pathname makes the loader
+     * work correctly in that situation.
      */
 
-    if (
-        !file.endsWith(".md")
-    ) {
+    const basePath =
+        window.location.pathname
+            .substring(
+                0,
+                window.location.pathname.lastIndexOf("/") + 1
+            );
 
-        showError(
-            viewer,
-            "Invalid learning file."
-        );
 
-        return;
-
-    }
+    const fileUrl =
+        new URL(
+            file,
+            window.location.origin +
+            basePath
+        ).href;
 
 
     try {
 
-        const response =
-            await fetch(
-                file,
-                {
-                    cache: "no-cache"
-                }
-            );
+        const response = await fetch(
+            fileUrl,
+            {
+                cache: "no-cache"
+            }
+        );
 
 
         if (!response.ok) {
 
             throw new Error(
-                "Markdown file could not be loaded."
+                `HTTP ${response.status}`
             );
 
         }
@@ -82,9 +74,7 @@ async function loadLearning() {
 
 
         const parsed =
-            parseMarkdownFile(
-                markdown
-            );
+            parseMarkdownFile(markdown);
 
 
         const metadata =
@@ -107,53 +97,41 @@ async function loadLearning() {
                     ${metadata.type || "LEARNING"}
                 </p>
 
-
                 ${metadata.chapter
                 ? `
                             <p class="viewer-chapter">
-
                                 ${escapeHtml(
                     metadata.chapter
                 )}
-
                             </p>
                         `
                 : ""
             }
 
-
                 <h1>
-
                     ${escapeHtml(
                 metadata.title ||
                 "Untitled"
             )}
-
                 </h1>
-
 
                 ${metadata.author
                 ? `
                             <p class="viewer-author">
-
                                 ${escapeHtml(
                     metadata.author
                 )}
-
                             </p>
                         `
                 : ""
             }
 
-
                 ${metadata.date
                 ? `
                             <p class="viewer-date">
-
                                 ${formatDate(
                     metadata.date
                 )}
-
                             </p>
                         `
                 : ""
@@ -162,9 +140,7 @@ async function loadLearning() {
             </header>
 
 
-
             <div class="viewer-terminal">
-
 
                 <div class="viewer-terminal-header">
 
@@ -188,20 +164,20 @@ async function loadLearning() {
                 </div>
 
             </div>
-
         `;
 
     }
     catch (error) {
 
         console.error(
+            "Learning file loading error:",
             error
         );
 
 
         showError(
             viewer,
-            "Unable to load this learning file."
+            `Unable to load this learning file.`
         );
 
     }
@@ -210,24 +186,17 @@ async function loadLearning() {
 
 
 /* =========================================================
-   PARSE FRONTMATTER
+   FRONTMATTER
    ========================================================= */
 
-function parseMarkdownFile(
-    markdown
-) {
+function parseMarkdownFile(markdown) {
 
     const metadata = {};
 
-    let content =
-        markdown;
+    let content = markdown;
 
 
-    if (
-        !markdown.startsWith(
-            "---"
-        )
-    ) {
+    if (!markdown.startsWith("---")) {
 
         return {
             metadata,
@@ -269,68 +238,61 @@ function parseMarkdownFile(
 
     frontmatter
         .split("\n")
-        .forEach(
-            line => {
+        .forEach(line => {
 
-                const index =
-                    line.indexOf(":");
-
-
-                if (
-                    index === -1
-                ) {
-
-                    return;
-
-                }
+            const index =
+                line.indexOf(":");
 
 
-                const key =
-                    line
-                        .substring(
-                            0,
-                            index
-                        )
-                        .trim();
+            if (index === -1) {
+                return;
+            }
 
 
-                let value =
-                    line
-                        .substring(
-                            index + 1
-                        )
-                        .trim();
-
-
-                if (
-                    value.length >= 2 &&
-                    (
-                        (
-                            value.startsWith('"') &&
-                            value.endsWith('"')
-                        )
-                        ||
-                        (
-                            value.startsWith("'") &&
-                            value.endsWith("'")
-                        )
+            const key =
+                line
+                    .substring(
+                        0,
+                        index
                     )
-                ) {
-
-                    value =
-                        value.substring(
-                            1,
-                            value.length - 1
-                        );
-
-                }
+                    .trim();
 
 
-                metadata[key] =
-                    value;
+            let value =
+                line
+                    .substring(
+                        index + 1
+                    )
+                    .trim();
+
+
+            if (
+                value.length >= 2 &&
+                (
+                    (
+                        value.startsWith('"') &&
+                        value.endsWith('"')
+                    )
+                    ||
+                    (
+                        value.startsWith("'") &&
+                        value.endsWith("'")
+                    )
+                )
+            ) {
+
+                value =
+                    value.substring(
+                        1,
+                        value.length - 1
+                    );
 
             }
-        );
+
+
+            metadata[key] = value;
+
+        });
 
 
     return {
@@ -345,16 +307,11 @@ function parseMarkdownFile(
    MARKDOWN → HTML
    ========================================================= */
 
-function markdownToHtml(
-    markdown
-) {
+function markdownToHtml(markdown) {
 
     const lines =
         markdown
-            .replaceAll(
-                "\r\n",
-                "\n"
-            )
+            .replaceAll("\r\n", "\n")
             .split("\n");
 
 
@@ -363,21 +320,14 @@ function markdownToHtml(
     let i = 0;
 
 
-    while (
-        i < lines.length
-    ) {
+    while (i < lines.length) {
 
-        const line =
-            lines[i];
+        const line = lines[i];
 
 
-        /*
-         * Empty line
-         */
+        /* Empty line */
 
-        if (
-            !line.trim()
-        ) {
+        if (!line.trim()) {
 
             i++;
 
@@ -386,15 +336,9 @@ function markdownToHtml(
         }
 
 
-        /*
-         * Code block
-         */
+        /* Code block */
 
-        if (
-            line.startsWith(
-                "```"
-            )
-        ) {
+        if (line.startsWith("```")) {
 
             const language =
                 line
@@ -410,9 +354,7 @@ function markdownToHtml(
 
             while (
                 i < lines.length &&
-                !lines[i].startsWith(
-                    "```"
-                )
+                !lines[i].startsWith("```")
             ) {
 
                 codeLines.push(
@@ -424,12 +366,8 @@ function markdownToHtml(
             }
 
 
-            if (
-                i < lines.length
-            ) {
-
+            if (i < lines.length) {
                 i++;
-
             }
 
 
@@ -444,7 +382,6 @@ function markdownToHtml(
             )}</code>
 
                 </pre>
-
             `;
 
 
@@ -453,13 +390,9 @@ function markdownToHtml(
         }
 
 
-        /*
-         * H1
-         */
+        /* H1 */
 
-        if (
-            line.startsWith("# ")
-        ) {
+        if (line.startsWith("# ")) {
 
             html += `
 
@@ -468,7 +401,6 @@ function markdownToHtml(
                 line.substring(2)
             )}
                 </h1>
-
             `;
 
 
@@ -479,13 +411,9 @@ function markdownToHtml(
         }
 
 
-        /*
-         * H2
-         */
+        /* H2 */
 
-        if (
-            line.startsWith("## ")
-        ) {
+        if (line.startsWith("## ")) {
 
             html += `
 
@@ -494,7 +422,6 @@ function markdownToHtml(
                 line.substring(3)
             )}
                 </h2>
-
             `;
 
 
@@ -505,13 +432,9 @@ function markdownToHtml(
         }
 
 
-        /*
-         * H3
-         */
+        /* H3 */
 
-        if (
-            line.startsWith("### ")
-        ) {
+        if (line.startsWith("### ")) {
 
             html += `
 
@@ -520,7 +443,6 @@ function markdownToHtml(
                 line.substring(4)
             )}
                 </h3>
-
             `;
 
 
@@ -531,13 +453,9 @@ function markdownToHtml(
         }
 
 
-        /*
-         * Unordered list
-         */
+        /* Unordered list */
 
-        if (
-            line.startsWith("- ")
-        ) {
+        if (line.startsWith("- ")) {
 
             html += "<ul>";
 
@@ -550,14 +468,10 @@ function markdownToHtml(
                 html += `
 
                     <li>
-
                         ${formatInline(
-                    lines[i]
-                        .substring(2)
+                    lines[i].substring(2)
                 )}
-
                     </li>
-
                 `;
 
 
@@ -568,30 +482,21 @@ function markdownToHtml(
 
             html += "</ul>";
 
-
             continue;
 
         }
 
 
-        /*
-         * Ordered list
-         */
+        /* Ordered list */
 
-        if (
-            /^\d+\.\s/.test(
-                line
-            )
-        ) {
+        if (/^\d+\.\s/.test(line)) {
 
             html += "<ol>";
 
 
             while (
                 i < lines.length &&
-                /^\d+\.\s/.test(
-                    lines[i]
-                )
+                /^\d+\.\s/.test(lines[i])
             ) {
 
                 const text =
@@ -605,13 +510,8 @@ function markdownToHtml(
                 html += `
 
                     <li>
-
-                        ${formatInline(
-                    text
-                )}
-
+                        ${formatInline(text)}
                     </li>
-
                 `;
 
 
@@ -622,20 +522,14 @@ function markdownToHtml(
 
             html += "</ol>";
 
-
             continue;
 
         }
 
 
-        /*
-         * Paragraph
-         */
+        /* Paragraph */
 
-        const paragraph = [
-            line
-        ];
-
+        const paragraph = [line];
 
         i++;
 
@@ -648,15 +542,12 @@ function markdownToHtml(
             !lines[i].startsWith("### ") &&
             !lines[i].startsWith("```") &&
             !lines[i].startsWith("- ") &&
-            !/^\d+\.\s/.test(
-                lines[i]
-            )
+            !/^\d+\.\s/.test(lines[i])
         ) {
 
             paragraph.push(
                 lines[i]
             );
-
 
             i++;
 
@@ -666,13 +557,10 @@ function markdownToHtml(
         html += `
 
             <p>
-
                 ${formatInline(
             paragraph.join(" ")
         )}
-
             </p>
-
         `;
 
     }
@@ -687,19 +575,13 @@ function markdownToHtml(
    INLINE MARKDOWN
    ========================================================= */
 
-function formatInline(
-    text
-) {
+function formatInline(text) {
 
     let result =
-        escapeHtml(
-            text
-        );
+        escapeHtml(text);
 
 
-    /*
-     * Links
-     */
+    /* Links */
 
     result =
         result.replace(
@@ -708,9 +590,7 @@ function formatInline(
         );
 
 
-    /*
-     * Inline code
-     */
+    /* Inline code */
 
     result =
         result.replace(
@@ -719,9 +599,7 @@ function formatInline(
         );
 
 
-    /*
-     * Bold
-     */
+    /* Bold */
 
     result =
         result.replace(
@@ -730,9 +608,7 @@ function formatInline(
         );
 
 
-    /*
-     * Italic
-     */
+    /* Italic */
 
     result =
         result.replace(
@@ -750,51 +626,25 @@ function formatInline(
    HELPERS
    ========================================================= */
 
-function escapeHtml(
-    value
-) {
+function escapeHtml(value) {
 
     return String(value)
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
 
 }
 
 
-function formatDate(
-    value
-) {
+function formatDate(value) {
 
-    const date =
-        new Date(value);
+    const date = new Date(value);
 
 
-    if (
-        Number.isNaN(
-            date.getTime()
-        )
-    ) {
-
+    if (Number.isNaN(date.getTime())) {
         return value;
-
     }
 
 
@@ -824,13 +674,10 @@ function showError(
             </h1>
 
             <p>
-                ${escapeHtml(
-        message
-    )}
+                ${escapeHtml(message)}
             </p>
 
         </div>
-
     `;
 
 }
