@@ -169,7 +169,7 @@ const projectData = {
     4: {
         title: "Chat Application",
         content: `
-            <p><strong>1:</strong> Developed a chat system similar to modern messaging applications using .NET, Redis, RabbitMQ, MongoDb and PostgreSQL.</p>
+            <p><strong>1:</strong> Developed a chat system similar to modern messaging applications using .NET, Redis, RabbitMQ, MongoDB and PostgreSQL.</p>
         `
     },
     5: {
@@ -241,7 +241,6 @@ if (scrollContainer && leftBtn && rightBtn) {
         });
     });
 
-    // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') {
             const container = document.querySelector('.projects-scroll-container');
@@ -256,14 +255,135 @@ if (scrollContainer && leftBtn && rightBtn) {
         }
     });
 
-    // Focus the container so keyboard events work
     scrollContainer.setAttribute('tabindex', '0');
 }
 
 /* ==================================================
+   RECOMMENDATIONS – hard-coded texts with horizontal scroll (no fallback icon)
+================================================== */
+const hardcodedRecommendations = {
+    Shahin: [
+        "I had the pleasure of working with Ali on several software projects, and without a doubt, he is one of the most skilled and organized software engineers I've ever worked with.",
+        "He has an excellent command of .NET Core and design patterns, and is always eager to find the most effective and up-to-date solutions.",
+        "Ali is a hardworking, highly motivated, and research-oriented professional who never backs down from technical challenges.",
+        "His strong problem-solving ability, quick learning skills, and collaborative mindset make him a valuable asset to any team.",
+        "I'm confident that in any professional environment, he can play a key role in driving projects to success."
+    ],
+    Amirhossein: [
+        "I've had the privilege of knowing Ali not just as a talented software engineer, but as a thoughtful, curious, and deeply driven human being.",
+        "His passion for technology is matched by his humility and eagerness to grow — whether he's diving into a new framework or helping others understand a complex concept with clarity and patience.",
+        "While we haven't worked together professionally, I've seen firsthand the kind of teammate and contributor he is.",
+        "Any team would be lucky to have him."
+    ]
+};
+
+async function loadRecommendations() {
+    const container = document.getElementById('recommendationsGrid');
+    if (!container) return;
+
+    const users = [
+        { id: 'Shahin', name: 'Shahin' },
+        { id: 'Amirhossein', name: 'Amirhossein' }
+    ];
+
+    for (const user of users) {
+        const card = document.createElement('div');
+        card.className = 'recommendation-card';
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+
+        const imagePath = `Recommendations/${user.id}/image.jpeg`;
+        const textPath = `Recommendations/${user.id}/text.txt`;
+
+        card.innerHTML = `
+            <div class="recommendation-image">
+                <img src="${imagePath}" alt="${user.name}" loading="lazy">
+            </div>
+            <div class="recommendation-content">
+                <div class="recommendation-text" id="rec-text-${user.id}">
+                    <div class="loading-text">Loading recommendation...</div>
+                </div>
+                <div class="recommendation-author">
+                    <strong>${user.name}</strong>
+                </div>
+            </div>
+        `;
+
+        container.appendChild(card);
+
+        // Try to fetch the text file first, fallback to hardcoded
+        try {
+            const response = await fetch(textPath);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            const text = await response.text();
+            const textEl = document.getElementById(`rec-text-${user.id}`);
+            if (textEl) {
+                const paragraphs = text.split('\n').filter(line => line.trim() !== '');
+                if (paragraphs.length > 0) {
+                    textEl.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
+                    console.log(`✅ Loaded recommendation for ${user.id} from file`);
+                } else {
+                    useHardcoded(user.id);
+                }
+            }
+        } catch (error) {
+            useHardcoded(user.id);
+        }
+
+        function useHardcoded(userId) {
+            console.log(`📝 Using hardcoded text for ${userId}`);
+            const textEl = document.getElementById(`rec-text-${userId}`);
+            if (textEl) {
+                const hardcoded = hardcodedRecommendations[userId] || ["This person is highly recommended!"];
+                textEl.innerHTML = hardcoded.map(p => `<p>${p}</p>`).join('');
+            }
+        }
+
+        // Animate in
+        requestAnimationFrame(() => {
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        });
+    }
+
+    // After loading all cards, set up scroll buttons
+    setupRecommendationScroll();
+}
+
+function setupRecommendationScroll() {
+    const scrollContainer = document.getElementById('recommendationsScroll');
+    const leftBtn = document.querySelector('.rec-scroll-left');
+    const rightBtn = document.querySelector('.rec-scroll-right');
+
+    if (scrollContainer && leftBtn && rightBtn) {
+        leftBtn.addEventListener('click', () => {
+            scrollContainer.scrollBy({
+                left: -580,
+                behavior: 'smooth'
+            });
+        });
+
+        rightBtn.addEventListener('click', () => {
+            scrollContainer.scrollBy({
+                left: 580,
+                behavior: 'smooth'
+            });
+        });
+    }
+}
+
+// Load recommendations when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    loadRecommendations();
+});
+
+/* ==================================================
    SCROLL REVEAL
 ================================================== */
-const revealElements = document.querySelectorAll(".project, .about, .contact, .profile-card");
+const revealElements = document.querySelectorAll(".project, .about, .contact, .profile-card, .recommendation-card");
 revealElements.forEach(element => element.classList.add("reveal"));
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
