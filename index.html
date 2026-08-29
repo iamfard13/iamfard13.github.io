@@ -140,7 +140,9 @@
                 <h2>Things I've built.</h2>
             </div>
             <div class="projects-grid">
-                <!-- Project 1 – IoT Vehicle with Car Animation (no labels) -->
+                <!-- =============================================
+                     PROJECT 1 – IoT Vehicle with GPS labels
+                     ============================================= -->
                 <article class="project-card" data-project="1">
                     <span class="project-number">01</span>
                     <p class="project-label">PROJECT</p>
@@ -189,16 +191,53 @@
                                     </path>
                                 </g>
 
-                                <!-- Car (Font Awesome car icon) -->
+                                <!-- Car with GPS labels above it (font-size increased to 9) -->
                                 <g>
                                     <animateMotion dur="4s" repeatCount="indefinite" path="M 30 230 Q 200 40 370 230"
                                         rotate="auto" />
+
+                                    <!-- Car icon -->
                                     <text x="0" y="0"
-                                        font-family="'Font Awesome 6 Free', 'Font Awesome 6 Pro', 'Font Awesome 6 Brands', sans-serif"
+                                        font-family="'Font Awesome 6 Free', 'Font Awesome 6 Pro', sans-serif"
                                         font-weight="900" font-size="32" fill="#fbbf24" text-anchor="middle"
                                         dominant-baseline="central" filter="url(#glow1)">
                                         
                                     </text>
+
+                                    <!-- GPS Coordinates cycling above car (now font-size 9) -->
+                                    <g text-anchor="middle" dominant-baseline="central"
+                                        font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">
+                                        <!-- Coord 1 -->
+                                        <text x="0" y="-28">
+                                            📍 12.3456, 67.8901
+                                            <animate attributeName="opacity" values="1;0;0;0;0" dur="4s"
+                                                repeatCount="indefinite" />
+                                        </text>
+                                        <!-- Coord 2 -->
+                                        <text x="0" y="-28">
+                                            📍 12.3489, 67.8923
+                                            <animate attributeName="opacity" values="0;1;0;0;0" dur="4s"
+                                                repeatCount="indefinite" />
+                                        </text>
+                                        <!-- Coord 3 -->
+                                        <text x="0" y="-28">
+                                            📍 12.3521, 67.8954
+                                            <animate attributeName="opacity" values="0;0;1;0;0" dur="4s"
+                                                repeatCount="indefinite" />
+                                        </text>
+                                        <!-- Coord 4 -->
+                                        <text x="0" y="-28">
+                                            📍 12.3556, 67.8980
+                                            <animate attributeName="opacity" values="0;0;0;1;0" dur="4s"
+                                                repeatCount="indefinite" />
+                                        </text>
+                                        <!-- Coord 5 -->
+                                        <text x="0" y="-28">
+                                            📍 12.3590, 67.9005
+                                            <animate attributeName="opacity" values="0;0;0;0;1" dur="4s"
+                                                repeatCount="indefinite" />
+                                        </text>
+                                    </g>
                                 </g>
 
                                 <!-- Marker A -->
@@ -224,7 +263,7 @@
                                     </circle>
                                 </g>
 
-                                <!-- Decorative elements (no Start/Destination labels) -->
+                                <!-- Decorative elements -->
                                 <text x="50" y="130" font-size="22" opacity="0.3">🌳</text>
                                 <text x="320" y="100" font-size="20" opacity="0.3">🌲</text>
                                 <text x="100" y="50" font-size="18" opacity="0.2">🏢</text>
@@ -243,7 +282,9 @@
                     </div>
                 </article>
 
-                <!-- Project 2 – Hotel Management with Taxi (person inside, gets out at hotel) -->
+                <!-- =============================================
+                     PROJECT 2 – Hotel Management (taxi only, no walking person)
+                     ============================================= -->
                 <article class="project-card" data-project="2">
                     <span class="project-number">02</span>
                     <p class="project-label">PROJECT</p>
@@ -310,16 +351,13 @@
 
                                 <!-- Hotel Building -->
                                 <g>
-                                    <!-- Main building -->
                                     <rect x="140" y="100" width="120" height="140" fill="url(#buildingGrad)" rx="3"
                                         stroke="rgba(255,255,255,0.1)" stroke-width="1" />
 
-                                    <!-- Hotel sign / roof -->
                                     <rect x="155" y="85" width="90" height="18" fill="#fbbf24" rx="2" opacity="0.9" />
                                     <text x="200" y="98" font-family="'JetBrains Mono', monospace" font-size="9"
                                         font-weight="700" fill="#0d1520" text-anchor="middle">HOTEL</text>
 
-                                    <!-- Hotel entrance (door) -->
                                     <rect x="185" y="200" width="30" height="40" fill="#1a202c" rx="2"
                                         stroke="rgba(255,255,255,0.1)" stroke-width="1" />
                                     <rect x="192" y="210" width="16" height="25" fill="#0d1520" rx="1" opacity="0.8" />
@@ -359,7 +397,6 @@
                                             opacity="0.4" />
                                     </g>
 
-                                    <!-- Glow around hotel -->
                                     <rect x="140" y="100" width="120" height="140" rx="3" fill="none"
                                         stroke="rgba(251,191,36,0.1)" stroke-width="2">
                                         <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="3s"
@@ -367,9 +404,8 @@
                                     </rect>
                                 </g>
 
-                                <!-- TAXI WITH PERSON INSIDE – arrives at hotel -->
+                                <!-- TAXI ONLY (no walking person) -->
                                 <g>
-                                    <!-- Taxi group moves along the road -->
                                     <animateMotion dur="6s" repeatCount="indefinite" path="M -80 210 Q 60 210 150 210"
                                         rotate="auto" />
 
@@ -380,6 +416,9 @@
                                     <!-- Windows -->
                                     <rect x="-13" y="-21" width="10" height="6" fill="#0d1520" rx="1" opacity="0.5" />
                                     <rect x="1" y="-21" width="10" height="6" fill="#0d1520" rx="1" opacity="0.5" />
+                                    <!-- Person inside the taxi (visible through window) -->
+                                    <circle cx="0" cy="-20" r="3" fill="#f2f2f2" opacity="0.8" />
+                                    <rect x="-1.5" y="-17" width="3" height="6" fill="#f2f2f2" rx="1" opacity="0.8" />
                                     <!-- Wheels -->
                                     <circle cx="-16" cy="4" r="5" fill="#1a202c" />
                                     <circle cx="16" cy="4" r="5" fill="#1a202c" />
@@ -393,58 +432,6 @@
                                     <rect x="-10" y="-28" width="20" height="5" fill="#ef4444" rx="1" />
                                     <text x="0" y="-24.5" font-family="'JetBrains Mono', monospace" font-size="5"
                                         font-weight="700" fill="#fff" text-anchor="middle">TAXI</text>
-
-                                    <!-- PERSON INSIDE THE TAXI (visible through window) -->
-                                    <g>
-                                        <!-- Person inside the taxi (small, visible through front window) -->
-                                        <circle cx="0" cy="-20" r="3" fill="#f2f2f2" opacity="0.8" />
-                                        <rect x="-1.5" y="-17" width="3" height="6" fill="#f2f2f2" rx="1"
-                                            opacity="0.8" />
-                                    </g>
-                                </g>
-
-                                <!-- PERSON GETTING OUT OF TAXI AND WALKING TO HOTEL -->
-                                <g>
-                                    <!-- This person appears when taxi stops at hotel -->
-                                    <!-- The animation starts after the taxi arrives -->
-                                    <animateMotion dur="6s" repeatCount="indefinite" path="M 140 210 Q 160 210 180 210"
-                                        begin="2.5s" fill="freeze" />
-
-                                    <!-- Person body -->
-                                    <circle cx="0" cy="-14" r="5" fill="#f2f2f2" opacity="0.9" />
-                                    <rect x="-2" y="-9" width="4" height="10" fill="#f2f2f2" rx="1" opacity="0.9" />
-
-                                    <!-- Legs (walking animation) -->
-                                    <line x1="0" y1="1" x2="-4" y2="8" stroke="#f2f2f2" stroke-width="2"
-                                        stroke-linecap="round" opacity="0.9">
-                                        <animate attributeName="x2" values="-4;4;-4" dur="0.4s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="y2" values="8;6;8" dur="0.4s"
-                                            repeatCount="indefinite" />
-                                    </line>
-                                    <line x1="0" y1="1" x2="4" y2="8" stroke="#f2f2f2" stroke-width="2"
-                                        stroke-linecap="round" opacity="0.9">
-                                        <animate attributeName="x2" values="4;-4;4" dur="0.4s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="y2" values="6;8;6" dur="0.4s"
-                                            repeatCount="indefinite" />
-                                    </line>
-
-                                    <!-- Arms -->
-                                    <line x1="-2" y1="-7" x2="-6" y2="-3" stroke="#f2f2f2" stroke-width="2"
-                                        stroke-linecap="round" opacity="0.7">
-                                        <animate attributeName="x2" values="-6;-2;-6" dur="0.4s"
-                                            repeatCount="indefinite" />
-                                    </line>
-                                    <line x1="2" y1="-7" x2="6" y2="-3" stroke="#f2f2f2" stroke-width="2"
-                                        stroke-linecap="round" opacity="0.7">
-                                        <animate attributeName="x2" values="6;2;6" dur="0.4s"
-                                            repeatCount="indefinite" />
-                                    </line>
-
-                                    <!-- Suitcase -->
-                                    <rect x="-8" y="-6" width="6" height="8" fill="#eab308" rx="1" opacity="0.7" />
-                                    <rect x="-7" y="-8" width="4" height="2" fill="#eab308" rx="1" opacity="0.7" />
                                 </g>
 
                                 <!-- Street lamp -->
