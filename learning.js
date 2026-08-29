@@ -1,4 +1,14 @@
-async function loadLearningContent() {
+document.addEventListener(
+    "DOMContentLoaded",
+    loadLearning
+);
+
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+async function loadLearning() {
 
     await Promise.all([
         loadBooks(),
@@ -15,20 +25,33 @@ async function loadLearningContent() {
 async function loadBooks() {
 
     const grid =
-        document.getElementById("books-grid");
+        document.getElementById(
+            "books-grid"
+        );
 
     const count =
-        document.getElementById("books-count");
+        document.getElementById(
+            "books-count"
+        );
 
 
     try {
 
         const response =
-            await fetch("data/books.json");
+            await fetch(
+                "data/books.json",
+                {
+                    cache: "no-cache"
+                }
+            );
 
 
         if (!response.ok) {
-            throw new Error("Unable to load books.");
+
+            throw new Error(
+                "Unable to load books.json"
+            );
+
         }
 
 
@@ -37,45 +60,33 @@ async function loadBooks() {
 
 
         count.textContent =
-            String(books.length).padStart(2, "0");
+            String(books.length)
+                .padStart(2, "0");
 
 
-        if (books.length === 0) {
-
-            grid.innerHTML = `
-                <div class="learning-empty">
-                    No books added yet.
-                </div>
-            `;
-
-            return;
-        }
-
-
-        grid.innerHTML = "";
-
-
-        books.forEach((book, index) => {
-
-            grid.appendChild(
-                createLearningCard(
-                    book,
-                    index,
-                    "BOOK"
-                )
-            );
-
-        });
+        renderItems(
+            grid,
+            books,
+            "BOOK"
+        );
 
     }
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "Books error:",
+            error
+        );
+
 
         grid.innerHTML = `
+
             <div class="learning-error">
+
                 Unable to load books.
+
             </div>
+
         `;
 
     }
@@ -90,20 +101,33 @@ async function loadBooks() {
 async function loadArticles() {
 
     const grid =
-        document.getElementById("articles-grid");
+        document.getElementById(
+            "articles-grid"
+        );
 
     const count =
-        document.getElementById("articles-count");
+        document.getElementById(
+            "articles-count"
+        );
 
 
     try {
 
         const response =
-            await fetch("data/articles.json");
+            await fetch(
+                "data/articles.json",
+                {
+                    cache: "no-cache"
+                }
+            );
 
 
         if (!response.ok) {
-            throw new Error("Unable to load articles.");
+
+            throw new Error(
+                "Unable to load articles.json"
+            );
+
         }
 
 
@@ -112,45 +136,33 @@ async function loadArticles() {
 
 
         count.textContent =
-            String(articles.length).padStart(2, "0");
+            String(articles.length)
+                .padStart(2, "0");
 
 
-        if (articles.length === 0) {
-
-            grid.innerHTML = `
-                <div class="learning-empty">
-                    No articles added yet.
-                </div>
-            `;
-
-            return;
-        }
-
-
-        grid.innerHTML = "";
-
-
-        articles.forEach((article, index) => {
-
-            grid.appendChild(
-                createLearningCard(
-                    article,
-                    index,
-                    "ARTICLE"
-                )
-            );
-
-        });
+        renderItems(
+            grid,
+            articles,
+            "ARTICLE"
+        );
 
     }
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "Articles error:",
+            error
+        );
+
 
         grid.innerHTML = `
+
             <div class="learning-error">
+
                 Unable to load articles.
+
             </div>
+
         `;
 
     }
@@ -159,17 +171,87 @@ async function loadArticles() {
 
 
 /* =========================================================
-   CARD
+   RENDER ITEMS
    ========================================================= */
 
-function createLearningCard(
+function renderItems(
+    grid,
+    items,
+    type
+) {
+
+    if (!Array.isArray(items)) {
+
+        grid.innerHTML = `
+
+            <div class="learning-error">
+
+                Invalid learning data.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    if (items.length === 0) {
+
+        grid.innerHTML = `
+
+            <div class="learning-empty">
+
+                No ${type.toLowerCase()}s added yet.
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    grid.innerHTML = "";
+
+
+    items.forEach(
+        (item, index) => {
+
+            const card =
+                createCard(
+                    item,
+                    index,
+                    type
+                );
+
+
+            grid.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CREATE CARD
+   ========================================================= */
+
+function createCard(
     item,
     index,
     type
 ) {
 
     const card =
-        document.createElement("article");
+        document.createElement(
+            "article"
+        );
 
 
     card.className =
@@ -177,7 +259,51 @@ function createLearningCard(
 
 
     const number =
-        String(index + 1).padStart(2, "0");
+        String(index + 1)
+            .padStart(2, "0");
+
+
+    const title =
+        escapeHtml(
+            item.title ||
+            "Untitled"
+        );
+
+
+    const chapter =
+        item.chapter
+            ? `
+                <p class="learning-card-chapter">
+                    ${escapeHtml(
+                item.chapter
+            )}
+                </p>
+            `
+            : "";
+
+
+    const author =
+        item.author
+            ? `
+                <p class="learning-card-author">
+                    ${escapeHtml(
+                item.author
+            )}
+                </p>
+            `
+            : "";
+
+
+    const date =
+        item.date
+            ? `
+                <p class="learning-card-date">
+                    ${formatDate(
+                item.date
+            )}
+                </p>
+            `
+            : "";
 
 
     card.innerHTML = `
@@ -195,58 +321,28 @@ function createLearningCard(
 
 
             <h3>
-                ${escapeHtml(
-        item.title || "Untitled"
-    )}
+                ${title}
             </h3>
 
 
-            ${item.chapter
-            ? `
-                        <p class="learning-card-chapter">
-                            ${escapeHtml(item.chapter)}
-                        </p>
-                    `
-            : ""
-        }
+            ${chapter}
 
+            ${author}
 
-            ${item.author
-            ? `
-                        <p class="learning-card-author">
-                            ${escapeHtml(item.author)}
-                        </p>
-                    `
-            : ""
-        }
-
-
-            ${item.description
-            ? `
-                        <p class="learning-card-description">
-                            ${escapeHtml(item.description)}
-                        </p>
-                    `
-            : ""
-        }
-
-
-            ${item.date
-            ? `
-                        <p class="learning-card-date">
-                            ${formatDate(item.date)}
-                        </p>
-                    `
-            : ""
-        }
+            ${date}
 
 
             <button
-                class="learning-card-button"
                 type="button"
+                class="learning-card-button"
             >
+
                 READ
-                <span>→</span>
+
+                <span>
+                    →
+                </span>
+
             </button>
 
         </div>
@@ -264,7 +360,27 @@ function createLearningCard(
         "click",
         () => {
 
-            openLearning(item.file);
+            if (!item.file) {
+
+                console.error(
+                    "Learning item has no file:",
+                    item
+                );
+
+                return;
+
+            }
+
+
+            const url =
+                "learning-viewer.html?file=" +
+                encodeURIComponent(
+                    item.file
+                );
+
+
+            window.location.href =
+                url;
 
         }
     );
@@ -276,56 +392,50 @@ function createLearningCard(
 
 
 /* =========================================================
-   OPEN MARKDOWN
-   ========================================================= */
-
-function openLearning(file) {
-
-    if (!file) {
-        return;
-    }
-
-
-    window.location.href =
-        `learning-viewer.html?file=${encodeURIComponent(file)}`;
-
-}
-
-
-/* =========================================================
    HELPERS
    ========================================================= */
 
 function escapeHtml(value) {
 
-    if (!value) {
-        return "";
-    }
-
-
     return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
 
-function formatDate(dateString) {
-
-    if (!dateString) {
-        return "";
-    }
-
+function formatDate(value) {
 
     const date =
-        new Date(dateString);
+        new Date(value);
 
 
-    if (Number.isNaN(date.getTime())) {
-        return dateString;
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return value;
+
     }
 
 
@@ -339,6 +449,3 @@ function formatDate(dateString) {
     );
 
 }
-
-
-loadLearningContent();

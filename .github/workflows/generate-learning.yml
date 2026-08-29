@@ -1,0 +1,213 @@
+name: Generate Learning Index
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - "learnings/**/*.md"
+            - ".github/workflows/generate-learning.yml"
+
+    workflow_dispatch:
+
+permissions:
+    contents: write
+
+jobs:
+    generate-learning:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Generate learning indexes
+              shell: python
+              run: |
+
+                  import json
+                  from pathlib import Path
+
+
+                  def parse_frontmatter(content):
+
+                      metadata = {}
+
+                      if not content.startswith("---"):
+                          return metadata
+
+                      parts = content.split("---", 2)
+
+                      if len(parts) < 3:
+                          return metadata
+
+                      frontmatter = parts[1]
+
+                      for line in frontmatter.splitlines():
+
+                          line = line.strip()
+
+                          if not line or ":" not in line:
+                              continue
+
+                          key, value = line.split(":", 1)
+
+                          key = key.strip()
+                          value = value.strip()
+
+                          if (
+                              len(value) >= 2
+                              and value[0] == value[-1]
+                              and value[0] in ("'", '"')
+                          ):
+                              value = value[1:-1]
+
+                          metadata[key] = value
+
+                      return metadata
+
+
+                  def get_title(content, path):
+
+                      metadata = parse_frontmatter(content)
+
+                      if metadata.get("title"):
+                          return metadata["title"]
+
+                      for line in content.splitlines():
+
+                          if line.startswith("# "):
+                              return line[2:].strip()
+
+                      return path.stem.replace("-", " ").title()
+
+
+                  def create_entry(path, content_type):
+
+                      content = path.read_text(
+                          encoding="utf-8"
+                      )
+
+                      metadata = parse_frontmatter(content)
+
+                      entry = {
+                          "title": get_title(content, path),
+                          "date": metadata.get("date", ""),
+                          "file": str(path).replace("\\", "/")
+                      }
+
+                      if content_type == "book":
+
+                          entry["chapter"] = metadata.get(
+                              "chapter",
+                              ""
+                          )
+
+                          entry["author"] = metadata.get(
+                              "author",
+                              ""
+                          )
+
+                      return entry
+
+
+                  def generate(directory, content_type):
+
+                      directory = Path(directory)
+
+                      if not directory.exists():
+                          return []
+
+                      result = []
+
+                      for path in sorted(
+                          directory.rglob("*.md")
+                      ):
+
+                          result.append(
+                              create_entry(
+                                  path,
+                                  content_type
+                              )
+                          )
+
+                      result.sort(
+                          key=lambda item: item.get(
+                              "date",
+                              ""
+                          ),
+                          reverse=True
+                      )
+
+                      return result
+
+
+                  books = generate(
+                      "learnings/books",
+                      "book"
+                  )
+
+                  articles = generate(
+                      "learnings/articles",
+                      "article"
+                  )
+
+
+                  data_directory = Path("data")
+
+                  data_directory.mkdir(
+                      parents=True,
+                      exist_ok=True
+                  )
+
+
+                  Path(
+                      "data/books.json"
+                  ).write_text(
+                      json.dumps(
+                          books,
+                          indent=4,
+                          ensure_ascii=False
+                      ) + "\n",
+                      encoding="utf-8"
+                  )
+
+
+                  Path(
+                      "data/articles.json"
+                  ).write_text(
+                      json.dumps(
+                          articles,
+                          indent=4,
+                          ensure_ascii=False
+                      ) + "\n",
+                      encoding="utf-8"
+                  )
+
+
+                  print(
+                      f"Generated {len(books)} books."
+                  )
+
+                  print(
+                      f"Generated {len(articles)} articles."
+                  )
+
+            - name: Commit generated indexes
+              run: |
+
+                  git config user.name "github-actions[bot]"
+
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+                  git add data/books.json data/articles.json
+
+                  if git diff --cached --quiet; then
+                    echo "No changes to commit."
+                    exit 0
+                  fi
+
+                  git commit \
+                    -m "chore: update learning indexes"
+
+                  git push

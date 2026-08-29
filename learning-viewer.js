@@ -1,10 +1,20 @@
-const viewer =
-    document.getElementById(
-        "learning-viewer"
-    );
+document.addEventListener(
+    "DOMContentLoaded",
+    loadLearning
+);
 
+
+/* =========================================================
+   LOAD LEARNING FILE
+   ========================================================= */
 
 async function loadLearning() {
+
+    const viewer =
+        document.getElementById(
+            "learning-viewer"
+        );
+
 
     const params =
         new URLSearchParams(
@@ -19,10 +29,12 @@ async function loadLearning() {
     if (!file) {
 
         showError(
+            viewer,
             "No learning file was specified."
         );
 
         return;
+
     }
 
 
@@ -31,26 +43,35 @@ async function loadLearning() {
      * Only allow Markdown files.
      */
 
-    if (!file.endsWith(".md")) {
+    if (
+        !file.endsWith(".md")
+    ) {
 
         showError(
+            viewer,
             "Invalid learning file."
         );
 
         return;
+
     }
 
 
     try {
 
         const response =
-            await fetch(file);
+            await fetch(
+                file,
+                {
+                    cache: "no-cache"
+                }
+            );
 
 
         if (!response.ok) {
 
             throw new Error(
-                "Unable to load learning file."
+                "Markdown file could not be loaded."
             );
 
         }
@@ -61,7 +82,9 @@ async function loadLearning() {
 
 
         const parsed =
-            parseMarkdownFile(markdown);
+            parseMarkdownFile(
+                markdown
+            );
 
 
         const metadata =
@@ -69,7 +92,11 @@ async function loadLearning() {
 
 
         document.title =
-            `${metadata.title || "Learning"} | Ali Abbasifard`;
+            (
+                metadata.title ||
+                "Learning"
+            ) +
+            " | Ali Abbasifard";
 
 
         viewer.innerHTML = `
@@ -84,9 +111,11 @@ async function loadLearning() {
                 ${metadata.chapter
                 ? `
                             <p class="viewer-chapter">
+
                                 ${escapeHtml(
                     metadata.chapter
                 )}
+
                             </p>
                         `
                 : ""
@@ -94,19 +123,23 @@ async function loadLearning() {
 
 
                 <h1>
+
                     ${escapeHtml(
                 metadata.title ||
                 "Untitled"
             )}
+
                 </h1>
 
 
                 ${metadata.author
                 ? `
                             <p class="viewer-author">
+
                                 ${escapeHtml(
                     metadata.author
                 )}
+
                             </p>
                         `
                 : ""
@@ -116,9 +149,11 @@ async function loadLearning() {
                 ${metadata.date
                 ? `
                             <p class="viewer-date">
+
                                 ${formatDate(
                     metadata.date
                 )}
+
                             </p>
                         `
                 : ""
@@ -127,7 +162,9 @@ async function loadLearning() {
             </header>
 
 
+
             <div class="viewer-terminal">
+
 
                 <div class="viewer-terminal-header">
 
@@ -157,10 +194,14 @@ async function loadLearning() {
     }
     catch (error) {
 
-        console.error(error);
+        console.error(
+            error
+        );
+
 
         showError(
-            "Unable to load this learning."
+            viewer,
+            "Unable to load this learning file."
         );
 
     }
@@ -169,87 +210,127 @@ async function loadLearning() {
 
 
 /* =========================================================
-   FRONTMATTER
+   PARSE FRONTMATTER
    ========================================================= */
 
-function parseMarkdownFile(markdown) {
+function parseMarkdownFile(
+    markdown
+) {
 
     const metadata = {};
 
-    let content = markdown;
+    let content =
+        markdown;
 
 
-    if (markdown.startsWith("---")) {
+    if (
+        !markdown.startsWith(
+            "---"
+        )
+    ) {
 
-        const end =
-            markdown.indexOf(
-                "---",
-                3
-            );
-
-
-        if (end !== -1) {
-
-            const frontmatter =
-                markdown.substring(
-                    3,
-                    end
-                );
-
-
-            content =
-                markdown.substring(
-                    end + 3
-                );
-
-
-            frontmatter
-                .split("\n")
-                .forEach(line => {
-
-                    const separator =
-                        line.indexOf(":");
-
-
-                    if (
-                        separator === -1
-                    ) {
-                        return;
-                    }
-
-
-                    const key =
-                        line
-                            .substring(
-                                0,
-                                separator
-                            )
-                            .trim();
-
-
-                    let value =
-                        line
-                            .substring(
-                                separator + 1
-                            )
-                            .trim();
-
-
-                    value =
-                        value.replace(
-                            /^["']|["']$/g,
-                            ""
-                        );
-
-
-                    metadata[key] =
-                        value;
-
-                });
-
-        }
+        return {
+            metadata,
+            content
+        };
 
     }
+
+
+    const end =
+        markdown.indexOf(
+            "\n---",
+            3
+        );
+
+
+    if (end === -1) {
+
+        return {
+            metadata,
+            content
+        };
+
+    }
+
+
+    const frontmatter =
+        markdown.substring(
+            3,
+            end
+        );
+
+
+    content =
+        markdown.substring(
+            end + 4
+        );
+
+
+    frontmatter
+        .split("\n")
+        .forEach(
+            line => {
+
+                const index =
+                    line.indexOf(":");
+
+
+                if (
+                    index === -1
+                ) {
+
+                    return;
+
+                }
+
+
+                const key =
+                    line
+                        .substring(
+                            0,
+                            index
+                        )
+                        .trim();
+
+
+                let value =
+                    line
+                        .substring(
+                            index + 1
+                        )
+                        .trim();
+
+
+                if (
+                    value.length >= 2 &&
+                    (
+                        (
+                            value.startsWith('"') &&
+                            value.endsWith('"')
+                        )
+                        ||
+                        (
+                            value.startsWith("'") &&
+                            value.endsWith("'")
+                        )
+                    )
+                ) {
+
+                    value =
+                        value.substring(
+                            1,
+                            value.length - 1
+                        );
+
+                }
+
+
+                metadata[key] =
+                    value;
+
+            }
+        );
 
 
     return {
@@ -264,27 +345,26 @@ function parseMarkdownFile(markdown) {
    MARKDOWN → HTML
    ========================================================= */
 
-function markdownToHtml(markdown) {
+function markdownToHtml(
+    markdown
+) {
 
     const lines =
         markdown
-            .replace(/\r\n/g, "\n")
+            .replaceAll(
+                "\r\n",
+                "\n"
+            )
             .split("\n");
 
 
     let html = "";
 
-    let inCodeBlock = false;
-
-    let codeLanguage = "";
-
-    let codeContent = "";
+    let i = 0;
 
 
-    for (
-        let i = 0;
-        i < lines.length;
-        i++
+    while (
+        i < lines.length
     ) {
 
         const line =
@@ -292,54 +372,14 @@ function markdownToHtml(markdown) {
 
 
         /*
-         * Code block
+         * Empty line
          */
 
         if (
-            line.startsWith("```")
+            !line.trim()
         ) {
 
-            if (!inCodeBlock) {
-
-                inCodeBlock = true;
-
-                codeLanguage =
-                    line.substring(3).trim();
-
-                codeContent = "";
-
-            }
-            else {
-
-                inCodeBlock = false;
-
-
-                html += `
-
-                    <pre class="code-block">
-
-<code class="language-${escapeHtml(
-                    codeLanguage
-                )}">${escapeHtml(
-                    codeContent.trim()
-                )}</code>
-
-                    </pre>
-
-                `;
-
-            }
-
-
-            continue;
-
-        }
-
-
-        if (inCodeBlock) {
-
-            codeContent +=
-                line + "\n";
+            i++;
 
             continue;
 
@@ -347,10 +387,66 @@ function markdownToHtml(markdown) {
 
 
         /*
-         * Empty line
+         * Code block
          */
 
-        if (!line.trim()) {
+        if (
+            line.startsWith(
+                "```"
+            )
+        ) {
+
+            const language =
+                line
+                    .substring(3)
+                    .trim();
+
+
+            i++;
+
+
+            const codeLines = [];
+
+
+            while (
+                i < lines.length &&
+                !lines[i].startsWith(
+                    "```"
+                )
+            ) {
+
+                codeLines.push(
+                    lines[i]
+                );
+
+                i++;
+
+            }
+
+
+            if (
+                i < lines.length
+            ) {
+
+                i++;
+
+            }
+
+
+            html += `
+
+                <pre class="code-block">
+
+<code class="language-${escapeHtml(
+                language
+            )}">${escapeHtml(
+                codeLines.join("\n")
+            )}</code>
+
+                </pre>
+
+            `;
+
 
             continue;
 
@@ -366,12 +462,17 @@ function markdownToHtml(markdown) {
         ) {
 
             html += `
+
                 <h1>
                     ${formatInline(
                 line.substring(2)
             )}
                 </h1>
+
             `;
+
+
+            i++;
 
             continue;
 
@@ -387,12 +488,17 @@ function markdownToHtml(markdown) {
         ) {
 
             html += `
+
                 <h2>
                     ${formatInline(
                 line.substring(3)
             )}
                 </h2>
+
             `;
+
+
+            i++;
 
             continue;
 
@@ -408,12 +514,17 @@ function markdownToHtml(markdown) {
         ) {
 
             html += `
+
                 <h3>
                     ${formatInline(
                 line.substring(4)
             )}
                 </h3>
+
             `;
+
+
+            i++;
 
             continue;
 
@@ -421,15 +532,14 @@ function markdownToHtml(markdown) {
 
 
         /*
-         * List
+         * Unordered list
          */
 
         if (
             line.startsWith("- ")
         ) {
 
-            let list =
-                "<ul>";
+            html += "<ul>";
 
 
             while (
@@ -437,26 +547,26 @@ function markdownToHtml(markdown) {
                 lines[i].startsWith("- ")
             ) {
 
-                list += `
+                html += `
+
                     <li>
+
                         ${formatInline(
-                    lines[i].substring(2)
+                    lines[i]
+                        .substring(2)
                 )}
+
                     </li>
+
                 `;
+
 
                 i++;
 
             }
 
 
-            i--;
-
-
-            list += "</ul>";
-
-
-            html += list;
+            html += "</ul>";
 
 
             continue;
@@ -465,45 +575,52 @@ function markdownToHtml(markdown) {
 
 
         /*
-         * Numbered list
+         * Ordered list
          */
 
         if (
-            /^\d+\.\s/.test(line)
+            /^\d+\.\s/.test(
+                line
+            )
         ) {
 
-            let list =
-                "<ol>";
+            html += "<ol>";
 
 
             while (
                 i < lines.length &&
-                /^\d+\.\s/.test(lines[i])
+                /^\d+\.\s/.test(
+                    lines[i]
+                )
             ) {
 
-                list += `
+                const text =
+                    lines[i]
+                        .replace(
+                            /^\d+\.\s/,
+                            ""
+                        );
+
+
+                html += `
+
                     <li>
+
                         ${formatInline(
-                    lines[i].replace(
-                        /^\d+\.\s/,
-                        ""
-                    )
+                    text
                 )}
+
                     </li>
+
                 `;
+
 
                 i++;
 
             }
 
 
-            i--;
-
-
-            list += "</ol>";
-
-
-            html += list;
+            html += "</ol>";
 
 
             continue;
@@ -515,10 +632,47 @@ function markdownToHtml(markdown) {
          * Paragraph
          */
 
+        const paragraph = [
+            line
+        ];
+
+
+        i++;
+
+
+        while (
+            i < lines.length &&
+            lines[i].trim() &&
+            !lines[i].startsWith("# ") &&
+            !lines[i].startsWith("## ") &&
+            !lines[i].startsWith("### ") &&
+            !lines[i].startsWith("```") &&
+            !lines[i].startsWith("- ") &&
+            !/^\d+\.\s/.test(
+                lines[i]
+            )
+        ) {
+
+            paragraph.push(
+                lines[i]
+            );
+
+
+            i++;
+
+        }
+
+
         html += `
+
             <p>
-                ${formatInline(line)}
+
+                ${formatInline(
+            paragraph.join(" ")
+        )}
+
             </p>
+
         `;
 
     }
@@ -533,10 +687,36 @@ function markdownToHtml(markdown) {
    INLINE MARKDOWN
    ========================================================= */
 
-function formatInline(text) {
+function formatInline(
+    text
+) {
 
     let result =
-        escapeHtml(text);
+        escapeHtml(
+            text
+        );
+
+
+    /*
+     * Links
+     */
+
+    result =
+        result.replace(
+            /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+            '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+        );
+
+
+    /*
+     * Inline code
+     */
+
+    result =
+        result.replace(
+            /`([^`]+)`/g,
+            "<code>$1</code>"
+        );
 
 
     /*
@@ -561,28 +741,6 @@ function formatInline(text) {
         );
 
 
-    /*
-     * Inline code
-     */
-
-    result =
-        result.replace(
-            /`([^`]+)`/g,
-            "<code>$1</code>"
-        );
-
-
-    /*
-     * Links
-     */
-
-    result =
-        result.replace(
-            /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
-            '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
-        );
-
-
     return result;
 
 }
@@ -592,12 +750,9 @@ function formatInline(text) {
    HELPERS
    ========================================================= */
 
-function escapeHtml(value) {
-
-    if (!value) {
-        return "";
-    }
-
+function escapeHtml(
+    value
+) {
 
     return String(value)
         .replaceAll(
@@ -624,15 +779,12 @@ function escapeHtml(value) {
 }
 
 
-function formatDate(dateString) {
-
-    if (!dateString) {
-        return "";
-    }
-
+function formatDate(
+    value
+) {
 
     const date =
-        new Date(dateString);
+        new Date(value);
 
 
     if (
@@ -641,7 +793,7 @@ function formatDate(dateString) {
         )
     ) {
 
-        return dateString;
+        return value;
 
     }
 
@@ -658,9 +810,12 @@ function formatDate(dateString) {
 }
 
 
-function showError(message) {
+function showError(
+    element,
+    message
+) {
 
-    viewer.innerHTML = `
+    element.innerHTML = `
 
         <div class="viewer-error">
 
@@ -669,7 +824,9 @@ function showError(message) {
             </h1>
 
             <p>
-                ${escapeHtml(message)}
+                ${escapeHtml(
+        message
+    )}
             </p>
 
         </div>
@@ -677,6 +834,3 @@ function showError(message) {
     `;
 
 }
-
-
-loadLearning();
