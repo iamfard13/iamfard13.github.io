@@ -24,11 +24,10 @@
 <body>
 
     <!-- =====================================================
-         NAVIGATION – About link removed
+         NAVIGATION
          ===================================================== -->
     <header class="navbar">
         <nav class="navbar-links">
-            <!-- About link removed -->
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="learning.html">Learning</a>
@@ -49,9 +48,16 @@
                     <span class="typing-cursor">_</span>
                 </div>
             </div>
-            <a href="#about" class="hero-profile" aria-label="Go to About Me">
-                <img src="ali.jpeg" alt="Ali Abbasifard">
-            </a>
+
+            <!-- =================================================
+                 PROFILE – Modern UI (non-clickable, no badge)
+                 ================================================= -->
+            <div class="hero-profile" aria-label="Profile picture of Ali Abbasifard">
+                <div class="profile-image-wrapper">
+                    <img src="ali.jpeg" alt="Ali Abbasifard">
+                    <div class="profile-overlay"></div>
+                </div>
+            </div>
         </section>
 
         <!-- =================================================
@@ -131,9 +137,7 @@
                     </div>
                     <div class="skill-terminal-body">
                         <span class="terminal-prompt">$</span>
-                        <!-- The text and cursor will be inside this span -->
                         <span id="skill-explanation-text"></span>
-                        <!-- Cursor will be appended via JS -->
                     </div>
                 </div>
             </div>
