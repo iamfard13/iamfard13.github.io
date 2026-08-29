@@ -16,7 +16,7 @@ if (menuButton && nav) {
 }
 
 /* ==================================================
-   HERO TYPING – bold keywords after typing
+   HERO TYPING – keywords become bold DURING typing
 ================================================== */
 const descriptionElement = document.getElementById("hero-description-typing");
 const plainText = "I am a software engineer with over six years of development experience. I am a lifelong learner and enjoy collaborating with others. I use my strong communication skills to help teams collaborate, share knowledge, and succeed. I enjoy teaching and mentoring new team members, and I view challenging tasks as great opportunities for growth. When I'm not coding, I enjoy reading and traveling.";
@@ -33,35 +33,32 @@ const boldKeywords = [
     "traveling"
 ];
 
-function typeText(element, text, speed) {
-    return new Promise((resolve) => {
-        if (!element) { resolve(); return; }
-        let index = 0;
-        element.textContent = "";
-        function typeCharacter() {
-            if (index < text.length) {
-                element.textContent += text.charAt(index);
-                index++;
-                setTimeout(typeCharacter, speed);
-            } else {
-                resolve();
-            }
-        }
-        typeCharacter();
-    });
+// Function to wrap keywords with <strong> tags
+function applyBoldKeywords(text, keywords) {
+    // Escape special regex characters in keywords
+    const escaped = keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    // Build a regex that matches any keyword (case-insensitive)
+    const regex = new RegExp(escaped.join('|'), 'gi');
+    // Replace matches with <strong>...</strong>
+    return text.replace(regex, match => `<strong>${match}</strong>`);
 }
 
-function applyBoldKeywords(element, text, keywords) {
-    const escaped = keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-    const regex = new RegExp(escaped.join('|'), 'gi');
-    const html = text.replace(regex, match => `<strong>${match}</strong>`);
-    element.innerHTML = html;
+// Typing function that updates innerHTML with bold keywords in real time
+async function typeTextWithBold(element, fullText, keywords, speed) {
+    if (!element) return;
+    let currentText = "";
+    for (let i = 0; i < fullText.length; i++) {
+        currentText += fullText.charAt(i);
+        // Render current text with bold keywords applied
+        const html = applyBoldKeywords(currentText, keywords);
+        element.innerHTML = html;
+        await new Promise(resolve => setTimeout(resolve, speed));
+    }
 }
 
 async function startTypingAnimation() {
     if (descriptionElement) {
-        await typeText(descriptionElement, plainText, 25);
-        applyBoldKeywords(descriptionElement, plainText, boldKeywords);
+        await typeTextWithBold(descriptionElement, plainText, boldKeywords, 30);
     }
 }
 startTypingAnimation();
