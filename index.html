@@ -141,7 +141,7 @@
             </div>
             <div class="projects-grid">
                 <!-- =============================================
-                     PROJECT 1 – IoT Vehicle with GPS labels
+                     PROJECT 1 – IoT Vehicle with GPS labels (CSS animation)
                      ============================================= -->
                 <article class="project-card" data-project="1">
                     <span class="project-number">01</span>
@@ -152,8 +152,108 @@
                     <div class="project-animation">
                         <div class="map-scene">
                             <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
-                                <rect width="400" height="300" fill="url(#bgGrad1)" rx="10" />
                                 <defs>
+                                    <style>
+                                        @keyframes gps1 {
+
+                                            0%,
+                                            20% {
+                                                opacity: 1;
+                                            }
+
+                                            21%,
+                                            100% {
+                                                opacity: 0;
+                                            }
+                                        }
+
+                                        @keyframes gps2 {
+
+                                            0%,
+                                            20% {
+                                                opacity: 0;
+                                            }
+
+                                            21%,
+                                            40% {
+                                                opacity: 1;
+                                            }
+
+                                            41%,
+                                            100% {
+                                                opacity: 0;
+                                            }
+                                        }
+
+                                        @keyframes gps3 {
+
+                                            0%,
+                                            40% {
+                                                opacity: 0;
+                                            }
+
+                                            41%,
+                                            60% {
+                                                opacity: 1;
+                                            }
+
+                                            61%,
+                                            100% {
+                                                opacity: 0;
+                                            }
+                                        }
+
+                                        @keyframes gps4 {
+
+                                            0%,
+                                            60% {
+                                                opacity: 0;
+                                            }
+
+                                            61%,
+                                            80% {
+                                                opacity: 1;
+                                            }
+
+                                            81%,
+                                            100% {
+                                                opacity: 0;
+                                            }
+                                        }
+
+                                        @keyframes gps5 {
+
+                                            0%,
+                                            80% {
+                                                opacity: 0;
+                                            }
+
+                                            81%,
+                                            100% {
+                                                opacity: 1;
+                                            }
+                                        }
+
+                                        .coord1 {
+                                            animation: gps1 4s infinite;
+                                        }
+
+                                        .coord2 {
+                                            animation: gps2 4s infinite;
+                                        }
+
+                                        .coord3 {
+                                            animation: gps3 4s infinite;
+                                        }
+
+                                        .coord4 {
+                                            animation: gps4 4s infinite;
+                                        }
+
+                                        .coord5 {
+                                            animation: gps5 4s infinite;
+                                        }
+                                    </style>
                                     <radialGradient id="bgGrad1" cx="30%" cy="40%" r="70%">
                                         <stop offset="0%" stop-color="#1a2a3a" />
                                         <stop offset="100%" stop-color="#0d1520" />
@@ -163,6 +263,9 @@
                                             flood-opacity="0.6" />
                                     </filter>
                                 </defs>
+
+                                <!-- Background -->
+                                <rect width="400" height="300" fill="url(#bgGrad1)" rx="10" />
 
                                 <!-- Grid lines -->
                                 <g opacity="0.15">
@@ -191,7 +294,7 @@
                                     </path>
                                 </g>
 
-                                <!-- Car with GPS labels above it (font-size increased to 9) -->
+                                <!-- Car with GPS labels -->
                                 <g>
                                     <animateMotion dur="4s" repeatCount="indefinite" path="M 30 230 Q 200 40 370 230"
                                         rotate="auto" />
@@ -204,39 +307,14 @@
                                         
                                     </text>
 
-                                    <!-- GPS Coordinates cycling above car (now font-size 9) -->
+                                    <!-- GPS Coordinates – now using CSS classes for reliable cycling -->
                                     <g text-anchor="middle" dominant-baseline="central"
                                         font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">
-                                        <!-- Coord 1 -->
-                                        <text x="0" y="-28">
-                                            📍 12.3456, 67.8901
-                                            <animate attributeName="opacity" values="1;0;0;0;0" dur="4s"
-                                                repeatCount="indefinite" />
-                                        </text>
-                                        <!-- Coord 2 -->
-                                        <text x="0" y="-28">
-                                            📍 12.3489, 67.8923
-                                            <animate attributeName="opacity" values="0;1;0;0;0" dur="4s"
-                                                repeatCount="indefinite" />
-                                        </text>
-                                        <!-- Coord 3 -->
-                                        <text x="0" y="-28">
-                                            📍 12.3521, 67.8954
-                                            <animate attributeName="opacity" values="0;0;1;0;0" dur="4s"
-                                                repeatCount="indefinite" />
-                                        </text>
-                                        <!-- Coord 4 -->
-                                        <text x="0" y="-28">
-                                            📍 12.3556, 67.8980
-                                            <animate attributeName="opacity" values="0;0;0;1;0" dur="4s"
-                                                repeatCount="indefinite" />
-                                        </text>
-                                        <!-- Coord 5 -->
-                                        <text x="0" y="-28">
-                                            📍 12.3590, 67.9005
-                                            <animate attributeName="opacity" values="0;0;0;0;1" dur="4s"
-                                                repeatCount="indefinite" />
-                                        </text>
+                                        <text x="0" y="-28" class="coord1">📍 12.3456, 67.8901</text>
+                                        <text x="0" y="-28" class="coord2">📍 12.3489, 67.8923</text>
+                                        <text x="0" y="-28" class="coord3">📍 12.3521, 67.8954</text>
+                                        <text x="0" y="-28" class="coord4">📍 12.3556, 67.8980</text>
+                                        <text x="0" y="-28" class="coord5">📍 12.3590, 67.9005</text>
                                     </g>
                                 </g>
 
@@ -283,7 +361,7 @@
                 </article>
 
                 <!-- =============================================
-                     PROJECT 2 – Hotel Management (taxi only, no walking person)
+                     PROJECT 2 – Hotel Management (taxi only)
                      ============================================= -->
                 <article class="project-card" data-project="2">
                     <span class="project-number">02</span>
@@ -312,7 +390,7 @@
                                 <!-- Background -->
                                 <rect width="400" height="300" fill="url(#hotelBg)" rx="10" />
 
-                                <!-- Stars / Sky -->
+                                <!-- Stars -->
                                 <g opacity="0.3">
                                     <circle cx="50" cy="30" r="1.5" fill="#fff">
                                         <animate attributeName="opacity" values="0.3;1;0.3" dur="2s"
@@ -353,11 +431,9 @@
                                 <g>
                                     <rect x="140" y="100" width="120" height="140" fill="url(#buildingGrad)" rx="3"
                                         stroke="rgba(255,255,255,0.1)" stroke-width="1" />
-
                                     <rect x="155" y="85" width="90" height="18" fill="#fbbf24" rx="2" opacity="0.9" />
                                     <text x="200" y="98" font-family="'JetBrains Mono', monospace" font-size="9"
                                         font-weight="700" fill="#0d1520" text-anchor="middle">HOTEL</text>
-
                                     <rect x="185" y="200" width="30" height="40" fill="#1a202c" rx="2"
                                         stroke="rgba(255,255,255,0.1)" stroke-width="1" />
                                     <rect x="192" y="210" width="16" height="25" fill="#0d1520" rx="1" opacity="0.8" />
@@ -404,31 +480,22 @@
                                     </rect>
                                 </g>
 
-                                <!-- TAXI ONLY (no walking person) -->
+                                <!-- TAXI -->
                                 <g>
                                     <animateMotion dur="6s" repeatCount="indefinite" path="M -80 210 Q 60 210 150 210"
                                         rotate="auto" />
-
-                                    <!-- Taxi body -->
                                     <rect x="-25" y="-16" width="50" height="18" fill="#fbbf24" rx="4" />
-                                    <!-- Cabin / roof -->
                                     <rect x="-16" y="-24" width="28" height="10" fill="#eab308" rx="3" />
-                                    <!-- Windows -->
                                     <rect x="-13" y="-21" width="10" height="6" fill="#0d1520" rx="1" opacity="0.5" />
                                     <rect x="1" y="-21" width="10" height="6" fill="#0d1520" rx="1" opacity="0.5" />
-                                    <!-- Person inside the taxi (visible through window) -->
                                     <circle cx="0" cy="-20" r="3" fill="#f2f2f2" opacity="0.8" />
                                     <rect x="-1.5" y="-17" width="3" height="6" fill="#f2f2f2" rx="1" opacity="0.8" />
-                                    <!-- Wheels -->
                                     <circle cx="-16" cy="4" r="5" fill="#1a202c" />
                                     <circle cx="16" cy="4" r="5" fill="#1a202c" />
-                                    <!-- Headlights -->
                                     <rect x="25" y="-12" width="4" height="6" fill="#fef08a" rx="1" />
                                     <rect x="25" y="1" width="4" height="6" fill="#fef08a" rx="1" />
-                                    <!-- Taillights -->
                                     <rect x="-29" y="-12" width="4" height="6" fill="#ef4444" rx="1" />
                                     <rect x="-29" y="1" width="4" height="6" fill="#ef4444" rx="1" />
-                                    <!-- TAXI sign on top -->
                                     <rect x="-10" y="-28" width="20" height="5" fill="#ef4444" rx="1" />
                                     <text x="0" y="-24.5" font-family="'JetBrains Mono', monospace" font-size="5"
                                         font-weight="700" fill="#fff" text-anchor="middle">TAXI</text>
@@ -451,7 +518,7 @@
                                 <!-- Welcome mat -->
                                 <rect x="185" y="240" width="30" height="3" fill="#eab308" rx="1" opacity="0.3" />
 
-                                <!-- Hotel name label -->
+                                <!-- Hotel name -->
                                 <text x="200" y="270" font-family="'JetBrains Mono', monospace" font-size="8"
                                     fill="rgba(255,255,255,0.3)" text-anchor="middle">🏨 SINDIBAD HOTEL</text>
                             </svg>
