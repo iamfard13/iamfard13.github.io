@@ -465,7 +465,7 @@ button {
 }
 
 /* =========================================================
-   PROJECTS – HORIZONTAL SCROLL
+   PROJECTS – HORIZONTAL SCROLL (scrollbar hidden)
 ========================================================= */
 .projects-scroll-wrapper {
     position: relative;
@@ -482,21 +482,14 @@ button {
     -webkit-overflow-scrolling: touch;
     flex: 1;
     padding: 10px 0;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+    /* Hide scrollbar for Firefox, IE/Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
+/* Hide scrollbar for Chrome, Safari, Opera */
 .projects-scroll-container::-webkit-scrollbar {
-    height: 4px;
-}
-
-.projects-scroll-container::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.projects-scroll-container::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 4px;
+    display: none;
 }
 
 .projects-grid {
