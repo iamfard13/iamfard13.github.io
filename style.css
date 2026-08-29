@@ -1,5 +1,5 @@
 /* =========================================================
-   RESET
+   RESET + BACKGROUND
 ========================================================= */
 * {
     box-sizing: border-box;
@@ -18,6 +18,28 @@ body {
     line-height: 1.5;
     overflow-x: hidden;
     font-weight: 400;
+    min-height: 100vh;
+}
+
+/* Canvas background – fixed behind everything */
+#bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* All content sits above the canvas */
+.navbar,
+.hero,
+.section,
+.footer,
+.modal-overlay {
+    position: relative;
+    z-index: 1;
 }
 
 a {
@@ -75,6 +97,7 @@ button {
     text-transform: uppercase;
     opacity: 0.55;
     transition: opacity 0.2s ease;
+    color: #f2f2f2;
 }
 
 .navbar-links a:hover {
@@ -105,6 +128,7 @@ button {
     font-weight: 600;
     line-height: 0.95;
     letter-spacing: -0.055em;
+    color: #f2f2f2;
 }
 
 .hero-description {
@@ -117,6 +141,7 @@ button {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.8;
+    color: #f2f2f2;
 }
 
 .hero-description .terminal-prompt {
@@ -134,6 +159,7 @@ button {
     display: inline-block;
     margin-left: 3px;
     animation: cursorBlink 1s infinite;
+    color: #f2f2f2;
 }
 
 @keyframes cursorBlink {
@@ -149,6 +175,9 @@ button {
     }
 }
 
+/* =========================================================
+   HERO PROFILE – Modern Premium UI
+========================================================= */
 .hero-profile {
     display: block;
     position: relative;
@@ -256,6 +285,7 @@ button {
     opacity: 1;
 }
 
+/* Bold keywords – green */
 .hero-description strong {
     color: #2fff00;
     font-weight: 700;
@@ -263,22 +293,23 @@ button {
 }
 
 /* =========================================================
-   SECTIONS – card style + scroll margin
+   SECTIONS – SOLID BACKGROUND + WHITE BORDERS + HOVER EFFECT
 ========================================================= */
 .section {
     width: min(88vw, 1300px);
     margin: 0 auto 60px;
     padding: 60px 50px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 10px;
-    transition: border-color 0.3s ease, background 0.3s ease;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
     scroll-margin-top: 100px;
 }
 
 .section:hover {
-    border-color: rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.035);
+    background: #161616;
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.04);
 }
 
 .section-header {
@@ -290,6 +321,7 @@ button {
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.045em;
+    color: #f2f2f2;
 }
 
 /* =========================================================
@@ -310,14 +342,15 @@ button {
 
 .skill-category {
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 20px 25px;
-    border-radius: 6px;
-    transition: border-color 0.2s;
+    border-radius: 8px;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .skill-category:hover {
-    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .skill-category h3 {
@@ -328,6 +361,7 @@ button {
     text-transform: uppercase;
     opacity: 0.5;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
+    color: #f2f2f2;
 }
 
 .skill-items {
@@ -338,13 +372,13 @@ button {
 
 .skill-item {
     padding: 12px 20px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     background: transparent;
-    color: inherit;
+    color: #f2f2f2;
     cursor: pointer;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
-    border-radius: 4px;
+    border-radius: 6px;
     transition: all 0.2s ease;
 }
 
@@ -354,7 +388,7 @@ button {
     color: #000;
     border-color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
 }
 
 .skill-item.active {
@@ -370,11 +404,12 @@ button {
     top: 90px;
     align-self: flex-start;
     max-height: calc(100vh - 140px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.025);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 }
 
 .skill-terminal-header {
@@ -383,7 +418,7 @@ button {
     align-items: center;
     gap: 6px;
     padding: 0 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     flex-shrink: 0;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
 }
@@ -412,6 +447,7 @@ button {
     margin-left: 10px;
     font-size: 10px;
     opacity: 0.4;
+    color: #f2f2f2;
 }
 
 .skill-terminal-body {
@@ -425,6 +461,7 @@ button {
     line-height: 1.8;
     opacity: 0.7;
     overflow-y: auto;
+    color: #f2f2f2;
 }
 
 /* =========================================================
@@ -440,15 +477,18 @@ button {
     position: relative;
     min-height: 350px;
     padding: 35px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.015);
+    border-radius: 10px;
+    transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
     cursor: pointer;
     overflow: hidden;
 }
 
 .project-card:hover {
+    background: rgba(255, 255, 255, 0.06);
     transform: translateY(-6px);
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .project-number {
@@ -458,6 +498,7 @@ button {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 11px;
     opacity: 0.3;
+    color: #f2f2f2;
 }
 
 .project-label {
@@ -466,6 +507,7 @@ button {
     font-size: 10px;
     letter-spacing: 0.18em;
     opacity: 0.4;
+    color: #f2f2f2;
 }
 
 .project-card h3 {
@@ -473,6 +515,7 @@ button {
     font-size: 28px;
     font-weight: 600;
     letter-spacing: -0.03em;
+    color: #f2f2f2;
 }
 
 .project-card p:last-child {
@@ -481,10 +524,11 @@ button {
     line-height: 1.7;
     opacity: 0.5;
     font-weight: 300;
+    color: #f2f2f2;
 }
 
 /* =========================================================
-   PROJECT 1 – CAR ANIMATION (IoT Vehicle)
+   PROJECT 1 – CAR ANIMATION
 ========================================================= */
 .project-card[data-project="1"] .project-animation {
     position: absolute;
@@ -567,6 +611,51 @@ button {
 }
 
 .hotel-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 10px;
+}
+
+/* =========================================================
+   PROJECT 3 – GROCERY RAIN / FALLING ITEMS
+========================================================= */
+.project-card[data-project="3"] .project-animation {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    z-index: 2;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgba(8, 8, 8, 0.92);
+}
+
+.project-card[data-project="3"]:hover .project-animation {
+    opacity: 1;
+    visibility: visible;
+}
+
+.project-card[data-project="3"]:hover .project-number,
+.project-card[data-project="3"]:hover .project-label,
+.project-card[data-project="3"]:hover h3,
+.project-card[data-project="3"]:hover>p {
+    opacity: 0.15;
+    transition: opacity 0.4s ease;
+}
+
+.delivery-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delivery-svg {
     width: 100%;
     height: 100%;
     display: block;
@@ -669,6 +758,7 @@ button {
     letter-spacing: -0.025em;
     line-height: 1.1;
     margin-bottom: 28px;
+    color: #f2f2f2;
 }
 
 .modal-body {
@@ -689,7 +779,7 @@ button {
 }
 
 /* =========================================================
-   CONTACT – icons & tooltips
+   CONTACT
 ========================================================= */
 .contact-list {
     display: grid;
@@ -703,6 +793,7 @@ button {
     font-size: 10px;
     letter-spacing: 0.18em;
     opacity: 0.35;
+    color: #f2f2f2;
 }
 
 .contact-item>a {
@@ -713,6 +804,7 @@ button {
     font-size: 14px;
     opacity: 0.65;
     transition: opacity 0.2s ease;
+    color: #f2f2f2;
 }
 
 .contact-item>a:hover {
@@ -725,7 +817,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 13px;
     transition: border-color 0.2s ease;
 }
@@ -761,15 +853,16 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 17px;
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    color: #f2f2f2;
 }
 
 .social-link:hover {
+    background: rgba(255, 255, 255, 0.08);
     transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .social-link::after {
@@ -857,10 +950,11 @@ button {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 10px;
     opacity: 0.35;
+    color: #f2f2f2;
 }
 
 /* =========================================================
-   LEARNING PAGE
+   LEARNING & VIEWER
 ========================================================= */
 .learning-page {
     width: min(88vw, 1300px);
@@ -879,6 +973,7 @@ button {
     font-weight: 600;
     line-height: 0.95;
     letter-spacing: -0.05em;
+    color: #f2f2f2;
 }
 
 .learning-hero>p:last-child {
@@ -888,6 +983,7 @@ button {
     line-height: 1.7;
     opacity: 0.55;
     font-weight: 300;
+    color: #f2f2f2;
 }
 
 .learning-category {
@@ -908,12 +1004,14 @@ button {
     font-size: clamp(30px, 4vw, 52px);
     font-weight: 600;
     line-height: 1;
+    color: #f2f2f2;
 }
 
 .learning-count {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 12px;
     opacity: 0.35;
+    color: #f2f2f2;
 }
 
 .learning-grid {
@@ -943,6 +1041,7 @@ button {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 12px;
     opacity: 0.3;
+    color: #f2f2f2;
 }
 
 .learning-card-content {
@@ -955,6 +1054,7 @@ button {
     font-size: 10px;
     letter-spacing: 0.18em;
     opacity: 0.45;
+    color: #f2f2f2;
 }
 
 .learning-card h3 {
@@ -964,6 +1064,7 @@ button {
     font-weight: 600;
     line-height: 1.15;
     letter-spacing: -0.025em;
+    color: #f2f2f2;
 }
 
 .learning-card-chapter {
@@ -971,6 +1072,7 @@ button {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
     opacity: 0.65;
+    color: #f2f2f2;
 }
 
 .learning-card-author {
@@ -978,6 +1080,7 @@ button {
     font-size: 14px;
     opacity: 0.55;
     font-weight: 300;
+    color: #f2f2f2;
 }
 
 .learning-card-date {
@@ -987,6 +1090,7 @@ button {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     opacity: 0.4;
+    color: #f2f2f2;
 }
 
 .learning-card-button {
@@ -994,7 +1098,7 @@ button {
     padding: 0;
     border: 0;
     background: transparent;
-    color: inherit;
+    color: #f2f2f2;
     cursor: pointer;
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 11px;
@@ -1021,11 +1125,9 @@ button {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
     opacity: 0.5;
+    color: #f2f2f2;
 }
 
-/* =========================================================
-   VIEWER
-========================================================= */
 .viewer-page {
     width: min(88vw, 1100px);
     margin: 0 auto;
@@ -1039,6 +1141,7 @@ button {
     font-size: 11px;
     letter-spacing: 0.1em;
     opacity: 0.5;
+    color: #f2f2f2;
 }
 
 .viewer-back:hover {
@@ -1056,6 +1159,7 @@ button {
     font-weight: 600;
     line-height: 1.05;
     letter-spacing: -0.045em;
+    color: #f2f2f2;
 }
 
 .viewer-chapter {
@@ -1063,6 +1167,7 @@ button {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 13px;
     opacity: 0.55;
+    color: #f2f2f2;
 }
 
 .viewer-author {
@@ -1070,6 +1175,7 @@ button {
     font-size: 16px;
     opacity: 0.6;
     font-weight: 300;
+    color: #f2f2f2;
 }
 
 .viewer-date {
@@ -1077,6 +1183,7 @@ button {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
     font-size: 11px;
     opacity: 0.4;
+    color: #f2f2f2;
 }
 
 .viewer-terminal {
@@ -1106,12 +1213,14 @@ button {
     margin-left: 12px;
     font-size: 10px;
     opacity: 0.4;
+    color: #f2f2f2;
 }
 
 .viewer-content {
     padding: 55px;
     font-size: 17px;
     line-height: 1.85;
+    color: #f2f2f2;
 }
 
 .viewer-content h1,
@@ -1327,7 +1436,8 @@ button {
     }
 
     .map-scene,
-    .hotel-scene {
+    .hotel-scene,
+    .delivery-scene {
         min-height: 300px;
     }
 

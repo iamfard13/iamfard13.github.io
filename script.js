@@ -33,23 +33,17 @@ const boldKeywords = [
     "traveling"
 ];
 
-// Function to wrap keywords with <strong> tags
 function applyBoldKeywords(text, keywords) {
-    // Escape special regex characters in keywords
     const escaped = keywords.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
-    // Build a regex that matches any keyword (case-insensitive)
     const regex = new RegExp(escaped.join('|'), 'gi');
-    // Replace matches with <strong>...</strong>
     return text.replace(regex, match => `<strong>${match}</strong>`);
 }
 
-// Typing function that updates innerHTML with bold keywords in real time
 async function typeTextWithBold(element, fullText, keywords, speed) {
     if (!element) return;
     let currentText = "";
     for (let i = 0; i < fullText.length; i++) {
         currentText += fullText.charAt(i);
-        // Render current text with bold keywords applied
         const html = applyBoldKeywords(currentText, keywords);
         element.innerHTML = html;
         await new Promise(resolve => setTimeout(resolve, speed));
@@ -164,10 +158,12 @@ const projectData = {
         `
     },
     3: {
-        title: "Project Three",
+        title: "Fulfillment & Delivery Microservices",
         content: `
-            <p>This project is currently in the planning phase. I'm exploring new technologies and approaches.</p>
-            <p>More information will be shared as the project progresses.</p>
+            <p><strong>1:</strong> Collaborated with the team to develop and maintain the Fulfillment and Delivery microservices using .NET, SQL Server, Kafka and Redis, each managing specific phases of the order lifecycle.</p>
+            <p><strong>2:</strong> Develop and maintain an Accounting Service using IdentityServer 4, managing authentication and authorization for both customers and employees accessing internal services such as ticketing and administration panels.</p>
+            <p><strong>3:</strong> Additionally, we integrated legacy address and profile services into the Accounting Service, consolidating all user information management into a single system, improving efficiency and consistency.</p>
+            <p><strong>4:</strong> Participated in migrating customer data from a legacy database to the new Accounting Service database, which initially only housed management and administration panel users. Collaborated on designing and implementing query to clean and filter unnecessary information from the legacy database before transferring relevant customer data. This migration consolidated all user information —both customers and internal users— into a centralized database, enhancing data accessibility and management efficiency.</p>
         `
     }
 };

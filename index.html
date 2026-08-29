@@ -24,6 +24,11 @@
 <body>
 
     <!-- =====================================================
+         ANIMATED BACKGROUND – PARTICLE NETWORK
+         ===================================================== -->
+    <canvas id="bgCanvas"></canvas>
+
+    <!-- =====================================================
          NAVIGATION
          ===================================================== -->
     <header class="navbar">
@@ -141,7 +146,7 @@
             </div>
             <div class="projects-grid">
                 <!-- =============================================
-                     PROJECT 1 – IoT Vehicle with GPS labels (CSS animation)
+                     PROJECT 1 – IoT Vehicle
                      ============================================= -->
                 <article class="project-card" data-project="1">
                     <span class="project-number">01</span>
@@ -152,6 +157,7 @@
                     <div class="project-animation">
                         <div class="map-scene">
                             <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                                <rect width="400" height="300" fill="url(#bgGrad1)" rx="10" />
                                 <defs>
                                     <style>
                                         @keyframes gps1 {
@@ -264,10 +270,6 @@
                                     </filter>
                                 </defs>
 
-                                <!-- Background -->
-                                <rect width="400" height="300" fill="url(#bgGrad1)" rx="10" />
-
-                                <!-- Grid lines -->
                                 <g opacity="0.15">
                                     <line x1="0" y1="100" x2="400" y2="100" stroke="rgba(255,255,255,0.05)"
                                         stroke-width="1" />
@@ -279,7 +281,6 @@
                                         stroke-width="1" />
                                 </g>
 
-                                <!-- Road -->
                                 <g>
                                     <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="rgba(0,0,0,0.4)"
                                         stroke-width="28" stroke-linecap="round" />
@@ -294,20 +295,15 @@
                                     </path>
                                 </g>
 
-                                <!-- Car with GPS labels -->
                                 <g>
                                     <animateMotion dur="4s" repeatCount="indefinite" path="M 30 230 Q 200 40 370 230"
                                         rotate="auto" />
-
-                                    <!-- Car icon -->
                                     <text x="0" y="0"
                                         font-family="'Font Awesome 6 Free', 'Font Awesome 6 Pro', sans-serif"
                                         font-weight="900" font-size="32" fill="#fbbf24" text-anchor="middle"
                                         dominant-baseline="central" filter="url(#glow1)">
                                         
                                     </text>
-
-                                    <!-- GPS Coordinates – now using CSS classes for reliable cycling -->
                                     <g text-anchor="middle" dominant-baseline="central"
                                         font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">
                                         <text x="0" y="-28" class="coord1">📍 12.3456, 67.8901</text>
@@ -318,7 +314,6 @@
                                     </g>
                                 </g>
 
-                                <!-- Marker A -->
                                 <g>
                                     <circle cx="30" cy="230" r="14" fill="#22c55e" opacity="0.9" />
                                     <circle cx="30" cy="230" r="6" fill="#fff" />
@@ -326,7 +321,6 @@
                                         font-weight="700" fill="#22c55e" text-anchor="middle">A</text>
                                 </g>
 
-                                <!-- Marker B -->
                                 <g>
                                     <circle cx="370" cy="230" r="14" fill="#ef4444" opacity="0.9" />
                                     <circle cx="370" cy="230" r="6" fill="#fff" />
@@ -341,12 +335,10 @@
                                     </circle>
                                 </g>
 
-                                <!-- Decorative elements -->
                                 <text x="50" y="130" font-size="22" opacity="0.3">🌳</text>
                                 <text x="320" y="100" font-size="20" opacity="0.3">🌲</text>
                                 <text x="100" y="50" font-size="18" opacity="0.2">🏢</text>
                                 <text x="280" y="60" font-size="18" opacity="0.2">🏢</text>
-
                                 <text x="-40" y="40" font-size="30" opacity="0.1">
                                     ☁️
                                     <animate attributeName="x" from="-40" to="440" dur="15s" repeatCount="indefinite" />
@@ -361,7 +353,7 @@
                 </article>
 
                 <!-- =============================================
-                     PROJECT 2 – Hotel Management (taxi only)
+                     PROJECT 2 – Hotel Management (HOTEL LABEL REMOVED)
                      ============================================= -->
                 <article class="project-card" data-project="2">
                     <span class="project-number">02</span>
@@ -387,10 +379,8 @@
                                     </filter>
                                 </defs>
 
-                                <!-- Background -->
                                 <rect width="400" height="300" fill="url(#hotelBg)" rx="10" />
 
-                                <!-- Stars -->
                                 <g opacity="0.3">
                                     <circle cx="50" cy="30" r="1.5" fill="#fff">
                                         <animate attributeName="opacity" values="0.3;1;0.3" dur="2s"
@@ -422,12 +412,10 @@
                                     </circle>
                                 </g>
 
-                                <!-- Ground -->
                                 <rect x="0" y="220" width="400" height="80" fill="#1a202c" opacity="0.5" />
                                 <line x1="0" y1="220" x2="400" y2="220" stroke="rgba(255,255,255,0.05)"
                                     stroke-width="1" />
 
-                                <!-- Hotel Building -->
                                 <g>
                                     <rect x="140" y="100" width="120" height="140" fill="url(#buildingGrad)" rx="3"
                                         stroke="rgba(255,255,255,0.1)" stroke-width="1" />
@@ -439,7 +427,6 @@
                                     <rect x="192" y="210" width="16" height="25" fill="#0d1520" rx="1" opacity="0.8" />
                                     <circle cx="210" cy="218" r="2" fill="#fbbf24" opacity="0.6" />
 
-                                    <!-- Windows -->
                                     <g opacity="0.6">
                                         <rect x="148" y="115" width="14" height="18" fill="#fbbf24" rx="1"
                                             opacity="0.4" />
@@ -480,7 +467,6 @@
                                     </rect>
                                 </g>
 
-                                <!-- TAXI -->
                                 <g>
                                     <animateMotion dur="6s" repeatCount="indefinite" path="M -80 210 Q 60 210 150 210"
                                         rotate="auto" />
@@ -501,7 +487,6 @@
                                         font-weight="700" fill="#fff" text-anchor="middle">TAXI</text>
                                 </g>
 
-                                <!-- Street lamp -->
                                 <g opacity="0.4">
                                     <rect x="80" y="190" width="3" height="30" fill="#4a5568" />
                                     <circle cx="81.5" cy="190" r="4" fill="#fbbf24" opacity="0.3">
@@ -511,27 +496,340 @@
                                     <line x1="75" y1="190" x2="88" y2="190" stroke="#4a5568" stroke-width="2" />
                                 </g>
 
-                                <!-- Trees -->
                                 <text x="40" y="220" font-size="18" opacity="0.3">🌳</text>
                                 <text x="330" y="220" font-size="18" opacity="0.3">🌳</text>
-
-                                <!-- Welcome mat -->
                                 <rect x="185" y="240" width="30" height="3" fill="#eab308" rx="1" opacity="0.3" />
-
-                                <!-- Hotel name -->
-                                <text x="200" y="270" font-family="'JetBrains Mono', monospace" font-size="8"
-                                    fill="rgba(255,255,255,0.3)" text-anchor="middle">🏨 SINDIBAD HOTEL</text>
+                                <!-- SINDIBAD HOTEL label REMOVED -->
                             </svg>
                         </div>
                     </div>
                 </article>
 
-                <!-- Project 3 -->
+                <!-- =============================================
+                     PROJECT 3 – GROCERY RAIN (BOTTOM LABEL REMOVED, TITLE CHANGED)
+                     ============================================= -->
                 <article class="project-card" data-project="3">
                     <span class="project-number">03</span>
                     <p class="project-label">PROJECT</p>
-                    <h3>Project Three</h3>
-                    <p>Bla bla bla. A future project description will be displayed here.</p>
+                    <h3>Microservices &amp; Backend Systems</h3>
+                    <p>Order lifecycle management, accounting service, and legacy data migration.</p>
+
+                    <div class="project-animation">
+                        <div class="delivery-scene">
+                            <svg class="delivery-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <radialGradient id="rainBg" cx="50%" cy="30%" r="80%">
+                                        <stop offset="0%" stop-color="#0a1628" />
+                                        <stop offset="100%" stop-color="#050a14" />
+                                    </radialGradient>
+                                    <filter id="itemGlow">
+                                        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#fff"
+                                            flood-opacity="0.1" />
+                                    </filter>
+                                </defs>
+
+                                <!-- Background -->
+                                <rect width="400" height="300" fill="url(#rainBg)" rx="10" />
+
+                                <!-- Rain streaks -->
+                                <g opacity="0.08">
+                                    <line x1="30" y1="0" x2="25" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                        <animate attributeName="y1" values="-20;320" dur="0.8s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="y2" values="20;340" dur="0.8s"
+                                            repeatCount="indefinite" />
+                                    </line>
+                                    <line x1="80" y1="0" x2="75" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                        <animate attributeName="y1" values="-40;300" dur="0.9s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="y2" values="0;340" dur="0.9s"
+                                            repeatCount="indefinite" />
+                                    </line>
+                                    <line x1="140" y1="0" x2="135" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                        <animate attributeName="y1" values="-10;310" dur="0.7s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="y2" values="30;350" dur="0.7s"
+                                            repeatCount="indefinite" />
+                                    </line>
+                                    <line x1="200" y1="0" x2="195" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                        <animate attributeName="y1" values="-30;290" dur="0.85s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="y2" values="10;330" dur="0.85s"
+                                            repeatCount="indefinite" />
+                                    </line>
+                                    <line x1="260" y1="0" x2="255" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                        <animate attributeName="y1" values="-50;270" dur="0.75s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="y2" values="-10;310" dur="0.75s"
+                                            repeatCount="indefinite" />
+                                    </line>
+                                    <line x1="320" y1="0" x2="315" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                        <animate attributeName="y1" values="-15;305" dur="0.95s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="y2" values="25;345" dur="0.95s"
+                                            repeatCount="indefinite" />
+                                    </line>
+                                    <line x1="370" y1="0" x2="365" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                        <animate attributeName="y1" values="-60;260" dur="0.65s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="y2" values="-20;320" dur="0.65s"
+                                            repeatCount="indefinite" />
+                                    </line>
+                                </g>
+
+                                <!-- Subtle grid -->
+                                <g opacity="0.03">
+                                    <line x1="0" y1="60" x2="400" y2="60" stroke="#60a5fa" stroke-width="0.5" />
+                                    <line x1="0" y1="120" x2="400" y2="120" stroke="#60a5fa" stroke-width="0.5" />
+                                    <line x1="0" y1="180" x2="400" y2="180" stroke="#60a5fa" stroke-width="0.5" />
+                                    <line x1="0" y1="240" x2="400" y2="240" stroke="#60a5fa" stroke-width="0.5" />
+                                    <line x1="100" y1="0" x2="100" y2="300" stroke="#60a5fa" stroke-width="0.5" />
+                                    <line x1="200" y1="0" x2="200" y2="300" stroke="#60a5fa" stroke-width="0.5" />
+                                    <line x1="300" y1="0" x2="300" y2="300" stroke="#60a5fa" stroke-width="0.5" />
+                                </g>
+
+                                <!-- Column 1 (x ~30) -->
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="18" opacity="0.9">
+                                        🍎
+                                        <animate attributeName="y" values="-30;330" dur="1.8s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="30;32;30" dur="1.8s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="16" opacity="0.85">
+                                        🥕
+                                        <animate attributeName="y" values="-80;340" dur="2.2s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="25;27;25" dur="2.2s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+
+                                <!-- Column 2 (x ~70) -->
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="18" opacity="0.9">
+                                        🍌
+                                        <animate attributeName="y" values="-50;350" dur="2.0s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="70;68;70" dur="2.0s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="16" opacity="0.85">
+                                        🍅
+                                        <animate attributeName="y" values="-120;360" dur="2.5s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="65;67;65" dur="2.5s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+
+                                <!-- Column 3 (x ~110) -->
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="18" opacity="0.9">
+                                        🍞
+                                        <animate attributeName="y" values="-20;340" dur="1.6s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="110;108;110" dur="1.6s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="16" opacity="0.8">
+                                        🧀
+                                        <animate attributeName="y" values="-90;350" dur="2.3s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="105;107;105" dur="2.3s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+
+                                <!-- Column 4 (x ~150) -->
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="18" opacity="0.9">
+                                        🥩
+                                        <animate attributeName="y" values="-60;360" dur="2.1s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="150;148;150" dur="2.1s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="16" opacity="0.85">
+                                        🍊
+                                        <animate attributeName="y" values="-140;370" dur="2.6s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="145;147;145" dur="2.6s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+
+                                <!-- Column 5 (x ~190) -->
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="18" opacity="0.9">
+                                        🥦
+                                        <animate attributeName="y" values="-40;350" dur="1.7s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="190;188;190" dur="1.7s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="16" opacity="0.85">
+                                        🍋
+                                        <animate attributeName="y" values="-100;360" dur="2.4s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="185;187;185" dur="2.4s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+
+                                <!-- Column 6 (x ~230) -->
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="18" opacity="0.9">
+                                        🍆
+                                        <animate attributeName="y" values="-30;340" dur="1.5s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="230;228;230" dur="1.5s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="16" opacity="0.85">
+                                        🍓
+                                        <animate attributeName="y" values="-110;350" dur="2.2s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="225;227;225" dur="2.2s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+
+                                <!-- Column 7 (x ~270) -->
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="18" opacity="0.9">
+                                        🌽
+                                        <animate attributeName="y" values="-70;360" dur="2.0s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="270;268;270" dur="2.0s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="16" opacity="0.8">
+                                        🥖
+                                        <animate attributeName="y" values="-130;370" dur="2.5s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="265;267;265" dur="2.5s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+
+                                <!-- Column 8 (x ~310) -->
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="18" opacity="0.9">
+                                        🍇
+                                        <animate attributeName="y" values="-20;330" dur="1.6s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="310;312;310" dur="1.6s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="16" opacity="0.85">
+                                        🫐
+                                        <animate attributeName="y" values="-90;340" dur="2.3s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="305;307;305" dur="2.3s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+
+                                <!-- Column 9 (x ~350) -->
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="18" opacity="0.9">
+                                        🥝
+                                        <animate attributeName="y" values="-50;350" dur="1.9s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="350;348;350" dur="1.9s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+                                <g filter="url(#itemGlow)">
+                                    <text x="0" y="0" font-size="16" opacity="0.85">
+                                        🍑
+                                        <animate attributeName="y" values="-120;360" dur="2.4s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="x" values="345;347;345" dur="2.4s"
+                                            repeatCount="indefinite" />
+                                    </text>
+                                </g>
+
+                                <!-- Rain droplets -->
+                                <circle cx="0" cy="0" r="1.5" fill="#60a5fa" opacity="0.15">
+                                    <animate attributeName="cy" values="-10;310" dur="0.6s" repeatCount="indefinite" />
+                                    <animate attributeName="cx" values="45;43;45" dur="0.6s" repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="0" cy="0" r="1" fill="#34d399" opacity="0.1">
+                                    <animate attributeName="cy" values="-20;320" dur="0.7s" repeatCount="indefinite" />
+                                    <animate attributeName="cx" values="125;127;125" dur="0.7s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="0" cy="0" r="1.5" fill="#fbbf24" opacity="0.1">
+                                    <animate attributeName="cy" values="-30;330" dur="0.5s" repeatCount="indefinite" />
+                                    <animate attributeName="cx" values="205;203;205" dur="0.5s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="0" cy="0" r="1" fill="#60a5fa" opacity="0.12">
+                                    <animate attributeName="cy" values="-15;315" dur="0.8s" repeatCount="indefinite" />
+                                    <animate attributeName="cx" values="285;287;285" dur="0.8s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="0" cy="0" r="1.5" fill="#34d399" opacity="0.08">
+                                    <animate attributeName="cy" values="-40;340" dur="0.9s" repeatCount="indefinite" />
+                                    <animate attributeName="cx" values="165;163;165" dur="0.9s"
+                                        repeatCount="indefinite" />
+                                </circle>
+                                <circle cx="0" cy="0" r="1" fill="#fbbf24" opacity="0.1">
+                                    <animate attributeName="cy" values="-25;325" dur="0.55s" repeatCount="indefinite" />
+                                    <animate attributeName="cx" values="90;88;90" dur="0.55s"
+                                        repeatCount="indefinite" />
+                                </circle>
+
+                                <!-- Status text -->
+                                <text x="200" y="28" font-family="'JetBrains Mono', monospace" font-size="9"
+                                    fill="#34d399" text-anchor="middle" opacity="0.8">
+                                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s"
+                                        repeatCount="indefinite" />
+                                    <animate attributeName="fill" values="#34d399;#fbbf24;#34d399" dur="3s"
+                                        repeatCount="indefinite" />
+                                </text>
+
+                                <!-- Order counter -->
+                                <text x="340" y="28" font-family="'JetBrains Mono', monospace" font-size="7"
+                                    fill="rgba(255,255,255,0.15)" text-anchor="end">
+                                    <animate attributeName="fill"
+                                        values="rgba(255,255,255,0.15);rgba(255,255,255,0.25);rgba(255,255,255,0.15)"
+                                        dur="2s" repeatCount="indefinite" />
+                                </text>
+
+                                <!-- BOTTOM LABEL REMOVED -->
+
+                                <!-- Floating icons -->
+                                <text x="50" y="45" font-size="16" opacity="0.06">
+                                    🚚
+                                    <animate attributeName="y" values="45;55;45" dur="4s" repeatCount="indefinite" />
+                                </text>
+                                <text x="330" y="35" font-size="14" opacity="0.05">
+                                    📦
+                                    <animate attributeName="y" values="35;45;35" dur="5s" repeatCount="indefinite" />
+                                </text>
+                            </svg>
+                        </div>
+                    </div>
                 </article>
             </div>
         </section>
@@ -622,7 +920,10 @@
         </div>
     </div>
 
+    <!-- Main JavaScript -->
     <script src="script.js"></script>
+    <!-- Background particle network -->
+    <script src="particles.js"></script>
 </body>
 
 </html>
