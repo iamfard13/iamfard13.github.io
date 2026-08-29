@@ -49,9 +49,6 @@
                 </div>
             </div>
 
-            <!-- =================================================
-                 PROFILE – Modern UI (non-clickable, no badge)
-                 ================================================= -->
             <div class="hero-profile" aria-label="Profile picture of Ali Abbasifard">
                 <div class="profile-image-wrapper">
                     <img src="ali.jpeg" alt="Ali Abbasifard">
@@ -69,7 +66,6 @@
             </div>
 
             <div class="skills-container">
-                <!-- LEFT COLUMN: skill categories -->
                 <div class="skills-list">
                     <!-- Languages & Frameworks -->
                     <div class="skill-category">
@@ -151,19 +147,21 @@
                 <h2>Things I've built.</h2>
             </div>
             <div class="projects-grid">
-                <article class="project-card">
+                <article class="project-card" data-project="1">
                     <span class="project-number">01</span>
                     <p class="project-label">PROJECT</p>
-                    <h3>Project One</h3>
-                    <p>Bla bla bla. This is a placeholder for one of my software engineering projects.</p>
+                    <h3>IoT Vehicle</h3>
+                    <p>Real-time geo-location tracking, geofencing, and anti-theft immobilization system.</p>
                 </article>
-                <article class="project-card">
+
+                <article class="project-card" data-project="2">
                     <span class="project-number">02</span>
                     <p class="project-label">PROJECT</p>
                     <h3>Project Two</h3>
                     <p>Bla bla bla. More information about another project will be added here.</p>
                 </article>
-                <article class="project-card">
+
+                <article class="project-card" data-project="3">
                     <span class="project-number">03</span>
                     <p class="project-label">PROJECT</p>
                     <h3>Project Three</h3>
@@ -244,6 +242,23 @@
         <p>© 2026 Ali Abbasifard</p>
         <p>Built with curiosity &amp; code.</p>
     </footer>
+
+    <!-- =====================================================
+         MODAL
+         ===================================================== -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-content">
+                <h2 class="modal-title" id="modal-title">Project Title</h2>
+                <div class="modal-body" id="modal-body">
+                    <!-- Dynamic content loaded via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

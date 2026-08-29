@@ -107,7 +107,6 @@ function typeSkillDescription(skillKey) {
         clearTimeout(skillTypingTimer);
     }
 
-    // Clear previous text and cursor
     skillOutput.innerHTML = "";
 
     const text = skillDescriptions[skillKey] ||
@@ -117,12 +116,10 @@ function typeSkillDescription(skillKey) {
     function typeCharacter() {
         if (requestId !== currentSkillRequest) return;
         if (index < text.length) {
-            // Append character
             skillOutput.innerHTML = text.substring(0, index + 1) + `<span class="typing-cursor">_</span>`;
             index++;
             skillTypingTimer = setTimeout(typeCharacter, 18);
         } else {
-            // Finished – keep cursor blinking
             skillOutput.innerHTML = text + `<span class="typing-cursor">_</span>`;
         }
     }
@@ -151,6 +148,71 @@ if (firstSkill) {
 }
 
 /* ==================================================
+   PROJECT MODAL
+================================================== */
+const projectData = {
+    1: {
+        title: "IoT Vehicle",
+        content: `
+            <p><strong>1:</strong> Working on an IoT application designed to enhance the safety of user vehicles and residences. Key features that I developed included real-time geo-location tracking, customizable geofencing for unauthorized entry/exit alerts and critical anti-theft capabilities, such as remote vehicle immobilization (fuel pump shut-off).</p>
+            <p><strong>2:</strong> I also developed codes at front-end, enhancing the UI/UX. Using the Leaflet library, I streamlined the user experience, enabling one-click creation and easy modification of geofence shapes.</p>
+        `
+    },
+    2: {
+        title: "Project Two",
+        content: `
+            <p>This project is currently in development. More details will be added soon.</p>
+            <p>Stay tuned for updates on this exciting new venture.</p>
+        `
+    },
+    3: {
+        title: "Project Three",
+        content: `
+            <p>This project is currently in the planning phase. I'm exploring new technologies and approaches.</p>
+            <p>More information will be shared as the project progresses.</p>
+        `
+    }
+};
+
+const modalOverlay = document.getElementById("project-modal");
+const modalTitle = document.getElementById("modal-title");
+const modalBody = document.getElementById("modal-body");
+const closeButton = document.querySelector(".modal-close");
+
+document.querySelectorAll(".project-card").forEach(card => {
+    card.addEventListener("click", () => {
+        const projectId = card.dataset.project;
+        const data = projectData[projectId];
+
+        if (data) {
+            modalTitle.textContent = data.title;
+            modalBody.innerHTML = data.content;
+            modalOverlay.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+    });
+});
+
+function closeModal() {
+    modalOverlay.classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+closeButton.addEventListener("click", closeModal);
+
+modalOverlay.addEventListener("click", (e) => {
+    if (e.target === modalOverlay) {
+        closeModal();
+    }
+});
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalOverlay.classList.contains("active")) {
+        closeModal();
+    }
+});
+
+/* ==================================================
    SCROLL REVEAL
 ================================================== */
 const revealElements = document.querySelectorAll(".project, .about, .contact, .profile-card");
@@ -164,16 +226,6 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.12 });
 revealElements.forEach(element => observer.observe(element));
-
-/* ==================================================
-   PROJECT CLICK
-================================================== */
-const projects = document.querySelectorAll(".project");
-projects.forEach(project => {
-    project.addEventListener("click", () => {
-        console.log("Project clicked");
-    });
-});
 
 /* ==================================================
    CURRENT YEAR
