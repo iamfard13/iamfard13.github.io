@@ -158,12 +158,21 @@ const projectData = {
         `
     },
     3: {
-        title: "Fulfillment & Delivery Microservices",
+        title: "Microservices & Backend Systems",
         content: `
             <p><strong>1:</strong> Collaborated with the team to develop and maintain the Fulfillment and Delivery microservices using .NET, SQL Server, Kafka and Redis, each managing specific phases of the order lifecycle.</p>
             <p><strong>2:</strong> Develop and maintain an Accounting Service using IdentityServer 4, managing authentication and authorization for both customers and employees accessing internal services such as ticketing and administration panels.</p>
             <p><strong>3:</strong> Additionally, we integrated legacy address and profile services into the Accounting Service, consolidating all user information management into a single system, improving efficiency and consistency.</p>
             <p><strong>4:</strong> Participated in migrating customer data from a legacy database to the new Accounting Service database, which initially only housed management and administration panel users. Collaborated on designing and implementing query to clean and filter unnecessary information from the legacy database before transferring relevant customer data. This migration consolidated all user information —both customers and internal users— into a centralized database, enhancing data accessibility and management efficiency.</p>
+        `
+    },
+    4: {
+        title: "Chat Application",
+        content: `
+            <p><strong>1:</strong> Developed a chat system similar to modern messaging applications using .NET, Redis, and RabbitMQ.</p>
+            <p><strong>2:</strong> Implemented real-time messaging with WebSocket support, enabling instant message delivery and read receipts.</p>
+            <p><strong>3:</strong> Designed and built the message queuing architecture using RabbitMQ for reliable message delivery and Redis for caching and presence management.</p>
+            <p><strong>4:</strong> Created a responsive chat interface with support for group chats, file sharing, and user presence indicators.</p>
         `
     }
 };
@@ -205,6 +214,47 @@ document.addEventListener("keydown", (e) => {
         closeModal();
     }
 });
+
+/* ==================================================
+   PROJECT SCROLL – horizontal with arrows
+================================================== */
+const scrollContainer = document.getElementById('projectsScroll');
+const leftBtn = document.querySelector('.scroll-left');
+const rightBtn = document.querySelector('.scroll-right');
+
+if (scrollContainer && leftBtn && rightBtn) {
+    leftBtn.addEventListener('click', () => {
+        scrollContainer.scrollBy({
+            left: -340,
+            behavior: 'smooth'
+        });
+    });
+
+    rightBtn.addEventListener('click', () => {
+        scrollContainer.scrollBy({
+            left: 340,
+            behavior: 'smooth'
+        });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            const container = document.querySelector('.projects-scroll-container');
+            if (container && container === document.activeElement) {
+                container.scrollBy({ left: -340, behavior: 'smooth' });
+            }
+        } else if (e.key === 'ArrowRight') {
+            const container = document.querySelector('.projects-scroll-container');
+            if (container && container === document.activeElement) {
+                container.scrollBy({ left: 340, behavior: 'smooth' });
+            }
+        }
+    });
+
+    // Focus the container so keyboard events work
+    scrollContainer.setAttribute('tabindex', '0');
+}
 
 /* ==================================================
    SCROLL REVEAL

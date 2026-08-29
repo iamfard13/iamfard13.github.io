@@ -138,699 +138,820 @@
         </section>
 
         <!-- =================================================
-             PROJECTS
+             PROJECTS – HORIZONTAL SCROLL WITH ARROWS
              ================================================= -->
         <section class="section projects-section" id="projects">
             <div class="section-header">
                 <h2>Things I've built.</h2>
             </div>
-            <div class="projects-grid">
-                <!-- =============================================
-                     PROJECT 1 – IoT Vehicle
-                     ============================================= -->
-                <article class="project-card" data-project="1">
-                    <span class="project-number">01</span>
-                    <p class="project-label">PROJECT</p>
-                    <h3>IoT Vehicle &amp; Home Security</h3>
-                    <p>Real-time geo-location tracking, geofencing, and anti-theft immobilization system.</p>
 
-                    <div class="project-animation">
-                        <div class="map-scene">
-                            <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
-                                <rect width="400" height="300" fill="url(#bgGrad1)" rx="10" />
-                                <defs>
-                                    <style>
-                                        @keyframes gps1 {
+            <div class="projects-scroll-wrapper">
+                <button class="scroll-btn scroll-left" aria-label="Scroll left">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
 
-                                            0%,
-                                            20% {
-                                                opacity: 1;
-                                            }
+                <div class="projects-scroll-container" id="projectsScroll">
+                    <div class="projects-grid">
+                        <!-- =============================================
+                             PROJECT 1 – IoT Vehicle
+                             ============================================= -->
+                        <article class="project-card" data-project="1">
+                            <span class="project-number">01</span>
+                            <p class="project-label">PROJECT</p>
+                            <h3>IoT Vehicle &amp; Home Security</h3>
+                            <p>Real-time geo-location tracking, geofencing, and anti-theft immobilization system.</p>
 
-                                            21%,
-                                            100% {
-                                                opacity: 0;
-                                            }
-                                        }
+                            <div class="project-animation">
+                                <div class="map-scene">
+                                    <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                                        <rect width="400" height="300" fill="url(#bgGrad1)" rx="10" />
+                                        <defs>
+                                            <style>
+                                                @keyframes gps1 {
 
-                                        @keyframes gps2 {
+                                                    0%,
+                                                    20% {
+                                                        opacity: 1;
+                                                    }
 
-                                            0%,
-                                            20% {
-                                                opacity: 0;
-                                            }
+                                                    21%,
+                                                    100% {
+                                                        opacity: 0;
+                                                    }
+                                                }
 
-                                            21%,
-                                            40% {
-                                                opacity: 1;
-                                            }
+                                                @keyframes gps2 {
 
-                                            41%,
-                                            100% {
-                                                opacity: 0;
-                                            }
-                                        }
+                                                    0%,
+                                                    20% {
+                                                        opacity: 0;
+                                                    }
 
-                                        @keyframes gps3 {
+                                                    21%,
+                                                    40% {
+                                                        opacity: 1;
+                                                    }
 
-                                            0%,
-                                            40% {
-                                                opacity: 0;
-                                            }
+                                                    41%,
+                                                    100% {
+                                                        opacity: 0;
+                                                    }
+                                                }
 
-                                            41%,
-                                            60% {
-                                                opacity: 1;
-                                            }
+                                                @keyframes gps3 {
 
-                                            61%,
-                                            100% {
-                                                opacity: 0;
-                                            }
-                                        }
+                                                    0%,
+                                                    40% {
+                                                        opacity: 0;
+                                                    }
 
-                                        @keyframes gps4 {
+                                                    41%,
+                                                    60% {
+                                                        opacity: 1;
+                                                    }
 
-                                            0%,
-                                            60% {
-                                                opacity: 0;
-                                            }
+                                                    61%,
+                                                    100% {
+                                                        opacity: 0;
+                                                    }
+                                                }
 
-                                            61%,
-                                            80% {
-                                                opacity: 1;
-                                            }
+                                                @keyframes gps4 {
 
-                                            81%,
-                                            100% {
-                                                opacity: 0;
-                                            }
-                                        }
+                                                    0%,
+                                                    60% {
+                                                        opacity: 0;
+                                                    }
 
-                                        @keyframes gps5 {
+                                                    61%,
+                                                    80% {
+                                                        opacity: 1;
+                                                    }
 
-                                            0%,
-                                            80% {
-                                                opacity: 0;
-                                            }
+                                                    81%,
+                                                    100% {
+                                                        opacity: 0;
+                                                    }
+                                                }
 
-                                            81%,
-                                            100% {
-                                                opacity: 1;
-                                            }
-                                        }
+                                                @keyframes gps5 {
 
-                                        .coord1 {
-                                            animation: gps1 4s infinite;
-                                        }
+                                                    0%,
+                                                    80% {
+                                                        opacity: 0;
+                                                    }
 
-                                        .coord2 {
-                                            animation: gps2 4s infinite;
-                                        }
+                                                    81%,
+                                                    100% {
+                                                        opacity: 1;
+                                                    }
+                                                }
 
-                                        .coord3 {
-                                            animation: gps3 4s infinite;
-                                        }
+                                                .coord1 {
+                                                    animation: gps1 4s infinite;
+                                                }
 
-                                        .coord4 {
-                                            animation: gps4 4s infinite;
-                                        }
+                                                .coord2 {
+                                                    animation: gps2 4s infinite;
+                                                }
 
-                                        .coord5 {
-                                            animation: gps5 4s infinite;
-                                        }
-                                    </style>
-                                    <radialGradient id="bgGrad1" cx="30%" cy="40%" r="70%">
-                                        <stop offset="0%" stop-color="#1a2a3a" />
-                                        <stop offset="100%" stop-color="#0d1520" />
-                                    </radialGradient>
-                                    <filter id="glow1">
-                                        <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#fbbf24"
-                                            flood-opacity="0.6" />
-                                    </filter>
-                                </defs>
+                                                .coord3 {
+                                                    animation: gps3 4s infinite;
+                                                }
 
-                                <g opacity="0.15">
-                                    <line x1="0" y1="100" x2="400" y2="100" stroke="rgba(255,255,255,0.05)"
-                                        stroke-width="1" />
-                                    <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(255,255,255,0.05)"
-                                        stroke-width="1" />
-                                    <line x1="133" y1="0" x2="133" y2="300" stroke="rgba(255,255,255,0.05)"
-                                        stroke-width="1" />
-                                    <line x1="266" y1="0" x2="266" y2="300" stroke="rgba(255,255,255,0.05)"
-                                        stroke-width="1" />
-                                </g>
+                                                .coord4 {
+                                                    animation: gps4 4s infinite;
+                                                }
 
-                                <g>
-                                    <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="rgba(0,0,0,0.4)"
-                                        stroke-width="28" stroke-linecap="round" />
-                                    <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#2d3748" stroke-width="24"
-                                        stroke-linecap="round" />
-                                    <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#fbbf24" stroke-width="2"
-                                        stroke-dasharray="6 10" stroke-linecap="round" />
-                                    <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#3b82f6" stroke-width="3"
-                                        stroke-dasharray="4 12" stroke-linecap="round" opacity="0.6">
-                                        <animate attributeName="stroke-dashoffset" from="0" to="100" dur="2s"
-                                            repeatCount="indefinite" />
-                                    </path>
-                                </g>
+                                                .coord5 {
+                                                    animation: gps5 4s infinite;
+                                                }
+                                            </style>
+                                            <radialGradient id="bgGrad1" cx="30%" cy="40%" r="70%">
+                                                <stop offset="0%" stop-color="#1a2a3a" />
+                                                <stop offset="100%" stop-color="#0d1520" />
+                                            </radialGradient>
+                                            <filter id="glow1">
+                                                <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#fbbf24"
+                                                    flood-opacity="0.6" />
+                                            </filter>
+                                        </defs>
 
-                                <g>
-                                    <animateMotion dur="4s" repeatCount="indefinite" path="M 30 230 Q 200 40 370 230"
-                                        rotate="auto" />
-                                    <text x="0" y="0"
-                                        font-family="'Font Awesome 6 Free', 'Font Awesome 6 Pro', sans-serif"
-                                        font-weight="900" font-size="32" fill="#fbbf24" text-anchor="middle"
-                                        dominant-baseline="central" filter="url(#glow1)">
-                                        
-                                    </text>
-                                    <g text-anchor="middle" dominant-baseline="central"
-                                        font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">
-                                        <text x="0" y="-28" class="coord1">📍 12.3456, 67.8901</text>
-                                        <text x="0" y="-28" class="coord2">📍 12.3489, 67.8923</text>
-                                        <text x="0" y="-28" class="coord3">📍 12.3521, 67.8954</text>
-                                        <text x="0" y="-28" class="coord4">📍 12.3556, 67.8980</text>
-                                        <text x="0" y="-28" class="coord5">📍 12.3590, 67.9005</text>
-                                    </g>
-                                </g>
+                                        <g opacity="0.15">
+                                            <line x1="0" y1="100" x2="400" y2="100" stroke="rgba(255,255,255,0.05)"
+                                                stroke-width="1" />
+                                            <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(255,255,255,0.05)"
+                                                stroke-width="1" />
+                                            <line x1="133" y1="0" x2="133" y2="300" stroke="rgba(255,255,255,0.05)"
+                                                stroke-width="1" />
+                                            <line x1="266" y1="0" x2="266" y2="300" stroke="rgba(255,255,255,0.05)"
+                                                stroke-width="1" />
+                                        </g>
 
-                                <g>
-                                    <circle cx="30" cy="230" r="14" fill="#22c55e" opacity="0.9" />
-                                    <circle cx="30" cy="230" r="6" fill="#fff" />
-                                    <text x="30" y="260" font-family="'JetBrains Mono', monospace" font-size="11"
-                                        font-weight="700" fill="#22c55e" text-anchor="middle">A</text>
-                                </g>
+                                        <g>
+                                            <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="rgba(0,0,0,0.4)"
+                                                stroke-width="28" stroke-linecap="round" />
+                                            <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#2d3748"
+                                                stroke-width="24" stroke-linecap="round" />
+                                            <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#fbbf24"
+                                                stroke-width="2" stroke-dasharray="6 10" stroke-linecap="round" />
+                                            <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#3b82f6"
+                                                stroke-width="3" stroke-dasharray="4 12" stroke-linecap="round"
+                                                opacity="0.6">
+                                                <animate attributeName="stroke-dashoffset" from="0" to="100" dur="2s"
+                                                    repeatCount="indefinite" />
+                                            </path>
+                                        </g>
 
-                                <g>
-                                    <circle cx="370" cy="230" r="14" fill="#ef4444" opacity="0.9" />
-                                    <circle cx="370" cy="230" r="6" fill="#fff" />
-                                    <text x="370" y="260" font-family="'JetBrains Mono', monospace" font-size="11"
-                                        font-weight="700" fill="#ef4444" text-anchor="middle">B</text>
-                                    <circle cx="370" cy="230" r="20" fill="none" stroke="rgba(239,68,68,0.4)"
-                                        stroke-width="2">
-                                        <animate attributeName="r" from="14" to="28" dur="1.5s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="opacity" from="0.8" to="0" dur="1.5s"
-                                            repeatCount="indefinite" />
-                                    </circle>
-                                </g>
+                                        <g>
+                                            <animateMotion dur="4s" repeatCount="indefinite"
+                                                path="M 30 230 Q 200 40 370 230" rotate="auto" />
+                                            <text x="0" y="0"
+                                                font-family="'Font Awesome 6 Free', 'Font Awesome 6 Pro', sans-serif"
+                                                font-weight="900" font-size="32" fill="#fbbf24" text-anchor="middle"
+                                                dominant-baseline="central" filter="url(#glow1)">
+                                                
+                                            </text>
+                                            <g text-anchor="middle" dominant-baseline="central"
+                                                font-family="'JetBrains Mono', monospace" font-size="9" fill="#22c55e">
+                                                <text x="0" y="-28" class="coord1">📍 12.3456, 67.8901</text>
+                                                <text x="0" y="-28" class="coord2">📍 12.3489, 67.8923</text>
+                                                <text x="0" y="-28" class="coord3">📍 12.3521, 67.8954</text>
+                                                <text x="0" y="-28" class="coord4">📍 12.3556, 67.8980</text>
+                                                <text x="0" y="-28" class="coord5">📍 12.3590, 67.9005</text>
+                                            </g>
+                                        </g>
 
-                                <text x="50" y="130" font-size="22" opacity="0.3">🌳</text>
-                                <text x="320" y="100" font-size="20" opacity="0.3">🌲</text>
-                                <text x="100" y="50" font-size="18" opacity="0.2">🏢</text>
-                                <text x="280" y="60" font-size="18" opacity="0.2">🏢</text>
-                                <text x="-40" y="40" font-size="30" opacity="0.1">
-                                    ☁️
-                                    <animate attributeName="x" from="-40" to="440" dur="15s" repeatCount="indefinite" />
-                                </text>
-                                <text x="440" y="80" font-size="25" opacity="0.1">
-                                    ☁️
-                                    <animate attributeName="x" from="440" to="-40" dur="15s" repeatCount="indefinite" />
-                                </text>
-                            </svg>
-                        </div>
-                    </div>
-                </article>
+                                        <g>
+                                            <circle cx="30" cy="230" r="14" fill="#22c55e" opacity="0.9" />
+                                            <circle cx="30" cy="230" r="6" fill="#fff" />
+                                            <text x="30" y="260" font-family="'JetBrains Mono', monospace"
+                                                font-size="11" font-weight="700" fill="#22c55e"
+                                                text-anchor="middle">A</text>
+                                        </g>
 
-                <!-- =============================================
-                     PROJECT 2 – Hotel Management (HOTEL LABEL REMOVED)
-                     ============================================= -->
-                <article class="project-card" data-project="2">
-                    <span class="project-number">02</span>
-                    <p class="project-label">PROJECT</p>
-                    <h3>Hotel Management Service</h3>
-                    <p>Multi-provider hotel booking integration, notification service, and scalable infrastructure.</p>
+                                        <g>
+                                            <circle cx="370" cy="230" r="14" fill="#ef4444" opacity="0.9" />
+                                            <circle cx="370" cy="230" r="6" fill="#fff" />
+                                            <text x="370" y="260" font-family="'JetBrains Mono', monospace"
+                                                font-size="11" font-weight="700" fill="#ef4444"
+                                                text-anchor="middle">B</text>
+                                            <circle cx="370" cy="230" r="20" fill="none" stroke="rgba(239,68,68,0.4)"
+                                                stroke-width="2">
+                                                <animate attributeName="r" from="14" to="28" dur="1.5s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="opacity" from="0.8" to="0" dur="1.5s"
+                                                    repeatCount="indefinite" />
+                                            </circle>
+                                        </g>
 
-                    <div class="project-animation">
-                        <div class="hotel-scene">
-                            <svg class="hotel-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
-                                <defs>
-                                    <radialGradient id="hotelBg" cx="50%" cy="60%" r="80%">
-                                        <stop offset="0%" stop-color="#1a2a3a" />
-                                        <stop offset="100%" stop-color="#0d1520" />
-                                    </radialGradient>
-                                    <linearGradient id="buildingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" stop-color="#4a5568" />
-                                        <stop offset="100%" stop-color="#2d3748" />
-                                    </linearGradient>
-                                    <filter id="hotelGlow">
-                                        <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#fbbf24"
-                                            flood-opacity="0.4" />
-                                    </filter>
-                                </defs>
+                                        <text x="50" y="130" font-size="22" opacity="0.3">🌳</text>
+                                        <text x="320" y="100" font-size="20" opacity="0.3">🌲</text>
+                                        <text x="100" y="50" font-size="18" opacity="0.2">🏢</text>
+                                        <text x="280" y="60" font-size="18" opacity="0.2">🏢</text>
+                                        <text x="-40" y="40" font-size="30" opacity="0.1">
+                                            ☁️
+                                            <animate attributeName="x" from="-40" to="440" dur="15s"
+                                                repeatCount="indefinite" />
+                                        </text>
+                                        <text x="440" y="80" font-size="25" opacity="0.1">
+                                            ☁️
+                                            <animate attributeName="x" from="440" to="-40" dur="15s"
+                                                repeatCount="indefinite" />
+                                        </text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </article>
 
-                                <rect width="400" height="300" fill="url(#hotelBg)" rx="10" />
+                        <!-- =============================================
+                             PROJECT 2 – Hotel Management
+                             ============================================= -->
+                        <article class="project-card" data-project="2">
+                            <span class="project-number">02</span>
+                            <p class="project-label">PROJECT</p>
+                            <h3>Hotel Management Service</h3>
+                            <p>Multi-provider hotel booking integration, notification service, and scalable
+                                infrastructure.</p>
 
-                                <g opacity="0.3">
-                                    <circle cx="50" cy="30" r="1.5" fill="#fff">
-                                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s"
-                                            repeatCount="indefinite" />
-                                    </circle>
-                                    <circle cx="120" cy="20" r="1" fill="#fff">
-                                        <animate attributeName="opacity" values="0.5;1;0.5" dur="3s"
-                                            repeatCount="indefinite" />
-                                    </circle>
-                                    <circle cx="200" cy="15" r="1.5" fill="#fff">
-                                        <animate attributeName="opacity" values="0.2;1;0.2" dur="2.5s"
-                                            repeatCount="indefinite" />
-                                    </circle>
-                                    <circle cx="300" cy="25" r="1" fill="#fff">
-                                        <animate attributeName="opacity" values="0.4;1;0.4" dur="3.5s"
-                                            repeatCount="indefinite" />
-                                    </circle>
-                                    <circle cx="350" cy="10" r="1.5" fill="#fff">
-                                        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s"
-                                            repeatCount="indefinite" />
-                                    </circle>
-                                    <circle cx="80" cy="60" r="1" fill="#fff">
-                                        <animate attributeName="opacity" values="0.5;1;0.5" dur="4s"
-                                            repeatCount="indefinite" />
-                                    </circle>
-                                    <circle cx="320" cy="50" r="1" fill="#fff">
-                                        <animate attributeName="opacity" values="0.3;1;0.3" dur="3s"
-                                            repeatCount="indefinite" />
-                                    </circle>
-                                </g>
+                            <div class="project-animation">
+                                <div class="hotel-scene">
+                                    <svg class="hotel-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <radialGradient id="hotelBg" cx="50%" cy="60%" r="80%">
+                                                <stop offset="0%" stop-color="#1a2a3a" />
+                                                <stop offset="100%" stop-color="#0d1520" />
+                                            </radialGradient>
+                                            <linearGradient id="buildingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                                <stop offset="0%" stop-color="#4a5568" />
+                                                <stop offset="100%" stop-color="#2d3748" />
+                                            </linearGradient>
+                                            <filter id="hotelGlow">
+                                                <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#fbbf24"
+                                                    flood-opacity="0.4" />
+                                            </filter>
+                                        </defs>
 
-                                <rect x="0" y="220" width="400" height="80" fill="#1a202c" opacity="0.5" />
-                                <line x1="0" y1="220" x2="400" y2="220" stroke="rgba(255,255,255,0.05)"
-                                    stroke-width="1" />
+                                        <rect width="400" height="300" fill="url(#hotelBg)" rx="10" />
 
-                                <g>
-                                    <rect x="140" y="100" width="120" height="140" fill="url(#buildingGrad)" rx="3"
-                                        stroke="rgba(255,255,255,0.1)" stroke-width="1" />
-                                    <rect x="155" y="85" width="90" height="18" fill="#fbbf24" rx="2" opacity="0.9" />
-                                    <text x="200" y="98" font-family="'JetBrains Mono', monospace" font-size="9"
-                                        font-weight="700" fill="#0d1520" text-anchor="middle">HOTEL</text>
-                                    <rect x="185" y="200" width="30" height="40" fill="#1a202c" rx="2"
-                                        stroke="rgba(255,255,255,0.1)" stroke-width="1" />
-                                    <rect x="192" y="210" width="16" height="25" fill="#0d1520" rx="1" opacity="0.8" />
-                                    <circle cx="210" cy="218" r="2" fill="#fbbf24" opacity="0.6" />
+                                        <g opacity="0.3">
+                                            <circle cx="50" cy="30" r="1.5" fill="#fff">
+                                                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s"
+                                                    repeatCount="indefinite" />
+                                            </circle>
+                                            <circle cx="120" cy="20" r="1" fill="#fff">
+                                                <animate attributeName="opacity" values="0.5;1;0.5" dur="3s"
+                                                    repeatCount="indefinite" />
+                                            </circle>
+                                            <circle cx="200" cy="15" r="1.5" fill="#fff">
+                                                <animate attributeName="opacity" values="0.2;1;0.2" dur="2.5s"
+                                                    repeatCount="indefinite" />
+                                            </circle>
+                                            <circle cx="300" cy="25" r="1" fill="#fff">
+                                                <animate attributeName="opacity" values="0.4;1;0.4" dur="3.5s"
+                                                    repeatCount="indefinite" />
+                                            </circle>
+                                            <circle cx="350" cy="10" r="1.5" fill="#fff">
+                                                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s"
+                                                    repeatCount="indefinite" />
+                                            </circle>
+                                            <circle cx="80" cy="60" r="1" fill="#fff">
+                                                <animate attributeName="opacity" values="0.5;1;0.5" dur="4s"
+                                                    repeatCount="indefinite" />
+                                            </circle>
+                                            <circle cx="320" cy="50" r="1" fill="#fff">
+                                                <animate attributeName="opacity" values="0.3;1;0.3" dur="3s"
+                                                    repeatCount="indefinite" />
+                                            </circle>
+                                        </g>
 
-                                    <g opacity="0.6">
-                                        <rect x="148" y="115" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.4" />
-                                        <rect x="170" y="115" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.7" />
-                                        <rect x="192" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                        <rect x="0" y="220" width="400" height="80" fill="#1a202c" opacity="0.5" />
+                                        <line x1="0" y1="220" x2="400" y2="220" stroke="rgba(255,255,255,0.05)"
+                                            stroke-width="1" />
+
+                                        <g>
+                                            <rect x="140" y="100" width="120" height="140" fill="url(#buildingGrad)"
+                                                rx="3" stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+                                            <rect x="155" y="85" width="90" height="18" fill="#fbbf24" rx="2"
+                                                opacity="0.9" />
+                                            <text x="200" y="98" font-family="'JetBrains Mono', monospace" font-size="9"
+                                                font-weight="700" fill="#0d1520" text-anchor="middle">HOTEL</text>
+                                            <rect x="185" y="200" width="30" height="40" fill="#1a202c" rx="2"
+                                                stroke="rgba(255,255,255,0.1)" stroke-width="1" />
+                                            <rect x="192" y="210" width="16" height="25" fill="#0d1520" rx="1"
+                                                opacity="0.8" />
+                                            <circle cx="210" cy="218" r="2" fill="#fbbf24" opacity="0.6" />
+
+                                            <g opacity="0.6">
+                                                <rect x="148" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.4" />
+                                                <rect x="170" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.7" />
+                                                <rect x="192" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.3" />
+                                                <rect x="214" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.6" />
+                                                <rect x="236" y="115" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.5" />
+                                                <rect x="148" y="145" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.6" />
+                                                <rect x="170" y="145" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.3" />
+                                                <rect x="192" y="145" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.7" />
+                                                <rect x="214" y="145" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.4" />
+                                                <rect x="236" y="145" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.6" />
+                                                <rect x="148" y="175" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.5" />
+                                                <rect x="170" y="175" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.7" />
+                                                <rect x="192" y="175" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.3" />
+                                                <rect x="214" y="175" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.6" />
+                                                <rect x="236" y="175" width="14" height="18" fill="#fbbf24" rx="1"
+                                                    opacity="0.4" />
+                                            </g>
+
+                                            <rect x="140" y="100" width="120" height="140" rx="3" fill="none"
+                                                stroke="rgba(251,191,36,0.1)" stroke-width="2">
+                                                <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="3s"
+                                                    repeatCount="indefinite" />
+                                            </rect>
+                                        </g>
+
+                                        <g>
+                                            <animateMotion dur="6s" repeatCount="indefinite"
+                                                path="M -80 210 Q 60 210 150 210" rotate="auto" />
+                                            <rect x="-25" y="-16" width="50" height="18" fill="#fbbf24" rx="4" />
+                                            <rect x="-16" y="-24" width="28" height="10" fill="#eab308" rx="3" />
+                                            <rect x="-13" y="-21" width="10" height="6" fill="#0d1520" rx="1"
+                                                opacity="0.5" />
+                                            <rect x="1" y="-21" width="10" height="6" fill="#0d1520" rx="1"
+                                                opacity="0.5" />
+                                            <circle cx="0" cy="-20" r="3" fill="#f2f2f2" opacity="0.8" />
+                                            <rect x="-1.5" y="-17" width="3" height="6" fill="#f2f2f2" rx="1"
+                                                opacity="0.8" />
+                                            <circle cx="-16" cy="4" r="5" fill="#1a202c" />
+                                            <circle cx="16" cy="4" r="5" fill="#1a202c" />
+                                            <rect x="25" y="-12" width="4" height="6" fill="#fef08a" rx="1" />
+                                            <rect x="25" y="1" width="4" height="6" fill="#fef08a" rx="1" />
+                                            <rect x="-29" y="-12" width="4" height="6" fill="#ef4444" rx="1" />
+                                            <rect x="-29" y="1" width="4" height="6" fill="#ef4444" rx="1" />
+                                            <rect x="-10" y="-28" width="20" height="5" fill="#ef4444" rx="1" />
+                                            <text x="0" y="-24.5" font-family="'JetBrains Mono', monospace"
+                                                font-size="5" font-weight="700" fill="#fff"
+                                                text-anchor="middle">TAXI</text>
+                                        </g>
+
+                                        <g opacity="0.4">
+                                            <rect x="80" y="190" width="3" height="30" fill="#4a5568" />
+                                            <circle cx="81.5" cy="190" r="4" fill="#fbbf24" opacity="0.3">
+                                                <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s"
+                                                    repeatCount="indefinite" />
+                                            </circle>
+                                            <line x1="75" y1="190" x2="88" y2="190" stroke="#4a5568" stroke-width="2" />
+                                        </g>
+
+                                        <text x="40" y="220" font-size="18" opacity="0.3">🌳</text>
+                                        <text x="330" y="220" font-size="18" opacity="0.3">🌳</text>
+                                        <rect x="185" y="240" width="30" height="3" fill="#eab308" rx="1"
                                             opacity="0.3" />
-                                        <rect x="214" y="115" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.6" />
-                                        <rect x="236" y="115" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.5" />
-                                        <rect x="148" y="145" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.6" />
-                                        <rect x="170" y="145" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.3" />
-                                        <rect x="192" y="145" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.7" />
-                                        <rect x="214" y="145" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.4" />
-                                        <rect x="236" y="145" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.6" />
-                                        <rect x="148" y="175" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.5" />
-                                        <rect x="170" y="175" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.7" />
-                                        <rect x="192" y="175" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.3" />
-                                        <rect x="214" y="175" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.6" />
-                                        <rect x="236" y="175" width="14" height="18" fill="#fbbf24" rx="1"
-                                            opacity="0.4" />
-                                    </g>
+                                    </svg>
+                                </div>
+                            </div>
+                        </article>
 
-                                    <rect x="140" y="100" width="120" height="140" rx="3" fill="none"
-                                        stroke="rgba(251,191,36,0.1)" stroke-width="2">
-                                        <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="3s"
-                                            repeatCount="indefinite" />
-                                    </rect>
-                                </g>
+                        <!-- =============================================
+                             PROJECT 3 – Grocery Rain
+                             ============================================= -->
+                        <article class="project-card" data-project="3">
+                            <span class="project-number">03</span>
+                            <p class="project-label">PROJECT</p>
+                            <h3>Microservices &amp; Backend Systems</h3>
+                            <p>Order lifecycle management, accounting service, and legacy data migration.</p>
 
-                                <g>
-                                    <animateMotion dur="6s" repeatCount="indefinite" path="M -80 210 Q 60 210 150 210"
-                                        rotate="auto" />
-                                    <rect x="-25" y="-16" width="50" height="18" fill="#fbbf24" rx="4" />
-                                    <rect x="-16" y="-24" width="28" height="10" fill="#eab308" rx="3" />
-                                    <rect x="-13" y="-21" width="10" height="6" fill="#0d1520" rx="1" opacity="0.5" />
-                                    <rect x="1" y="-21" width="10" height="6" fill="#0d1520" rx="1" opacity="0.5" />
-                                    <circle cx="0" cy="-20" r="3" fill="#f2f2f2" opacity="0.8" />
-                                    <rect x="-1.5" y="-17" width="3" height="6" fill="#f2f2f2" rx="1" opacity="0.8" />
-                                    <circle cx="-16" cy="4" r="5" fill="#1a202c" />
-                                    <circle cx="16" cy="4" r="5" fill="#1a202c" />
-                                    <rect x="25" y="-12" width="4" height="6" fill="#fef08a" rx="1" />
-                                    <rect x="25" y="1" width="4" height="6" fill="#fef08a" rx="1" />
-                                    <rect x="-29" y="-12" width="4" height="6" fill="#ef4444" rx="1" />
-                                    <rect x="-29" y="1" width="4" height="6" fill="#ef4444" rx="1" />
-                                    <rect x="-10" y="-28" width="20" height="5" fill="#ef4444" rx="1" />
-                                    <text x="0" y="-24.5" font-family="'JetBrains Mono', monospace" font-size="5"
-                                        font-weight="700" fill="#fff" text-anchor="middle">TAXI</text>
-                                </g>
+                            <div class="project-animation">
+                                <div class="delivery-scene">
+                                    <svg class="delivery-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <radialGradient id="rainBg" cx="50%" cy="30%" r="80%">
+                                                <stop offset="0%" stop-color="#0a1628" />
+                                                <stop offset="100%" stop-color="#050a14" />
+                                            </radialGradient>
+                                            <filter id="itemGlow">
+                                                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#fff"
+                                                    flood-opacity="0.1" />
+                                            </filter>
+                                        </defs>
 
-                                <g opacity="0.4">
-                                    <rect x="80" y="190" width="3" height="30" fill="#4a5568" />
-                                    <circle cx="81.5" cy="190" r="4" fill="#fbbf24" opacity="0.3">
-                                        <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s"
-                                            repeatCount="indefinite" />
-                                    </circle>
-                                    <line x1="75" y1="190" x2="88" y2="190" stroke="#4a5568" stroke-width="2" />
-                                </g>
+                                        <rect width="400" height="300" fill="url(#rainBg)" rx="10" />
 
-                                <text x="40" y="220" font-size="18" opacity="0.3">🌳</text>
-                                <text x="330" y="220" font-size="18" opacity="0.3">🌳</text>
-                                <rect x="185" y="240" width="30" height="3" fill="#eab308" rx="1" opacity="0.3" />
-                                <!-- SINDIBAD HOTEL label REMOVED -->
-                            </svg>
-                        </div>
+                                        <g opacity="0.08">
+                                            <line x1="30" y1="0" x2="25" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                                <animate attributeName="y1" values="-20;320" dur="0.8s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="y2" values="20;340" dur="0.8s"
+                                                    repeatCount="indefinite" />
+                                            </line>
+                                            <line x1="80" y1="0" x2="75" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                                <animate attributeName="y1" values="-40;300" dur="0.9s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="y2" values="0;340" dur="0.9s"
+                                                    repeatCount="indefinite" />
+                                            </line>
+                                            <line x1="140" y1="0" x2="135" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                                <animate attributeName="y1" values="-10;310" dur="0.7s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="y2" values="30;350" dur="0.7s"
+                                                    repeatCount="indefinite" />
+                                            </line>
+                                            <line x1="200" y1="0" x2="195" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                                <animate attributeName="y1" values="-30;290" dur="0.85s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="y2" values="10;330" dur="0.85s"
+                                                    repeatCount="indefinite" />
+                                            </line>
+                                            <line x1="260" y1="0" x2="255" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                                <animate attributeName="y1" values="-50;270" dur="0.75s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="y2" values="-10;310" dur="0.75s"
+                                                    repeatCount="indefinite" />
+                                            </line>
+                                            <line x1="320" y1="0" x2="315" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                                <animate attributeName="y1" values="-15;305" dur="0.95s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="y2" values="25;345" dur="0.95s"
+                                                    repeatCount="indefinite" />
+                                            </line>
+                                            <line x1="370" y1="0" x2="365" y2="300" stroke="#60a5fa" stroke-width="0.5">
+                                                <animate attributeName="y1" values="-60;260" dur="0.65s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="y2" values="-20;320" dur="0.65s"
+                                                    repeatCount="indefinite" />
+                                            </line>
+                                        </g>
+
+                                        <g opacity="0.03">
+                                            <line x1="0" y1="60" x2="400" y2="60" stroke="#60a5fa" stroke-width="0.5" />
+                                            <line x1="0" y1="120" x2="400" y2="120" stroke="#60a5fa"
+                                                stroke-width="0.5" />
+                                            <line x1="0" y1="180" x2="400" y2="180" stroke="#60a5fa"
+                                                stroke-width="0.5" />
+                                            <line x1="0" y1="240" x2="400" y2="240" stroke="#60a5fa"
+                                                stroke-width="0.5" />
+                                            <line x1="100" y1="0" x2="100" y2="300" stroke="#60a5fa"
+                                                stroke-width="0.5" />
+                                            <line x1="200" y1="0" x2="200" y2="300" stroke="#60a5fa"
+                                                stroke-width="0.5" />
+                                            <line x1="300" y1="0" x2="300" y2="300" stroke="#60a5fa"
+                                                stroke-width="0.5" />
+                                        </g>
+
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="18" opacity="0.9">🍎
+                                                <animate attributeName="y" values="-30;330" dur="1.8s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="30;32;30" dur="1.8s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="16" opacity="0.85">🥕
+                                                <animate attributeName="y" values="-80;340" dur="2.2s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="25;27;25" dur="2.2s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="18" opacity="0.9">🍌
+                                                <animate attributeName="y" values="-50;350" dur="2.0s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="70;68;70" dur="2.0s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="16" opacity="0.85">🍅
+                                                <animate attributeName="y" values="-120;360" dur="2.5s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="65;67;65" dur="2.5s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="18" opacity="0.9">🍞
+                                                <animate attributeName="y" values="-20;340" dur="1.6s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="110;108;110" dur="1.6s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="16" opacity="0.8">🧀
+                                                <animate attributeName="y" values="-90;350" dur="2.3s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="105;107;105" dur="2.3s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="18" opacity="0.9">🥩
+                                                <animate attributeName="y" values="-60;360" dur="2.1s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="150;148;150" dur="2.1s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="16" opacity="0.85">🍊
+                                                <animate attributeName="y" values="-140;370" dur="2.6s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="145;147;145" dur="2.6s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="18" opacity="0.9">🥦
+                                                <animate attributeName="y" values="-40;350" dur="1.7s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="190;188;190" dur="1.7s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="16" opacity="0.85">🍋
+                                                <animate attributeName="y" values="-100;360" dur="2.4s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="185;187;185" dur="2.4s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="18" opacity="0.9">🍆
+                                                <animate attributeName="y" values="-30;340" dur="1.5s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="230;228;230" dur="1.5s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="16" opacity="0.85">🍓
+                                                <animate attributeName="y" values="-110;350" dur="2.2s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="225;227;225" dur="2.2s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="18" opacity="0.9">🌽
+                                                <animate attributeName="y" values="-70;360" dur="2.0s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="270;268;270" dur="2.0s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="16" opacity="0.8">🥖
+                                                <animate attributeName="y" values="-130;370" dur="2.5s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="265;267;265" dur="2.5s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="18" opacity="0.9">🍇
+                                                <animate attributeName="y" values="-20;330" dur="1.6s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="310;312;310" dur="1.6s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="16" opacity="0.85">🫐
+                                                <animate attributeName="y" values="-90;340" dur="2.3s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="305;307;305" dur="2.3s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="18" opacity="0.9">🥝
+                                                <animate attributeName="y" values="-50;350" dur="1.9s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="350;348;350" dur="1.9s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+                                        <g filter="url(#itemGlow)">
+                                            <text x="0" y="0" font-size="16" opacity="0.85">🍑
+                                                <animate attributeName="y" values="-120;360" dur="2.4s"
+                                                    repeatCount="indefinite" />
+                                                <animate attributeName="x" values="345;347;345" dur="2.4s"
+                                                    repeatCount="indefinite" />
+                                            </text>
+                                        </g>
+
+                                        <circle cx="0" cy="0" r="1.5" fill="#60a5fa" opacity="0.15">
+                                            <animate attributeName="cy" values="-10;310" dur="0.6s"
+                                                repeatCount="indefinite" />
+                                            <animate attributeName="cx" values="45;43;45" dur="0.6s"
+                                                repeatCount="indefinite" />
+                                        </circle>
+                                        <circle cx="0" cy="0" r="1" fill="#34d399" opacity="0.1">
+                                            <animate attributeName="cy" values="-20;320" dur="0.7s"
+                                                repeatCount="indefinite" />
+                                            <animate attributeName="cx" values="125;127;125" dur="0.7s"
+                                                repeatCount="indefinite" />
+                                        </circle>
+                                        <circle cx="0" cy="0" r="1.5" fill="#fbbf24" opacity="0.1">
+                                            <animate attributeName="cy" values="-30;330" dur="0.5s"
+                                                repeatCount="indefinite" />
+                                            <animate attributeName="cx" values="205;203;205" dur="0.5s"
+                                                repeatCount="indefinite" />
+                                        </circle>
+                                        <circle cx="0" cy="0" r="1" fill="#60a5fa" opacity="0.12">
+                                            <animate attributeName="cy" values="-15;315" dur="0.8s"
+                                                repeatCount="indefinite" />
+                                            <animate attributeName="cx" values="285;287;285" dur="0.8s"
+                                                repeatCount="indefinite" />
+                                        </circle>
+                                        <circle cx="0" cy="0" r="1.5" fill="#34d399" opacity="0.08">
+                                            <animate attributeName="cy" values="-40;340" dur="0.9s"
+                                                repeatCount="indefinite" />
+                                            <animate attributeName="cx" values="165;163;165" dur="0.9s"
+                                                repeatCount="indefinite" />
+                                        </circle>
+                                        <circle cx="0" cy="0" r="1" fill="#fbbf24" opacity="0.1">
+                                            <animate attributeName="cy" values="-25;325" dur="0.55s"
+                                                repeatCount="indefinite" />
+                                            <animate attributeName="cx" values="90;88;90" dur="0.55s"
+                                                repeatCount="indefinite" />
+                                        </circle>
+
+                                        <text x="50" y="45" font-size="16" opacity="0.06">🚚
+                                            <animate attributeName="y" values="45;55;45" dur="4s"
+                                                repeatCount="indefinite" />
+                                        </text>
+                                        <text x="330" y="35" font-size="14" opacity="0.05">📦
+                                            <animate attributeName="y" values="35;45;35" dur="5s"
+                                                repeatCount="indefinite" />
+                                        </text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- =============================================
+                             PROJECT 4 – Chat Application
+                             ============================================= -->
+                        <article class="project-card" data-project="4">
+                            <span class="project-number">04</span>
+                            <p class="project-label">PROJECT</p>
+                            <h3>Chat Application</h3>
+                            <p>Developed a chat system similar to modern messaging applications using .NET, Redis, and
+                                RabbitMQ.</p>
+
+                            <div class="project-animation">
+                                <div class="chat-scene">
+                                    <svg class="chat-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                                        <defs>
+                                            <radialGradient id="chatBg" cx="50%" cy="40%" r="70%">
+                                                <stop offset="0%" stop-color="#0f1a2e" />
+                                                <stop offset="100%" stop-color="#050a14" />
+                                            </radialGradient>
+                                            <filter id="chatGlow">
+                                                <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#60a5fa"
+                                                    flood-opacity="0.2" />
+                                            </filter>
+                                            <linearGradient id="bubbleFrom" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#3b82f6" />
+                                                <stop offset="100%" stop-color="#2563eb" />
+                                            </linearGradient>
+                                            <linearGradient id="bubbleTo" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                <stop offset="0%" stop-color="#1e293b" />
+                                                <stop offset="100%" stop-color="#0f172a" />
+                                            </linearGradient>
+                                        </defs>
+
+                                        <!-- Background -->
+                                        <rect width="400" height="300" fill="url(#chatBg)" rx="10" />
+
+                                        <!-- Chat container -->
+                                        <rect x="30" y="20" width="340" height="260" rx="12" fill="#0d1520"
+                                            stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+
+                                        <!-- Chat header -->
+                                        <rect x="30" y="20" width="340" height="35" rx="12" fill="#1a2a3a"
+                                            stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+                                        <text x="55" y="42" font-family="'JetBrains Mono', monospace" font-size="8"
+                                            fill="#f2f2f2" opacity="0.7">💬</text>
+                                        <text x="75" y="42" font-family="'JetBrains Mono', monospace" font-size="9"
+                                            fill="#f2f2f2" opacity="0.8">Chat</text>
+                                        <circle cx="330" cy="35" r="3" fill="#34d399" />
+                                        <circle cx="342" cy="35" r="3" fill="#fbbf24" />
+                                        <circle cx="354" cy="35" r="3" fill="#ef4444" />
+
+                                        <!-- Divider -->
+                                        <line x1="30" y1="55" x2="370" y2="55" stroke="rgba(255,255,255,0.05)"
+                                            stroke-width="1" />
+
+                                        <!-- Chat message 1 (from other person) -->
+                                        <g filter="url(#chatGlow)" opacity="0">
+                                            <rect x="45" y="65" width="140" height="28" rx="12"
+                                                fill="url(#bubbleFrom)" />
+                                            <text x="58" y="83" font-family="'Courier New', monospace" font-size="8"
+                                                fill="#fff" opacity="0.9">Hey! How's the chat app?</text>
+                                            <animate attributeName="opacity" values="0;0;1;1;0;0" dur="6s"
+                                                repeatCount="indefinite" keyTimes="0;0.05;0.15;0.65;0.85;1" />
+                                            <animate attributeName="x" values="45;45;45;45;45;45" dur="6s"
+                                                repeatCount="indefinite" />
+                                        </g>
+                                        <text x="50" y="60" font-family="'JetBrains Mono', monospace" font-size="5"
+                                            fill="rgba(255,255,255,0.15)" opacity="0">
+                                            ● ● ●
+                                            <animate attributeName="opacity" values="0;0;1;1;0;0" dur="6s"
+                                                repeatCount="indefinite" keyTimes="0;0.05;0.15;0.65;0.85;1" />
+                                        </text>
+
+                                        <!-- Chat message 2 (from me) -->
+                                        <g filter="url(#chatGlow)" opacity="0">
+                                            <rect x="180" y="100" width="160" height="28" rx="12" fill="url(#bubbleTo)"
+                                                stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+                                            <text x="193" y="118" font-family="'Courier New', monospace" font-size="8"
+                                                fill="#f2f2f2" opacity="0.9">It's going great! Built with .NET</text>
+                                            <animate attributeName="opacity" values="0;0;1;1;0;0" dur="6s"
+                                                repeatCount="indefinite" keyTimes="0;0.25;0.35;0.65;0.85;1" />
+                                        </g>
+
+                                        <!-- Chat message 3 (from other person) -->
+                                        <g filter="url(#chatGlow)" opacity="0">
+                                            <rect x="45" y="140" width="170" height="28" rx="12"
+                                                fill="url(#bubbleFrom)" />
+                                            <text x="58" y="158" font-family="'Courier New', monospace" font-size="8"
+                                                fill="#fff" opacity="0.9">Awesome! Redis &amp; RabbitMQ?</text>
+                                            <animate attributeName="opacity" values="0;0;1;1;0;0" dur="6s"
+                                                repeatCount="indefinite" keyTimes="0;0.45;0.55;0.65;0.85;1" />
+                                        </g>
+
+                                        <!-- Chat message 4 (from me) -->
+                                        <g filter="url(#chatGlow)" opacity="0">
+                                            <rect x="180" y="175" width="150" height="28" rx="12" fill="url(#bubbleTo)"
+                                                stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+                                            <text x="193" y="193" font-family="'Courier New', monospace" font-size="8"
+                                                fill="#f2f2f2" opacity="0.9">Yes! Real-time messaging 🚀</text>
+                                            <animate attributeName="opacity" values="0;0;1;1;0;0" dur="6s"
+                                                repeatCount="indefinite" keyTimes="0;0.65;0.75;0.85;0.95;1" />
+                                        </g>
+
+                                        <!-- Typing indicator (3 dots) -->
+                                        <g opacity="0">
+                                            <rect x="45" y="215" width="50" height="22" rx="11" fill="#1a2a3a"
+                                                stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+                                            <circle cx="58" cy="226" r="3" fill="#94a3b8">
+                                                <animate attributeName="cy" values="226;222;226" dur="0.6s"
+                                                    repeatCount="indefinite" begin="0s" />
+                                            </circle>
+                                            <circle cx="68" cy="226" r="3" fill="#94a3b8">
+                                                <animate attributeName="cy" values="226;222;226" dur="0.6s"
+                                                    repeatCount="indefinite" begin="0.2s" />
+                                            </circle>
+                                            <circle cx="78" cy="226" r="3" fill="#94a3b8">
+                                                <animate attributeName="cy" values="226;222;226" dur="0.6s"
+                                                    repeatCount="indefinite" begin="0.4s" />
+                                            </circle>
+                                            <animate attributeName="opacity" values="0;0;1;1;0;0" dur="6s"
+                                                repeatCount="indefinite" keyTimes="0;0.7;0.75;0.85;0.95;1" />
+                                        </g>
+
+                                        <!-- Input bar at bottom -->
+                                        <rect x="35" y="248" width="330" height="28" rx="14" fill="#1a2a3a"
+                                            stroke="rgba(255,255,255,0.05)" stroke-width="1" />
+                                        <text x="50" y="266" font-family="'Courier New', monospace" font-size="7"
+                                            fill="rgba(255,255,255,0.2)">Type a message...</text>
+                                        <circle cx="350" cy="262" r="10" fill="#3b82f6">
+                                            <animate attributeName="r" values="10;11;10" dur="2s"
+                                                repeatCount="indefinite" />
+                                        </circle>
+                                        <text x="347" y="264" font-family="'Font Awesome 6 Free', sans-serif"
+                                            font-weight="900" font-size="7" fill="#fff" opacity="0.8">➤</text>
+
+                                        <!-- Status indicator -->
+                                        <text x="200" y="285" font-family="'JetBrains Mono', monospace" font-size="6"
+                                            fill="rgba(255,255,255,0.08)" text-anchor="middle">● LIVE CHAT</text>
+                                    </svg>
+                                </div>
+                            </div>
+                        </article>
                     </div>
-                </article>
+                </div>
 
-                <!-- =============================================
-                     PROJECT 3 – GROCERY RAIN (BOTTOM LABEL REMOVED, TITLE CHANGED)
-                     ============================================= -->
-                <article class="project-card" data-project="3">
-                    <span class="project-number">03</span>
-                    <p class="project-label">PROJECT</p>
-                    <h3>Microservices &amp; Backend Systems</h3>
-                    <p>Order lifecycle management, accounting service, and legacy data migration.</p>
-
-                    <div class="project-animation">
-                        <div class="delivery-scene">
-                            <svg class="delivery-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
-                                <defs>
-                                    <radialGradient id="rainBg" cx="50%" cy="30%" r="80%">
-                                        <stop offset="0%" stop-color="#0a1628" />
-                                        <stop offset="100%" stop-color="#050a14" />
-                                    </radialGradient>
-                                    <filter id="itemGlow">
-                                        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#fff"
-                                            flood-opacity="0.1" />
-                                    </filter>
-                                </defs>
-
-                                <!-- Background -->
-                                <rect width="400" height="300" fill="url(#rainBg)" rx="10" />
-
-                                <!-- Rain streaks -->
-                                <g opacity="0.08">
-                                    <line x1="30" y1="0" x2="25" y2="300" stroke="#60a5fa" stroke-width="0.5">
-                                        <animate attributeName="y1" values="-20;320" dur="0.8s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="y2" values="20;340" dur="0.8s"
-                                            repeatCount="indefinite" />
-                                    </line>
-                                    <line x1="80" y1="0" x2="75" y2="300" stroke="#60a5fa" stroke-width="0.5">
-                                        <animate attributeName="y1" values="-40;300" dur="0.9s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="y2" values="0;340" dur="0.9s"
-                                            repeatCount="indefinite" />
-                                    </line>
-                                    <line x1="140" y1="0" x2="135" y2="300" stroke="#60a5fa" stroke-width="0.5">
-                                        <animate attributeName="y1" values="-10;310" dur="0.7s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="y2" values="30;350" dur="0.7s"
-                                            repeatCount="indefinite" />
-                                    </line>
-                                    <line x1="200" y1="0" x2="195" y2="300" stroke="#60a5fa" stroke-width="0.5">
-                                        <animate attributeName="y1" values="-30;290" dur="0.85s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="y2" values="10;330" dur="0.85s"
-                                            repeatCount="indefinite" />
-                                    </line>
-                                    <line x1="260" y1="0" x2="255" y2="300" stroke="#60a5fa" stroke-width="0.5">
-                                        <animate attributeName="y1" values="-50;270" dur="0.75s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="y2" values="-10;310" dur="0.75s"
-                                            repeatCount="indefinite" />
-                                    </line>
-                                    <line x1="320" y1="0" x2="315" y2="300" stroke="#60a5fa" stroke-width="0.5">
-                                        <animate attributeName="y1" values="-15;305" dur="0.95s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="y2" values="25;345" dur="0.95s"
-                                            repeatCount="indefinite" />
-                                    </line>
-                                    <line x1="370" y1="0" x2="365" y2="300" stroke="#60a5fa" stroke-width="0.5">
-                                        <animate attributeName="y1" values="-60;260" dur="0.65s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="y2" values="-20;320" dur="0.65s"
-                                            repeatCount="indefinite" />
-                                    </line>
-                                </g>
-
-                                <!-- Subtle grid -->
-                                <g opacity="0.03">
-                                    <line x1="0" y1="60" x2="400" y2="60" stroke="#60a5fa" stroke-width="0.5" />
-                                    <line x1="0" y1="120" x2="400" y2="120" stroke="#60a5fa" stroke-width="0.5" />
-                                    <line x1="0" y1="180" x2="400" y2="180" stroke="#60a5fa" stroke-width="0.5" />
-                                    <line x1="0" y1="240" x2="400" y2="240" stroke="#60a5fa" stroke-width="0.5" />
-                                    <line x1="100" y1="0" x2="100" y2="300" stroke="#60a5fa" stroke-width="0.5" />
-                                    <line x1="200" y1="0" x2="200" y2="300" stroke="#60a5fa" stroke-width="0.5" />
-                                    <line x1="300" y1="0" x2="300" y2="300" stroke="#60a5fa" stroke-width="0.5" />
-                                </g>
-
-                                <!-- Column 1 (x ~30) -->
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="18" opacity="0.9">
-                                        🍎
-                                        <animate attributeName="y" values="-30;330" dur="1.8s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="30;32;30" dur="1.8s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="16" opacity="0.85">
-                                        🥕
-                                        <animate attributeName="y" values="-80;340" dur="2.2s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="25;27;25" dur="2.2s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-
-                                <!-- Column 2 (x ~70) -->
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="18" opacity="0.9">
-                                        🍌
-                                        <animate attributeName="y" values="-50;350" dur="2.0s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="70;68;70" dur="2.0s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="16" opacity="0.85">
-                                        🍅
-                                        <animate attributeName="y" values="-120;360" dur="2.5s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="65;67;65" dur="2.5s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-
-                                <!-- Column 3 (x ~110) -->
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="18" opacity="0.9">
-                                        🍞
-                                        <animate attributeName="y" values="-20;340" dur="1.6s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="110;108;110" dur="1.6s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="16" opacity="0.8">
-                                        🧀
-                                        <animate attributeName="y" values="-90;350" dur="2.3s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="105;107;105" dur="2.3s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-
-                                <!-- Column 4 (x ~150) -->
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="18" opacity="0.9">
-                                        🥩
-                                        <animate attributeName="y" values="-60;360" dur="2.1s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="150;148;150" dur="2.1s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="16" opacity="0.85">
-                                        🍊
-                                        <animate attributeName="y" values="-140;370" dur="2.6s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="145;147;145" dur="2.6s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-
-                                <!-- Column 5 (x ~190) -->
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="18" opacity="0.9">
-                                        🥦
-                                        <animate attributeName="y" values="-40;350" dur="1.7s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="190;188;190" dur="1.7s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="16" opacity="0.85">
-                                        🍋
-                                        <animate attributeName="y" values="-100;360" dur="2.4s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="185;187;185" dur="2.4s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-
-                                <!-- Column 6 (x ~230) -->
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="18" opacity="0.9">
-                                        🍆
-                                        <animate attributeName="y" values="-30;340" dur="1.5s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="230;228;230" dur="1.5s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="16" opacity="0.85">
-                                        🍓
-                                        <animate attributeName="y" values="-110;350" dur="2.2s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="225;227;225" dur="2.2s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-
-                                <!-- Column 7 (x ~270) -->
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="18" opacity="0.9">
-                                        🌽
-                                        <animate attributeName="y" values="-70;360" dur="2.0s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="270;268;270" dur="2.0s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="16" opacity="0.8">
-                                        🥖
-                                        <animate attributeName="y" values="-130;370" dur="2.5s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="265;267;265" dur="2.5s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-
-                                <!-- Column 8 (x ~310) -->
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="18" opacity="0.9">
-                                        🍇
-                                        <animate attributeName="y" values="-20;330" dur="1.6s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="310;312;310" dur="1.6s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="16" opacity="0.85">
-                                        🫐
-                                        <animate attributeName="y" values="-90;340" dur="2.3s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="305;307;305" dur="2.3s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-
-                                <!-- Column 9 (x ~350) -->
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="18" opacity="0.9">
-                                        🥝
-                                        <animate attributeName="y" values="-50;350" dur="1.9s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="350;348;350" dur="1.9s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-                                <g filter="url(#itemGlow)">
-                                    <text x="0" y="0" font-size="16" opacity="0.85">
-                                        🍑
-                                        <animate attributeName="y" values="-120;360" dur="2.4s"
-                                            repeatCount="indefinite" />
-                                        <animate attributeName="x" values="345;347;345" dur="2.4s"
-                                            repeatCount="indefinite" />
-                                    </text>
-                                </g>
-
-                                <!-- Rain droplets -->
-                                <circle cx="0" cy="0" r="1.5" fill="#60a5fa" opacity="0.15">
-                                    <animate attributeName="cy" values="-10;310" dur="0.6s" repeatCount="indefinite" />
-                                    <animate attributeName="cx" values="45;43;45" dur="0.6s" repeatCount="indefinite" />
-                                </circle>
-                                <circle cx="0" cy="0" r="1" fill="#34d399" opacity="0.1">
-                                    <animate attributeName="cy" values="-20;320" dur="0.7s" repeatCount="indefinite" />
-                                    <animate attributeName="cx" values="125;127;125" dur="0.7s"
-                                        repeatCount="indefinite" />
-                                </circle>
-                                <circle cx="0" cy="0" r="1.5" fill="#fbbf24" opacity="0.1">
-                                    <animate attributeName="cy" values="-30;330" dur="0.5s" repeatCount="indefinite" />
-                                    <animate attributeName="cx" values="205;203;205" dur="0.5s"
-                                        repeatCount="indefinite" />
-                                </circle>
-                                <circle cx="0" cy="0" r="1" fill="#60a5fa" opacity="0.12">
-                                    <animate attributeName="cy" values="-15;315" dur="0.8s" repeatCount="indefinite" />
-                                    <animate attributeName="cx" values="285;287;285" dur="0.8s"
-                                        repeatCount="indefinite" />
-                                </circle>
-                                <circle cx="0" cy="0" r="1.5" fill="#34d399" opacity="0.08">
-                                    <animate attributeName="cy" values="-40;340" dur="0.9s" repeatCount="indefinite" />
-                                    <animate attributeName="cx" values="165;163;165" dur="0.9s"
-                                        repeatCount="indefinite" />
-                                </circle>
-                                <circle cx="0" cy="0" r="1" fill="#fbbf24" opacity="0.1">
-                                    <animate attributeName="cy" values="-25;325" dur="0.55s" repeatCount="indefinite" />
-                                    <animate attributeName="cx" values="90;88;90" dur="0.55s"
-                                        repeatCount="indefinite" />
-                                </circle>
-
-                                <!-- Status text -->
-                                <text x="200" y="28" font-family="'JetBrains Mono', monospace" font-size="9"
-                                    fill="#34d399" text-anchor="middle" opacity="0.8">
-                                    <animate attributeName="opacity" values="0.8;0.3;0.8" dur="1.5s"
-                                        repeatCount="indefinite" />
-                                    <animate attributeName="fill" values="#34d399;#fbbf24;#34d399" dur="3s"
-                                        repeatCount="indefinite" />
-                                </text>
-
-                                <!-- Order counter -->
-                                <text x="340" y="28" font-family="'JetBrains Mono', monospace" font-size="7"
-                                    fill="rgba(255,255,255,0.15)" text-anchor="end">
-                                    <animate attributeName="fill"
-                                        values="rgba(255,255,255,0.15);rgba(255,255,255,0.25);rgba(255,255,255,0.15)"
-                                        dur="2s" repeatCount="indefinite" />
-                                </text>
-
-                                <!-- BOTTOM LABEL REMOVED -->
-
-                                <!-- Floating icons -->
-                                <text x="50" y="45" font-size="16" opacity="0.06">
-                                    🚚
-                                    <animate attributeName="y" values="45;55;45" dur="4s" repeatCount="indefinite" />
-                                </text>
-                                <text x="330" y="35" font-size="14" opacity="0.05">
-                                    📦
-                                    <animate attributeName="y" values="35;45;35" dur="5s" repeatCount="indefinite" />
-                                </text>
-                            </svg>
-                        </div>
-                    </div>
-                </article>
+                <button class="scroll-btn scroll-right" aria-label="Scroll right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </section>
 
