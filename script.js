@@ -152,7 +152,7 @@ if (firstSkill) {
 ================================================== */
 const projectData = {
     1: {
-        title: "IoT Vehicle",
+        title: "IoT Vehicle & Home Security",
         content: `
             <p><strong>1:</strong> Working on an IoT application designed to enhance the safety of user vehicles and residences. Key features that I developed included real-time geo-location tracking, customizable geofencing for unauthorized entry/exit alerts and critical anti-theft capabilities, such as remote vehicle immobilization (fuel pump shut-off).</p>
             <p><strong>2:</strong> I also developed codes at front-end, enhancing the UI/UX. Using the Leaflet library, I streamlined the user experience, enabling one-click creation and easy modification of geofence shapes.</p>

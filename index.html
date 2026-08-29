@@ -67,7 +67,6 @@
 
             <div class="skills-container">
                 <div class="skills-list">
-                    <!-- Languages & Frameworks -->
                     <div class="skill-category">
                         <h3>Languages &amp; Frameworks</h3>
                         <div class="skill-items">
@@ -75,7 +74,6 @@
                             <button class="skill-item" data-skill="dotnet">.NET</button>
                         </div>
                     </div>
-                    <!-- Architecture & Backend -->
                     <div class="skill-category">
                         <h3>Architecture &amp; Backend</h3>
                         <div class="skill-items">
@@ -84,7 +82,6 @@
                             <button class="skill-item" data-skill="n-layer">N-Layer Architecture</button>
                         </div>
                     </div>
-                    <!-- Databases -->
                     <div class="skill-category">
                         <h3>Databases</h3>
                         <div class="skill-items">
@@ -95,7 +92,6 @@
                             <button class="skill-item" data-skill="mongodb">MongoDB</button>
                         </div>
                     </div>
-                    <!-- Messaging & Distributed -->
                     <div class="skill-category">
                         <h3>Messaging &amp; Distributed Systems</h3>
                         <div class="skill-items">
@@ -103,7 +99,6 @@
                             <button class="skill-item" data-skill="kafka">Kafka</button>
                         </div>
                     </div>
-                    <!-- Observability -->
                     <div class="skill-category">
                         <h3>Observability &amp; Search</h3>
                         <div class="skill-items">
@@ -111,7 +106,6 @@
                             <button class="skill-item" data-skill="elastic">Elastic Stack</button>
                         </div>
                     </div>
-                    <!-- DevOps -->
                     <div class="skill-category">
                         <h3>DevOps &amp; Tools</h3>
                         <div class="skill-items">
@@ -123,7 +117,6 @@
                     </div>
                 </div>
 
-                <!-- RIGHT COLUMN: terminal -->
                 <div id="skill-explanation" class="skill-explanation">
                     <div class="skill-terminal-header">
                         <span class="dot-red"></span>
@@ -140,20 +133,143 @@
         </section>
 
         <!-- =================================================
-             PROJECTS
+             PROJECTS – with car animation (SVG animateMotion)
              ================================================= -->
         <section class="section projects-section" id="projects">
             <div class="section-header">
                 <h2>Things I've built.</h2>
             </div>
             <div class="projects-grid">
+                <!-- Project 1 – IoT Vehicle with Car Animation -->
                 <article class="project-card" data-project="1">
                     <span class="project-number">01</span>
                     <p class="project-label">PROJECT</p>
-                    <h3>IoT Vehicle</h3>
+                    <h3>IoT Vehicle &amp; Home Security</h3>
                     <p>Real-time geo-location tracking, geofencing, and anti-theft immobilization system.</p>
+
+                    <!-- Map Animation Overlay – now using SVG -->
+                    <div class="project-animation">
+                        <div class="map-scene">
+                            <!-- SVG with viewBox for perfect scaling -->
+                            <svg class="map-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid meet">
+                                <!-- Background -->
+                                <rect width="400" height="300" fill="url(#bgGrad)" rx="10" />
+                                <defs>
+                                    <radialGradient id="bgGrad" cx="30%" cy="40%" r="70%">
+                                        <stop offset="0%" stop-color="#1a2a3a" />
+                                        <stop offset="100%" stop-color="#0d1520" />
+                                    </radialGradient>
+                                    <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#4a5568" stop-opacity="0.3" />
+                                        <stop offset="100%" stop-color="#4a5568" stop-opacity="0.6" />
+                                    </linearGradient>
+                                </defs>
+
+                                <!-- Grid lines -->
+                                <g opacity="0.15">
+                                    <line x1="0" y1="100" x2="400" y2="100" stroke="rgba(255,255,255,0.05)"
+                                        stroke-width="1" />
+                                    <line x1="0" y1="200" x2="400" y2="200" stroke="rgba(255,255,255,0.05)"
+                                        stroke-width="1" />
+                                    <line x1="133" y1="0" x2="133" y2="300" stroke="rgba(255,255,255,0.05)"
+                                        stroke-width="1" />
+                                    <line x1="266" y1="0" x2="266" y2="300" stroke="rgba(255,255,255,0.05)"
+                                        stroke-width="1" />
+                                </g>
+
+                                <!-- Road path -->
+                                <g>
+                                    <!-- Shadow -->
+                                    <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="rgba(0,0,0,0.4)"
+                                        stroke-width="28" stroke-linecap="round" />
+                                    <!-- Road -->
+                                    <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#2d3748" stroke-width="24"
+                                        stroke-linecap="round" />
+                                    <!-- Dashed center line -->
+                                    <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#fbbf24" stroke-width="2"
+                                        stroke-dasharray="6 10" stroke-linecap="round" />
+                                    <!-- GPS glow route -->
+                                    <path d="M 30 230 Q 200 40 370 230" fill="none" stroke="#3b82f6" stroke-width="3"
+                                        stroke-dasharray="4 12" stroke-linecap="round" opacity="0.6">
+                                        <animate attributeName="stroke-dashoffset" from="0" to="100" dur="2s"
+                                            repeatCount="indefinite" />
+                                    </path>
+                                </g>
+
+                                <!-- Car with animateMotion -->
+                                <g>
+                                    <animateMotion dur="4s" repeatCount="indefinite" path="M 30 230 Q 200 40 370 230"
+                                        rotate="auto" />
+                                    <!-- Car icon using Font Awesome via <text> -->
+                                    <text x="0" y="0"
+                                        font-family="'Font Awesome 6 Free', 'Font Awesome 6 Pro', sans-serif"
+                                        font-weight="900" font-size="32" fill="#fbbf24" text-anchor="middle"
+                                        dominant-baseline="central" filter="url(#glow)">
+                                        
+                                    </text>
+                                </g>
+
+                                <!-- Glow filter for car -->
+                                <defs>
+                                    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                                        <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#fbbf24"
+                                            flood-opacity="0.6" />
+                                    </filter>
+                                </defs>
+
+                                <!-- Marker A -->
+                                <g>
+                                    <circle cx="30" cy="230" r="14" fill="#22c55e" opacity="0.9" />
+                                    <circle cx="30" cy="230" r="6" fill="#fff" />
+                                    <text x="30" y="260" font-family="'JetBrains Mono', monospace" font-size="11"
+                                        font-weight="700" fill="#22c55e" text-anchor="middle">A</text>
+                                </g>
+
+                                <!-- Marker B -->
+                                <g>
+                                    <circle cx="370" cy="230" r="14" fill="#ef4444" opacity="0.9" />
+                                    <circle cx="370" cy="230" r="6" fill="#fff" />
+                                    <text x="370" y="260" font-family="'JetBrains Mono', monospace" font-size="11"
+                                        font-weight="700" fill="#ef4444" text-anchor="middle">B</text>
+                                    <!-- Pulse ring on B -->
+                                    <circle cx="370" cy="230" r="20" fill="none" stroke="rgba(239,68,68,0.4)"
+                                        stroke-width="2">
+                                        <animate attributeName="r" from="14" to="28" dur="1.5s"
+                                            repeatCount="indefinite" />
+                                        <animate attributeName="opacity" from="0.8" to="0" dur="1.5s"
+                                            repeatCount="indefinite" />
+                                    </circle>
+                                </g>
+
+                                <!-- Location labels -->
+                                <text x="30" y="200" font-family="'JetBrains Mono', monospace" font-size="9"
+                                    fill="rgba(255,255,255,0.4)" text-anchor="middle">📍 Start</text>
+                                <text x="370" y="200" font-family="'JetBrains Mono', monospace" font-size="9"
+                                    fill="rgba(255,255,255,0.4)" text-anchor="middle">📍 Destination</text>
+
+                                <!-- Decorative: trees -->
+                                <text x="50" y="130" font-size="22" opacity="0.3">🌳</text>
+                                <text x="320" y="100" font-size="20" opacity="0.3">🌲</text>
+
+                                <!-- Decorative: buildings -->
+                                <text x="100" y="50" font-size="18" opacity="0.2">🏢</text>
+                                <text x="280" y="60" font-size="18" opacity="0.2">🏢</text>
+
+                                <!-- Decorative: clouds (floating) -->
+                                <text x="-40" y="40" font-size="30" opacity="0.1">
+                                    ☁️
+                                    <animate attributeName="x" from="-40" to="440" dur="15s" repeatCount="indefinite" />
+                                </text>
+                                <text x="440" y="80" font-size="25" opacity="0.1">
+                                    ☁️
+                                    <animate attributeName="x" from="440" to="-40" dur="15s" repeatCount="indefinite" />
+                                </text>
+                            </svg>
+                        </div>
+                    </div>
                 </article>
 
+                <!-- Project 2 -->
                 <article class="project-card" data-project="2">
                     <span class="project-number">02</span>
                     <p class="project-label">PROJECT</p>
@@ -161,6 +277,7 @@
                     <p>Bla bla bla. More information about another project will be added here.</p>
                 </article>
 
+                <!-- Project 3 -->
                 <article class="project-card" data-project="3">
                     <span class="project-number">03</span>
                     <p class="project-label">PROJECT</p>
@@ -179,7 +296,6 @@
             </div>
 
             <div class="contact-list">
-                <!-- Phone -->
                 <div class="contact-item">
                     <p class="contact-label">PHONE</p>
                     <a href="tel:+989939170652">
@@ -192,7 +308,6 @@
                     </a>
                 </div>
 
-                <!-- Email -->
                 <div class="contact-item">
                     <p class="contact-label">EMAIL</p>
                     <a href="mailto:aliabbasifard.net@gmail.com">
@@ -205,7 +320,6 @@
                     </a>
                 </div>
 
-                <!-- Social Media -->
                 <div class="contact-item">
                     <p class="contact-label">SOCIAL</p>
                     <div class="social-links">
@@ -254,7 +368,6 @@
             <div class="modal-content">
                 <h2 class="modal-title" id="modal-title">Project Title</h2>
                 <div class="modal-body" id="modal-body">
-                    <!-- Dynamic content loaded via JavaScript -->
                 </div>
             </div>
         </div>
