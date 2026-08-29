@@ -1,3 +1,4 @@
+html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,10 +8,17 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        Learning | Ali Abbasifard
-    </title>
+    <meta name="description" content="Learning notes — Ali Abbasifard">
 
+    <title>Learning | Ali Abbasifard</title>
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <!-- Main CSS -->
 
     <link rel="stylesheet" href="style.css">
 
@@ -33,12 +41,24 @@
 
         <nav class="navbar-links">
 
-            <a href="index.html">
-                Portfolio
+            <a href="index.html#about">
+                About
             </a>
 
-            <a href="learning.html">
+            <a href="index.html#skills">
+                Skills
+            </a>
+
+            <a href="index.html#projects">
+                Projects
+            </a>
+
+            <a href="learning.html" class="active">
                 Learning
+            </a>
+
+            <a href="index.html#contact">
+                Contact
             </a>
 
         </nav>
@@ -55,19 +75,65 @@
 
 
         <a href="learning.html" class="viewer-back">
-            ← BACK TO LEARNINGS
+            ← BACK TO LEARNING
         </a>
 
 
-        <article id="learning-viewer" class="learning-viewer">
+        <!-- HEADER -->
 
-            <div class="learning-loading">
+        <header class="viewer-header">
 
+
+            <p id="viewer-chapter" class="viewer-chapter"></p>
+
+
+            <h1 id="viewer-title">
                 Loading...
+            </h1>
+
+
+            <p id="viewer-author" class="viewer-author"></p>
+
+
+            <p id="viewer-date" class="viewer-date"></p>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             TERMINAL
+             ================================================= -->
+
+        <section class="viewer-terminal">
+
+
+            <div class="viewer-terminal-header">
+
+                <span></span>
+
+                <span></span>
+
+                <span></span>
+
+                <label>
+                    learning-notes
+                </label>
 
             </div>
 
-        </article>
+
+            <article id="viewer-content" class="viewer-content">
+
+                <div class="learning-loading">
+                    Loading learning file...
+                </div>
+
+            </article>
+
+
+        </section>
 
 
     </main>
@@ -84,11 +150,25 @@
             © 2026 Ali Abbasifard
         </p>
 
+        <p>
+            Built with curiosity &amp; code.
+        </p>
+
     </footer>
 
 
 
+    <!-- =====================================================
+         MARKED
+         ===================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+    <!-- Viewer JS -->
+
     <script src="learning-viewer.js"></script>
+
 
 </body>
 

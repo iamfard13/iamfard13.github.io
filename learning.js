@@ -1,239 +1,168 @@
-document.addEventListener(
-    "DOMContentLoaded",
-    loadLearning
-);
+javascript
+/* =========================================================
+   LEARNING CONFIGURATION
+   ========================================================= */
+
+const GITHUB_OWNER = "iamfard13";
+const GITHUB_REPOSITORY = "iamfard13.github.io";
+const GITHUB_BRANCH = "main";
 
 
 /* =========================================================
-   MAIN
+   GITHUB API
    ========================================================= */
 
-async function loadLearning() {
+async function getMarkdownFiles(folder) {
 
-    await Promise.all([
-        loadBooks(),
-        loadArticles()
-    ]);
+    const apiUrl =
+        `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPOSITORY}/contents/learnings/${folder}?ref=${GITHUB_BRANCH}`;
 
-}
+    const response = await fetch(apiUrl);
 
+    if (!response.ok) {
 
-/* =========================================================
-   BOOKS
-   ========================================================= */
-
-async function loadBooks() {
-
-    const grid =
-        document.getElementById(
-            "books-grid"
-        );
-
-    const count =
-        document.getElementById(
-            "books-count"
-        );
-
-
-    try {
-
-        const response =
-            await fetch(
-                "data/books.json",
-                {
-                    cache: "no-cache"
-                }
-            );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Unable to load books.json"
-            );
-
-        }
-
-
-        const books =
-            await response.json();
-
-
-        count.textContent =
-            String(books.length)
-                .padStart(2, "0");
-
-
-        renderItems(
-            grid,
-            books,
-            "BOOK"
+        throw new Error(
+            `Unable to load ${folder}: HTTP ${response.status}`
         );
 
     }
-    catch (error) {
 
-        console.error(
-            "Books error:",
-            error
-        );
+    const files = await response.json();
 
-
-        grid.innerHTML = `
-
-            <div class="learning-error">
-
-                Unable to load books.
-
-            </div>
-
-        `;
-
-    }
-
-}
-
-
-/* =========================================================
-   ARTICLES
-   ========================================================= */
-
-async function loadArticles() {
-
-    const grid =
-        document.getElementById(
-            "articles-grid"
-        );
-
-    const count =
-        document.getElementById(
-            "articles-count"
-        );
-
-
-    try {
-
-        const response =
-            await fetch(
-                "data/articles.json",
-                {
-                    cache: "no-cache"
-                }
-            );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Unable to load articles.json"
-            );
-
-        }
-
-
-        const articles =
-            await response.json();
-
-
-        count.textContent =
-            String(articles.length)
-                .padStart(2, "0");
-
-
-        renderItems(
-            grid,
-            articles,
-            "ARTICLE"
-        );
-
-    }
-    catch (error) {
-
-        console.error(
-            "Articles error:",
-            error
-        );
-
-
-        grid.innerHTML = `
-
-            <div class="learning-error">
-
-                Unable to load articles.
-
-            </div>
-
-        `;
-
-    }
-
-}
-
-
-/* =========================================================
-   RENDER ITEMS
-   ========================================================= */
-
-function renderItems(
-    grid,
-    items,
-    type
-) {
-
-    if (!Array.isArray(items)) {
-
-        grid.innerHTML = `
-
-            <div class="learning-error">
-
-                Invalid learning data.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    if (items.length === 0) {
-
-        grid.innerHTML = `
-
-            <div class="learning-empty">
-
-                No ${type.toLowerCase()}s added yet.
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    grid.innerHTML = "";
-
-
-    items.forEach(
-        (item, index) => {
-
-            const card =
-                createCard(
-                    item,
-                    index,
-                    type
-                );
-
-
-            grid.appendChild(
-                card
-            );
-
-        }
+    return files.filter(file =>
+        file.type === "file" &&
+        file.name.toLowerCase().endsWith(".md")
     );
+
+}
+
+
+/* =========================================================
+   MARKDOWN METADATA
+   ========================================================= */
+
+function parseFrontMatter(markdown) {
+
+    const metadata = {};
+
+    if (!markdown.startsWith("---")) {
+        return metadata;
+    }
+
+    const parts = markdown.split("---");
+
+    if (parts.length < 3) {
+        return metadata;
+    }
+
+    const frontMatter = parts[1];
+
+    const lines = frontMatter.split("\n");
+
+    lines.forEach(line => {
+
+        const separator = line.indexOf(":");
+
+        if (separator === -1) {
+            return;
+        }
+
+        const key =
+            line.substring(0, separator).trim();
+
+        let value =
+            line.substring(separator + 1).trim();
+
+        value = value.replace(/^["']|["']$/g, "");
+
+        metadata[key] = value;
+
+    });
+
+    return metadata;
+
+}
+
+
+/* =========================================================
+   LOAD FILE METADATA
+   ========================================================= */
+
+async function getFileMetadata(file, folder) {
+
+    const rawUrl =
+        `https://raw.githubusercontent.com/` +
+        `${GITHUB_OWNER}/` +
+        `${GITHUB_REPOSITORY}/` +
+        `${GITHUB_BRANCH}/` +
+        `learnings/${folder}/${encodeURIComponent(file.name)}`;
+
+
+    try {
+
+        const response = await fetch(rawUrl);
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const markdown = await response.text();
+
+        const metadata =
+            parseFrontMatter(markdown);
+
+
+        return {
+
+            fileName: file.name,
+
+            title:
+                metadata.title ||
+                file.name
+                    .replace(".md", "")
+                    .replace(/-/g, " "),
+
+            chapter:
+                metadata.chapter || "",
+
+            author:
+                metadata.author || "",
+
+            date:
+                metadata.date || "",
+
+            rawUrl: rawUrl
+
+        };
+
+    }
+    catch (error) {
+
+        console.error(
+            `Unable to read ${file.name}`,
+            error
+        );
+
+        return {
+
+            fileName: file.name,
+
+            title:
+                file.name
+                    .replace(".md", "")
+                    .replace(/-/g, " "),
+
+            chapter: "",
+
+            author: "",
+
+            date: "",
+
+            rawUrl: rawUrl
+
+        };
+
+    }
 
 }
 
@@ -242,148 +171,145 @@ function renderItems(
    CREATE CARD
    ========================================================= */
 
-function createCard(
-    item,
-    index,
-    type
-) {
+function createLearningCard(item, index, type) {
 
     const card =
-        document.createElement(
-            "article"
-        );
+        document.createElement("article");
+
+    card.className = "learning-card";
 
 
-    card.className =
-        "learning-card";
+    const content =
+        document.createElement("div");
+
+    content.className =
+        "learning-card-content";
 
 
     const number =
-        String(index + 1)
-            .padStart(2, "0");
+        document.createElement("span");
+
+    number.className =
+        "learning-card-number";
+
+    number.textContent =
+        String(index + 1).padStart(2, "0");
+
+
+    const label =
+        document.createElement("p");
+
+    label.className =
+        "learning-card-label";
+
+    label.textContent =
+        type === "books"
+            ? "BOOK"
+            : "ARTICLE";
 
 
     const title =
-        escapeHtml(
-            item.title ||
-            "Untitled"
-        );
+        document.createElement("h3");
+
+    title.textContent =
+        item.title;
 
 
-    const chapter =
-        item.chapter
-            ? `
-                <p class="learning-card-chapter">
-                    ${escapeHtml(
-                item.chapter
-            )}
-                </p>
-            `
-            : "";
+    content.appendChild(label);
+
+    content.appendChild(title);
 
 
-    const author =
-        item.author
-            ? `
-                <p class="learning-card-author">
-                    ${escapeHtml(
-                item.author
-            )}
-                </p>
-            `
-            : "";
+    if (item.chapter) {
+
+        const chapter =
+            document.createElement("p");
+
+        chapter.className =
+            "learning-card-chapter";
+
+        chapter.textContent =
+            item.chapter;
+
+        content.appendChild(chapter);
+
+    }
 
 
-    const date =
-        item.date
-            ? `
-                <p class="learning-card-date">
-                    ${formatDate(
-                item.date
-            )}
-                </p>
-            `
-            : "";
+    if (item.author) {
+
+        const author =
+            document.createElement("p");
+
+        author.className =
+            "learning-card-author";
+
+        author.textContent =
+            item.author;
+
+        content.appendChild(author);
+
+    }
 
 
-    card.innerHTML = `
+    if (item.date) {
 
-        <span class="learning-card-number">
-            ${number}
-        </span>
+        const date =
+            document.createElement("p");
 
+        date.className =
+            "learning-card-date";
 
-        <div class="learning-card-content">
+        date.textContent =
+            item.date;
 
-            <p class="learning-card-label">
-                ${type}
-            </p>
+        content.appendChild(date);
 
-
-            <h3>
-                ${title}
-            </h3>
-
-
-            ${chapter}
-
-            ${author}
-
-            ${date}
-
-
-            <button
-                type="button"
-                class="learning-card-button"
-            >
-
-                READ
-
-                <span>
-                    →
-                </span>
-
-            </button>
-
-        </div>
-
-    `;
+    }
 
 
     const button =
-        card.querySelector(
-            ".learning-card-button"
-        );
+        document.createElement("button");
+
+    button.className =
+        "learning-card-button";
+
+    button.type = "button";
+
+    button.innerHTML =
+        `READ NOTES <span>→</span>`;
 
 
-    button.addEventListener(
-        "click",
-        () => {
+    button.addEventListener("click", () => {
 
-            if (!item.file) {
+        const params =
+            new URLSearchParams({
 
-                console.error(
-                    "Learning item has no file:",
-                    item
-                );
+                file: item.rawUrl,
 
-                return;
+                title: item.title,
 
-            }
+                chapter: item.chapter,
 
+                author: item.author,
 
-            const url =
-                "learning-viewer.html?file=" +
-                encodeURIComponent(
-                    item.file
-                );
+                date: item.date
+
+            });
 
 
-            window.location.href =
-                url;
+        window.location.href =
+            `learning-viewer.html?${params.toString()}`;
 
-        }
-    );
+    });
+
+
+    content.appendChild(button);
+
+
+    card.appendChild(number);
+
+    card.appendChild(content);
 
 
     return card;
@@ -392,60 +318,113 @@ function createCard(
 
 
 /* =========================================================
-   HELPERS
+   LOAD CATEGORY
    ========================================================= */
 
-function escapeHtml(value) {
+async function loadCategory(folder, gridId, countId) {
 
-    return String(value)
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
+    const grid =
+        document.getElementById(gridId);
 
-}
+    const count =
+        document.getElementById(countId);
 
 
-function formatDate(value) {
+    try {
 
-    const date =
-        new Date(value);
+        const files =
+            await getMarkdownFiles(folder);
 
 
-    if (
-        Number.isNaN(
-            date.getTime()
-        )
-    ) {
+        if (count) {
 
-        return value;
+            count.textContent =
+                `${files.length} ${files.length === 1
+                    ? "ITEM"
+                    : "ITEMS"
+                }`;
+
+        }
+
+
+        if (files.length === 0) {
+
+            grid.innerHTML = `
+                <div class="learning-empty">
+                    No learning files found.
+                </div>
+            `;
+
+            return;
+
+        }
+
+
+        grid.innerHTML = "";
+
+
+        const items =
+            await Promise.all(
+
+                files.map(file =>
+                    getFileMetadata(file, folder)
+                )
+
+            );
+
+
+        items.forEach((item, index) => {
+
+            const card =
+                createLearningCard(
+                    item,
+                    index,
+                    folder
+                );
+
+            grid.appendChild(card);
+
+        });
+
+    }
+    catch (error) {
+
+        console.error(error);
+
+
+        grid.innerHTML = `
+            <div class="learning-error">
+                Unable to load learning files.
+                <br><br>
+                ${error.message}
+            </div>
+        `;
 
     }
 
-
-    return date.toLocaleDateString(
-        "en-US",
-        {
-            year: "numeric",
-            month: "short",
-            day: "numeric"
-        }
-    );
-
 }
+
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadCategory(
+            "books",
+            "books-grid",
+            "books-count"
+        );
+
+
+        loadCategory(
+            "articles",
+            "articles-grid",
+            "articles-count"
+        );
+
+    }
+);

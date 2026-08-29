@@ -1,69 +1,188 @@
-document.addEventListener("DOMContentLoaded", loadLearning);
+javascript
+/* =========================================================
+   LEARNING VIEWER
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadLearningFile();
+
+    }
+);
 
 
 /* =========================================================
    LOAD LEARNING FILE
    ========================================================= */
 
-async function loadLearning() {
+async function loadLearningFile() {
 
-    const viewer = document.getElementById("learning-viewer");
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
 
-    const params = new URLSearchParams(window.location.search);
-    const file = params.get("file");
+
+    const file =
+        params.get("file");
+
+    const title =
+        params.get("title");
+
+    const chapter =
+        params.get("chapter");
+
+    const author =
+        params.get("author");
+
+    const date =
+        params.get("date");
+
+
+    const viewerTitle =
+        document.getElementById(
+            "viewer-title"
+        );
+
+    const viewerChapter =
+        document.getElementById(
+            "viewer-chapter"
+        );
+
+    const viewerAuthor =
+        document.getElementById(
+            "viewer-author"
+        );
+
+    const viewerDate =
+        document.getElementById(
+            "viewer-date"
+        );
+
+    const viewerContent =
+        document.getElementById(
+            "viewer-content"
+        );
+
+
+    /* =====================================================
+       VALIDATE
+       ===================================================== */
 
     if (!file) {
-        showError(viewer, "No learning file was specified.");
+
+        showError(
+            viewerContent,
+            "No learning file was specified."
+        );
+
         return;
+
     }
 
 
-    // Only allow Markdown files inside the learnings folder.
-    if (
-        !file.endsWith(".md") ||
-        !file.startsWith("learnings/")
-    ) {
-        showError(viewer, "Invalid learning file.");
-        return;
+    /* =====================================================
+       HEADER
+       ===================================================== */
+
+    if (viewerTitle) {
+
+        viewerTitle.textContent =
+            title || "Learning";
+
     }
 
 
-    /*
-     * GitHub Pages can be hosted under a repository path.
-     * Using the current origin + pathname makes the loader
-     * work correctly in that situation.
-     */
+    if (viewerChapter) {
 
-    const basePath =
-        window.location.pathname
-            .substring(
-                0,
-                window.location.pathname.lastIndexOf("/") + 1
-            );
+        if (chapter) {
+
+            viewerChapter.textContent =
+                chapter;
+
+            viewerChapter.style.display =
+                "block";
+
+        }
+        else {
+
+            viewerChapter.style.display =
+                "none";
+
+        }
+
+    }
 
 
-    const fileUrl =
-        new URL(
-            file,
-            window.location.origin +
-            basePath
-        ).href;
+    if (viewerAuthor) {
 
+        if (author) {
+
+            viewerAuthor.textContent =
+                author;
+
+            viewerAuthor.style.display =
+                "block";
+
+        }
+        else {
+
+            viewerAuthor.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    if (viewerDate) {
+
+        if (date) {
+
+            viewerDate.textContent =
+                date;
+
+            viewerDate.style.display =
+                "block";
+
+        }
+        else {
+
+            viewerDate.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       LOADING
+       ===================================================== */
+
+    viewerContent.innerHTML = `
+    < div class="learning-loading" >
+        Loading learning file...
+        </div >
+    `;
+
+
+    /* =====================================================
+       FETCH MARKDOWN
+       ===================================================== */
 
     try {
 
-        const response = await fetch(
-            fileUrl,
-            {
-                cache: "no-cache"
-            }
-        );
+        const response =
+            await fetch(file);
 
 
         if (!response.ok) {
 
             throw new Error(
-                `HTTP ${response.status}`
+                `HTTP ${response.status} `
             );
 
         }
@@ -73,110 +192,74 @@ async function loadLearning() {
             await response.text();
 
 
-        const parsed =
-            parseMarkdownFile(markdown);
+        if (!markdown.trim()) {
+
+            throw new Error(
+                "The learning file is empty."
+            );
+
+        }
 
 
-        const metadata =
-            parsed.metadata;
+        /* =================================================
+           MARKDOWN
+           ================================================= */
+
+        if (
+            typeof marked ===
+            "undefined"
+        ) {
+
+            throw new Error(
+                "Markdown parser was not loaded."
+            );
+
+        }
 
 
-        document.title =
-            (
-                metadata.title ||
-                "Learning"
-            ) +
-            " | Ali Abbasifard";
+        viewerContent.innerHTML =
+            marked.parse(
+                removeFrontMatter(markdown)
+            );
 
 
-        viewer.innerHTML = `
+        /* =================================================
+           CODE BLOCKS
+           ================================================= */
 
-            <header class="viewer-header">
+        document
+            .querySelectorAll(
+                ".viewer-content pre code"
+            )
+            .forEach(code => {
 
-                <p class="section-label">
-                    ${metadata.type || "LEARNING"}
-                </p>
+                code.parentElement.classList.add(
+                    "code-block"
+                );
 
-                ${metadata.chapter
-                ? `
-                            <p class="viewer-chapter">
-                                ${escapeHtml(
-                    metadata.chapter
-                )}
-                            </p>
-                        `
-                : ""
-            }
-
-                <h1>
-                    ${escapeHtml(
-                metadata.title ||
-                "Untitled"
-            )}
-                </h1>
-
-                ${metadata.author
-                ? `
-                            <p class="viewer-author">
-                                ${escapeHtml(
-                    metadata.author
-                )}
-                            </p>
-                        `
-                : ""
-            }
-
-                ${metadata.date
-                ? `
-                            <p class="viewer-date">
-                                ${formatDate(
-                    metadata.date
-                )}
-                            </p>
-                        `
-                : ""
-            }
-
-            </header>
+            });
 
 
-            <div class="viewer-terminal">
+        /* =================================================
+           SCROLL TOP
+           ================================================= */
 
-                <div class="viewer-terminal-header">
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                    <label>
-                        learning.md
-                    </label>
-
-                </div>
-
-
-                <div class="viewer-content">
-
-                    ${markdownToHtml(
-                parsed.content
-            )}
-
-                </div>
-
-            </div>
-        `;
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
 
     }
     catch (error) {
 
         console.error(
-            "Learning file loading error:",
+            "Unable to load learning file:",
             error
         );
 
 
         showError(
-            viewer,
+            viewerContent,
             `Unable to load this learning file.`
         );
 
@@ -186,498 +269,74 @@ async function loadLearning() {
 
 
 /* =========================================================
-   FRONTMATTER
+   REMOVE FRONT MATTER
    ========================================================= */
 
-function parseMarkdownFile(markdown) {
-
-    const metadata = {};
-
-    let content = markdown;
-
+function removeFrontMatter(markdown) {
 
     if (!markdown.startsWith("---")) {
 
-        return {
-            metadata,
-            content
-        };
+        return markdown;
 
     }
 
 
     const end =
         markdown.indexOf(
-            "\n---",
+            "---",
             3
         );
 
 
     if (end === -1) {
 
-        return {
-            metadata,
-            content
-        };
+        return markdown;
 
     }
 
 
-    const frontmatter =
-        markdown.substring(
-            3,
-            end
-        );
-
-
-    content =
-        markdown.substring(
-            end + 4
-        );
-
-
-    frontmatter
-        .split("\n")
-        .forEach(line => {
-
-            const index =
-                line.indexOf(":");
-
-
-            if (index === -1) {
-                return;
-            }
-
-
-            const key =
-                line
-                    .substring(
-                        0,
-                        index
-                    )
-                    .trim();
-
-
-            let value =
-                line
-                    .substring(
-                        index + 1
-                    )
-                    .trim();
-
-
-            if (
-                value.length >= 2 &&
-                (
-                    (
-                        value.startsWith('"') &&
-                        value.endsWith('"')
-                    )
-                    ||
-                    (
-                        value.startsWith("'") &&
-                        value.endsWith("'")
-                    )
-                )
-            ) {
-
-                value =
-                    value.substring(
-                        1,
-                        value.length - 1
-                    );
-
-            }
-
-
-            metadata[key] = value;
-
-        });
-
-
-    return {
-        metadata,
-        content
-    };
-
-}
-
-
-/* =========================================================
-   MARKDOWN → HTML
-   ========================================================= */
-
-function markdownToHtml(markdown) {
-
-    const lines =
-        markdown
-            .replaceAll("\r\n", "\n")
-            .split("\n");
-
-
-    let html = "";
-
-    let i = 0;
-
-
-    while (i < lines.length) {
-
-        const line = lines[i];
-
-
-        /* Empty line */
-
-        if (!line.trim()) {
-
-            i++;
-
-            continue;
-
-        }
-
-
-        /* Code block */
-
-        if (line.startsWith("```")) {
-
-            const language =
-                line
-                    .substring(3)
-                    .trim();
-
-
-            i++;
-
-
-            const codeLines = [];
-
-
-            while (
-                i < lines.length &&
-                !lines[i].startsWith("```")
-            ) {
-
-                codeLines.push(
-                    lines[i]
-                );
-
-                i++;
-
-            }
-
-
-            if (i < lines.length) {
-                i++;
-            }
-
-
-            html += `
-
-                <pre class="code-block">
-
-<code class="language-${escapeHtml(
-                language
-            )}">${escapeHtml(
-                codeLines.join("\n")
-            )}</code>
-
-                </pre>
-            `;
-
-
-            continue;
-
-        }
-
-
-        /* H1 */
-
-        if (line.startsWith("# ")) {
-
-            html += `
-
-                <h1>
-                    ${formatInline(
-                line.substring(2)
-            )}
-                </h1>
-            `;
-
-
-            i++;
-
-            continue;
-
-        }
-
-
-        /* H2 */
-
-        if (line.startsWith("## ")) {
-
-            html += `
-
-                <h2>
-                    ${formatInline(
-                line.substring(3)
-            )}
-                </h2>
-            `;
-
-
-            i++;
-
-            continue;
-
-        }
-
-
-        /* H3 */
-
-        if (line.startsWith("### ")) {
-
-            html += `
-
-                <h3>
-                    ${formatInline(
-                line.substring(4)
-            )}
-                </h3>
-            `;
-
-
-            i++;
-
-            continue;
-
-        }
-
-
-        /* Unordered list */
-
-        if (line.startsWith("- ")) {
-
-            html += "<ul>";
-
-
-            while (
-                i < lines.length &&
-                lines[i].startsWith("- ")
-            ) {
-
-                html += `
-
-                    <li>
-                        ${formatInline(
-                    lines[i].substring(2)
-                )}
-                    </li>
-                `;
-
-
-                i++;
-
-            }
-
-
-            html += "</ul>";
-
-            continue;
-
-        }
-
-
-        /* Ordered list */
-
-        if (/^\d+\.\s/.test(line)) {
-
-            html += "<ol>";
-
-
-            while (
-                i < lines.length &&
-                /^\d+\.\s/.test(lines[i])
-            ) {
-
-                const text =
-                    lines[i]
-                        .replace(
-                            /^\d+\.\s/,
-                            ""
-                        );
-
-
-                html += `
-
-                    <li>
-                        ${formatInline(text)}
-                    </li>
-                `;
-
-
-                i++;
-
-            }
-
-
-            html += "</ol>";
-
-            continue;
-
-        }
-
-
-        /* Paragraph */
-
-        const paragraph = [line];
-
-        i++;
-
-
-        while (
-            i < lines.length &&
-            lines[i].trim() &&
-            !lines[i].startsWith("# ") &&
-            !lines[i].startsWith("## ") &&
-            !lines[i].startsWith("### ") &&
-            !lines[i].startsWith("```") &&
-            !lines[i].startsWith("- ") &&
-            !/^\d+\.\s/.test(lines[i])
-        ) {
-
-            paragraph.push(
-                lines[i]
-            );
-
-            i++;
-
-        }
-
-
-        html += `
-
-            <p>
-                ${formatInline(
-            paragraph.join(" ")
-        )}
-            </p>
-        `;
-
-    }
-
-
-    return html;
-
-}
-
-
-/* =========================================================
-   INLINE MARKDOWN
-   ========================================================= */
-
-function formatInline(text) {
-
-    let result =
-        escapeHtml(text);
-
-
-    /* Links */
-
-    result =
-        result.replace(
-            /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
-            '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
-        );
-
-
-    /* Inline code */
-
-    result =
-        result.replace(
-            /`([^`]+)`/g,
-            "<code>$1</code>"
-        );
-
-
-    /* Bold */
-
-    result =
-        result.replace(
-            /\*\*(.*?)\*\*/g,
-            "<strong>$1</strong>"
-        );
-
-
-    /* Italic */
-
-    result =
-        result.replace(
-            /\*(.*?)\*/g,
-            "<em>$1</em>"
-        );
-
-
-    return result;
-
-}
-
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
-function escapeHtml(value) {
-
-    return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-}
-
-
-function formatDate(value) {
-
-    const date = new Date(value);
-
-
-    if (Number.isNaN(date.getTime())) {
-        return value;
-    }
-
-
-    return date.toLocaleDateString(
-        "en-US",
-        {
-            year: "numeric",
-            month: "long",
-            day: "numeric"
-        }
+    return markdown.substring(
+        end + 3
     );
 
 }
 
 
+/* =========================================================
+   ERROR
+   ========================================================= */
+
 function showError(
-    element,
+    container,
     message
 ) {
 
-    element.innerHTML = `
+    if (!container) {
+        return;
+    }
 
-        <div class="viewer-error">
+
+    container.innerHTML = `
+
+    < div class="viewer-error" >
 
             <h1>
                 Something went wrong
             </h1>
 
             <p>
-                ${escapeHtml(message)}
+                ${message}
             </p>
 
-        </div>
+            <p>
+                <a href="learning.html">
+                    ← Back to Learning
+                </a>
+            </p>
+
+        </div >
+
     `;
 
 }
+
