@@ -829,7 +829,7 @@ button {
    LEARNING PAGE – topics (fixed spacing, no margin collapse)
 ========================================================= */
 .learning-topics-section {
-    padding-top: 120px;
+    /* padding-top: 120px; */
     /* navbar height + extra breathing room */
     padding-bottom: 40px;
     margin-top: 100px;
@@ -1432,10 +1432,6 @@ button {
     .learning-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .learning-topics-section {
-        padding-top: 100px;
-    }
 }
 
 @media (max-width: 800px) {
@@ -1514,10 +1510,6 @@ button {
 
     .viewer-content .learning-code-block pre {
         font-size: 12px;
-    }
-
-    .learning-topics-section {
-        padding-top: 90px;
     }
 }
 
@@ -1634,10 +1626,6 @@ button {
 
     .learning-topic-card h3 {
         font-size: 20px;
-    }
-
-    .learning-topics-section {
-        padding-top: 80px;
     }
 
     .viewer-page {
