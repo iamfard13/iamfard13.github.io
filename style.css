@@ -832,7 +832,7 @@ button {
     padding-top: 120px;
     /* navbar height + extra breathing room */
     padding-bottom: 40px;
-    margin-top: 0;
+    margin-top: 100px;
     /* removed margin-top, using padding instead */
 }
 
