@@ -104,6 +104,10 @@ button {
     opacity: 1;
 }
 
+.navbar-links a.active {
+    opacity: 1;
+}
+
 /* =========================================================
    HERO
 ========================================================= */
@@ -690,6 +694,7 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
+    cursor: pointer;
 }
 
 .recommendation-card:hover {
@@ -818,6 +823,271 @@ button {
 
 .recommendations-scroll-wrapper .rec-scroll-right {
     margin-left: 12px;
+}
+
+/* =========================================================
+   LEARNING PAGE – topics (fixed spacing, no margin collapse)
+========================================================= */
+.learning-topics-section {
+    padding-top: 120px;
+    /* navbar height + extra breathing room */
+    padding-bottom: 40px;
+    margin-top: 0;
+    /* removed margin-top, using padding instead */
+}
+
+.learning-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.learning-topic-card {
+    position: relative;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.015);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+    cursor: pointer;
+}
+
+.learning-topic-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.learning-topic-number {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 11px;
+    opacity: 0.3;
+    color: #f2f2f2;
+}
+
+.learning-topic-label {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    opacity: 0.4;
+    color: #f2f2f2;
+    margin-bottom: 22px;
+}
+
+.learning-topic-card h3 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: #f2f2f2;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.learning-topic-author {
+    font-size: 13px;
+    opacity: 0.4;
+    color: #f2f2f2;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 14px;
+}
+
+.learning-topic-read-time {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 11px;
+    color: #2fff00;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.learning-topic-read-time i {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* =========================================================
+   VIEWER – solid card (no opacity, no background visible)
+========================================================= */
+.viewer-page {
+    width: min(88vw, 1100px);
+    margin: 0 auto;
+    padding: 120px 0 80px;
+    scroll-margin-top: 100px;
+}
+
+.viewer-back {
+    display: inline-block;
+    margin-bottom: 50px;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    opacity: 0.4;
+    color: #f2f2f2;
+    transition: opacity 0.25s ease;
+    text-transform: uppercase;
+}
+
+.viewer-back:hover {
+    opacity: 1;
+}
+
+.viewer-header {
+    margin-bottom: 40px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.viewer-header h1 {
+    font-size: clamp(32px, 5vw, 50px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.035em;
+    color: #f2f2f2;
+    margin: 0 0 6px 0;
+}
+
+.viewer-chapter {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    opacity: 0.4;
+    color: #f2f2f2;
+    margin-bottom: 10px;
+}
+
+.viewer-date {
+    font-size: 13px;
+    opacity: 0.35;
+    color: #f2f2f2;
+    font-weight: 300;
+}
+
+.viewer-content-wrapper {
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 12px;
+    padding: 45px 50px;
+    transition: border-color 0.3s ease;
+    scroll-margin-top: 100px;
+}
+
+.viewer-content-wrapper:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.viewer-content {
+    font-size: 17px;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+}
+
+.viewer-content h2 {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.025em;
+    color: #f2f2f2;
+    margin: 40px 0 18px 0;
+}
+
+.viewer-content h3 {
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #f2f2f2;
+    margin: 30px 0 14px 0;
+}
+
+.viewer-content p {
+    margin: 0 0 18px 0;
+    opacity: 0.82;
+}
+
+.viewer-content strong {
+    color: #f2f2f2;
+    font-weight: 600;
+    opacity: 1;
+}
+
+.viewer-content ul {
+    margin: 0 0 24px 0;
+    padding-left: 24px;
+}
+
+.viewer-content ul li {
+    margin-bottom: 8px;
+    opacity: 0.82;
+}
+
+.viewer-content ul li strong {
+    color: #f2f2f2;
+    opacity: 1;
+}
+
+.viewer-content .learning-code-block {
+    margin: 18px 0 18px 0;
+    padding: 18px 22px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.viewer-content .learning-code-block pre {
+    margin: 0;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.viewer-content .learning-code-block code {
+    background: transparent;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+.viewer-content .learning-note-small {
+    font-size: 14px;
+    opacity: 0.5;
+    font-style: italic;
+    margin-top: -8px;
+    margin-bottom: 18px;
+}
+
+.viewer-content .learning-divider {
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.06);
+    margin: 40px 0;
+}
+
+.viewer-content .learning-loading {
+    color: rgba(255, 255, 255, 0.3);
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 13px;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.viewer-content .learning-empty {
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+    text-align: center;
+    padding: 40px 0;
 }
 
 /* =========================================================
@@ -1112,369 +1382,6 @@ button {
 }
 
 /* =========================================================
-   LEARNING & VIEWER (for learning.html)
-========================================================= */
-.learning-page {
-    width: min(88vw, 1300px);
-    margin: 0 auto;
-    padding: 140px 0 140px;
-}
-
-.learning-hero {
-    max-width: 950px;
-    margin-bottom: 120px;
-}
-
-.learning-hero h1 {
-    margin: 0;
-    font-size: clamp(50px, 8vw, 100px);
-    font-weight: 600;
-    line-height: 0.95;
-    letter-spacing: -0.05em;
-    color: #f2f2f2;
-}
-
-.learning-hero>p:last-child {
-    max-width: 650px;
-    margin-top: 35px;
-    font-size: 19px;
-    line-height: 1.7;
-    opacity: 0.55;
-    font-weight: 300;
-    color: #f2f2f2;
-}
-
-.learning-category {
-    margin-bottom: 120px;
-}
-
-.learning-category-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 45px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.learning-category-header h2 {
-    margin: 0;
-    font-size: clamp(30px, 4vw, 52px);
-    font-weight: 600;
-    line-height: 1;
-    color: #f2f2f2;
-}
-
-.learning-count {
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 12px;
-    opacity: 0.35;
-    color: #f2f2f2;
-}
-
-.learning-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-}
-
-.learning-card {
-    position: relative;
-    min-height: 330px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-}
-
-.learning-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.025);
-}
-
-.learning-card-number {
-    position: absolute;
-    top: 25px;
-    right: 28px;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 12px;
-    opacity: 0.3;
-    color: #f2f2f2;
-}
-
-.learning-card-content {
-    padding: 40px;
-}
-
-.learning-card-label {
-    margin: 0 0 28px;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    opacity: 0.45;
-    color: #f2f2f2;
-}
-
-.learning-card h3 {
-    max-width: 700px;
-    margin: 0 0 20px;
-    font-size: clamp(25px, 3vw, 38px);
-    font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    color: #f2f2f2;
-}
-
-.learning-card-chapter {
-    margin: 0 0 8px;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 13px;
-    opacity: 0.65;
-    color: #f2f2f2;
-}
-
-.learning-card-author {
-    margin: 0;
-    font-size: 14px;
-    opacity: 0.55;
-    font-weight: 300;
-    color: #f2f2f2;
-}
-
-.learning-card-date {
-    margin-top: 20px;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    opacity: 0.4;
-    color: #f2f2f2;
-}
-
-.learning-card-button {
-    margin-top: 35px;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: #f2f2f2;
-    cursor: pointer;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    opacity: 0.7;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.learning-card-button:hover {
-    opacity: 1;
-    transform: translateX(5px);
-}
-
-.learning-card-button span {
-    margin-left: 8px;
-}
-
-.learning-loading,
-.learning-empty,
-.learning-error {
-    grid-column: 1 / -1;
-    padding: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 13px;
-    opacity: 0.5;
-    color: #f2f2f2;
-}
-
-.viewer-page {
-    width: min(88vw, 1100px);
-    margin: 0 auto;
-    padding: 110px 0 120px;
-}
-
-.viewer-back {
-    display: inline-block;
-    margin-bottom: 90px;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    opacity: 0.5;
-    color: #f2f2f2;
-}
-
-.viewer-back:hover {
-    opacity: 1;
-}
-
-.viewer-header {
-    margin-bottom: 65px;
-}
-
-.viewer-header h1 {
-    max-width: 1000px;
-    margin: 0;
-    font-size: clamp(42px, 7vw, 78px);
-    font-weight: 600;
-    line-height: 1.05;
-    letter-spacing: -0.045em;
-    color: #f2f2f2;
-}
-
-.viewer-chapter {
-    margin: 0 0 20px;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 13px;
-    opacity: 0.55;
-    color: #f2f2f2;
-}
-
-.viewer-author {
-    margin: 25px 0 0;
-    font-size: 16px;
-    opacity: 0.6;
-    font-weight: 300;
-    color: #f2f2f2;
-}
-
-.viewer-date {
-    margin: 8px 0 0;
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 11px;
-    opacity: 0.4;
-    color: #f2f2f2;
-}
-
-.viewer-terminal {
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.02);
-}
-
-.viewer-terminal-header {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    height: 44px;
-    padding: 0 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-}
-
-.viewer-terminal-header span {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: currentColor;
-    opacity: 0.3;
-}
-
-.viewer-terminal-header label {
-    margin-left: 12px;
-    font-size: 10px;
-    opacity: 0.4;
-    color: #f2f2f2;
-}
-
-.viewer-content {
-    padding: 55px;
-    font-size: 17px;
-    line-height: 1.85;
-    color: #f2f2f2;
-}
-
-.viewer-content h1,
-.viewer-content h2,
-.viewer-content h3 {
-    margin: 60px 0 22px;
-    line-height: 1.2;
-}
-
-.viewer-content h1 {
-    font-size: 36px;
-    font-weight: 600;
-}
-
-.viewer-content h2 {
-    font-size: 29px;
-    font-weight: 600;
-}
-
-.viewer-content h3 {
-    font-size: 23px;
-    font-weight: 600;
-}
-
-.viewer-content p {
-    margin: 0 0 25px;
-    opacity: 0.8;
-    font-weight: 300;
-}
-
-.viewer-content ul,
-.viewer-content ol {
-    margin: 0 0 30px;
-    padding-left: 28px;
-}
-
-.viewer-content li {
-    margin-bottom: 9px;
-    opacity: 0.8;
-}
-
-.viewer-content strong {
-    font-weight: 700;
-    color: #fff;
-}
-
-.viewer-content em {
-    font-style: italic;
-}
-
-.viewer-content code {
-    padding: 3px 7px;
-    background: rgba(255, 255, 255, 0.07);
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 0.88em;
-}
-
-.viewer-content .code-block {
-    margin: 35px 0;
-    padding: 25px;
-    overflow-x: auto;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.35);
-    font-family: 'JetBrains Mono', 'Courier New', monospace;
-    font-size: 14px;
-    line-height: 1.7;
-}
-
-.viewer-content .code-block code {
-    padding: 0;
-    background: transparent;
-}
-
-.viewer-content a {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    opacity: 0.8;
-}
-
-.viewer-content a:hover {
-    opacity: 1;
-}
-
-.viewer-error {
-    padding: 50px 0;
-}
-
-.viewer-error h1 {
-    margin: 0 0 15px;
-}
-
-.viewer-error p {
-    opacity: 0.5;
-}
-
-/* =========================================================
    RESPONSIVE
 ========================================================= */
 @media (max-width: 1000px) {
@@ -1521,6 +1428,14 @@ button {
     .recommendation-text {
         font-size: 14px;
     }
+
+    .learning-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .learning-topics-section {
+        padding-top: 100px;
+    }
 }
 
 @media (max-width: 800px) {
@@ -1561,6 +1476,48 @@ button {
         flex: 0 0 400px;
         padding: 25px 22px;
         min-height: 260px;
+    }
+
+    .viewer-page {
+        padding: 100px 0 60px;
+    }
+
+    .viewer-back {
+        margin-bottom: 35px;
+        font-size: 10px;
+    }
+
+    .viewer-header h1 {
+        font-size: clamp(28px, 6vw, 38px);
+    }
+
+    .viewer-content-wrapper {
+        padding: 30px 24px;
+    }
+
+    .viewer-content {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .viewer-content h2 {
+        font-size: 24px;
+    }
+
+    .viewer-content h3 {
+        font-size: 19px;
+    }
+
+    .viewer-content .learning-code-block {
+        padding: 14px 16px;
+    }
+
+    .viewer-content .learning-code-block pre {
+        font-size: 12px;
+    }
+
+    .learning-topics-section {
+        padding-top: 90px;
     }
 }
 
@@ -1666,37 +1623,46 @@ button {
         min-height: 300px;
     }
 
-    .learning-page {
-        width: 90vw;
-        padding: 100px 0;
-    }
-
     .learning-grid {
         grid-template-columns: 1fr;
     }
 
-    .learning-card-content {
-        padding: 30px;
+    .learning-topic-card {
+        min-height: 200px;
+        padding: 28px;
+    }
+
+    .learning-topic-card h3 {
+        font-size: 20px;
+    }
+
+    .learning-topics-section {
+        padding-top: 80px;
     }
 
     .viewer-page {
-        width: 90vw;
-        padding: 90px 0 100px;
+        padding: 90px 0 50px;
+    }
+
+    .viewer-content-wrapper {
+        padding: 20px 16px;
     }
 
     .viewer-content {
-        padding: 30px 22px;
-        font-size: 16px;
+        font-size: 15px;
     }
 
-    .viewer-header h1 {
-        font-size: 42px;
+    .viewer-content h2 {
+        font-size: 21px;
+        margin-top: 30px;
     }
 
-    .viewer-terminal-header label {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+    .viewer-content h3 {
+        font-size: 17px;
+    }
+
+    .viewer-content ul {
+        padding-left: 18px;
     }
 
     .footer {

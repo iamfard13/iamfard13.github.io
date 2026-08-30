@@ -2,205 +2,127 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="Ali Abbasifard — Learning">
-
     <title>Learning | Ali Abbasifard</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
+    <!-- =====================================================
+         ANIMATED BACKGROUND – PARTICLE NETWORK
+         ===================================================== -->
+    <canvas id="bgCanvas"></canvas>
 
     <!-- =====================================================
-         NAVIGATION
+         NAVIGATION – Learning tab ACTIVE
          ===================================================== -->
-
     <header class="navbar">
-
-        <a href="index.html" class="navbar-logo">
-            AA
-        </a>
-
-
         <nav class="navbar-links">
-
-            <a href="index.html#about">
-                About
-            </a>
-
-            <a href="index.html#skills">
-                Skills
-            </a>
-
-            <a href="index.html#projects">
-                Projects
-            </a>
-
-            <a href="learning.html" class="active">
-                Learning
-            </a>
-
-            <a href="index.html#contact">
-                Contact
-            </a>
-
+            <a href="index.html#skills">Skills</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="learning.html" class="active">Learning</a>
+            <a href="index.html#recommendations">Recommendations</a>
+            <a href="index.html#contact">Contact</a>
         </nav>
-
     </header>
 
-
-
-    <!-- =====================================================
-         LEARNING
-         ===================================================== -->
-
-    <main class="learning-page">
-
-
-        <!-- HERO -->
-
-        <section class="learning-hero">
-
-            <p class="section-label">
-                LEARNING
-            </p>
-
-            <h1>
-                Things I'm learning.
-            </h1>
-
-            <p>
-                Articles I've written and notes I've taken from
-                the books I'm reading.
-            </p>
-
-        </section>
-
-
-
+    <main>
         <!-- =================================================
-             BOOKS
+             LEARNING HERO – REMOVED
              ================================================= -->
 
-        <section class="learning-category">
-
-            <div class="learning-category-header">
-
-                <div>
-
-                    <p class="section-label">
-                        BOOKS
-                    </p>
-
-                    <h2>
-                        Notes from books.
-                    </h2>
-
-                </div>
-
-                <span class="learning-count" id="books-count">
-                    0 ITEMS
-                </span>
-
+        <!-- =================================================
+             TOPICS – clean cards
+             ================================================= -->
+        <section class="section learning-topics-section">
+            <div class="section-header">
+                <h2>Topics I'm exploring.</h2>
             </div>
 
+            <div class="learning-grid">
+                <!-- Topic 1 – Book: Parallel Programming -->
+                <article class="learning-topic-card" data-href="learning-viewer.html?topic=parallel-programming">
+                    <span class="learning-topic-number">01</span>
+                    <p class="learning-topic-label">BOOK</p>
+                    <h3>Is Parallel Programming Hard, And, If So, What Can You Do About It?</h3>
+                    <p class="learning-topic-author">by Paul E. McKenney</p>
+                    <span class="learning-topic-read-time"><i class="fas fa-clock"></i> 6 min read</span>
+                </article>
 
-            <div class="learning-grid" id="books-grid">
+                <!-- Topic 2 – Microservices Architecture -->
+                <article class="learning-topic-card" data-href="learning-viewer.html?topic=microservices">
+                    <span class="learning-topic-number">02</span>
+                    <p class="learning-topic-label">ARTICLE</p>
+                    <h3>Microservices Architecture</h3>
+                    <p class="learning-topic-author">by Ali Abbasifard</p>
+                    <span class="learning-topic-read-time"><i class="fas fa-clock"></i> 4 min read</span>
+                </article>
 
-                <div class="learning-loading">
-                    Loading books...
-                </div>
-
+                <!-- Topic 3 – Cloud Computing & DevOps -->
+                <article class="learning-topic-card" data-href="learning-viewer.html?topic=cloud-devops">
+                    <span class="learning-topic-number">03</span>
+                    <p class="learning-topic-label">ARTICLE</p>
+                    <h3>Cloud Computing &amp; DevOps</h3>
+                    <p class="learning-topic-author">by Ali Abbasifard</p>
+                    <span class="learning-topic-read-time"><i class="fas fa-clock"></i> 4 min read</span>
+                </article>
             </div>
-
         </section>
-
-
 
         <!-- =================================================
-             ARTICLES
+             BACK TO HOME
              ================================================= -->
-
-        <section class="learning-category">
-
-            <div class="learning-category-header">
-
-                <div>
-
-                    <p class="section-label">
-                        ARTICLES
-                    </p>
-
-                    <h2>
-                        Things I've written.
-                    </h2>
-
-                </div>
-
-                <span class="learning-count" id="articles-count">
-                    0 ITEMS
-                </span>
-
-            </div>
-
-
-            <div class="learning-grid" id="articles-grid">
-
-                <div class="learning-loading">
-                    Loading articles...
-                </div>
-
-            </div>
-
-        </section>
-
-
+        <div style="text-align:center; margin: 20px 0 60px;">
+            <a href="index.html"
+                style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.3; letter-spacing: 0.1em; transition: opacity 0.2s; text-transform: uppercase;">
+                ← Back to Home
+            </a>
+        </div>
     </main>
-
-
 
     <!-- =====================================================
          FOOTER
          ===================================================== -->
-
     <footer class="footer">
-
-        <p>
-            © 2026 Ali Abbasifard
-        </p>
-
-        <p>
-            Built with curiosity &amp; code.
-        </p>
-
+        <p>© 2026 Ali Abbasifard</p>
+        <p>Built with curiosity &amp; code.</p>
     </footer>
 
-
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+    <!-- Background particle network -->
+    <script src="particles.js"></script>
 
     <!-- =====================================================
-         MARKED
+         CARD CLICK HANDLER
          ===================================================== -->
-
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-
-    <!-- Learning JS -->
-
-    <script src="learning.js"></script>
-
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.learning-topic-card').forEach(card => {
+                card.addEventListener('click', function (e) {
+                    const href = this.dataset.href;
+                    if (href) {
+                        window.location.href = href;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
