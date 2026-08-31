@@ -33,5 +33,3 @@ The goal is to balance both, but **structure is the long‑term investment**.
 > "The architecture of a software system is the shape given to that system by those who build it. The shape is the result of the decisions made by the architects."
 
 ---
-
-**Next:** The SOLID principles – building blocks of good architecture.
