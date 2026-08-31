@@ -114,6 +114,50 @@ button {
     opacity: 1;
 }
 
+/* Resume buttons in navbar */
+.resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    transition: all 0.25s ease;
+    text-transform: none;
+    border: 1px solid transparent;
+}
+
+.resume-btn i {
+    font-size: 13px;
+}
+
+.view-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #f2f2f2;
+}
+
+.view-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    opacity: 1;
+}
+
+.download-btn {
+    background: #fbbf24;
+    border-color: #fbbf24;
+    color: #080808;
+}
+
+.download-btn:hover {
+    background: #fcd34d;
+    border-color: #fcd34d;
+    color: #080808;
+    opacity: 1;
+}
+
 /* =========================================================
    HERO
 ========================================================= */
@@ -657,7 +701,7 @@ button {
 }
 
 /* =========================================================
-   RECOMMENDATIONS – HORIZONTAL SCROLL (LEFT-TO-RIGHT JUSTIFIED)
+   RECOMMENDATIONS – HORIZONTAL SCROLL
 ========================================================= */
 .recommendations-scroll-wrapper {
     position: relative;
@@ -832,7 +876,7 @@ button {
 }
 
 /* =========================================================
-   LEARNING PAGE – topics (fixed spacing, no margin collapse)
+   LEARNING PAGE – unified grid (4 columns)
 ========================================================= */
 .learning-topics-section {
     padding-bottom: 40px;
@@ -842,14 +886,7 @@ button {
 .learning-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* changed from 3 to 4 */
     gap: 25px;
-    /* increased gap */
-}
-
-/* added spacing between books and articles */
-#articles-container {
-    margin-top: 50px;
 }
 
 .learning-topic-card {
@@ -899,7 +936,6 @@ button {
     line-height: 1.2;
 }
 
-/* Chapter – first after title, with spacing */
 .learning-topic-chapter {
     font-size: 13px;
     opacity: 0.35;
@@ -907,10 +943,8 @@ button {
     font-weight: 300;
     font-style: italic;
     margin-bottom: 6px;
-    /* space after chapter */
 }
 
-/* Author – with user icon */
 .learning-topic-author {
     font-size: 13px;
     opacity: 0.4;
@@ -925,7 +959,6 @@ button {
     opacity: 0.6;
 }
 
-/* Date – with calendar icon */
 .learning-topic-date {
     font-size: 13px;
     opacity: 0.4;
@@ -956,9 +989,7 @@ button {
     opacity: 0.8;
 }
 
-/* =========================================================
-   SHARE DROPDOWN – inside learning card
-========================================================= */
+/* Share dropdown */
 .learning-topic-card .share-dropdown {
     position: absolute;
     bottom: 25px;
@@ -1038,7 +1069,7 @@ button {
 }
 
 /* =========================================================
-   VIEWER – solid card (no opacity, no background visible)
+   VIEWER – solid card
 ========================================================= */
 .viewer-page {
     width: min(88vw, 1100px);
@@ -1087,7 +1118,6 @@ button {
     margin-bottom: 10px;
 }
 
-/* Date is hidden in the viewer (display:none via inline style) – we keep the rule for safety */
 .viewer-date {
     display: none !important;
 }
@@ -1549,7 +1579,6 @@ button {
         font-size: 14px;
     }
 
-    /* learning grid 2 columns */
     .learning-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1566,6 +1595,15 @@ button {
 
     .navbar-links a {
         font-size: 9px;
+    }
+
+    .resume-btn {
+        padding: 4px 10px;
+        font-size: 9px;
+    }
+
+    .resume-btn i {
+        font-size: 11px;
     }
 
     .section {
@@ -1640,11 +1678,20 @@ button {
     }
 
     .navbar-links {
-        gap: 10px;
+        gap: 8px;
     }
 
     .navbar-links a {
         font-size: 8px;
+    }
+
+    .resume-btn {
+        padding: 3px 8px;
+        font-size: 8px;
+    }
+
+    .resume-btn i {
+        font-size: 10px;
     }
 
     .hero {
@@ -1736,13 +1783,8 @@ button {
         min-height: 300px;
     }
 
-    /* learning grid 1 column */
     .learning-grid {
         grid-template-columns: 1fr;
-    }
-
-    #articles-container {
-        margin-top: 40px;
     }
 
     .learning-topic-card {
