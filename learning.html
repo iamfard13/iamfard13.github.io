@@ -43,18 +43,14 @@
 
     <main>
         <!-- =================================================
-             TOPICS – dynamically loaded from JSON
+             ARTICLES – dynamically loaded from JSON
              ================================================= -->
         <section class="section learning-topics-section">
             <div class="section-header">
                 <h2>Topics I'm exploring.</h2>
             </div>
 
-            <!-- Books -->
-            <div id="books-grid" class="learning-grid"></div>
-
-            <!-- Articles -->
-            <div id="articles-grid" class="learning-grid" style="margin-top: 40px;"></div>
+            <div id="articles-grid" class="learning-grid"></div>
         </section>
 
         <!-- =================================================
@@ -81,7 +77,7 @@
     <script src="particles.js"></script>
 
     <!-- =====================================================
-         DYNAMIC CARD LOADER
+         DYNAMIC CARD LOADER (only articles)
          ===================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -90,64 +86,66 @@
             const GITHUB_REPO = 'iamfard13.github.io';
             const BRANCH = 'main';
 
-            // Load both books and articles
-            loadCategory('books', 'books-grid', 'BOOK');
-            loadCategory('articles', 'articles-grid', 'ARTICLE');
+            const grid = document.getElementById('articles-grid');
+            if (!grid) return;
 
-            async function loadCategory(category, gridId, label) {
-                const grid = document.getElementById(gridId);
-                if (!grid) return;
+            loadArticles();
 
+            async function loadArticles() {
                 try {
-                    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/data/${category}.json`;
+                    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/data/articles.json`;
                     const response = await fetch(url);
                     if (!response.ok) throw new Error(`HTTP ${response.status}`);
                     const items = await response.json();
 
                     if (items.length === 0) {
-                        grid.innerHTML = `<p style="opacity:0.4; font-size:14px;">No ${category} yet.</p>`;
+                        grid.innerHTML = `<p style="opacity:0.4; font-size:14px;">No articles yet.</p>`;
                         return;
                     }
 
                     grid.innerHTML = '';
-                    items.forEach((item, index) => {
-                        const card = createCard(item, index, label);
+
+                    // For each article, we need to fetch the markdown to compute read time
+                    for (let index = 0; index < items.length; index++) {
+                        const item = items[index];
+                        const card = await createCard(item, index);
                         grid.appendChild(card);
-                    });
+                    }
                 } catch (error) {
-                    console.error(`Error loading ${category}:`, error);
-                    grid.innerHTML = `<p style="opacity:0.4; font-size:14px;">Unable to load ${category}.</p>`;
+                    console.error('Error loading articles:', error);
+                    grid.innerHTML = `<p style="opacity:0.4; font-size:14px;">Unable to load articles.</p>`;
                 }
             }
 
-            function createCard(item, index, label) {
+            async function createCard(item, index) {
                 const card = document.createElement('article');
                 card.className = 'learning-topic-card';
 
-                // Determine the file name without extension for the topic (for share links)
-                const fileName = item.file.replace(/^.*\//, '').replace(/\.md$/, '');
-                const viewerUrl = `learning-viewer.html?file=${encodeURIComponent(item.file)}`;
-
+                // Determine the file name without extension for the viewer URL
+                const filePath = item.file;
+                const viewerUrl = `learning-viewer.html?file=${encodeURIComponent(filePath)}`;
                 card.dataset.href = viewerUrl;
 
-                // Number
+                // ---- Number ----
                 const number = document.createElement('span');
                 number.className = 'learning-topic-number';
                 number.textContent = String(index + 1).padStart(2, '0');
                 card.appendChild(number);
 
-                // Label
-                const labelEl = document.createElement('p');
-                labelEl.className = 'learning-topic-label';
-                labelEl.textContent = label;
-                card.appendChild(labelEl);
+                // ---- Label (we'll show "BOOK" or "ARTICLE" based on folder) ----
+                const label = document.createElement('p');
+                label.className = 'learning-topic-label';
+                // Check if the file is in 'books' or 'articles' folder
+                const folder = filePath.includes('/books/') ? 'BOOK' : 'ARTICLE';
+                label.textContent = folder;
+                card.appendChild(label);
 
-                // Title
+                // ---- Title ----
                 const title = document.createElement('h3');
-                title.textContent = item.title || fileName.replace(/-/g, ' ');
+                title.textContent = item.title || filePath.replace(/^.*\//, '').replace(/\.md$/, '').replace(/-/g, ' ');
                 card.appendChild(title);
 
-                // Author (for books)
+                // ---- Author ----
                 if (item.author) {
                     const author = document.createElement('p');
                     author.className = 'learning-topic-author';
@@ -155,7 +153,7 @@
                     card.appendChild(author);
                 }
 
-                // Chapter (for books)
+                // ---- Chapter (optional) ----
                 if (item.chapter) {
                     const chapter = document.createElement('p');
                     chapter.className = 'learning-topic-author';
@@ -165,13 +163,31 @@
                     card.appendChild(chapter);
                 }
 
-                // Date or read time placeholder
-                const readTime = document.createElement('span');
-                readTime.className = 'learning-topic-read-time';
-                readTime.innerHTML = `<i class="fas fa-clock"></i> ${item.date || 'Recently'}`;
-                card.appendChild(readTime);
+                // ---- Read Time (auto-computed) ----
+                const readTimeSpan = document.createElement('span');
+                readTimeSpan.className = 'learning-topic-read-time';
 
-                // Share dropdown
+                try {
+                    // Fetch the raw markdown to count words
+                    const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/${filePath}`;
+                    const mdResponse = await fetch(rawUrl);
+                    if (mdResponse.ok) {
+                        const md = await mdResponse.text();
+                        // Remove frontmatter if any
+                        const contentWithoutFrontmatter = md.replace(/^---[\s\S]*?---/, '').trim();
+                        // Count words (split by spaces and filter out empty)
+                        const words = contentWithoutFrontmatter.split(/\s+/).filter(w => w.length > 0).length;
+                        const readTime = Math.ceil(words / 200); // average reading speed
+                        readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ${readTime} min read`;
+                    } else {
+                        readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`; // fallback
+                    }
+                } catch {
+                    readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`;
+                }
+                card.appendChild(readTimeSpan);
+
+                // ---- Share Dropdown ----
                 const dropdown = document.createElement('div');
                 dropdown.className = 'share-dropdown';
 
@@ -187,21 +203,21 @@
                 // Share native
                 const shareNative = document.createElement('button');
                 shareNative.className = 'share-option share-native';
-                shareNative.dataset.file = item.file;
+                shareNative.dataset.file = filePath;
                 shareNative.innerHTML = '<i class="fas fa-share-nodes"></i> Share';
                 menu.appendChild(shareNative);
 
                 // Copy link
                 const shareCopy = document.createElement('button');
                 shareCopy.className = 'share-option share-copy';
-                shareCopy.dataset.file = item.file;
+                shareCopy.dataset.file = filePath;
                 shareCopy.innerHTML = '<i class="fas fa-copy"></i> Copy Link';
                 menu.appendChild(shareCopy);
 
                 dropdown.appendChild(menu);
                 card.appendChild(dropdown);
 
-                // ----- Event listeners -----
+                // ----- Event Listeners -----
                 // Card click (navigate)
                 card.addEventListener('click', function (e) {
                     if (e.target.closest('.share-dropdown')) return;
