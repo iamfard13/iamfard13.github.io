@@ -259,98 +259,66 @@ if (scrollContainer && leftBtn && rightBtn) {
 }
 
 /* ==================================================
-   RECOMMENDATIONS – hard-coded texts with horizontal scroll (no fallback icon)
+   RECOMMENDATIONS – load from JSON
 ================================================== */
-const hardcodedRecommendations = {
-    Shahin: [
-        "I had the pleasure of working with Ali on several software projects, and without a doubt, he is one of the most skilled and organized software engineers I've ever worked with.",
-        "He has an excellent command of .NET Core and design patterns, and is always eager to find the most effective and up-to-date solutions.",
-        "Ali is a hardworking, highly motivated, and research-oriented professional who never backs down from technical challenges.",
-        "His strong problem-solving ability, quick learning skills, and collaborative mindset make him a valuable asset to any team.",
-        "I'm confident that in any professional environment, he can play a key role in driving projects to success."
-    ],
-    Amirhossein: [
-        "I've had the privilege of knowing Ali not just as a talented software engineer, but as a thoughtful, curious, and deeply driven human being.",
-        "His passion for technology is matched by his humility and eagerness to grow — whether he's diving into a new framework or helping others understand a complex concept with clarity and patience.",
-        "While we haven't worked together professionally, I've seen firsthand the kind of teammate and contributor he is.",
-        "Any team would be lucky to have him."
-    ]
-};
-
 async function loadRecommendations() {
     const container = document.getElementById('recommendationsGrid');
     if (!container) return;
 
-    const users = [
-        { id: 'Shahin', name: 'Shahin' },
-        { id: 'Amirhossein', name: 'Amirhossein' }
-    ];
+    try {
+        const url = 'https://raw.githubusercontent.com/iamfard13/iamfard13.github.io/main/data/recommendations.json';
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const recommendations = await response.json();
 
-    for (const user of users) {
-        const card = document.createElement('div');
-        card.className = 'recommendation-card';
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-
-        const imagePath = `Recommendations/${user.id}/image.jpeg`;
-        const textPath = `Recommendations/${user.id}/text.txt`;
-
-        card.innerHTML = `
-            <div class="recommendation-image">
-                <img src="${imagePath}" alt="${user.name}" loading="lazy">
-            </div>
-            <div class="recommendation-content">
-                <div class="recommendation-text" id="rec-text-${user.id}">
-                    <div class="loading-text">Loading recommendation...</div>
-                </div>
-                <div class="recommendation-author">
-                    <strong>${user.name}</strong>
-                </div>
-            </div>
-        `;
-
-        container.appendChild(card);
-
-        // Try to fetch the text file first, fallback to hardcoded
-        try {
-            const response = await fetch(textPath);
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-            const text = await response.text();
-            const textEl = document.getElementById(`rec-text-${user.id}`);
-            if (textEl) {
-                const paragraphs = text.split('\n').filter(line => line.trim() !== '');
-                if (paragraphs.length > 0) {
-                    textEl.innerHTML = paragraphs.map(p => `<p>${p.trim()}</p>`).join('');
-                    console.log(`✅ Loaded recommendation for ${user.id} from file`);
-                } else {
-                    useHardcoded(user.id);
-                }
-            }
-        } catch (error) {
-            useHardcoded(user.id);
+        if (recommendations.length === 0) {
+            container.innerHTML = `<p style="opacity:0.4; text-align:center; padding:40px 0;">No recommendations yet.</p>`;
+            return;
         }
 
-        function useHardcoded(userId) {
-            console.log(`📝 Using hardcoded text for ${userId}`);
-            const textEl = document.getElementById(`rec-text-${userId}`);
-            if (textEl) {
-                const hardcoded = hardcodedRecommendations[userId] || ["This person is highly recommended!"];
-                textEl.innerHTML = hardcoded.map(p => `<p>${p}</p>`).join('');
-            }
-        }
+        container.innerHTML = '';
+        recommendations.forEach((rec, index) => {
+            const card = document.createElement('div');
+            card.className = 'recommendation-card';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
 
-        // Animate in
-        requestAnimationFrame(() => {
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
+            const imagePath = rec.image || '';
+            const authorName = rec.author || 'Anonymous';
+
+            // Split the text into paragraphs (if not already)
+            const paragraphs = rec.text.split('\n').filter(line => line.trim() !== '');
+
+            card.innerHTML = `
+                <div class="recommendation-image">
+                    ${imagePath ? `<img src="${imagePath}" alt="${authorName}" loading="lazy">` :
+                    `<div style="width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.05);display:flex;align-items:center;justify-content:center;font-size:30px;">👤</div>`}
+                </div>
+                <div class="recommendation-content">
+                    <div class="recommendation-text">
+                        ${paragraphs.map(p => `<p>${p.trim()}</p>`).join('')}
+                    </div>
+                    <div class="recommendation-author">
+                        <strong>${authorName}</strong>
+                    </div>
+                </div>
+            `;
+
+            container.appendChild(card);
+
+            // Animate in
+            requestAnimationFrame(() => {
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            });
         });
-    }
 
-    // After loading all cards, set up scroll buttons
-    setupRecommendationScroll();
+        setupRecommendationScroll();
+    } catch (error) {
+        console.error('Error loading recommendations:', error);
+        container.innerHTML = `<p style="opacity:0.4; text-align:center; padding:40px 0;">Unable to load recommendations.</p>`;
+    }
 }
 
 function setupRecommendationScroll() {

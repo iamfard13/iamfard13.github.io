@@ -6,6 +6,7 @@ on:
             - main
         paths:
             - "learnings/**/*.md"
+            - "recommendations/**/*.md"
             - ".github/workflows/generate-learning.yml"
 
     workflow_dispatch:
@@ -152,46 +153,77 @@ jobs:
                       "article"
                   )
 
+                  # ============================================
+                  # RECOMMENDATIONS – new generation
+                  # ============================================
+                  def generate_recommendations():
+                      base = Path("recommendations")
+                      if not base.exists():
+                          return []
 
+                      result = []
+                      # Each subfolder is a person
+                      for person_dir in base.iterdir():
+                          if not person_dir.is_dir():
+                              continue
+                          md_file = person_dir / "recommendation.md"
+                          if not md_file.exists():
+                              continue
+
+                          content = md_file.read_text(encoding="utf-8")
+                          metadata = parse_frontmatter(content)
+
+                          # Extract the recommendation text (after frontmatter)
+                          parts = content.split("---", 2)
+                          text = parts[2].strip() if len(parts) >= 3 else content.strip()
+
+                          # Look for image
+                          image_path = metadata.get("image", "")
+                          if not image_path:
+                              # try to find an image in the folder
+                              for ext in [".jpeg", ".jpg", ".png", ".gif"]:
+                                  img = person_dir / f"image{ext}"
+                                  if img.exists():
+                                      image_path = str(img).replace("\\", "/")
+                                      break
+                              else:
+                                  # fallback to a generic placeholder
+                                  image_path = ""
+
+                          result.append({
+                              "author": metadata.get("author", person_dir.name),
+                              "image": image_path,
+                              "text": text,
+                              "folder": str(person_dir.name)
+                          })
+
+                      return result
+
+
+                  recommendations = generate_recommendations()
+
+                  # Write all JSON files
                   data_directory = Path("data")
+                  data_directory.mkdir(parents=True, exist_ok=True)
 
-                  data_directory.mkdir(
-                      parents=True,
-                      exist_ok=True
-                  )
-
-
-                  Path(
-                      "data/books.json"
-                  ).write_text(
-                      json.dumps(
-                          books,
-                          indent=4,
-                          ensure_ascii=False
-                      ) + "\n",
+                  Path("data/books.json").write_text(
+                      json.dumps(books, indent=4, ensure_ascii=False) + "\n",
                       encoding="utf-8"
                   )
 
-
-                  Path(
-                      "data/articles.json"
-                  ).write_text(
-                      json.dumps(
-                          articles,
-                          indent=4,
-                          ensure_ascii=False
-                      ) + "\n",
+                  Path("data/articles.json").write_text(
+                      json.dumps(articles, indent=4, ensure_ascii=False) + "\n",
                       encoding="utf-8"
                   )
 
-
-                  print(
-                      f"Generated {len(books)} books."
+                  Path("data/recommendations.json").write_text(
+                      json.dumps(recommendations, indent=4, ensure_ascii=False) + "\n",
+                      encoding="utf-8"
                   )
 
-                  print(
-                      f"Generated {len(articles)} articles."
-                  )
+                  print(f"Generated {len(books)} books.")
+                  print(f"Generated {len(articles)} articles.")
+                  print(f"Generated {len(recommendations)} recommendations.")
 
             - name: Commit generated indexes
               run: |
@@ -200,7 +232,7 @@ jobs:
 
                   git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-                  git add data/books.json data/articles.json
+                  git add data/books.json data/articles.json data/recommendations.json
 
                   if git diff --cached --quiet; then
                     echo "No changes to commit."

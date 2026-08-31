@@ -1,0 +1,12 @@
+---
+author: Amirhossein
+image: recommendations/amirhossein/image.jpeg
+---
+
+I've had the privilege of knowing Ali not just as a talented software engineer, but as a thoughtful, curious, and deeply driven human being.
+
+His passion for technology is matched by his humility and eagerness to grow — whether he's diving into a new framework or helping others understand a complex concept with clarity and patience.
+
+While we haven't worked together professionally, I've seen firsthand the kind of teammate and contributor he is.
+
+Any team would be lucky to have him.
