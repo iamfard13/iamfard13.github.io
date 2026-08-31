@@ -152,7 +152,7 @@
                 title.textContent = item.title || filePath.replace(/^.*\//, '').replace(/\.md$/, '').replace(/-/g, ' ');
                 card.appendChild(title);
 
-                // ---- Chapter (NEW ORDER – before author) ----
+                // ---- Chapter (with spacing) ----
                 if (item.chapter) {
                     const chapter = document.createElement('p');
                     chapter.className = 'learning-topic-chapter';
@@ -160,19 +160,19 @@
                     card.appendChild(chapter);
                 }
 
-                // ---- Author (after chapter) ----
+                // ---- Author (with user icon) ----
                 if (item.author) {
                     const author = document.createElement('p');
                     author.className = 'learning-topic-author';
-                    author.textContent = `by ${item.author}`;
+                    author.innerHTML = `<i class="fas fa-user"></i> by ${item.author}`;
                     card.appendChild(author);
                 }
 
-                // ---- Date ----
+                // ---- Date (with calendar icon) ----
                 if (item.date) {
                     const date = document.createElement('p');
                     date.className = 'learning-topic-date';
-                    date.textContent = item.date;
+                    date.innerHTML = `<i class="fas fa-calendar-alt"></i> ${item.date}`;
                     card.appendChild(date);
                 }
 

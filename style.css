@@ -839,15 +839,6 @@ button {
     margin-top: 100px;
 }
 
-.learning-topic-chapter {
-    font-size: 13px;
-    opacity: 0.35;
-    color: #f2f2f2;
-    font-weight: 300;
-    font-style: italic;
-    margin-bottom: 2px;
-}
-
 .learning-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -901,6 +892,18 @@ button {
     line-height: 1.2;
 }
 
+/* Chapter – first after title, with spacing */
+.learning-topic-chapter {
+    font-size: 13px;
+    opacity: 0.35;
+    color: #f2f2f2;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 6px;
+    /* space after chapter */
+}
+
+/* Author – with user icon */
 .learning-topic-author {
     font-size: 13px;
     opacity: 0.4;
@@ -910,12 +913,23 @@ button {
     margin-bottom: 4px;
 }
 
+.learning-topic-author i {
+    margin-right: 6px;
+    opacity: 0.6;
+}
+
+/* Date – with calendar icon */
 .learning-topic-date {
     font-size: 13px;
     opacity: 0.4;
     color: #f2f2f2;
     font-weight: 300;
     margin-bottom: 14px;
+}
+
+.learning-topic-date i {
+    margin-right: 6px;
+    opacity: 0.6;
 }
 
 .learning-topic-read-time {
@@ -1066,11 +1080,9 @@ button {
     margin-bottom: 10px;
 }
 
+/* Date is hidden in the viewer (display:none via inline style) – we keep the rule for safety */
 .viewer-date {
-    font-size: 13px;
-    opacity: 0.35;
-    color: #f2f2f2;
-    font-weight: 300;
+    display: none !important;
 }
 
 .viewer-content-wrapper {
