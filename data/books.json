@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "title": "Clean Architecture",
+        "chapter": "Chapter 2 – A Tale of Two Values",
+        "author": "Robert C. Martin",
+        "date": "September 1, 2026",
+        "file": "learnings/books/clean-architecture.md"
+    }
+]

@@ -13,8 +13,8 @@ echo "Output file: $OUTPUT_FILE"
 # Clear or create the output file
 > "$OUTPUT_FILE"
 
-# Find all files and process them
-find "$SEARCH_DIR" -type f | while read -r file; do
+# Find all files, excluding .git folder and its contents
+find "$SEARCH_DIR" -type f -not -path "*/.git/*" -not -path "*/.git" | while read -r file; do
     # Skip the output file itself
     if [[ "$(realpath "$file")" == "$(realpath "$OUTPUT_FILE")" ]]; then
         continue
