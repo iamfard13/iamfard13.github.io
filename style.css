@@ -114,7 +114,7 @@ button {
     opacity: 1;
 }
 
-/* Single Resume button – View CV */
+/* ─── Single View CV button ─── */
 .resume-btn {
     display: inline-flex;
     align-items: center;
@@ -124,12 +124,11 @@ button {
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.05em;
-    transition: all 0.25s ease;
     text-transform: none;
-    border: 1px solid transparent;
+    border: 1px solid #fbbf24;
     background: #fbbf24;
-    border-color: #fbbf24;
     color: #080808;
+    transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .resume-btn i {
