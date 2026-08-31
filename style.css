@@ -841,8 +841,15 @@ button {
 
 .learning-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    /* changed from 3 to 4 */
+    gap: 25px;
+    /* increased gap */
+}
+
+/* added spacing between books and articles */
+#articles-container {
+    margin-top: 50px;
 }
 
 .learning-topic-card {
@@ -1542,6 +1549,7 @@ button {
         font-size: 14px;
     }
 
+    /* learning grid 2 columns */
     .learning-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1728,8 +1736,13 @@ button {
         min-height: 300px;
     }
 
+    /* learning grid 1 column */
     .learning-grid {
         grid-template-columns: 1fr;
+    }
+
+    #articles-container {
+        margin-top: 40px;
     }
 
     .learning-topic-card {
