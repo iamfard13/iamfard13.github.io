@@ -19,6 +19,12 @@ body {
     overflow-x: hidden;
     font-weight: 400;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }
 
 /* Canvas background – fixed behind everything */
