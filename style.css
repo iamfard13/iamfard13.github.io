@@ -839,6 +839,15 @@ button {
     margin-top: 100px;
 }
 
+.learning-topic-chapter {
+    font-size: 13px;
+    opacity: 0.35;
+    color: #f2f2f2;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 2px;
+}
+
 .learning-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

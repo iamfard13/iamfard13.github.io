@@ -152,22 +152,20 @@
                 title.textContent = item.title || filePath.replace(/^.*\//, '').replace(/\.md$/, '').replace(/-/g, ' ');
                 card.appendChild(title);
 
-                // ---- Author ----
+                // ---- Chapter (NEW ORDER – before author) ----
+                if (item.chapter) {
+                    const chapter = document.createElement('p');
+                    chapter.className = 'learning-topic-chapter';
+                    chapter.textContent = item.chapter;
+                    card.appendChild(chapter);
+                }
+
+                // ---- Author (after chapter) ----
                 if (item.author) {
                     const author = document.createElement('p');
                     author.className = 'learning-topic-author';
                     author.textContent = `by ${item.author}`;
                     card.appendChild(author);
-                }
-
-                // ---- Chapter (optional) ----
-                if (item.chapter) {
-                    const chapter = document.createElement('p');
-                    chapter.className = 'learning-topic-author';
-                    chapter.textContent = item.chapter;
-                    chapter.style.fontStyle = 'italic';
-                    chapter.style.opacity = '0.3';
-                    card.appendChild(chapter);
                 }
 
                 // ---- Date ----
