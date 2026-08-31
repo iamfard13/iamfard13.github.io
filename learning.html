@@ -43,14 +43,31 @@
 
     <main>
         <!-- =================================================
-             ARTICLES – dynamically loaded from JSON
+             LEARNING CONTENT – books + articles
              ================================================= -->
         <section class="section learning-topics-section">
             <div class="section-header">
                 <h2>Topics I'm exploring.</h2>
             </div>
 
-            <div id="articles-grid" class="learning-grid"></div>
+            <!-- Books (hidden if empty) -->
+            <div id="books-container" style="display:none;">
+                <h3 style="font-size:22px; font-weight:500; margin:0 0 24px 0; opacity:0.6; letter-spacing:-0.02em;">📚
+                    Books</h3>
+                <div id="books-grid" class="learning-grid"></div>
+            </div>
+
+            <!-- Articles (hidden if empty) -->
+            <div id="articles-container" style="display:none;">
+                <h3 style="font-size:22px; font-weight:500; margin:40px 0 24px 0; opacity:0.6; letter-spacing:-0.02em;">
+                    📄 Articles</h3>
+                <div id="articles-grid" class="learning-grid"></div>
+            </div>
+
+            <!-- Fallback if both empty -->
+            <div id="empty-message" style="display:none; opacity:0.4; text-align:center; padding:40px 0;">
+                No learning content yet. Check back soon!
+            </div>
         </section>
 
         <!-- =================================================
@@ -77,7 +94,7 @@
     <script src="particles.js"></script>
 
     <!-- =====================================================
-         DYNAMIC CARD LOADER (only articles)
+         DYNAMIC LOADER – books + articles
          ===================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -86,42 +103,59 @@
             const GITHUB_REPO = 'iamfard13.github.io';
             const BRANCH = 'main';
 
-            const grid = document.getElementById('articles-grid');
-            if (!grid) return;
+            const booksGrid = document.getElementById('books-grid');
+            const articlesGrid = document.getElementById('articles-grid');
+            const booksContainer = document.getElementById('books-container');
+            const articlesContainer = document.getElementById('articles-container');
+            const emptyMessage = document.getElementById('empty-message');
 
-            loadArticles();
+            let hasBooks = false;
+            let hasArticles = false;
 
-            async function loadArticles() {
+            loadCategory('books', booksGrid, booksContainer, 'BOOK');
+            loadCategory('articles', articlesGrid, articlesContainer, 'ARTICLE');
+
+            async function loadCategory(category, grid, container, label) {
+                if (!grid || !container) return;
+
                 try {
-                    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/data/articles.json`;
+                    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/data/${category}.json`;
                     const response = await fetch(url);
                     if (!response.ok) throw new Error(`HTTP ${response.status}`);
                     const items = await response.json();
 
                     if (items.length === 0) {
-                        grid.innerHTML = `<p style="opacity:0.4; font-size:14px;">No articles yet.</p>`;
+                        container.style.display = 'none';
                         return;
                     }
 
+                    // Show the container
+                    container.style.display = 'block';
+                    if (category === 'books') hasBooks = true;
+                    else hasArticles = true;
+
                     grid.innerHTML = '';
 
-                    // For each article, we need to fetch the markdown to compute read time
                     for (let index = 0; index < items.length; index++) {
                         const item = items[index];
-                        const card = await createCard(item, index);
+                        const card = await createCard(item, index, label);
                         grid.appendChild(card);
                     }
+
+                    // After processing all categories, check if anything exists
+                    checkEmptyState();
+
                 } catch (error) {
-                    console.error('Error loading articles:', error);
-                    grid.innerHTML = `<p style="opacity:0.4; font-size:14px;">Unable to load articles.</p>`;
+                    console.error(`Error loading ${category}:`, error);
+                    container.style.display = 'none';
+                    checkEmptyState();
                 }
             }
 
-            async function createCard(item, index) {
+            async function createCard(item, index, label) {
                 const card = document.createElement('article');
                 card.className = 'learning-topic-card';
 
-                // Determine the file name without extension for the viewer URL
                 const filePath = item.file;
                 const viewerUrl = `learning-viewer.html?file=${encodeURIComponent(filePath)}`;
                 card.dataset.href = viewerUrl;
@@ -132,13 +166,11 @@
                 number.textContent = String(index + 1).padStart(2, '0');
                 card.appendChild(number);
 
-                // ---- Label (we'll show "BOOK" or "ARTICLE" based on folder) ----
-                const label = document.createElement('p');
-                label.className = 'learning-topic-label';
-                // Check if the file is in 'books' or 'articles' folder
-                const folder = filePath.includes('/books/') ? 'BOOK' : 'ARTICLE';
-                label.textContent = folder;
-                card.appendChild(label);
+                // ---- Label ----
+                const labelEl = document.createElement('p');
+                labelEl.className = 'learning-topic-label';
+                labelEl.textContent = label;
+                card.appendChild(labelEl);
 
                 // ---- Title ----
                 const title = document.createElement('h3');
@@ -163,24 +195,20 @@
                     card.appendChild(chapter);
                 }
 
-                // ---- Read Time (auto-computed) ----
+                // ---- Read Time ----
                 const readTimeSpan = document.createElement('span');
                 readTimeSpan.className = 'learning-topic-read-time';
-
                 try {
-                    // Fetch the raw markdown to count words
                     const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/${filePath}`;
                     const mdResponse = await fetch(rawUrl);
                     if (mdResponse.ok) {
                         const md = await mdResponse.text();
-                        // Remove frontmatter if any
                         const contentWithoutFrontmatter = md.replace(/^---[\s\S]*?---/, '').trim();
-                        // Count words (split by spaces and filter out empty)
                         const words = contentWithoutFrontmatter.split(/\s+/).filter(w => w.length > 0).length;
-                        const readTime = Math.ceil(words / 200); // average reading speed
+                        const readTime = Math.ceil(words / 200);
                         readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ${readTime} min read`;
                     } else {
-                        readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`; // fallback
+                        readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`;
                     }
                 } catch {
                     readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`;
@@ -200,14 +228,12 @@
                 const menu = document.createElement('div');
                 menu.className = 'share-dropdown-menu';
 
-                // Share native
                 const shareNative = document.createElement('button');
                 shareNative.className = 'share-option share-native';
                 shareNative.dataset.file = filePath;
                 shareNative.innerHTML = '<i class="fas fa-share-nodes"></i> Share';
                 menu.appendChild(shareNative);
 
-                // Copy link
                 const shareCopy = document.createElement('button');
                 shareCopy.className = 'share-option share-copy';
                 shareCopy.dataset.file = filePath;
@@ -217,15 +243,13 @@
                 dropdown.appendChild(menu);
                 card.appendChild(dropdown);
 
-                // ----- Event Listeners -----
-                // Card click (navigate)
+                // ----- Events -----
                 card.addEventListener('click', function (e) {
                     if (e.target.closest('.share-dropdown')) return;
                     const href = this.dataset.href;
                     if (href) window.location.href = href;
                 });
 
-                // Toggle dropdown
                 shareBtn.addEventListener('click', function (e) {
                     e.stopPropagation();
                     const isOpen = menu.classList.contains('open');
@@ -233,7 +257,6 @@
                     if (!isOpen) menu.classList.add('open');
                 });
 
-                // Share native
                 shareNative.addEventListener('click', function (e) {
                     e.stopPropagation();
                     const file = this.dataset.file;
@@ -246,7 +269,6 @@
                     closeAllDropdowns();
                 });
 
-                // Copy link
                 shareCopy.addEventListener('click', function (e) {
                     e.stopPropagation();
                     const file = this.dataset.file;
@@ -256,6 +278,14 @@
                 });
 
                 return card;
+            }
+
+            function checkEmptyState() {
+                if (!hasBooks && !hasArticles) {
+                    emptyMessage.style.display = 'block';
+                } else {
+                    emptyMessage.style.display = 'none';
+                }
             }
 
             // ---- Helpers ----
@@ -278,7 +308,6 @@
                 document.querySelectorAll('.share-dropdown-menu.open').forEach(m => m.classList.remove('open'));
             }
 
-            // Close dropdowns on outside click
             document.addEventListener('click', function () {
                 closeAllDropdowns();
             });
