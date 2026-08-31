@@ -114,7 +114,7 @@ button {
     opacity: 1;
 }
 
-/* Resume buttons in navbar */
+/* Single Resume button – View CV */
 .resume-btn {
     display: inline-flex;
     align-items: center;
@@ -127,31 +127,16 @@ button {
     transition: all 0.25s ease;
     text-transform: none;
     border: 1px solid transparent;
+    background: #fbbf24;
+    border-color: #fbbf24;
+    color: #080808;
 }
 
 .resume-btn i {
     font-size: 13px;
 }
 
-.view-btn {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.15);
-    color: #f2f2f2;
-}
-
-.view-btn:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.3);
-    opacity: 1;
-}
-
-.download-btn {
-    background: #fbbf24;
-    border-color: #fbbf24;
-    color: #080808;
-}
-
-.download-btn:hover {
+.resume-btn:hover {
     background: #fcd34d;
     border-color: #fcd34d;
     color: #080808;
