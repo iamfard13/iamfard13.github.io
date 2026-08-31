@@ -11,4 +11,4 @@ Ali is a hardworking, highly motivated, and research-oriented professional who n
 
 His strong problem-solving ability, quick learning skills, and collaborative mindset make him a valuable asset to any team.
 
-I'm confident that in any professional environment, he can play a key role in driving projects to success.
+I'm confident that in any professional environment, he can play a key role in driving projects to success. 
