@@ -36,4 +36,4 @@ With many threads interacting with shared resources, there can be many possible 
 
 ### 6️⃣ Hardware Matters Too
 
-Performance also depends on the hardware architecture. Where a thread runs, where its data is located, CPU caches, memory access, and communication between CPU components can all affect performance.
+Performance also depends on the hardware architecture. Where a thread runs, where its data is located, CPU caches, memory access, and communication between CPU components can all affect performance.   
