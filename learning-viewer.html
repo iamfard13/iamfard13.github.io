@@ -25,14 +25,8 @@
 
 <body>
 
-    <!-- =====================================================
-         ANIMATED BACKGROUND – PARTICLE NETWORK
-         ===================================================== -->
     <canvas id="bgCanvas"></canvas>
 
-    <!-- =====================================================
-         NAVIGATION
-         ===================================================== -->
     <header class="navbar">
         <nav class="navbar-links">
             <a href="index.html#skills">Skills</a>
@@ -43,25 +37,19 @@
         </nav>
     </header>
 
-    <!-- =====================================================
-         VIEWER – Title first, then Chapter
-         ===================================================== -->
     <main class="viewer-page" id="viewer-top">
 
         <a href="learning.html" class="viewer-back">
             ← BACK TO LEARNING
         </a>
 
-        <!-- HEADER – Title first, then Chapter -->
         <header class="viewer-header">
             <h1 id="viewer-title">Loading...</h1>
             <p id="viewer-chapter" class="viewer-chapter"></p>
-            <p id="viewer-date" class="viewer-date"></p>
+            <!-- Date is hidden – we remove it from display -->
+            <p id="viewer-date" class="viewer-date" style="display:none;"></p>
         </header>
 
-        <!-- =================================================
-             CONTENT – solid card
-             ================================================= -->
         <section class="viewer-content-wrapper" id="viewer-content-wrapper">
             <article id="viewer-content" class="viewer-content">
                 <div class="learning-loading">Loading learning content...</div>
@@ -70,23 +58,14 @@
 
     </main>
 
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
     <footer class="footer">
         <p>© 2026 Ali Abbasifard</p>
         <p>Built with curiosity &amp; code.</p>
     </footer>
 
-    <!-- Viewer JS -->
     <script src="learning-viewer.js"></script>
-
-    <!-- Background particle network -->
     <script src="particles.js"></script>
 
-    <!-- =====================================================
-         SCROLL TO CONTENT ON LOAD
-         ===================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             setTimeout(function () {

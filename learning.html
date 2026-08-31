@@ -23,14 +23,8 @@
 
 <body>
 
-    <!-- =====================================================
-         ANIMATED BACKGROUND
-         ===================================================== -->
     <canvas id="bgCanvas"></canvas>
 
-    <!-- =====================================================
-         NAVIGATION
-         ===================================================== -->
     <header class="navbar">
         <nav class="navbar-links">
             <a href="index.html#skills">Skills</a>
@@ -42,9 +36,6 @@
     </header>
 
     <main>
-        <!-- =================================================
-             LEARNING CONTENT – books + articles
-             ================================================= -->
         <section class="section learning-topics-section">
             <div class="section-header">
                 <h2>Topics I'm exploring.</h2>
@@ -52,15 +43,11 @@
 
             <!-- Books (hidden if empty) -->
             <div id="books-container" style="display:none;">
-                <h3 style="font-size:22px; font-weight:500; margin:0 0 24px 0; opacity:0.6; letter-spacing:-0.02em;">📚
-                    Books</h3>
                 <div id="books-grid" class="learning-grid"></div>
             </div>
 
             <!-- Articles (hidden if empty) -->
             <div id="articles-container" style="display:none;">
-                <h3 style="font-size:22px; font-weight:500; margin:40px 0 24px 0; opacity:0.6; letter-spacing:-0.02em;">
-                    📄 Articles</h3>
                 <div id="articles-grid" class="learning-grid"></div>
             </div>
 
@@ -70,9 +57,6 @@
             </div>
         </section>
 
-        <!-- =================================================
-             BACK TO HOME
-             ================================================= -->
         <div style="text-align:center; margin: 20px 0 60px;">
             <a href="index.html"
                 style="font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.3; letter-spacing: 0.1em; transition: opacity 0.2s; text-transform: uppercase;">
@@ -81,21 +65,14 @@
         </div>
     </main>
 
-    <!-- =====================================================
-         FOOTER
-         ===================================================== -->
     <footer class="footer">
         <p>© 2026 Ali Abbasifard</p>
         <p>Built with curiosity &amp; code.</p>
     </footer>
 
-    <!-- Scripts -->
     <script src="script.js"></script>
     <script src="particles.js"></script>
 
-    <!-- =====================================================
-         DYNAMIC LOADER – books + articles
-         ===================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -129,7 +106,6 @@
                         return;
                     }
 
-                    // Show the container
                     container.style.display = 'block';
                     if (category === 'books') hasBooks = true;
                     else hasArticles = true;
@@ -142,7 +118,6 @@
                         grid.appendChild(card);
                     }
 
-                    // After processing all categories, check if anything exists
                     checkEmptyState();
 
                 } catch (error) {
@@ -193,6 +168,14 @@
                     chapter.style.fontStyle = 'italic';
                     chapter.style.opacity = '0.3';
                     card.appendChild(chapter);
+                }
+
+                // ---- Date ----
+                if (item.date) {
+                    const date = document.createElement('p');
+                    date.className = 'learning-topic-date';
+                    date.textContent = item.date;
+                    card.appendChild(date);
                 }
 
                 // ---- Read Time ----

@@ -898,6 +898,14 @@ button {
     color: #f2f2f2;
     font-weight: 300;
     font-style: italic;
+    margin-bottom: 4px;
+}
+
+.learning-topic-date {
+    font-size: 13px;
+    opacity: 0.4;
+    color: #f2f2f2;
+    font-weight: 300;
     margin-bottom: 14px;
 }
 
