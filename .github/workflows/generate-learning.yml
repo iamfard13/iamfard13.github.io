@@ -6,7 +6,7 @@ on:
             - main
         paths:
             - "learnings/**/*.md"
-            - "recommendations/**/*.md"
+            - "Recommendations/**/*.md"
             - ".github/workflows/generate-learning.yml"
 
     workflow_dispatch:
