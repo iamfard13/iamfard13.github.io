@@ -43,39 +43,18 @@
 
     <main>
         <!-- =================================================
-             TOPICS – card with share dropdown
+             TOPICS – dynamically loaded from JSON
              ================================================= -->
         <section class="section learning-topics-section">
             <div class="section-header">
                 <h2>Topics I'm exploring.</h2>
             </div>
 
-            <div class="learning-grid">
-                <!-- Topic 1 – Book: Parallel Programming -->
-                <article class="learning-topic-card" data-href="learning-viewer.html?topic=parallel-programming">
-                    <span class="learning-topic-number">01</span>
-                    <p class="learning-topic-label">BOOK</p>
-                    <h3>Is Parallel Programming Hard, And, If So, What Can You Do About It?</h3>
-                    <p class="learning-topic-author">by Paul E. McKenney</p>
-                    <span class="learning-topic-read-time"><i class="fas fa-clock"></i> 6 min read</span>
+            <!-- Books -->
+            <div id="books-grid" class="learning-grid"></div>
 
-                    <!-- SHARE DROPDOWN -->
-                    <div class="share-dropdown">
-                        <button class="share-button" aria-label="Share options">
-                            <i class="fas fa-share-alt"></i>
-                        </button>
-                        <div class="share-dropdown-menu">
-                            <button class="share-option share-native" data-topic="parallel-programming">
-                                <i class="fas fa-share-nodes"></i> Share
-                            </button>
-                            <button class="share-option share-copy" data-topic="parallel-programming">
-                                <i class="fas fa-copy"></i> Copy Link
-                            </button>
-                        </div>
-                    </div>
-                </article>
-                <!-- Add more cards with similar dropdown if needed -->
-            </div>
+            <!-- Articles -->
+            <div id="articles-grid" class="learning-grid" style="margin-top: 40px;"></div>
         </section>
 
         <!-- =================================================
@@ -102,93 +81,191 @@
     <script src="particles.js"></script>
 
     <!-- =====================================================
-         DROPDOWN + SHARE LOGIC
+         DYNAMIC CARD LOADER
          ===================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
-            // ---- Card click: navigate ----
-            document.querySelectorAll('.learning-topic-card').forEach(card => {
+            const GITHUB_OWNER = 'iamfard13';
+            const GITHUB_REPO = 'iamfard13.github.io';
+            const BRANCH = 'main';
+
+            // Load both books and articles
+            loadCategory('books', 'books-grid', 'BOOK');
+            loadCategory('articles', 'articles-grid', 'ARTICLE');
+
+            async function loadCategory(category, gridId, label) {
+                const grid = document.getElementById(gridId);
+                if (!grid) return;
+
+                try {
+                    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/data/${category}.json`;
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    const items = await response.json();
+
+                    if (items.length === 0) {
+                        grid.innerHTML = `<p style="opacity:0.4; font-size:14px;">No ${category} yet.</p>`;
+                        return;
+                    }
+
+                    grid.innerHTML = '';
+                    items.forEach((item, index) => {
+                        const card = createCard(item, index, label);
+                        grid.appendChild(card);
+                    });
+                } catch (error) {
+                    console.error(`Error loading ${category}:`, error);
+                    grid.innerHTML = `<p style="opacity:0.4; font-size:14px;">Unable to load ${category}.</p>`;
+                }
+            }
+
+            function createCard(item, index, label) {
+                const card = document.createElement('article');
+                card.className = 'learning-topic-card';
+
+                // Determine the file name without extension for the topic (for share links)
+                const fileName = item.file.replace(/^.*\//, '').replace(/\.md$/, '');
+                const viewerUrl = `learning-viewer.html?file=${encodeURIComponent(item.file)}`;
+
+                card.dataset.href = viewerUrl;
+
+                // Number
+                const number = document.createElement('span');
+                number.className = 'learning-topic-number';
+                number.textContent = String(index + 1).padStart(2, '0');
+                card.appendChild(number);
+
+                // Label
+                const labelEl = document.createElement('p');
+                labelEl.className = 'learning-topic-label';
+                labelEl.textContent = label;
+                card.appendChild(labelEl);
+
+                // Title
+                const title = document.createElement('h3');
+                title.textContent = item.title || fileName.replace(/-/g, ' ');
+                card.appendChild(title);
+
+                // Author (for books)
+                if (item.author) {
+                    const author = document.createElement('p');
+                    author.className = 'learning-topic-author';
+                    author.textContent = `by ${item.author}`;
+                    card.appendChild(author);
+                }
+
+                // Chapter (for books)
+                if (item.chapter) {
+                    const chapter = document.createElement('p');
+                    chapter.className = 'learning-topic-author';
+                    chapter.textContent = item.chapter;
+                    chapter.style.fontStyle = 'italic';
+                    chapter.style.opacity = '0.3';
+                    card.appendChild(chapter);
+                }
+
+                // Date or read time placeholder
+                const readTime = document.createElement('span');
+                readTime.className = 'learning-topic-read-time';
+                readTime.innerHTML = `<i class="fas fa-clock"></i> ${item.date || 'Recently'}`;
+                card.appendChild(readTime);
+
+                // Share dropdown
+                const dropdown = document.createElement('div');
+                dropdown.className = 'share-dropdown';
+
+                const shareBtn = document.createElement('button');
+                shareBtn.className = 'share-button';
+                shareBtn.setAttribute('aria-label', 'Share options');
+                shareBtn.innerHTML = '<i class="fas fa-share-alt"></i>';
+                dropdown.appendChild(shareBtn);
+
+                const menu = document.createElement('div');
+                menu.className = 'share-dropdown-menu';
+
+                // Share native
+                const shareNative = document.createElement('button');
+                shareNative.className = 'share-option share-native';
+                shareNative.dataset.file = item.file;
+                shareNative.innerHTML = '<i class="fas fa-share-nodes"></i> Share';
+                menu.appendChild(shareNative);
+
+                // Copy link
+                const shareCopy = document.createElement('button');
+                shareCopy.className = 'share-option share-copy';
+                shareCopy.dataset.file = item.file;
+                shareCopy.innerHTML = '<i class="fas fa-copy"></i> Copy Link';
+                menu.appendChild(shareCopy);
+
+                dropdown.appendChild(menu);
+                card.appendChild(dropdown);
+
+                // ----- Event listeners -----
+                // Card click (navigate)
                 card.addEventListener('click', function (e) {
                     if (e.target.closest('.share-dropdown')) return;
                     const href = this.dataset.href;
                     if (href) window.location.href = href;
                 });
-            });
 
-            // ---- Toggle dropdown ----
-            document.querySelectorAll('.share-button').forEach(btn => {
-                btn.addEventListener('click', function (e) {
+                // Toggle dropdown
+                shareBtn.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    const dropdown = this.closest('.share-dropdown');
-                    const menu = dropdown.querySelector('.share-dropdown-menu');
                     const isOpen = menu.classList.contains('open');
-                    // Close all others
                     document.querySelectorAll('.share-dropdown-menu.open').forEach(m => m.classList.remove('open'));
                     if (!isOpen) menu.classList.add('open');
                 });
-            });
 
-            // ---- Close dropdown when clicking outside ----
-            document.addEventListener('click', function () {
-                document.querySelectorAll('.share-dropdown-menu.open').forEach(m => m.classList.remove('open'));
-            });
-
-            // ---- Share via native ----
-            document.querySelectorAll('.share-native').forEach(btn => {
-                btn.addEventListener('click', function (e) {
+                // Share native
+                shareNative.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    const topic = this.dataset.topic;
-                    const url = buildViewerUrl(topic);
+                    const file = this.dataset.file;
+                    const url = buildViewerUrl(file);
                     if (navigator.share) {
-                        navigator.share({
-                            title: 'Learning note',
-                            text: 'Check out this learning note:',
-                            url: url
-                        }).catch(() => { });
+                        navigator.share({ title: item.title || 'Learning note', url }).catch(() => { });
                     } else {
-                        // Fallback: copy
                         copyToClipboard(url, this);
                     }
                     closeAllDropdowns();
                 });
-            });
 
-            // ---- Copy link ----
-            document.querySelectorAll('.share-copy').forEach(btn => {
-                btn.addEventListener('click', function (e) {
+                // Copy link
+                shareCopy.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    const topic = this.dataset.topic;
-                    const url = buildViewerUrl(topic);
+                    const file = this.dataset.file;
+                    const url = buildViewerUrl(file);
                     copyToClipboard(url, this);
                     closeAllDropdowns();
                 });
-            });
+
+                return card;
+            }
 
             // ---- Helpers ----
-            function buildViewerUrl(topic) {
-                const url = new URL(window.location.href);
-                const base = url.origin + url.pathname.replace(/\/[^/]*$/, '/');
-                return `${base}learning-viewer.html?topic=${topic}`;
+            function buildViewerUrl(file) {
+                const base = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/');
+                return `${base}learning-viewer.html?file=${encodeURIComponent(file)}`;
             }
 
             function copyToClipboard(text, element) {
                 navigator.clipboard.writeText(text).then(() => {
-                    showFeedback(element, 'Copied!');
+                    const orig = element.textContent;
+                    element.textContent = 'Copied!';
+                    setTimeout(() => { element.textContent = orig; }, 1500);
                 }).catch(() => {
                     prompt('Copy this link:', text);
                 });
             }
 
-            function showFeedback(element, msg) {
-                const orig = element.textContent;
-                element.textContent = msg;
-                setTimeout(() => { element.textContent = orig; }, 1500);
-            }
-
             function closeAllDropdowns() {
                 document.querySelectorAll('.share-dropdown-menu.open').forEach(m => m.classList.remove('open'));
             }
+
+            // Close dropdowns on outside click
+            document.addEventListener('click', function () {
+                closeAllDropdowns();
+            });
         });
     </script>
 </body>
