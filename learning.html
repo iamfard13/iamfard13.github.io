@@ -29,7 +29,7 @@
     <canvas id="bgCanvas"></canvas>
 
     <!-- =====================================================
-         NAVIGATION – Learning tab ACTIVE
+         NAVIGATION
          ===================================================== -->
     <header class="navbar">
         <nav class="navbar-links">
@@ -43,7 +43,7 @@
 
     <main>
         <!-- =================================================
-             TOPICS – only one card remains
+             TOPICS – card with share button
              ================================================= -->
         <section class="section learning-topics-section">
             <div class="section-header">
@@ -58,8 +58,14 @@
                     <h3>Is Parallel Programming Hard, And, If So, What Can You Do About It?</h3>
                     <p class="learning-topic-author">by Paul E. McKenney</p>
                     <span class="learning-topic-read-time"><i class="fas fa-clock"></i> 6 min read</span>
+
+                    <!-- SHARE BUTTON -->
+                    <button class="share-button" data-topic="parallel-programming" aria-label="Share this article">
+                        <i class="fas fa-share-alt"></i>
+                        <span class="share-tooltip">Copy link</span>
+                    </button>
                 </article>
-                <!-- Topic 2 and 3 have been removed -->
+                <!-- other cards would have similar share buttons -->
             </div>
         </section>
 
@@ -88,15 +94,52 @@
     <script src="particles.js"></script>
 
     <!-- =====================================================
-         CARD CLICK HANDLER
+         SHARE + CARD CLICK HANDLERS
          ===================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+
+            // ---- Card click: navigate to article ----
             document.querySelectorAll('.learning-topic-card').forEach(card => {
                 card.addEventListener('click', function (e) {
+                    // Ignore if click was on the share button or its children
+                    if (e.target.closest('.share-button')) return;
                     const href = this.dataset.href;
                     if (href) {
                         window.location.href = href;
+                    }
+                });
+            });
+
+            // ---- Share button ----
+            document.querySelectorAll('.share-button').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation(); // prevent card navigation
+                    const topic = this.dataset.topic;
+                    const url = new URL(window.location.href);
+                    // Build the full URL to the viewer page with the topic
+                    const viewerUrl = `${url.origin}${url.pathname.replace(/\/[^/]*$/, '/')}learning-viewer.html?topic=${topic}`;
+
+                    // Use Web Share API if available (mobile)
+                    if (navigator.share) {
+                        navigator.share({
+                            title: document.querySelector('.learning-topic-card h3')?.textContent || 'Learning note',
+                            text: 'Check out this learning note:',
+                            url: viewerUrl
+                        }).catch(() => { });
+                    } else {
+                        // Fallback: copy to clipboard
+                        navigator.clipboard.writeText(viewerUrl).then(() => {
+                            const tooltip = this.querySelector('.share-tooltip');
+                            const originalText = tooltip.textContent;
+                            tooltip.textContent = 'Copied!';
+                            setTimeout(() => {
+                                tooltip.textContent = originalText;
+                            }, 2000);
+                        }).catch(() => {
+                            // Fallback: prompt user
+                            prompt('Copy this link to share:', viewerUrl);
+                        });
                     }
                 });
             });
