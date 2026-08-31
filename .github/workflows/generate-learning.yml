@@ -7,7 +7,6 @@ on:
         paths:
             - "learnings/**/*.md"
             - "recommendations/**/*.md"
-            - "Recommendations/**/*.md" # added capital R path
             - ".github/workflows/generate-learning.yml"
 
     workflow_dispatch:
