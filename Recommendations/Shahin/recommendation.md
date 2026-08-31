@@ -1,6 +1,6 @@
 ---
 author: Shahin
-image: recommendations/shahin/image.jpeg
+image: Recommendations/Shahin/image.jpeg
 ---
 
 I had the pleasure of working with Ali on several software projects, and without a doubt, he is one of the most skilled and organized software engineers I've ever worked with.

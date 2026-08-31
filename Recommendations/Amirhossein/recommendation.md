@@ -1,6 +1,6 @@
 ---
 author: Amirhossein
-image: recommendations/amirhossein/image.jpeg
+image: Recommendations/Amirhossein/image.jpeg
 ---
 
 I've had the privilege of knowing Ali not just as a talented software engineer, but as a thoughtful, curious, and deeply driven human being.
