@@ -41,15 +41,8 @@
                 <h2>Topics I'm exploring.</h2>
             </div>
 
-            <!-- Books (hidden if empty) -->
-            <div id="books-container" style="display:none;">
-                <div id="books-grid" class="learning-grid"></div>
-            </div>
-
-            <!-- Articles (hidden if empty) -->
-            <div id="articles-container" style="display:none;">
-                <div id="articles-grid" class="learning-grid"></div>
-            </div>
+            <!-- Combined grid – both books and articles appear together -->
+            <div id="learning-grid" class="learning-grid"></div>
 
             <!-- Fallback if both empty -->
             <div id="empty-message" style="display:none; opacity:0.4; text-align:center; padding:40px 0;">
@@ -80,54 +73,54 @@
             const GITHUB_REPO = 'iamfard13.github.io';
             const BRANCH = 'main';
 
-            const booksGrid = document.getElementById('books-grid');
-            const articlesGrid = document.getElementById('articles-grid');
-            const booksContainer = document.getElementById('books-container');
-            const articlesContainer = document.getElementById('articles-container');
+            const grid = document.getElementById('learning-grid');
             const emptyMessage = document.getElementById('empty-message');
 
-            let hasBooks = false;
-            let hasArticles = false;
+            // We'll fetch both JSONs and combine
+            const urls = [
+                `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/data/books.json`,
+                `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/data/articles.json`
+            ];
 
-            loadCategory('books', booksGrid, booksContainer, 'BOOK');
-            loadCategory('articles', articlesGrid, articlesContainer, 'ARTICLE');
+            Promise.all(urls.map(url => fetch(url).then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                return res.json();
+            })))
+                .then(([books, articles]) => {
+                    // Combine and add a type field
+                    const allItems = [
+                        ...books.map(item => ({ ...item, type: 'BOOK' })),
+                        ...articles.map(item => ({ ...item, type: 'ARTICLE' }))
+                    ];
 
-            async function loadCategory(category, grid, container, label) {
-                if (!grid || !container) return;
-
-                try {
-                    const url = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/data/${category}.json`;
-                    const response = await fetch(url);
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-                    const items = await response.json();
-
-                    if (items.length === 0) {
-                        container.style.display = 'none';
+                    if (allItems.length === 0) {
+                        emptyMessage.style.display = 'block';
                         return;
                     }
 
-                    container.style.display = 'block';
-                    if (category === 'books') hasBooks = true;
-                    else hasArticles = true;
+                    // Sort by date (newest first) – if no date, push to end
+                    allItems.sort((a, b) => {
+                        const dateA = a.date ? new Date(a.date) : new Date(0);
+                        const dateB = b.date ? new Date(b.date) : new Date(0);
+                        return dateB - dateA;
+                    });
 
                     grid.innerHTML = '';
+                    emptyMessage.style.display = 'none';
 
-                    for (let index = 0; index < items.length; index++) {
-                        const item = items[index];
-                        const card = await createCard(item, index, label);
+                    allItems.forEach((item, index) => {
+                        const card = createCard(item, index);
                         grid.appendChild(card);
-                    }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading learning content:', error);
+                    emptyMessage.style.display = 'block';
+                    emptyMessage.textContent = 'Unable to load learning content. Please try again later.';
+                });
 
-                    checkEmptyState();
-
-                } catch (error) {
-                    console.error(`Error loading ${category}:`, error);
-                    container.style.display = 'none';
-                    checkEmptyState();
-                }
-            }
-
-            async function createCard(item, index, label) {
+            // ----- Card creation (same as before, but with unified type) -----
+            function createCard(item, index) {
                 const card = document.createElement('article');
                 card.className = 'learning-topic-card';
 
@@ -135,24 +128,24 @@
                 const viewerUrl = `learning-viewer.html?file=${encodeURIComponent(filePath)}`;
                 card.dataset.href = viewerUrl;
 
-                // ---- Number ----
+                // Number
                 const number = document.createElement('span');
                 number.className = 'learning-topic-number';
                 number.textContent = String(index + 1).padStart(2, '0');
                 card.appendChild(number);
 
-                // ---- Label ----
+                // Label (BOOK or ARTICLE)
                 const labelEl = document.createElement('p');
                 labelEl.className = 'learning-topic-label';
-                labelEl.textContent = label;
+                labelEl.textContent = item.type;
                 card.appendChild(labelEl);
 
-                // ---- Title ----
+                // Title
                 const title = document.createElement('h3');
                 title.textContent = item.title || filePath.replace(/^.*\//, '').replace(/\.md$/, '').replace(/-/g, ' ');
                 card.appendChild(title);
 
-                // ---- Chapter (with spacing) ----
+                // Chapter (only for books)
                 if (item.chapter) {
                     const chapter = document.createElement('p');
                     chapter.className = 'learning-topic-chapter';
@@ -160,7 +153,7 @@
                     card.appendChild(chapter);
                 }
 
-                // ---- Author (with user icon) ----
+                // Author (now available for both)
                 if (item.author) {
                     const author = document.createElement('p');
                     author.className = 'learning-topic-author';
@@ -168,7 +161,7 @@
                     card.appendChild(author);
                 }
 
-                // ---- Date (with calendar icon) ----
+                // Date
                 if (item.date) {
                     const date = document.createElement('p');
                     date.className = 'learning-topic-date';
@@ -176,27 +169,29 @@
                     card.appendChild(date);
                 }
 
-                // ---- Read Time ----
+                // Read time (as before)
                 const readTimeSpan = document.createElement('span');
                 readTimeSpan.className = 'learning-topic-read-time';
-                try {
-                    const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/${filePath}`;
-                    const mdResponse = await fetch(rawUrl);
-                    if (mdResponse.ok) {
-                        const md = await mdResponse.text();
-                        const contentWithoutFrontmatter = md.replace(/^---[\s\S]*?---/, '').trim();
-                        const words = contentWithoutFrontmatter.split(/\s+/).filter(w => w.length > 0).length;
-                        const readTime = Math.ceil(words / 200);
-                        readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ${readTime} min read`;
-                    } else {
+                (async function fetchReadTime() {
+                    try {
+                        const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/${filePath}`;
+                        const mdResponse = await fetch(rawUrl);
+                        if (mdResponse.ok) {
+                            const md = await mdResponse.text();
+                            const contentWithoutFrontmatter = md.replace(/^---[\s\S]*?---/, '').trim();
+                            const words = contentWithoutFrontmatter.split(/\s+/).filter(w => w.length > 0).length;
+                            const readTime = Math.ceil(words / 200);
+                            readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ${readTime} min read`;
+                        } else {
+                            readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`;
+                        }
+                    } catch {
                         readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`;
                     }
-                } catch {
-                    readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`;
-                }
+                })();
                 card.appendChild(readTimeSpan);
 
-                // ---- Share Dropdown ----
+                // Share dropdown
                 const dropdown = document.createElement('div');
                 dropdown.className = 'share-dropdown';
 
@@ -259,14 +254,6 @@
                 });
 
                 return card;
-            }
-
-            function checkEmptyState() {
-                if (!hasBooks && !hasArticles) {
-                    emptyMessage.style.display = 'block';
-                } else {
-                    emptyMessage.style.display = 'none';
-                }
             }
 
             // ---- Helpers ----
