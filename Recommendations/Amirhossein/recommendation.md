@@ -9,4 +9,4 @@ His passion for technology is matched by his humility and eagerness to grow — 
 
 While we haven't worked together professionally, I've seen firsthand the kind of teammate and contributor he is.
 
-Any team would be lucky to have him.
+Any team would be lucky to have him. 
