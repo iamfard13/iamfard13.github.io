@@ -46,10 +46,37 @@
                 <h2>Topics I'm exploring.</h2>
             </div>
 
-            <!-- Combined grid – both books and articles appear together -->
+            <!-- Search & Filter Controls -->
+            <div class="filter-controls">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search by title, chapter, or author..."
+                        class="search-input">
+                </div>
+
+                <div class="date-filter-wrapper">
+                    <div class="date-input-group">
+                        <label for="date-from">From</label>
+                        <input type="date" id="date-from" class="date-input">
+                    </div>
+                    <div class="date-input-group">
+                        <label for="date-to">To</label>
+                        <input type="date" id="date-to" class="date-input">
+                    </div>
+                </div>
+
+                <button id="clear-filters" class="clear-filters-btn">
+                    <i class="fas fa-undo-alt"></i> Reset
+                </button>
+            </div>
+
+            <!-- Result count -->
+            <div id="result-count" class="result-count"></div>
+
+            <!-- Combined grid -->
             <div id="learning-grid" class="learning-grid"></div>
 
-            <!-- Fallback if both empty -->
+            <!-- Fallback -->
             <div id="empty-message" style="display:none; opacity:0.4; text-align:center; padding:40px 0;">
                 No learning content yet. Check back soon!
             </div>
@@ -80,8 +107,37 @@
 
             const grid = document.getElementById('learning-grid');
             const emptyMessage = document.getElementById('empty-message');
+            const searchInput = document.getElementById('search-input');
+            const dateFrom = document.getElementById('date-from');
+            const dateTo = document.getElementById('date-to');
+            const clearBtn = document.getElementById('clear-filters');
+            const resultCount = document.getElementById('result-count');
 
-            // We'll fetch both JSONs and combine
+            let allItems = [];
+            let filteredItems = [];
+
+            // Helper: parse date string like "August 29, 2026" to Date
+            function parseDate(dateStr) {
+                if (!dateStr) return null;
+                const parts = dateStr.split(',').map(s => s.trim());
+                if (parts.length === 2) {
+                    const monthDay = parts[0].split(' ');
+                    const month = monthDay[0];
+                    const day = parseInt(monthDay[1], 10);
+                    const year = parseInt(parts[1], 10);
+                    if (month && !isNaN(day) && !isNaN(year)) {
+                        const monthIndex = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].indexOf(month);
+                        if (monthIndex !== -1) {
+                            return new Date(year, monthIndex, day);
+                        }
+                    }
+                }
+                // Fallback: try generic
+                const d = new Date(dateStr);
+                return isNaN(d.getTime()) ? null : d;
+            }
+
+            // Fetch data
             const urls = [
                 `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/data/books.json`,
                 `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/data/articles.json`
@@ -92,8 +148,7 @@
                 return res.json();
             })))
                 .then(([books, articles]) => {
-                    // Combine and add a type field
-                    const allItems = [
+                    allItems = [
                         ...books.map(item => ({ ...item, type: 'BOOK' })),
                         ...articles.map(item => ({ ...item, type: 'ARTICLE' }))
                     ];
@@ -103,20 +158,23 @@
                         return;
                     }
 
-                    // Sort by date (newest first) – if no date, push to end
+                    // Sort by date (newest first)
                     allItems.sort((a, b) => {
                         const dateA = a.date ? new Date(a.date) : new Date(0);
                         const dateB = b.date ? new Date(b.date) : new Date(0);
                         return dateB - dateA;
                     });
 
-                    grid.innerHTML = '';
-                    emptyMessage.style.display = 'none';
+                    // Apply initial filter (show all)
+                    applyFilters();
 
-                    allItems.forEach((item, index) => {
-                        const card = createCard(item, index);
-                        grid.appendChild(card);
-                    });
+                    // Event listeners
+                    searchInput.addEventListener('input', applyFilters);
+                    dateFrom.addEventListener('change', applyFilters);
+                    dateTo.addEventListener('change', applyFilters);
+                    clearBtn.addEventListener('click', resetFilters);
+
+                    emptyMessage.style.display = 'none';
                 })
                 .catch(error => {
                     console.error('Error loading learning content:', error);
@@ -124,7 +182,74 @@
                     emptyMessage.textContent = 'Unable to load learning content. Please try again later.';
                 });
 
-            // ----- Card creation (same as before, but with unified type) -----
+            // ----- Filtering logic -----
+            function applyFilters() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const fromDate = dateFrom.value ? new Date(dateFrom.value) : null;
+                const toDate = dateTo.value ? new Date(dateTo.value) : null;
+
+                // Reset toDate to end of day for inclusive filtering
+                if (toDate) toDate.setHours(23, 59, 59, 999);
+
+                filteredItems = allItems.filter(item => {
+                    // Search in title, chapter (if exists), author
+                    let matchesSearch = true;
+                    if (searchTerm) {
+                        const titleMatch = item.title.toLowerCase().includes(searchTerm);
+                        const chapterMatch = item.chapter ? item.chapter.toLowerCase().includes(searchTerm) : false;
+                        const authorMatch = item.author ? item.author.toLowerCase().includes(searchTerm) : false;
+                        matchesSearch = titleMatch || chapterMatch || authorMatch;
+                    }
+
+                    // Date range
+                    let matchesDate = true;
+                    if (fromDate || toDate) {
+                        const itemDate = parseDate(item.date);
+                        if (itemDate) {
+                            if (fromDate && itemDate < fromDate) matchesDate = false;
+                            if (toDate && itemDate > toDate) matchesDate = false;
+                        } else {
+                            // If item has no valid date, exclude if range is set
+                            matchesDate = false;
+                        }
+                    }
+
+                    return matchesSearch && matchesDate;
+                });
+
+                renderGrid();
+                updateResultCount();
+            }
+
+            function resetFilters() {
+                searchInput.value = '';
+                dateFrom.value = '';
+                dateTo.value = '';
+                applyFilters();
+            }
+
+            function renderGrid() {
+                grid.innerHTML = '';
+                if (filteredItems.length === 0) {
+                    emptyMessage.style.display = 'block';
+                    emptyMessage.textContent = 'No items match your filters.';
+                    return;
+                }
+                emptyMessage.style.display = 'none';
+
+                filteredItems.forEach((item, index) => {
+                    const card = createCard(item, index);
+                    grid.appendChild(card);
+                });
+            }
+
+            function updateResultCount() {
+                const total = allItems.length;
+                const shown = filteredItems.length;
+                resultCount.textContent = `Showing ${shown} of ${total} item${total > 1 ? 's' : ''}`;
+            }
+
+            // ----- Card creation (identical to previous version) -----
             function createCard(item, index) {
                 const card = document.createElement('article');
                 card.className = 'learning-topic-card';
@@ -133,24 +258,20 @@
                 const viewerUrl = `learning-viewer.html?file=${encodeURIComponent(filePath)}`;
                 card.dataset.href = viewerUrl;
 
-                // Number
                 const number = document.createElement('span');
                 number.className = 'learning-topic-number';
                 number.textContent = String(index + 1).padStart(2, '0');
                 card.appendChild(number);
 
-                // Label (BOOK or ARTICLE)
                 const labelEl = document.createElement('p');
                 labelEl.className = 'learning-topic-label';
                 labelEl.textContent = item.type;
                 card.appendChild(labelEl);
 
-                // Title
                 const title = document.createElement('h3');
                 title.textContent = item.title || filePath.replace(/^.*\//, '').replace(/\.md$/, '').replace(/-/g, ' ');
                 card.appendChild(title);
 
-                // Chapter (only for books)
                 if (item.chapter) {
                     const chapter = document.createElement('p');
                     chapter.className = 'learning-topic-chapter';
@@ -158,7 +279,6 @@
                     card.appendChild(chapter);
                 }
 
-                // Author (now available for both)
                 if (item.author) {
                     const author = document.createElement('p');
                     author.className = 'learning-topic-author';
@@ -166,7 +286,6 @@
                     card.appendChild(author);
                 }
 
-                // Date
                 if (item.date) {
                     const date = document.createElement('p');
                     date.className = 'learning-topic-date';
@@ -174,9 +293,11 @@
                     card.appendChild(date);
                 }
 
-                // Read time (as before)
                 const readTimeSpan = document.createElement('span');
                 readTimeSpan.className = 'learning-topic-read-time';
+                readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`;
+                card.appendChild(readTimeSpan);
+
                 (async function fetchReadTime() {
                     try {
                         const rawUrl = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/${BRANCH}/${filePath}`;
@@ -187,14 +308,11 @@
                             const words = contentWithoutFrontmatter.split(/\s+/).filter(w => w.length > 0).length;
                             const readTime = Math.ceil(words / 200);
                             readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ${readTime} min read`;
-                        } else {
-                            readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`;
                         }
                     } catch {
-                        readTimeSpan.innerHTML = `<i class="fas fa-clock"></i> ~2 min read`;
+                        // keep default
                     }
                 })();
-                card.appendChild(readTimeSpan);
 
                 // Share dropdown
                 const dropdown = document.createElement('div');
@@ -224,7 +342,7 @@
                 dropdown.appendChild(menu);
                 card.appendChild(dropdown);
 
-                // ----- Events -----
+                // Events
                 card.addEventListener('click', function (e) {
                     if (e.target.closest('.share-dropdown')) return;
                     const href = this.dataset.href;
