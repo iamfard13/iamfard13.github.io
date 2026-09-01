@@ -398,11 +398,24 @@ button {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    overflow: hidden;
 }
 
 .company-card:hover .company-logo-wrapper {
     border-color: rgba(251, 191, 36, 0.4);
     background: rgba(251, 191, 36, 0.05);
+}
+
+.company-logo {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.company-card:hover .company-logo {
+    transform: scale(1.1);
 }
 
 .company-logo-placeholder {
