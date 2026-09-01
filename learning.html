@@ -116,7 +116,7 @@
             let allItems = [];
             let filteredItems = [];
 
-            // Helper: parse date string like "August 29, 2026" to Date
+            // Parse date string like "August 29, 2026" -> local midnight Date
             function parseDate(dateStr) {
                 if (!dateStr) return null;
                 const parts = dateStr.split(',').map(s => s.trim());
@@ -128,7 +128,7 @@
                     if (month && !isNaN(day) && !isNaN(year)) {
                         const monthIndex = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].indexOf(month);
                         if (monthIndex !== -1) {
-                            return new Date(year, monthIndex, day);
+                            return new Date(year, monthIndex, day); // local midnight
                         }
                     }
                 }
@@ -165,8 +165,7 @@
                         return dateB - dateA;
                     });
 
-                    // Apply initial filter (show all)
-                    applyFilters();
+                    applyFilters(); // initial render
 
                     // Event listeners
                     searchInput.addEventListener('input', applyFilters);
@@ -182,14 +181,13 @@
                     emptyMessage.textContent = 'Unable to load learning content. Please try again later.';
                 });
 
-            // ----- Filtering logic -----
+            // ----- Filtering logic (fixed date parsing) -----
             function applyFilters() {
                 const searchTerm = searchInput.value.toLowerCase().trim();
-                const fromDate = dateFrom.value ? new Date(dateFrom.value) : null;
-                const toDate = dateTo.value ? new Date(dateTo.value) : null;
 
-                // Reset toDate to end of day for inclusive filtering
-                if (toDate) toDate.setHours(23, 59, 59, 999);
+                // Parse dates as LOCAL midnight/end-of-day
+                const fromDate = dateFrom.value ? new Date(dateFrom.value + 'T00:00:00') : null;
+                const toDate = dateTo.value ? new Date(dateTo.value + 'T23:59:59') : null;
 
                 filteredItems = allItems.filter(item => {
                     // Search in title, chapter (if exists), author
@@ -249,7 +247,7 @@
                 resultCount.textContent = `Showing ${shown} of ${total} item${total > 1 ? 's' : ''}`;
             }
 
-            // ----- Card creation (identical to previous version) -----
+            // ----- Card creation (unchanged) -----
             function createCard(item, index) {
                 const card = document.createElement('article');
                 card.className = 'learning-topic-card';
