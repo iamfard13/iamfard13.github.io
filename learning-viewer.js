@@ -27,10 +27,7 @@ async function loadLearningContent() {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const markdown = await response.text();
 
-        // Parse frontmatter
         const { metadata, content } = parseFrontMatter(markdown);
-
-        // Render markdown with marked
         const htmlContent = marked.parse(content);
 
         viewerTitle.textContent = metadata.title || file.replace(/^.*\//, '').replace(/\.md$/, '').replace(/-/g, ' ');
