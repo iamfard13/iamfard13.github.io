@@ -114,7 +114,7 @@ button {
     opacity: 1;
 }
 
-/* ─── Single View CV button ─── */
+/* ─── Disabled View CV button ─── */
 .resume-btn {
     display: inline-flex;
     align-items: center;
@@ -125,10 +125,12 @@ button {
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: none;
-    border: 1px solid #fbbf24;
-    background: #fbbf24;
-    color: #080808;
-    transition: background 0.25s ease, border-color 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+    pointer-events: none;
+    transition: none;
 }
 
 .resume-btn i {
@@ -136,10 +138,9 @@ button {
 }
 
 .resume-btn:hover {
-    background: #fcd34d;
-    border-color: #fcd34d;
-    color: #080808;
-    opacity: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.3);
 }
 
 /* =========================================================
